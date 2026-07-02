@@ -284,8 +284,8 @@ $k$ odd steps has accumulated exponent $A_k \ge \lfloor k\alpha \rfloor - C$.
 From the affine form $n_k = (3^k n_0 + B_w)/2^{A_k}$, the value satisfies
 $n_k \le 2^{A_k} \cdot n_0$ (since $B_w \ge 0$ and $n_k$ is derived from
 $n_0$). The ternary precision needed to distinguish $n_k$ from other
-integers is $m_x = \lceil \log_3 n_k \rceil \le \lceil A_k / \alpha
-\rceil \le \lceil (k\alpha + C)/\alpha \rceil = k + \lceil C/\alpha
+integers is $m_x = \lceil \log_3 n_k \rceil \le \lceil A_k / \alpha +
+\log_3 n_0 \rceil \le k + \lceil C/\alpha \rceil + \lceil \log_3 n_0
 \rceil$.
 
 More directly: an integer whose binary magnitude is at most $2^{C+k\alpha}$
@@ -311,6 +311,16 @@ integer cannot outrun the automaton.
 | 100 | 63.1 | 243.3 | 3.86 |
 | 1,000 | 630.9 | 2,411.5 | 3.82 |
 | 10,000 | 6,309.3 | 24,093.3 | 3.82 |
+
+*Correction (July 2026 review).* The bound above must carry the starting
+integer's own size: $m_x \le k + \lceil C/\alpha \rceil + \lceil \log_3
+n_0 \rceil$, and the table reports the $n_0$-free component. For fixed
+$n_0$ the ratio still converges to $53\alpha/22 \approx 3.82$ as $C \to
+\infty$, but for counterexample-scale starts ($n_0 > 2^{71}$, so $\log_3
+n_0 \ge 45$) the additive term dominates every row with $C \lesssim 70$:
+the automaton's tracking margin is asymptotic in corridor width, not
+uniform. This is the same admission as Part 1's "for large $C$" qualifier,
+and it is enumerated in the accompanying audit (G2).
 
 At every corridor the escaping orbit visits, the automaton has already
 tracked its residue class at precisions far beyond what the integer occupies.
@@ -521,7 +531,7 @@ through birth corridor ($\min d = -29$) before reaching 1. $\square$
 
 ## 6. The Last Survivor
 
-The residue $r = 3^{11} + 1 = 177149$, written `100000000001` in base 3,
+The residue $r = 3^{11} + 1 = 177148$, written `100000000001` in base 3,
 is the last terminal-compatible shadow at corridor $C = 4$, precision
 $m = 12$. It sits at the outermost edge of the terminal-compatible set —
 the final residue class that could theoretically contain a non-descending

@@ -182,7 +182,12 @@ wants to attack the framework should start here.
   emptiness no longer contradicts the orbit's existence. The Precision Ratio
   Lemma (automaton reach = 3.82× the integer's ternary precision) points at
   the quantity a repair needs, but the argument as written does not close it.
-  (Overlaps red team #4, Lemma 4 under-proving.)
+  A July 2026 verification pass found the same hole from the other side:
+  the Precision Ratio Lemma's derivation drops the log₃(n₀) term (its ratio
+  table reports the n₀-free component), and for counterexample-scale starts
+  (n₀ > 2^71, log₃ n₀ ≈ 45) that term dominates every corridor row with
+  C ≲ 70 — the 3.82× tracking margin is asymptotic in corridor width, not
+  uniform. (Overlaps red team #4, Lemma 4 under-proving.)
 - **G3 — The scattered-exit case of escape (Theorem 5, Part 1).** Consecutive
   ceiling exits force x₀ = −1 ∈ ℤ₂ (proven). Scattered exits compound to
   *some* 2-adic limit, and the argument that this limit cannot be a positive
@@ -200,7 +205,8 @@ wants to attack the framework should start here.
   gliders" under the current corridor definition.
 - **G6 — Cycle exclusion is certificate-bounded.** Theorem 3 rests on the
   Simons–de Weger certificate, which is finite (no nontrivial m-cycles for
-  m ≤ 68 [2]); unconditional cycle exclusion is not known — here or
+  m ≤ 68, extended to m ≤ 91 by Hercher [2]); unconditional cycle exclusion
+  is not known — here or
   anywhere. (An earlier mis-citation of this result in `COLLATZ_PROOF.md`
   was found and corrected during release review.)
 - **G7 — Lock 1 provenance (red team #3).** The periodic-engine impossibility
@@ -360,9 +366,11 @@ The program makes commitments that future work can break:
    values.* Forum of Mathematics, Pi, 2022. arXiv:1909.03562.
 2. Simons, J., de Weger, B. *Theoretical and computational bounds for
    m-cycles of the 3n+1-problem.* Acta Arithmetica 117(1), 51–70, 2005.
-   (Proves no nontrivial m-cycles exist for m ≤ 68.)
+   (No nontrivial m-cycles for m ≤ 68; extended to m ≤ 91 by Hercher, C.,
+   *There are no Collatz m-cycles with m ≤ 91*, J. Integer Sequences 26(3),
+   Article 23.3.5, 2023, arXiv:2201.00406.)
 3. Barina, D. *Convergence verification of the Collatz problem.* J.
-   Supercomputing, 2020; and *Improved verification limit for the convergence
+   Supercomputing 77(3), 2021 (online 2020); and *Improved verification limit for the convergence
    of the Collatz conjecture.* J. Supercomputing 81:810, 2025 (frontier 2^71).
 4. Lagarias, J. C. *The 3x+1 problem: an annotated bibliography.* arXiv:
    math/0309224 (and *The Ultimate Challenge: The 3x+1 Problem*, AMS 2010).

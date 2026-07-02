@@ -386,7 +386,7 @@ The program makes commitments that future work can break:
 9. Tishby, N., Zaslavsky, N. *Deep learning and the information bottleneck
    principle.* 2015. arXiv:1503.02406.
 10. Perry, D. *Selective Attention Is All You Need: Adaptive Precision
-    Attention.* Companion paper, 2026 (released alongside this note).
+    Attention.* Companion paper, 2026. Zenodo. doi:10.5281/zenodo.21137970.
 
 ---
 

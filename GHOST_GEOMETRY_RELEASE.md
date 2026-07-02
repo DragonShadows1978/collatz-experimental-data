@@ -259,7 +259,12 @@ itself inspectable software rather than prose. AtlasForge missions run a
 stage-gated loop in which artifacts are adversarially reviewed,
 health-checked, and mutation-tested each cycle, and results are regenerated
 only after found defects are fixed — falsification is platform
-architecture, not authorial discipline. The GHOST_PRECISION artifacts
+architecture, not authorial discipline. The adversarial stages deliberately
+exploit the generative model's bias toward confabulation, aiming it at
+failure hypotheses — concrete inputs and states under which an artifact
+*could* break — which are then mechanically tested against the real code
+and data: hallucination repurposed as hypothesis generation, with the
+verification gate as the only arbiter of which conjectures were real. The GHOST_PRECISION artifacts
 preserve this history in full (four cycle health reports, a bug-fix plan
 that caught a NaN-silent ghost detector and a stabilization boundary bug,
 and the post-fix re-run that produced every figure used here), and the

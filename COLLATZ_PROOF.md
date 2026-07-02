@@ -11,7 +11,8 @@ certificates, and a target claim (Theorem 4). It is NOT presented as an
 accepted formal proof. Known gaps in the argument are enumerated in the
 accompanying adversarial audit (published with this document); the framework's
 defensible claim is that it constrains any hypothetical counterexample more
-tightly than prior published characterizations.
+tightly than prior published characterizations. Text licensed CC BY 4.0;
+the computational engines are separately licensed AGPL-3.0.
 
 ---
 

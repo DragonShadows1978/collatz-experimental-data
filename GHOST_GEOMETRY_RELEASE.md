@@ -9,7 +9,8 @@ artifacts it summarizes and audits: `COLLATZ_PROOF.md` (the full framework,
 2026-05-26) and AtlasForge mission 4482de7b (GHOST_PRECISION, the attention
 measurement). It supersedes the May 2026 working note (`collatz-ml-bridge.md`)
 wherever numbers differ; all figures below are taken from the final artifact
-reports, not from interim summaries.*
+reports, not from interim summaries. Text licensed CC BY 4.0; the implementations are separately licensed
+AGPL-3.0 with commercial licensing available.*
 
 ---
 

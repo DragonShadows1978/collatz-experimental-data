@@ -20,7 +20,10 @@ This work is by an independent researcher without academic affiliation, and it
 was produced with substantial assistance from AI systems: ChatGPT for
 mathematical formalization, Claude for analysis, verification, and
 documentation (including this document), Codex for compiled Rust
-implementations, and AtlasForge (the author's autonomous research platform)
+implementations, and AtlasForge (the author's autonomous research platform,
+itself open source — MIT, https://github.com/DragonShadows1978/AI-AtlasForge,
+PyPI `ai-atlasforge`; the specific mission workspaces and artifacts cited
+below are project-local, not part of that repository)
 for the empirical measurement engine. The dimensional-escalation strategy, the
 4D coordinate system (odd-step time, total exponent, deficit, residue
 precision), the cross-domain hypothesis, and all research direction are the

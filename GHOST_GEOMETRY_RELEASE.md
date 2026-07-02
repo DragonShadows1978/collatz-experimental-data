@@ -4,7 +4,7 @@
 **David Perry** — Independent Researcher (no institutional affiliation)
 `dave@ai-storyforge.com`
 
-*Release v1.0 — 2026-07-02. This document is the citable companion to two
+*Release v1.0 — 2026-07-02. DOI: 10.5281/zenodo.21138525. This document is the citable companion to two
 artifacts it summarizes and audits: `COLLATZ_PROOF.md` (the full framework,
 2026-05-26) and AtlasForge mission 4482de7b (GHOST_PRECISION, the attention
 measurement). It supersedes the May 2026 working note (`collatz-ml-bridge.md`)
@@ -394,4 +394,4 @@ The program makes commitments that future work can break:
 
 Perry, D. (2026). *Ghost Geometry: A Precision-Collapse Framework for the
 Collatz Conjecture, and Its Measured Transfer to Transformer Attention.*
-Zenodo. `[DOI on release]`
+Zenodo. doi:10.5281/zenodo.21138525

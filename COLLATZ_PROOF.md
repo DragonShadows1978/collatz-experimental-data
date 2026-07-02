@@ -1000,5 +1000,6 @@ sustained investigation of census scanner data.
 ## Suggested Citation
 
 Perry, D. (2026). *The Collatz Conjecture: A Proof Framework
-via Sturmian Precision Collapse.* Preprint (published with its
-adversarial gap audit).
+via Sturmian Precision Collapse.* Preprint, published with its
+adversarial gap audit in the Ghost Geometry record: Zenodo
+doi:10.5281/zenodo.21138525.

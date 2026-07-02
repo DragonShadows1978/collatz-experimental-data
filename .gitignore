@@ -1,0 +1,17 @@
+# Large experimental data — kept local; summaries and certificates cited in
+# the docs; raw data available on request
+/data/
+/Lock3_c4/
+/Lock4_c4/
+/Lock3_c3/
+/Lock3_birth_audit/
+/lock3_curve/
+/logs/
+# Rust build
+/target/
+# Python
+__pycache__/
+*.pyc
+# misc
+*.log
+.DS_Store

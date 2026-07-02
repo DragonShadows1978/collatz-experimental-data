@@ -1,0 +1,275 @@
+LOCK 3 NEXT TASK — CORRIDOR TRANSITION / C-BREACH TRACKER
+
+Focus only on Lock 3.
+
+Problem:
+Current scanner tracks fixed-C, fixed-m shadow behavior:
+
+  C fixed
+  m fixed
+  depth evolves
+  valid1 births/deaths/lifetimes
+
+This tells us whether a terminal-compatible shadow survives inside a chosen corridor width C.
+
+But we are not yet tracking when a lineage/path actually breaches from one corridor width to the next, e.g.
+
+  C=5 -> C=6
+
+That is different from precision lift.
+
+Definitions:
+
+  m-lift:
+    same corridor C
+    higher residue precision layer m
+
+  C-breach:
+    actual deficit/reserve path exceeds the previous corridor ceiling
+    max deficit increases from C to C+1
+
+Deficit:
+
+  d_k = floor(k * log2(3)) - A_k
+
+where:
+
+  A_k = a_0 + ... + a_{k-1}
+
+A C=5 corridor means:
+
+  0 <= d_k <= 5
+
+A breach into C=6 occurs when:
+
+  d_k = 6
+
+after the same lineage previously had max d <= 5.
+
+Goal:
+Add a corridor transition tracker that records when terminal-compatible shadows or witness lineages increase their required corridor width.
+
+Core questions:
+1. When a shadow dies at fixed C, does it actually drain, or does a related lineage breach into C+1?
+2. Are C-breaches launch-only events?
+3. Does the forced division tail pull the lineage back into the lower corridor after a launch spike?
+4. Can any lineage sustain upward corridor movement, or are breaches only transient apex events?
+
+Required new tracking fields per depth/state:
+
+  depth
+  A_k
+  d_k
+  max_d_seen
+  current_required_C = max_d_seen
+  previous_required_C
+  C_breach_this_step
+  breached_from_C
+  breached_to_C
+  m
+  valid1 state
+  live_valid1_key_count
+  live_valid1_lineage_count
+  birth/death counts
+  lift count if available
+
+Important distinction:
+Do not confuse residue precision lift with corridor breach.
+
+  precision lift:
+    m -> m+1
+
+  corridor breach:
+    max_d_seen -> max_d_seen + 1
+
+Implementation plan:
+
+1. Add deficit-path tracking to lineage/cohort states.
+
+Each live/cohort state should track:
+
+  A_k
+  d_k
+  max_d_seen
+
+If exact per-lineage tracking is too large, add it first to witness/sample modes and to terminal-compatible keys only.
+
+2. Add C-breach event detection.
+
+At each step:
+
+  new_d = floor(k * log2(3)) - A_k
+  new_max_d = max(old_max_d, new_d)
+
+If:
+
+  new_max_d > old_max_d
+
+emit:
+
+  C_BREACH event
+
+Fields:
+
+  depth
+  old_max_d
+  new_max_d
+  breached_from_C = old_max_d
+  breached_to_C = new_max_d
+  d_k
+  A_k
+  m
+  key
+  lineage_count
+  terminal_compatible
+  birth/death state
+
+3. Separate launch apex from post-crash odd state.
+
+The breach may occur at the launch apex:
+
+  3x + 1
+
+but the odd-only state after division may fall back.
+
+Track both if possible:
+
+  launch_height_delta
+  post_crash_height_delta
+  apex_deficit_estimate
+  post_crash_deficit d_k
+
+At minimum, record whether the breach is visible in the odd-only post-crash state or only inferred from launch/lift telemetry.
+
+4. Add event outputs.
+
+New files:
+
+  lock3_corridor_transitions_C{C}_m{m}.csv
+  lock3_corridor_transition_summary_C{C}_m{m}.json
+  lock3_corridor_breach_witnesses_C{C}_m{m}.jsonl
+
+CSV columns:
+
+  C_configured
+  m
+  depth
+  key
+  old_max_d
+  new_max_d
+  breached_from_C
+  breached_to_C
+  d_k
+  A_k
+  terminal_compatible
+  live_valid1_key_count
+  live_valid1_lineage_count
+  lineage_count
+  birth_count
+  death_count
+  lifetime
+  notes
+
+Summary JSON:
+
+  total_breach_events
+  terminal_compatible_breach_events
+  max_C_reached
+  first_breach_depth_by_C
+  last_breach_depth_by_C
+  breach_counts_by_target_C
+  breaches_that_remain_live_next_depth
+  breaches_that_die_immediately
+  breaches_that_fall_back_to_lower_C
+  longest_sustained_high_C_interval
+
+5. Add witness drill-down for breach events.
+
+For selected breach events, export:
+
+  exact or minimal residue witness
+  base-3 representation if available
+  base-10 representation if feasible
+  exponent prefix
+  deficit path around breach
+  forward odd-only orbit around breach
+  launch/crash data around breach
+  whether it drains
+
+CLI idea:
+
+  lock3-corridor-witness \
+    --C 5 \
+    --m 14 \
+    --depth 24 \
+    --key <birth_or_breach_key>
+
+or integrate into existing lock3_census:
+
+  --track-corridor-breaches
+  --export-breach-witnesses
+  --max-breach-witnesses 100
+
+6. First test targets.
+
+Run small/known cases first:
+
+A. C=5, m=14
+   This is the known pre-desert/spark layer.
+   We want to know whether the C=5 boundary witness ever breaches toward C=6 or just drains.
+
+B. C=5, m=15
+   Desert.
+   Should show no terminal-compatible birth/breach.
+
+C. C=4, m=12
+   Sparse spark train.
+   Check whether sparks are corridor breaches or precision-only sparks.
+
+D. C=5, m=8
+   Persistent low-precision mass.
+   Check whether persistent low-m compatible mass uses repeated C-breaches or stays inside fixed width.
+
+Suggested commands:
+
+  /tmp/collatz-rust-target-lineage/release/lock3_census \
+    --C 5 --depth 250 --residue-mod-power 14 \
+    --out-dir data/runs/lock3_C5_m14_corridor_breach \
+    --memory-lean --no-checkpoint \
+    --track-corridor-breaches \
+    --export-breach-witnesses \
+    --progress-jsonl data/runs/lock3_C5_m14_corridor_breach/live_events.jsonl
+
+  /tmp/collatz-rust-target-lineage/release/lock3_census \
+    --C 4 --depth 2000 --residue-mod-power 12 \
+    --out-dir data/runs/lock3_C4_m12_corridor_breach \
+    --memory-lean --no-checkpoint \
+    --track-corridor-breaches \
+    --export-breach-witnesses \
+    --progress-jsonl data/runs/lock3_C4_m12_corridor_breach/live_events.jsonl
+
+7. Expected interpretation.
+
+If Lock 3/4 geometry is correct:
+
+  - m-lifts happen inside fixed C until the support edge.
+  - C-breaches should be launch/apex events, not sustained escapes.
+  - upward C movement should either fail immediately or require starting already inside the next support gap.
+  - downward movement should be easy/common because division by 2 gravity always allows falling back.
+  - terminal-compatible lineages should not sustain unbounded C growth.
+
+8. Main research question.
+
+Does a terminal-compatible lineage ever sustain:
+
+  C -> C+1 -> C+2 -> ...
+
+or do all apparent upward breaches collapse back / die?
+
+If the tracker shows upward C-breaches are transient and cannot sustain across the 53/22 edge, that is the computational bridge between:
+
+  Lock 3 = fixed corridor collapse
+
+and
+
+  Lock 4 = unbounded corridor bridge obstruction

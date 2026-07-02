@@ -1,0 +1,88 @@
+[package]
+name = "collatz-experimental-data"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rayon = "=1.8.1"
+nalgebra = "0.32"
+
+[[bin]]
+name = "product_automaton"
+path = "rust/product_automaton.rs"
+
+[[bin]]
+name = "spectral_radius"
+path = "rust/spectral_radius.rs"
+
+[[bin]]
+name = "spectral_radius_sparse"
+path = "rust/spectral_radius_sparse.rs"
+
+[[bin]]
+name = "lock2_scan"
+path = "rust/lock2_scan.rs"
+
+[[bin]]
+name = "lock2_reverse_barrier"
+path = "rust/lock2_reverse_barrier.rs"
+
+[[bin]]
+name = "lock3_census"
+path = "rust/lock3_census.rs"
+
+[[bin]]
+name = "lock1_cycle_scan"
+path = "rust/lock1_cycle_scan.rs"
+
+[[bin]]
+name = "lock1_proof_miner"
+path = "rust/lock1_proof_miner.rs"
+
+[[bin]]
+name = "lock1_obstruction_scan"
+path = "rust/lock1_obstruction_scan.rs"
+
+[[bin]]
+name = "lock1_delta_lemma_miner"
+path = "rust/lock1_delta_lemma_miner.rs"
+
+[[bin]]
+name = "lock1_residue_dp_prover"
+path = "rust/lock1_residue_dp_prover.rs"
+
+[[bin]]
+name = "lock1_backward_barrier"
+path = "rust/lock1_backward_barrier.rs"
+
+[[bin]]
+name = "lock1_barrier_shape_miner"
+path = "rust/lock1_barrier_shape_miner.rs"
+
+[[bin]]
+name = "lock1_barrier_formula_check"
+path = "rust/lock1_barrier_formula_check.rs"
+
+[[bin]]
+name = "lock1_barrier_witness_miner"
+path = "rust/lock1_barrier_witness_miner.rs"
+
+[[bin]]
+name = "lock1_factor_cascade_miner"
+path = "rust/lock1_factor_cascade_miner.rs"
+
+[[bin]]
+name = "lock1_cascade_survivor_dump"
+path = "rust/lock1_cascade_survivor_dump.rs"
+
+[[bin]]
+name = "lock1_primitive_necklace_cascade_miner"
+path = "rust/lock1_primitive_necklace_cascade_miner.rs"
+
+[[bin]]
+name = "lock1_final_wall_quotient_miner"
+path = "rust/lock1_final_wall_quotient_miner.rs"
+
+[[bin]]
+name = "lock1_reflection_root_profile"
+path = "rust/lock1_reflection_root_profile.rs"

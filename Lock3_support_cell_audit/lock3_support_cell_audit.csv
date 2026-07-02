@@ -1,0 +1,10 @@
+C,m,depth,lineage_cohort,support_cell_count,unique_support_cell_count,expected_min,capacity,cutoff_floor,cutoff_formula,observed_terminal_compatible,expected_desert,support_cell_count_pass,capacity_condition_pass,observation_condition_pass,forbidden_reuse_count,source_summary,pass_fail
+3,8,2000,aggregate_terminal_compatible_support,176,176,176,212,9,3C,True,False,True,True,True,0,data/runs/lock3_C3_N2000_residue_m8_lineage_cohorts_20260523/lock3_summary_C3.json,PASS
+3,9,2000,aggregate_terminal_compatible_support,198,198,198,212,9,3C,True,False,True,True,True,0,data/runs/lock3_C3_N2000_residue_m9_lineage_cohorts_20260523/lock3_summary_C3.json,PASS
+3,10,2000,none,220,220,220,212,9,3C,False,True,True,False,True,0,data/runs/lock3_C3_N2000_residue_m10_lineage_cohorts_20260523/lock3_summary_C3.json,PASS
+4,11,5000,aggregate_terminal_compatible_support,242,242,242,265,12,3C,True,False,True,True,True,0,data/runs/lock3_C4_N5000_residue_m11_lifecycle_lean_fresh/lock3_summary_C4.json,PASS
+4,12,2000,aggregate_terminal_compatible_support,264,264,264,265,12,3C,True,False,True,True,True,0,data/runs/lock3_C4_N2000_residue_m12_lineage_cohorts_20260523_203555/lock3_summary_C4.json,PASS
+4,13,2000,none,286,286,286,265,12,3C,False,True,True,False,True,0,data/runs/lock3_C4_N2000_residue_m13_lineage_cohorts_20260523_205433_supervised/lock3_summary_C4.json,PASS
+5,13,2000,aggregate_terminal_compatible_support,286,286,286,318,14,3C-1,True,False,True,True,True,0,data/runs/lock3_C5_N2000_residue_m13_lineage_cohorts_attempt2/lock3_summary_C5.json,PASS
+5,14,250,aggregate_terminal_compatible_support,308,308,308,318,14,3C-1,True,False,True,True,True,0,data/runs/lock3_C5_N250_residue_m14_rust/lock3_summary_C5.json,PASS
+5,15,50,none,330,330,330,318,14,3C-1,False,True,True,False,True,0,data/runs/lock3_C5_N50_residue_m15_lineage_cohorts_20260524_005303/lock3_summary_C5.json,PASS

@@ -1,0 +1,541 @@
+# Collatz Proof Draft — Exact Red-Team Problem List
+
+This document lists the exact proof gaps / problems that need to be addressed before the current draft should be presented as a complete proof of the Collatz conjecture.
+
+These are not claims that the framework is wrong. They are the places where the current writeup would likely be attacked if submitted as a proof.
+
+---
+
+## 1. Regime decomposition is not fully airtight yet
+
+### Current claim
+
+The draft says every non-descending odd orbit must be one of:
+
+1. periodic cycle
+2. bounded glider
+3. unbounded escape
+
+### Problem
+
+Your bounded-glider definition currently uses:
+
+\[
+0 \le d_k \le C
+\]
+
+where:
+
+\[
+d_k=\lfloor k\log_2 3\rfloor-A_k.
+\]
+
+But an orbit could enter a region where \(d_k<0\), meaning the multiplier has become contractive, while the accumulated \(+1\) offset might still prevent immediate descent below the starting odd integer.
+
+That is exactly the old Lock 2 zone.
+
+### What needs fixing
+
+You need a clean theorem saying one of these:
+
+A. Any non-descending orbit can be represented with the corridor coordinate used in Lock 3/4.
+
+or
+
+B. If \(d_k\) becomes negative, descent below the starting odd integer is forced.
+
+or
+
+C. The negative-deficit-but-not-yet-descended case is finite/transient and cannot become a fourth escape regime.
+
+### Required lemma
+
+**Descent Exit Lemma.**
+
+Possible statement:
+
+> If an odd orbit has crossed the contraction line but has not yet descended below its starting value, then it cannot persist indefinitely; it must either descend or re-enter the nonnegative corridor regime already covered by Lock 3/4.
+
+Without this, the decomposition has a possible missing case.
+
+---
+
+## 2. “Cycles are bounded gliders” is not correct under the current corridor definition
+
+### Current claim
+
+The draft says cycles are bounded gliders, then uses Lock 3 to rule them out.
+
+### Problem
+
+A positive cycle must satisfy:
+
+\[
+2^A>3^k
+\]
+
+over the full cycle, because the fixed point
+
+\[
+x=\frac{B_w}{2^A-3^k}
+\]
+
+must be positive.
+
+That means the cycle is contractive over the full word. Under your current deficit definition:
+
+\[
+d_k=\lfloor k\log_2 3\rfloor-A_k,
+\]
+
+a contractive cycle can have negative deficit after the full period.
+
+So it may not lie in:
+
+\[
+0\le d_k\le C.
+\]
+
+It is bounded in some broader sense, but not necessarily inside your written Lock 3 corridor.
+
+### What needs fixing
+
+Do **not** use Lock 3 to kill cycles unless you redefine the corridor to include signed deviation.
+
+Instead, handle cycles separately with the new Lock 1 Delta-Prefix Invariant.
+
+### Required correction
+
+Replace:
+
+> Cycles are bounded gliders, therefore Lock 3 kills cycles.
+
+with:
+
+> Cycles are handled by the Delta-Prefix Invariant. Bounded nonperiodic gliders are handled by Lock 3.
+
+---
+
+## 3. Lock 1 still depends on the Delta-Prefix Invariant being proven, not merely scanned
+
+### Current claim
+
+The new Lock 1 says no nontrivial loop exists because:
+
+\[
+D_w\mid 2^h\Delta_w
+\]
+
+only when the prefix deviation path is identically zero.
+
+### Problem
+
+The draft correctly identifies the right invariant, but the universal proof of this statement is still the key burden:
+
+\[
+D_w \mid 2^h\Delta_w
+\iff
+E_0=E_1=\cdots=E_k=0.
+\]
+
+Computational scans support it, but support is not proof.
+
+### What needs fixing
+
+You need a written proof of the Delta-Prefix Invariant.
+
+### Required lemma
+
+**Delta-Prefix Invariant.**
+
+Statement:
+
+> For every admissible exponent word \(w\) with \(D_w>0\), the normalized defect \(2^h\Delta_w\) is divisible by \(D_w\) if and only if all prefix deviations vanish.
+
+### Things the proof must explicitly handle
+
+- negative prefix deviations
+- the normalization by \(2^h\)
+- cyclic rotations
+- why later deviation terms cannot cancel earlier deviation terms modulo \(D_w\)
+- why the all-2 word is the only zero-defect case
+
+Until this is fully proven, Lock 1 is a theorem candidate with strong evidence, not a closed theorem.
+
+---
+
+## 4. Lemma 4 / integer-shadow correspondence is under-proven
+
+### Current claim
+
+If an actual integer orbit stays inside corridor width \(C\), then its residue class is terminal-compatible at every precision \(m\).
+
+### Problem
+
+This is intuitive, but in the paper it is doing real work. It connects actual Collatz integers to your residue-shadow automaton.
+
+A reviewer will ask:
+
+> Why does a true bounded non-descending integer orbit necessarily produce one of your terminal-compatible scanner shadows at every \(m\)?
+
+That cannot be waved away as definitional unless your definitions are written so that it is tautological.
+
+### What needs fixing
+
+You need a formal correspondence theorem.
+
+### Required lemma
+
+**Integer-Shadow Correspondence.**
+
+Possible statement:
+
+> Let \(x\) be a positive odd integer whose odd-only orbit remains in corridor width \(C\). Then for every \(m\ge1\), the residue \(x\bmod 3^m\) belongs to the terminal-compatible state set \(\mathcal T(C,m)\) generated by the Lock 3 residue automaton.
+
+### Must prove
+
+- the automaton’s transitions exactly match the odd-only inverse/forward residue constraints
+- terminal compatibility means the same thing in the scanner and in the mathematical model
+- no real integer orbit is excluded by the merged-state representation
+
+---
+
+## 5. Support-cell capacity lemma is the central Lock 3 proof gap
+
+### Current claim
+
+Precision \(m\) requires:
+
+\[
+22m
+\]
+
+support incidences.
+
+The corridor supplies:
+
+\[
+53(C+1)
+\]
+
+phase-height cells.
+
+Therefore:
+
+\[
+22m\le 53(C+1).
+\]
+
+### Problem
+
+The 53-block count is solid:
+
+\[
+22+31=53.
+\]
+
+But the proof that precision \(m\) necessarily consumes \(22m\) **fresh, non-reusable support incidences** needs to be made rigorous.
+
+Right now, the draft relies partly on scanner behavior and explanatory language.
+
+### What needs fixing
+
+You need a formal support-cell non-reuse theorem.
+
+### Required lemma
+
+**Support-Cell Non-Reuse Lemma.**
+
+Possible statement:
+
+> For a terminal-compatible residue shadow at precision \(m\), each of the \(m\) ternary precision layers imposes independent constraints across the 22 support phases of the 53-block. These constraints require at least \(22m\) distinct phase-height support incidences.
+
+### Must prove
+
+- why each precision layer contributes 22 constraints
+- why the same phase-height cell cannot satisfy two independent precision layers
+- why merged states do not hide reuse
+- why terminal compatibility forces these support incidences
+- why the 22 support phases, rather than all 53 phases, are the relevant bottleneck
+
+The support-cell audit is strong evidence, but the theorem needs the non-reuse argument.
+
+---
+
+## 6. The meaning of \(C\) must stay consistent everywhere
+
+### Current issue
+
+At several points, \(C\) is treated as:
+
+- corridor width
+- bit-height/logarithmic reserve
+- number scale
+- deficit-state count
+
+These are related but not identical.
+
+### Problem
+
+A reviewer can object if \(C\) moves between “bit height” and “number size” without explicit conversion.
+
+### Required clarification
+
+Every occurrence of \(C\) must specify:
+
+\[
+C=\text{integer corridor height in binary/logarithmic deficit units}.
+\]
+
+Then:
+
+\[
+C+1=\text{number of allowed deficit-height levels}.
+\]
+
+Ordinary number scale is approximately:
+
+\[
+2^C.
+\]
+
+### Fix
+
+Add a notation table early:
+
+| Symbol | Meaning |
+|---|---|
+| \(C\) | corridor width in binary-height/deficit levels |
+| \(m\) | 3-adic residue precision |
+| \(k\) | odd-step depth |
+| \(A_k\) | accumulated division exponent |
+| \(d_k\) | deficit coordinate |
+| \(M_{\text{edge}}(C)\) | last supported precision |
+| \(K(C)\) | first desert precision |
+
+---
+
+## 7. Lock 4 is currently a proof sketch, not a theorem
+
+### Current claim
+
+Unbounded escape is impossible because the gap \(53\to359\) requires too much reserve, and later gaps are worse.
+
+### Problem
+
+The argument uses:
+
+\[
+306(2-\log_2 3)\approx127
+\]
+
+and compares it to the support requirement near \(C\approx149\).
+
+This is a very strong mechanism, but as written it is still heuristic/physical.
+
+Words like "expected", "approximately", "observed", and "drift" cannot carry a theorem that rules out all integer orbits.
+
+### What needs fixing
+
+You need a deterministic bridge inequality.
+
+### Required theorem
+
+**Lock 4 Bridge Obstruction.**
+
+Possible statement:
+
+> For any orbit attempting to bridge from convergent corridor \(q_i\) to \(q_{i+1}\), the maximum usable reserve available after the launch/crash sequence is strictly less than the minimum corridor width required by the Lock 3 support edge at \(q_{i+1}\).
+
+### Must define exactly
+
+- reserve
+- usable reserve
+- bridge gap
+- required support
+- launch height
+- crash tax
+- why an orbit must start inside the target gap to sustain a breach
+
+### Need inequality of form
+
+\[
+C_{\text{available}}(q_i,q_{i+1})
+<
+C_{\text{required}}(q_{i+1}).
+\]
+
+Not approximate. Exact or bounded.
+
+---
+
+## 8. “Every followed breach witness collapses to 1” is evidence, not proof
+
+### Current claim
+
+The scanner follows corridor-breach witnesses and every one collapses to 1.
+
+### Problem
+
+That is valuable, but it cannot be used directly as a universal theorem unless the witness-generation covers every possible breach.
+
+### What needs fixing
+
+Either:
+
+A. Use breach witnesses only as computational evidence.
+
+or
+
+B. Prove every possible corridor breach is represented by the witness generation scheme.
+
+### Required if using as proof
+
+A **Breach Witness Completeness Lemma.**
+
+Statement:
+
+> Every actual upward corridor breach in the mathematical model corresponds to a witness emitted by the scanner’s CRT reconstruction.
+
+That is a high burden. Easier: keep it as evidence, not proof.
+
+---
+
+## 9. The statement “all three locks are expressions of \(2^A\ne3^k\)” is too broad
+
+### Current claim
+
+Section 9 says all locks are expressions of:
+
+\[
+2^A\ne3^k.
+\]
+
+### Problem
+
+This is philosophically right but mathematically too vague. Lock 3 uses the finer \(53/22\) support structure, not merely irrationality. Lock 4 uses corridor bridge inequalities. Lock 1 uses divisibility of \(B_w\) by \(D_w\), not only nonzero \(D_w\).
+
+### Fix
+
+Rephrase:
+
+> The irrationality of \(\log_2 3\) prevents exact neutral action and generates the Sturmian/convergent structure. The individual locks require additional arithmetic: offset divisibility for cycles, support capacity for bounded gliders, and bridge-reserve inequalities for unbounded escape.
+
+---
+
+## 10. Section 5.2 says lift survival is “generically one of three”; this is not enough
+
+### Current claim
+
+At each ternary lift, of three possible lifts, generically one survives.
+
+### Problem
+
+“Generically” is not proof. You need exact conditions.
+
+### Fix
+
+Either make it a lemma:
+
+> For each compatible state and each precision lift, terminal compatibility selects exactly one ternary lift.
+
+or weaken it:
+
+> The scanner observes one-of-three survival in tested cases, and the proof uses only the support-cell incidence bound.
+
+If the proof depends on one-of-three exactness, prove it.
+
+---
+
+## 11. The C=6–50 verification line is too weak as stated
+
+### Current claim
+
+For \(C=6\) to \(50\), all \(m=1\) lifetime probes match exactly.
+
+### Problem
+
+That does not verify the full edge formula for those \(C\), only the \(m=1\) row.
+
+### Fix
+
+Say exactly:
+
+> For \(C=6\) through \(50\), the \(m=1\) implied edge values are consistent with the formula. Full \(m\)-ladders were verified for \(C=3,4,5\).
+
+Do not imply full verification for \(C=6\)–\(50\).
+
+---
+
+## 12. The proof currently mixes theorem, computation, and interpretation
+
+### Problem
+
+Some statements are proven algebraically, some are computationally audited, and some are interpretive.
+
+That is okay, but they must be labeled.
+
+### Fix
+
+Use labels:
+
+- Theorem
+- Lemma
+- Computational certificate
+- Heuristic interpretation
+- Conjectural bridge
+
+Especially for Lock 4.
+
+---
+
+## 13. The final theorem is currently too strong for the written dependencies
+
+### Current claim
+
+Theorem 4 states the Collatz conjecture is proven.
+
+### Problem
+
+That is only justified if all prior blockers are fully proven.
+
+Right now, the written chain relies on:
+
+- Regime exhaustiveness
+- Delta-Prefix Invariant
+- Integer-shadow correspondence
+- Support-cell non-reuse
+- deterministic Lock 4 bridge inequality
+
+not all of which are fully proven in the draft.
+
+### Fix options
+
+Option A: Strong proof paper
+
+Keep Theorem 4 only after all missing lemmas are proven.
+
+Option B: Research preprint
+
+Change title and main theorem to:
+
+> A proof framework reducing the Collatz conjecture to three explicit obstruction lemmas.
+
+Then list the remaining lemmas.
+
+---
+
+# Minimal checklist before calling it a proof
+
+These must be proven in-document:
+
+- [ ] Delta-Prefix Invariant for all exponent words.
+- [ ] Integer-shadow correspondence theorem.
+- [ ] Support-cell non-reuse / 22m incidence theorem.
+- [ ] Descent-exit lemma for negative-deficit/contractive crossing region.
+- [ ] Deterministic Lock 4 bridge inequality.
+- [ ] Exact regime exhaustiveness using the final definitions.
+
+If those six are proven, the paper can claim a Collatz proof.
+
+If any are not proven, the paper should be framed as a proof framework with computational certificates.

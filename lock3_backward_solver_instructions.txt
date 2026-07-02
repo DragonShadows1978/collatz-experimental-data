@@ -1,0 +1,580 @@
+LOCK 3 BACKWARD SOLVER — INSTRUCTIONS FOR CODEX
+=================================================
+
+Mission
+-------
+Build a Lock 3 backward solver for the Collatz tower-spacetime framework.
+
+Goal
+----
+Attack Lock 3, the bounded-deficit case:
+
+    0 <= d_k <= C forever
+
+where:
+
+    d_k = floor(k * log2(3)) - A_k
+    A_k = a_0 + a_1 + ... + a_{k-1}
+    a_i = v2(3*x_i + 1)
+
+Lock 3 asks whether a positive integer orbit can ride the contraction boundary forever inside a bounded-width strip.
+
+Forward simulation is hard because it asks whether an orbit can follow an infinite irrational rhythm forever.
+
+Backward solving flips the question:
+
+    Instead of asking what a number does forward,
+    construct all possible bounded-deficit exponent paths backward
+    and test whether any can support an infinite positive-integer ray.
+
+
+Core Definitions
+----------------
+
+Odd-only Collatz map:
+
+    S(x) = (3*x + 1) / 2^v2(3*x + 1)
+
+Forward exponent:
+
+    a_i = v2(3*x_i + 1)
+
+Forward transition:
+
+    x_{i+1} = (3*x_i + 1) / 2^{a_i}
+
+Backward inverse transition:
+
+    x_i = (2^{a_i} * x_{i+1} - 1) / 3
+
+The backward step is valid only if:
+
+    2^{a_i} * x_{i+1} - 1 is divisible by 3
+
+and the resulting x_i is a positive odd integer.
+
+
+Deficit Budget
+--------------
+
+Let:
+
+    alpha = log2(3)
+
+Define the Sturmian credit stream:
+
+    c_k = floor((k+1)*alpha) - floor(k*alpha)
+
+Because 1 < log2(3) < 2:
+
+    c_k in {1, 2}
+
+Deficit update:
+
+    d_{k+1} = d_k + c_k - a_k
+
+Bounded-deficit Lock 3 means:
+
+    0 <= d_k <= C
+
+for every k.
+
+Solving for exponent:
+
+    a_k = d_k + c_k - d_{k+1}
+
+A valid transition must have:
+
+    a_k >= 1
+
+So for fixed C and step k, the finite-state budget graph has states:
+
+    d in {0, 1, ..., C}
+
+and transitions:
+
+    d_k -> d_{k+1}
+
+when:
+
+    a_k = d_k + c_k - d_{k+1} >= 1
+
+
+Why Backward Solving Helps
+--------------------------
+
+Forward Lock 3 tries to find a positive integer whose exponent path stays within a bounded strip forever.
+
+Backward Lock 3 asks:
+
+    Can an infinite sequence of bounded-deficit transitions pass the inverse divisibility gates forever?
+
+Each backward step requires:
+
+    2^a * y ≡ 1 mod 3
+
+where y is the next odd state.
+
+Since:
+
+    2^a ≡ 1 mod 3 if a is even
+    2^a ≡ 2 mod 3 if a is odd
+
+the inverse step requires:
+
+    if a even: y ≡ 1 mod 3
+    if a odd:  y ≡ 2 mod 3
+
+Long backward paths impose increasingly strong congruence constraints.
+
+This is the Lock 3 incommensurability:
+
+    2-adic/Sturmian budget rhythm
+    versus
+    3-adic inverse integrality gates
+
+
+Primary Hypothesis
+------------------
+
+For every fixed C, the bounded-deficit inverse tree has no infinite positive-integer branch except the trivial 1-cycle.
+
+Equivalently:
+
+    Any bounded-deficit exponent ray either dies under backward integrality constraints
+    or corresponds to a 2-adic ghost, not a positive integer.
+
+
+Deliverables
+------------
+
+Create a command, preferably in the existing collatz_experimental_data CLI:
+
+    lock3-backward
+
+Suggested invocation:
+
+    PYTHONPATH=src python3 -m collatz_experimental_data lock3-backward --C 0 --depth 10000
+
+or for Rust/compiled version:
+
+    cargo run --release -- lock3-backward --C 0 --depth 100000
+
+
+Required Outputs
+----------------
+
+For each C and depth N, output:
+
+1. survivors_by_depth_C{C}.csv
+
+   Columns:
+   - C
+   - depth
+   - total_budget_paths
+   - valid_backward_paths_from_1
+   - valid_backward_residue_classes
+   - min_positive_ancestor
+   - max_positive_ancestor
+   - branch_count
+   - notes
+
+2. valid_backward_paths_C{C}_N{N}.csv
+
+   Columns:
+   - C
+   - depth
+   - deficit_path_encoded
+   - exponent_word
+   - terminal_value
+   - ancestor_value
+   - valid_all_steps
+   - first_failure_depth
+   - failure_reason
+   - final_modulus
+   - residue_class
+
+3. lock3_residue_lifts_C{C}.csv
+
+   Columns:
+   - C
+   - depth
+   - A_k
+   - modulus = 2^(A_k+1)
+   - rho_k
+   - bit_length_rho
+   - rho_changed
+   - lift_amount
+   - deficit_state
+   - exponent
+
+4. lock3_summary_C{C}.json
+
+   Include:
+   - max_depth
+   - C
+   - total_paths_considered
+   - survivor_counts
+   - whether any path appears extendable
+   - whether rho representatives stabilize
+   - longest stable plateau
+   - number of lift events
+   - largest rho bit length
+   - near-return times encountered
+
+
+Phase 1: C = 0 Critical Sturmian Path
+-------------------------------------
+
+C=0 is the purest Lock 3 case.
+
+If:
+
+    d_k = 0 forever
+
+then:
+
+    a_k = c_k
+        = floor((k+1)*log2(3)) - floor(k*log2(3))
+
+This produces the critical Sturmian exponent word:
+
+    1,2,1,2,1,2,2,1,2,1,2,2,...
+
+Tasks for C=0:
+
+1. Generate exponent word:
+
+    a_k = floor((k+1)*alpha) - floor(k*alpha)
+
+2. Compute prefix sums:
+
+    A_k = floor(k*alpha)
+
+3. Compute residue representative rho_k modulo:
+
+    2^(A_k + 1)
+
+   for the prefix word.
+
+4. Track whether rho_k stabilizes.
+
+Positive integer criterion:
+
+    If the C=0 2-adic value is a positive integer N,
+    then once 2^(A_k+1) > N,
+    the smallest positive representative rho_k must stabilize to N forever.
+
+Expected behavior:
+
+    rho_k keeps lifting.
+    It should not stabilize.
+
+5. Track near-return times q where:
+
+    beta_q = q*log2(3) - floor(q*log2(3))
+
+   is a record-small positive residual.
+
+Known lower-approximant / near-return denominators:
+
+    1, 2, 7, 12, 53, 359, 665, 16266, 31867, 111202, ...
+
+At these times compute prefix ghosts:
+
+    gamma_q = -B_q / (3^q - 2^A_q)
+
+and track whether rho_q appears to approximate fleeing negative ghosts instead of stabilizing to a positive integer.
+
+
+Phase 2: Small Bounded Buffers C = 1, 2, 3, ...
+------------------------------------------------
+
+For fixed C:
+
+1. States:
+
+    d in {0, ..., C}
+
+2. At time k:
+
+    c_k = floor((k+1)*alpha) - floor(k*alpha)
+
+3. For every transition:
+
+    d_next in {0, ..., C}
+
+   compute:
+
+    a = d + c_k - d_next
+
+   keep transition only if:
+
+    a >= 1
+
+4. This gives a time-dependent finite automaton.
+
+5. Generate all possible bounded-deficit exponent paths up to depth N.
+
+6. For each exponent path, test backward integrality.
+
+Naive enumeration may branch exponentially. Add pruning:
+
+- prune paths that fail inverse divisibility by 3;
+- merge identical residue classes;
+- represent sets symbolically when possible;
+- track residues modulo powers of 3 for backward integrality;
+- track rho modulo powers of 2 for positive-integer stabilization.
+
+
+Backward From 1
+---------------
+
+First simple mode:
+
+    terminal y = 1
+
+Run inverse steps backward:
+
+    x_i = (2^{a_i} * x_{i+1} - 1) / 3
+
+If numerator is not divisible by 3, branch dies.
+
+This builds bounded-deficit ancestors of 1.
+
+Question:
+
+    Are there infinite bounded-deficit ancestor branches?
+
+Expected:
+
+    only trivial or finite branches survive for fixed C.
+
+
+Backward From Generic Terminal Residues
+---------------------------------------
+
+Backward from 1 may be too restrictive because a Lock 3 orbit need not be a preimage of 1 within finite depth.
+
+So also implement symbolic residue mode.
+
+Instead of terminal value y=1, maintain allowable terminal residues modulo 3^N.
+
+For exponent word reversed:
+
+    x_0 = (2^A * x_N - E) / 3^N
+
+for some accumulated E.
+
+A path is valid if there exists an odd positive terminal residue x_N satisfying all divisibility constraints.
+
+Tasks:
+
+1. Derive accumulated affine inverse form:
+
+    x_0 = (2^A * x_N - E) / 3^N
+
+2. For each bounded-deficit exponent path, compute residue condition:
+
+    2^A * x_N ≡ E mod 3^N
+
+3. Since 2^A is invertible mod 3^N, solve:
+
+    x_N ≡ E * (2^A)^(-1) mod 3^N
+
+4. Track whether the resulting backward path can correspond to a positive integer ray.
+
+This turns Lock 3 into a residue-class survival problem.
+
+
+Residue Stabilization Test
+--------------------------
+
+For a forward exponent prefix w_k, compute the smallest positive representative:
+
+    rho_k mod 2^(A_k+1)
+
+If an infinite exponent ray corresponds to a positive integer N, then:
+
+    rho_k = N
+
+for all sufficiently large k.
+
+Therefore, for each bounded-deficit path, track:
+
+    rho_k
+
+and mark:
+
+    rho_changed = rho_k != rho_{k-1}
+
+Expected Lock 3 failure mode:
+
+    bounded-deficit paths require infinitely many rho changes/lifts,
+    preventing stabilization to a positive integer.
+
+Key target theorem:
+
+    For every fixed C, every bounded-deficit infinite ray has infinitely many rho lifts.
+
+This would kill Lock 3.
+
+
+Important Metrics
+-----------------
+
+For each C:
+
+- number of bounded-deficit symbolic paths by depth
+- number of paths surviving backward integrality
+- number of distinct residue classes
+- number of paths whose rho representatives stabilize for long plateaus
+- longest rho plateau
+- max rho bit length
+- lift count
+- near-return count
+- detected periodic or eventually periodic symbolic paths
+- detected ghost fixed points
+
+
+Expected Findings
+-----------------
+
+C=0:
+
+    one critical Sturmian path.
+    rho_k should keep lifting.
+    no positive integer stabilization.
+
+C=1,2,3:
+
+    finite-buffer Sturmian automata.
+    many symbolic paths initially.
+    backward integrality should prune aggressively.
+    any long survivor should look ghost-like, not positive-integer-like.
+
+Large C:
+
+    more paths, but still should show:
+    - no stable positive integer ray,
+    - residue lifting,
+    - ghost behavior near continued-fraction returns.
+
+
+Validation Tests
+----------------
+
+Implement tests for:
+
+1. Inverse step correctness:
+
+    x_prev = (2^a * x_next - 1) / 3
+
+   Verify forward S(x_prev) = x_next when valid.
+
+2. Mod 3 gate correctness:
+
+    if a even, x_next must be 1 mod 3
+    if a odd, x_next must be 2 mod 3
+
+3. C=0 exponent word correctness:
+
+    a_k = floor((k+1)*alpha) - floor(k*alpha)
+
+4. Deficit update correctness:
+
+    d_{k+1} = d_k + c_k - a_k
+
+5. Residue representative correctness:
+
+    3^k * rho_k + B_k ≡ 2^A_k mod 2^(A_k+1)
+
+6. Positive integer stabilization property:
+
+    If using a known finite positive start N and its true exponent prefix,
+    rho_k should stabilize to N once modulus exceeds N.
+
+7. Trivial cycle:
+
+    all-2 exponent word corresponds to N=1.
+
+
+Useful Formulae
+---------------
+
+Forward affine:
+
+    S^k(x) = (3^k*x + B_k) / 2^A_k
+
+B recurrence:
+
+    B_{k+1} = 3*B_k + 2^A_k
+
+Backward inverse:
+
+    x_i = (2^{a_i}*x_{i+1} - 1) / 3
+
+Residue representative:
+
+    rho_k ≡ (2^A_k - B_k) * (3^k)^(-1) mod 2^(A_k+1)
+
+C=0 critical 2-adic value:
+
+    Omega_0 = - sum_{j=0}^∞ 2^floor(j*log2(3)) / 3^{j+1}
+
+
+Recommended Engineering Path
+----------------------------
+
+1. Start in Python for C=0 only.
+2. Validate rho-lift behavior.
+3. Add C=1,2 path generator.
+4. If path counts explode, switch to Rust with:
+   - time-indexed automaton
+   - residue-class merging
+   - local path compression
+5. Add CSV/JSON outputs.
+6. Compare against existing Lock 2 / Lock 4 tool output conventions.
+
+
+Success Criteria
+----------------
+
+Minimum success:
+
+    C=0 critical path analyzed to very large depth.
+    rho_k does not stabilize.
+    near-return ghosts computed.
+
+Good success:
+
+    C=1,2,3 bounded-deficit inverse trees show no positive-integer stabilization to large depth.
+
+Strong success:
+
+    Evidence that every bounded-deficit path requires infinite residue lifting.
+
+Potential proof target:
+
+    For every fixed C, the bounded-deficit inverse automaton has no eventually-zero-lift infinite branch except the trivial 1-cycle.
+
+
+Plain English Summary
+---------------------
+
+Lock 3 is the perfect-glider case.
+
+The orbit never crosses into Lock 2.
+The orbit never builds unbounded reserve like Lock 4.
+It stays balanced forever near the irrational line A = k*log2(3).
+
+Forward simulation cannot prove this impossible.
+
+Backward solving asks whether such a perfect-glider exponent rhythm can actually be supported by integer ancestors.
+
+The expected answer is no:
+
+    bounded-deficit rhythms keep demanding new binary precision forever,
+    while a positive integer would require residue representatives to eventually stop changing.
+
+Find and measure that contradiction.

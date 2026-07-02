@@ -1,0 +1,12 @@
+[project]
+name = "collatz-experimental-data"
+version = "0.1.0"
+description = "Exact experimental harness for Collatz reserve and ghost-chain data"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+collatz-exp = "collatz_experimental_data.__main__:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

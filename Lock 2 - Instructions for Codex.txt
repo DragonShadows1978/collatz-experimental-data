@@ -1,0 +1,124 @@
+LOCK 2 ASSAULT — REVERSE BARRIER PHASE 2
+
+Focus only on Lock 2.
+
+Current status:
+- Forward enumeration is no longer the primary method.
+- Reverse-barrier search found the true current top threat.
+- Old candidate (1,1,2,3) is not global top.
+- Current observed nontrivial top is A54:
+
+word:
+(1,1,1,1,1,4,1,2,1,1,2,1,1,1,2,3,1,1,2,1,2,1,1,1,1,1,3,1,1,1,4,2,2,4)
+
+A=54
+k=34
+rho=63
+score=theta/rho=
+48215861999407177 / 84244659018371145
+≈ 0.572331380544
+
+Known lower family members:
+A51, rho=71, score≈0.204686
+A59, rho=27, score≈0.323160
+(1,1,2,3), rho=7, score≈0.221884
+
+Primary objective:
+Determine whether any nontrivial first-contractivity word exceeds the A54 score.
+
+Do not restart broad forward enumeration.
+
+TASK 1 — Optimize reverse reconstruction
+The Amax150 attempt showed the bottleneck is recursive reconstruction on rare expensive (A,k) pairs that produce zero words.
+
+Implement:
+1. memoization of failed reconstruction subtrees
+2. slow-pair profiling
+3. reconstruction counters
+4. optional meet-in-the-middle plan if memoization is insufficient
+
+Track:
+- memo_hits
+- memo_misses
+- memo_entries
+- pruned_by_memo
+- reconstructed_words
+- zero_reconstruction_pairs
+- slow_pairs
+- deepest_recursion
+- time_per_(A,k)
+
+TASK 2 — Rerun current-top barrier
+
+Use target:
+
+target_num = 48215861999407177
+target_den = 84244659018371145
+
+Commands:
+
+cargo build --release --bin lock2_reverse_barrier --target-dir /tmp/collatz-rust-target
+
+/tmp/collatz-rust-target/release/lock2_reverse_barrier \
+  --Amax 150 \
+  --target-num 48215861999407177 \
+  --target-den 84244659018371145 \
+  --out-dir data/runs \
+  --stamp lock2_reverse_memo_Amax150 \
+  --top-n 100 \
+  --progress-every-a 10 \
+  --slow-pair-seconds 5
+
+If Amax150 completes, run:
+
+/tmp/collatz-rust-target/release/lock2_reverse_barrier \
+  --Amax 200 \
+  --target-num 48215861999407177 \
+  --target-den 84244659018371145 \
+  --out-dir data/runs \
+  --stamp lock2_reverse_memo_Amax200 \
+  --top-n 100 \
+  --progress-every-a 10 \
+  --slow-pair-seconds 5
+
+TASK 3 — Verify every reconstructed hit exactly
+For each hit:
+- rho follows the word exactly
+- image after word is odd
+- image after word is below rho
+- first_contractivity_index == k
+- margin > 0 for nontrivial words
+- all prefixes obey first-contractivity prefix constraints
+
+TASK 4 — Family structure analysis
+Analyze A51/A54/A59.
+
+For each word:
+- prefix sums A_j
+- deficit path d_j
+- partial B_j
+- first-contractivity crossing
+- rho orbit
+- image after word
+- common core/suffix
+- gap to A54 structure
+
+Questions:
+1. Why does A54 spike to 0.572?
+2. Are A51/A54/A59 one family?
+3. Is A54 isolated or the peak of a repeating construction?
+4. Does the terminal block (4,2,2,4) control the spike?
+
+TASK 5 — Lower target family expansion
+After current-top barrier runs:
+Run target 0.2 and 0.1 through Amax100 or Amax150.
+
+Goal:
+Map the family below the top.
+
+Outputs:
+- lock2_reverse_hits.csv
+- lock2_reverse_top_scores.csv
+- lock2_family_alignment.md
+- lock2_prefix_profiles_A51_A54_A59.csv
+- lock2_reconstruction_memo_stats.json

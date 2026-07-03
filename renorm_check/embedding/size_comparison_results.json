@@ -1,0 +1,2279 @@
+{
+  "description": "Size comparison: exact small-side |live(C,m)| structural data (Part 1) plus a Monte Carlo ESTIMATE (NOT exact) of the big-side live fraction via the backward-reachability oracle (Part 2). This test is NOT proof of embedding -- matching/related sizes do not imply an explicit correspondence. See embedding_test.py for the explicit-map test, which is the actual embedding claim under test.",
+  "small_side_structural": [
+    {
+      "C": 1,
+      "m": 1,
+      "total_live": 4,
+      "total_possible": 6,
+      "live_fraction": 0.6666666666666666
+    },
+    {
+      "C": 1,
+      "m": 2,
+      "total_live": 8,
+      "total_possible": 18,
+      "live_fraction": 0.4444444444444444
+    },
+    {
+      "C": 1,
+      "m": 3,
+      "total_live": 12,
+      "total_possible": 54,
+      "live_fraction": 0.2222222222222222
+    },
+    {
+      "C": 1,
+      "m": 4,
+      "total_live": 24,
+      "total_possible": 162,
+      "live_fraction": 0.14814814814814814
+    },
+    {
+      "C": 1,
+      "m": 5,
+      "total_live": 36,
+      "total_possible": 486,
+      "live_fraction": 0.07407407407407407
+    },
+    {
+      "C": 1,
+      "m": 6,
+      "total_live": 72,
+      "total_possible": 1458,
+      "live_fraction": 0.04938271604938271
+    },
+    {
+      "C": 2,
+      "m": 1,
+      "total_live": 6,
+      "total_possible": 9,
+      "live_fraction": 0.6666666666666666
+    },
+    {
+      "C": 2,
+      "m": 2,
+      "total_live": 14,
+      "total_possible": 27,
+      "live_fraction": 0.5185185185185185
+    },
+    {
+      "C": 2,
+      "m": 3,
+      "total_live": 27,
+      "total_possible": 81,
+      "live_fraction": 0.3333333333333333
+    },
+    {
+      "C": 2,
+      "m": 4,
+      "total_live": 64,
+      "total_possible": 243,
+      "live_fraction": 0.26337448559670784
+    },
+    {
+      "C": 2,
+      "m": 5,
+      "total_live": 123,
+      "total_possible": 729,
+      "live_fraction": 0.16872427983539096
+    },
+    {
+      "C": 2,
+      "m": 6,
+      "total_live": 282,
+      "total_possible": 2187,
+      "live_fraction": 0.1289437585733882
+    },
+    {
+      "C": 2,
+      "m": 7,
+      "total_live": 651,
+      "total_possible": 6561,
+      "live_fraction": 0.09922267946959305
+    },
+    {
+      "C": 2,
+      "m": 8,
+      "total_live": 1364,
+      "total_possible": 19683,
+      "live_fraction": 0.06929837931209673
+    },
+    {
+      "C": 2,
+      "m": 9,
+      "total_live": 3220,
+      "total_possible": 59049,
+      "live_fraction": 0.05453098274314552
+    },
+    {
+      "C": 3,
+      "m": 1,
+      "total_live": 8,
+      "total_possible": 12,
+      "live_fraction": 0.6666666666666666
+    },
+    {
+      "C": 3,
+      "m": 2,
+      "total_live": 21,
+      "total_possible": 36,
+      "live_fraction": 0.5833333333333334
+    },
+    {
+      "C": 3,
+      "m": 3,
+      "total_live": 46,
+      "total_possible": 108,
+      "live_fraction": 0.42592592592592593
+    },
+    {
+      "C": 3,
+      "m": 4,
+      "total_live": 118,
+      "total_possible": 324,
+      "live_fraction": 0.36419753086419754
+    },
+    {
+      "C": 3,
+      "m": 5,
+      "total_live": 262,
+      "total_possible": 972,
+      "live_fraction": 0.26954732510288065
+    },
+    {
+      "C": 3,
+      "m": 6,
+      "total_live": 641,
+      "total_possible": 2916,
+      "live_fraction": 0.21982167352537724
+    },
+    {
+      "C": 3,
+      "m": 7,
+      "total_live": 1586,
+      "total_possible": 8748,
+      "live_fraction": 0.18129858253315043
+    },
+    {
+      "C": 3,
+      "m": 8,
+      "total_live": 3727,
+      "total_possible": 26244,
+      "live_fraction": 0.14201341258954428
+    },
+    {
+      "C": 3,
+      "m": 9,
+      "total_live": 9405,
+      "total_possible": 78732,
+      "live_fraction": 0.11945587562871514
+    },
+    {
+      "C": 3,
+      "m": 10,
+      "total_live": 21254,
+      "total_possible": 236196,
+      "live_fraction": 0.08998458907009432
+    },
+    {
+      "C": 3,
+      "m": 11,
+      "total_live": 52400,
+      "total_possible": 708588,
+      "live_fraction": 0.07394988343014558
+    },
+    {
+      "C": 4,
+      "m": 1,
+      "total_live": 10,
+      "total_possible": 15,
+      "live_fraction": 0.6666666666666666
+    },
+    {
+      "C": 4,
+      "m": 2,
+      "total_live": 27,
+      "total_possible": 45,
+      "live_fraction": 0.6
+    },
+    {
+      "C": 4,
+      "m": 3,
+      "total_live": 67,
+      "total_possible": 135,
+      "live_fraction": 0.4962962962962963
+    },
+    {
+      "C": 4,
+      "m": 4,
+      "total_live": 178,
+      "total_possible": 405,
+      "live_fraction": 0.43950617283950616
+    },
+    {
+      "C": 4,
+      "m": 5,
+      "total_live": 433,
+      "total_possible": 1215,
+      "live_fraction": 0.3563786008230453
+    },
+    {
+      "C": 4,
+      "m": 6,
+      "total_live": 1115,
+      "total_possible": 3645,
+      "live_fraction": 0.3058984910836763
+    },
+    {
+      "C": 4,
+      "m": 7,
+      "total_live": 2907,
+      "total_possible": 10935,
+      "live_fraction": 0.26584362139917694
+    },
+    {
+      "C": 4,
+      "m": 8,
+      "total_live": 7381,
+      "total_possible": 32805,
+      "live_fraction": 0.2249961896052431
+    },
+    {
+      "C": 4,
+      "m": 9,
+      "total_live": 19303,
+      "total_possible": 98415,
+      "live_fraction": 0.1961387999796779
+    },
+    {
+      "C": 4,
+      "m": 10,
+      "total_live": 47276,
+      "total_possible": 295245,
+      "live_fraction": 0.16012464224627004
+    },
+    {
+      "C": 4,
+      "m": 11,
+      "total_live": 121930,
+      "total_possible": 885735,
+      "live_fraction": 0.1376596837654603
+    },
+    {
+      "C": 4,
+      "m": 12,
+      "total_live": 317177,
+      "total_possible": 2657205,
+      "live_fraction": 0.1193648965736554
+    },
+    {
+      "C": 4,
+      "m": 13,
+      "total_live": 799891,
+      "total_possible": 7971615,
+      "live_fraction": 0.10034240238646748
+    },
+    {
+      "C": 4,
+      "m": 14,
+      "total_live": 2094423,
+      "total_possible": 23914845,
+      "live_fraction": 0.08757836398270614
+    },
+    {
+      "C": 5,
+      "m": 1,
+      "total_live": 12,
+      "total_possible": 18,
+      "live_fraction": 0.6666666666666666
+    },
+    {
+      "C": 5,
+      "m": 2,
+      "total_live": 33,
+      "total_possible": 54,
+      "live_fraction": 0.6111111111111112
+    },
+    {
+      "C": 5,
+      "m": 3,
+      "total_live": 86,
+      "total_possible": 162,
+      "live_fraction": 0.5308641975308642
+    },
+    {
+      "C": 5,
+      "m": 4,
+      "total_live": 238,
+      "total_possible": 486,
+      "live_fraction": 0.4897119341563786
+    },
+    {
+      "C": 5,
+      "m": 5,
+      "total_live": 616,
+      "total_possible": 1458,
+      "live_fraction": 0.4224965706447188
+    },
+    {
+      "C": 5,
+      "m": 6,
+      "total_live": 1653,
+      "total_possible": 4374,
+      "live_fraction": 0.3779149519890261
+    },
+    {
+      "C": 5,
+      "m": 7,
+      "total_live": 4479,
+      "total_possible": 13122,
+      "live_fraction": 0.34133516232281663
+    },
+    {
+      "C": 5,
+      "m": 8,
+      "total_live": 11930,
+      "total_possible": 39366,
+      "live_fraction": 0.30305339633185996
+    },
+    {
+      "C": 5,
+      "m": 9,
+      "total_live": 32313,
+      "total_possible": 118098,
+      "live_fraction": 0.2736117461769039
+    },
+    {
+      "C": 5,
+      "m": 10,
+      "total_live": 83539,
+      "total_possible": 354294,
+      "live_fraction": 0.23579005007140963
+    },
+    {
+      "C": 5,
+      "m": 11,
+      "total_live": 223498,
+      "total_possible": 1062882,
+      "live_fraction": 0.21027545861158622
+    },
+    {
+      "C": 5,
+      "m": 12,
+      "total_live": 602161,
+      "total_possible": 3188646,
+      "live_fraction": 0.18884535944096648
+    },
+    {
+      "C": 5,
+      "m": 13,
+      "total_live": 1585049,
+      "total_possible": 9565938,
+      "live_fraction": 0.16569718515842358
+    },
+    {
+      "C": 5,
+      "m": 14,
+      "total_live": 4281077,
+      "total_possible": 28697814,
+      "live_fraction": 0.14917780845607265
+    },
+    {
+      "C": 5,
+      "m": 15,
+      "total_live": 10947415,
+      "total_possible": 86093442,
+      "live_fraction": 0.1271573623459032
+    },
+    {
+      "C": 5,
+      "m": 16,
+      "total_live": 29178661,
+      "total_possible": 258280326,
+      "live_fraction": 0.11297283634371748
+    }
+  ],
+  "big_side_monte_carlo": [
+    {
+      "n_samples": 60,
+      "n_decided": 31,
+      "n_inconclusive": 29,
+      "n_live_among_decided": 3,
+      "estimated_live_fraction": 0.0967741935483871,
+      "raw_samples": [
+        {
+          "d": 1,
+          "r": 3922507022334577123014562926,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 2,
+          "r": 7473346801616171084040336658,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 5,
+          "r": 7417194946219421368848230537,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 18,
+          "r": 7941131049143521561505338663,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 18,
+          "r": 12138346064134456533761706122,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 2944248240352834108198322601,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 0,
+          "r": 2000428603258149981134604787,
+          "status": "live",
+          "calls": 4050
+        },
+        {
+          "d": 20,
+          "r": 13606808510919056961372094460,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 11742782270491517870010846722,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 2,
+          "r": 6073076229584294747811021578,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 11,
+          "r": 702794762206157107100150010,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 4,
+          "r": 12038588644379953722060942487,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 6,
+          "r": 11475706897117839749943596581,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 10,
+          "r": 2729450827479168586469733323,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 17,
+          "r": 762440486158122977269423761,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 1,
+          "r": 3609378368708928711932337570,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 3,
+          "r": 10455663357573706245799739157,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 6,
+          "r": 1766979001612540132750916074,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 7118158206717122837636050091,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 15,
+          "r": 13281868234555742185150025639,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 14,
+          "r": 2544692404082772176670963608,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 9407586788930489946463004960,
+          "status": "live",
+          "calls": 17664
+        },
+        {
+          "d": 20,
+          "r": 5121752534920039586298494072,
+          "status": "dead",
+          "calls": 3736
+        },
+        {
+          "d": 3,
+          "r": 590622076079216287462046100,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 9610545142547702455277390708,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 6,
+          "r": 10296508432141757866797811585,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 11,
+          "r": 12102491762473351918451892609,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 10,
+          "r": 9410798968320420145047579361,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 4990803474341071506095727594,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 10,
+          "r": 5977687881732062478322528780,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 16,
+          "r": 6592704803793023907604065760,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 22,
+          "r": 1960738901179007999053509576,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 9,
+          "r": 3645599751018122428959014478,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 2,
+          "r": 11027911609567394070168339006,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 9,
+          "r": 2267627518758437792376582325,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 1682499835921790005018492929,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 23,
+          "r": 10152824264118579499583761242,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 14,
+          "r": 2423246497903855697564250999,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 14,
+          "r": 10470763999312361997546667126,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 16,
+          "r": 1257129819401643933518794938,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 14,
+          "r": 13002582480210481790367427771,
+          "status": "live",
+          "calls": 114
+        },
+        {
+          "d": 14,
+          "r": 11812590278661632172785638461,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 2,
+          "r": 8874391815641729947696294540,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 5090683751069354849882097019,
+          "status": "dead",
+          "calls": 1501
+        },
+        {
+          "d": 9,
+          "r": 588153248083617617535935736,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 5,
+          "r": 2486078471009160259742140281,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 15,
+          "r": 1929933337982781204159135093,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 20,
+          "r": 7253835669751796025352521625,
+          "status": "dead",
+          "calls": 610
+        },
+        {
+          "d": 23,
+          "r": 10879187588103413226084887730,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 16,
+          "r": 3310931762059420992497410479,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 16,
+          "r": 10742530295036769965144861415,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 4,
+          "r": 14060893083120590466754712728,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 12147945573818633372755025981,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 21,
+          "r": 6007164470187378903747251755,
+          "status": "dead",
+          "calls": 16
+        },
+        {
+          "d": 19,
+          "r": 1591855404116352905880046937,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 17,
+          "r": 6173559533109738425034258415,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 16,
+          "r": 7908734755632143994309304883,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 9,
+          "r": 4341882799037862477719437079,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 7784063792635515511812289512,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 11,
+          "r": 12301605328742282222755597981,
+          "status": "inconclusive",
+          "calls": 400001
+        }
+      ],
+      "C": 1,
+      "m": 6,
+      "C2": 23,
+      "m2": 59,
+      "elapsed_sec": 30.346746921539307,
+      "small_side_live_fraction_exact": 0.04938271604938271,
+      "fraction_ratio_big_over_small": 1.9596774193548387
+    },
+    {
+      "n_samples": 60,
+      "n_decided": 25,
+      "n_inconclusive": 35,
+      "n_live_among_decided": 1,
+      "estimated_live_fraction": 0.04,
+      "raw_samples": [
+        {
+          "d": 16,
+          "r": 150478305457007624782365051166,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 117571247300976214975260247394,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 40415968073790011041200973439,
+          "status": "dead",
+          "calls": 248212
+        },
+        {
+          "d": 7,
+          "r": 62475213201837359209205292435,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 13,
+          "r": 125420705682043535762823971773,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 9,
+          "r": 22258231264803962976247819352,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 16,
+          "r": 207759133218131184053241587111,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 22,
+          "r": 245707240754488262097362818232,
+          "status": "dead",
+          "calls": 4930
+        },
+        {
+          "d": 22,
+          "r": 243147623259741890382551759278,
+          "status": "dead",
+          "calls": 403
+        },
+        {
+          "d": 10,
+          "r": 33022545130929161544489234847,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 15,
+          "r": 63179017255197167428823838371,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 33839129146163426949653983537,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 15,
+          "r": 95642156742330323500953218820,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 22,
+          "r": 7281087531420546662083264508,
+          "status": "dead",
+          "calls": 124
+        },
+        {
+          "d": 7,
+          "r": 62710504507542298919561987302,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 141312796909649651615575100103,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 9,
+          "r": 348083977215074755297815094852,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 11882259319840396345814644441,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 2,
+          "r": 320553425743046357953420686734,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 12,
+          "r": 2798625342561166249609084293,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 11,
+          "r": 33484668079339975663876665098,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 13,
+          "r": 50938819099894715217367626713,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 23967744757860445362625562233,
+          "status": "dead",
+          "calls": 523
+        },
+        {
+          "d": 1,
+          "r": 239194812554138415247452742692,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 22,
+          "r": 200925409581950438001955301382,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 12,
+          "r": 352212966480218307352657477922,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 223673512063636914340587235356,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 86159336263342599522910725386,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 5,
+          "r": 87278829426514367505827724925,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 11,
+          "r": 34509907859919488290095975518,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 21,
+          "r": 157421235353753014727404090344,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 2,
+          "r": 87237024939587166292331820373,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 336192725543749436331687182855,
+          "status": "dead",
+          "calls": 16
+        },
+        {
+          "d": 13,
+          "r": 58756005204492920048717390834,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 10,
+          "r": 104038224008506076501163514190,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 21,
+          "r": 236535722356672103703925896784,
+          "status": "dead",
+          "calls": 1339
+        },
+        {
+          "d": 19,
+          "r": 125097348882848557760262310348,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 13,
+          "r": 300240186793790702989500496037,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 24,
+          "r": 272401926909095071342366692392,
+          "status": "dead",
+          "calls": 13
+        },
+        {
+          "d": 4,
+          "r": 56325388981211465660939366398,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 17,
+          "r": 282733805238508301875939763296,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 146193125767949215020143752564,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 18,
+          "r": 265325278061161587678781561498,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 1,
+          "r": 63464927695420215725964675614,
+          "status": "live",
+          "calls": 8199
+        },
+        {
+          "d": 21,
+          "r": 187400113672958048964905774430,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 2,
+          "r": 357155098917798149182385434385,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 191984783964809758261987088050,
+          "status": "dead",
+          "calls": 89056
+        },
+        {
+          "d": 2,
+          "r": 268193444322865047505030138357,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 155890894649510936226596418242,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 260082695393921485233251214786,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 19,
+          "r": 246199120495662498461017126471,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 1,
+          "r": 14280155883122488086345058830,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 2,
+          "r": 20251157749550230676995908810,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 24,
+          "r": 225272827808758123032837948197,
+          "status": "dead",
+          "calls": 4
+        },
+        {
+          "d": 13,
+          "r": 48477949329398659142227202008,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 22,
+          "r": 265103045036053889579325428725,
+          "status": "dead",
+          "calls": 1114
+        },
+        {
+          "d": 11,
+          "r": 56152394774092899116035842349,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 77676821335785582040757034328,
+          "status": "dead",
+          "calls": 4
+        },
+        {
+          "d": 0,
+          "r": 36140665222631178064114274702,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 49041419493741178745973801712,
+          "status": "inconclusive",
+          "calls": 400001
+        }
+      ],
+      "C": 2,
+      "m": 9,
+      "C2": 24,
+      "m2": 62,
+      "elapsed_sec": 38.2459921836853,
+      "small_side_live_fraction_exact": 0.05453098274314552,
+      "fraction_ratio_big_over_small": 0.7335279503105591
+    },
+    {
+      "n_samples": 60,
+      "n_decided": 27,
+      "n_inconclusive": 33,
+      "n_live_among_decided": 3,
+      "estimated_live_fraction": 0.1111111111111111,
+      "raw_samples": [
+        {
+          "d": 15,
+          "r": 2340340991986768033037602045470,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 12,
+          "r": 343446232560246343856929575080,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 15,
+          "r": 435959543509719310768143545059,
+          "status": "live",
+          "calls": 93
+        },
+        {
+          "d": 9,
+          "r": 1160174990958595719315539507230,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 21,
+          "r": 1589417964308655349373881024905,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 43773273468358451335451017894,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 2696240158627739601004079639691,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 1962509441334250103464521348256,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 1,
+          "r": 706031255253107648200346582384,
+          "status": "live",
+          "calls": 87
+        },
+        {
+          "d": 8,
+          "r": 1023547871394235263538944069567,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 6,
+          "r": 2942223707949427495357945227570,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 23,
+          "r": 891369555589358106415909041743,
+          "status": "dead",
+          "calls": 574
+        },
+        {
+          "d": 0,
+          "r": 1872734226619608901559165759103,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 4,
+          "r": 2206293258780755366355347061476,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 12,
+          "r": 1386690471461585823559360813788,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 16,
+          "r": 2174925820260527260640117939934,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 13,
+          "r": 36528183281031743627150171259,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 1,
+          "r": 3242179503737334108526948989504,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 5,
+          "r": 2020644158759948607470390211017,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 25,
+          "r": 1792563223108108566039373441123,
+          "status": "dead",
+          "calls": 4
+        },
+        {
+          "d": 21,
+          "r": 2129187377808524975172100556365,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 5,
+          "r": 2997075669524016134837902810832,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 10,
+          "r": 262735902601688881262917815462,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 1,
+          "r": 807095976288091653650090237614,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 12,
+          "r": 2559065798181183759842021535839,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 1526515466679470039801057889816,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 24,
+          "r": 3033105768981545942110432030571,
+          "status": "dead",
+          "calls": 142
+        },
+        {
+          "d": 10,
+          "r": 1060804899993087008236870036787,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 22,
+          "r": 946261470864239936015154616898,
+          "status": "dead",
+          "calls": 5905
+        },
+        {
+          "d": 15,
+          "r": 1129367017886943185222897186189,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 10,
+          "r": 223220216154833357426790824944,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 1717341651741752466778387080677,
+          "status": "live",
+          "calls": 81
+        },
+        {
+          "d": 7,
+          "r": 929557598286658546802523080606,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 9,
+          "r": 1250575822253393976466975347764,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 2840812161191756593994630376352,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 24,
+          "r": 822972838301160646466857121963,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 1719282634114774783454711097283,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 12,
+          "r": 1635404307862283022028222481003,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 5,
+          "r": 3124508129509285235707317180572,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 17,
+          "r": 3121801019816587340393245534057,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 25,
+          "r": 1102367585528042368332775530793,
+          "status": "dead",
+          "calls": 40
+        },
+        {
+          "d": 11,
+          "r": 726259944653375450748368804419,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 3263069701039594053418742866212,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 16,
+          "r": 2795839758249653565279271110279,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 9,
+          "r": 1694217937250928476667603804086,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 3293832996414249729879060496158,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 17,
+          "r": 2007838566931471857077256473871,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 22,
+          "r": 351055571948059510904971480480,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 15,
+          "r": 2019857250855433692270073536941,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 2289629425764169054015789692322,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 8,
+          "r": 754792072464954352024652661686,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 2028853248874161685435084191979,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 16,
+          "r": 2391976921932637515777719971648,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 10,
+          "r": 654112586283652518743281797595,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 10,
+          "r": 1949589548155618378509945743120,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 19,
+          "r": 2264693544611417821526287499559,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 4,
+          "r": 1884459974142198658216410629196,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 5,
+          "r": 2463508053790278743533502114468,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 15,
+          "r": 1555173555724451788464317353730,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 6,
+          "r": 1694993218260990758365645063923,
+          "status": "dead",
+          "calls": 1
+        }
+      ],
+      "C": 3,
+      "m": 11,
+      "C2": 25,
+      "m2": 64,
+      "elapsed_sec": 36.645437479019165,
+      "small_side_live_fraction_exact": 0.07394988343014558,
+      "fraction_ratio_big_over_small": 1.5025190839694658
+    },
+    {
+      "n_samples": 60,
+      "n_decided": 31,
+      "n_inconclusive": 29,
+      "n_live_among_decided": 2,
+      "estimated_live_fraction": 0.06451612903225806,
+      "raw_samples": [
+        {
+          "d": 13,
+          "r": 82608760879873003198036251861607,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 55397094055775387269983894303528,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 20,
+          "r": 82006591303612356168505270513057,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 15065505736496703055993136062284,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 26,
+          "r": 49155634360674582964669782262084,
+          "status": "dead",
+          "calls": 13
+        },
+        {
+          "d": 0,
+          "r": 77653181643365657944813520805961,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 47931747697224092554175225697261,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 17,
+          "r": 2606227577082933270766155596593,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 22,
+          "r": 72093539635616936417508058165481,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 1,
+          "r": 79657836386774868053782021560978,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 25,
+          "r": 26813987350091356094268921364293,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 76627271390173673130289385382186,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 5,
+          "r": 75189151361300247317568425711346,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 4,
+          "r": 86498439662176766292046047412539,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 11,
+          "r": 52814042809885801089226578472973,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 63196623113485671889710386464484,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 78969691612920179914462978537120,
+          "status": "dead",
+          "calls": 43
+        },
+        {
+          "d": 25,
+          "r": 40359694566277550579186182702927,
+          "status": "dead",
+          "calls": 89014
+        },
+        {
+          "d": 8,
+          "r": 35553022008402122839111490526363,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 4,
+          "r": 80080756916125798971356381353589,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 17,
+          "r": 44543511880121903932626283772504,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 13524334943996108643449968900173,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 12,
+          "r": 16084220774028315816912928044956,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 21,
+          "r": 45335098297000242603012576215630,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 16,
+          "r": 6242229133148671549808789095808,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 25,
+          "r": 38326582822341626143869871735707,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 26,
+          "r": 25369943810925378203915539985063,
+          "status": "dead",
+          "calls": 39685
+        },
+        {
+          "d": 25,
+          "r": 17311741514491733923562617051755,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 9,
+          "r": 63292262476824034953761743328125,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 7,
+          "r": 54732216833349255995426609005758,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 16,
+          "r": 41349467455529326999053494201944,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 17,
+          "r": 30688290026208246387005334262381,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 2,
+          "r": 12663425345509381124709154582603,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 36826407512550151814462915775809,
+          "status": "live",
+          "calls": 255
+        },
+        {
+          "d": 0,
+          "r": 73151641140131640061507998362878,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 80187070777976149732899204717897,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 66441430427781090190233316429154,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 2,
+          "r": 59707524270743368239539193676834,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 9,
+          "r": 75378179656106116886980109024809,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 14222922558545080690359963440578,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 56008496897841575563171528097582,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 0,
+          "r": 28166113263641759516130527050308,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 3,
+          "r": 15582428125094064764017406071210,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 49275608171092154264577963705985,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 5,
+          "r": 9296020583996343142450728824259,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 23,
+          "r": 80714252206688558077244663681446,
+          "status": "dead",
+          "calls": 286
+        },
+        {
+          "d": 7,
+          "r": 35310594255211878410405952749430,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 18,
+          "r": 63565391512721957175963167438633,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 18,
+          "r": 47096118445352609476583926788465,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 0,
+          "r": 47892280613406768635233069602529,
+          "status": "live",
+          "calls": 20931
+        },
+        {
+          "d": 17,
+          "r": 20447934414107062003076051988367,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 18,
+          "r": 91596628173295719527085831830753,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 16,
+          "r": 88807034835834781505876536694602,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 22,
+          "r": 33392250811802064898665090386980,
+          "status": "dead",
+          "calls": 64
+        },
+        {
+          "d": 26,
+          "r": 5537653271091868551332447487485,
+          "status": "dead",
+          "calls": 40
+        },
+        {
+          "d": 0,
+          "r": 66129511734801604494432706645197,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 12,
+          "r": 52042895371946228075646093440100,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 22,
+          "r": 58357214260865410389670656504231,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 24,
+          "r": 90748682829132970931440274716195,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 72855666616229789483837664606077,
+          "status": "dead",
+          "calls": 49807
+        }
+      ],
+      "C": 4,
+      "m": 14,
+      "C2": 26,
+      "m2": 67,
+      "elapsed_sec": 31.89540457725525,
+      "small_side_live_fraction_exact": 0.08757836398270614,
+      "fraction_ratio_big_over_small": 0.736667438147142
+    },
+    {
+      "n_samples": 60,
+      "n_decided": 35,
+      "n_inconclusive": 25,
+      "n_live_among_decided": 2,
+      "estimated_live_fraction": 0.05714285714285714,
+      "raw_samples": [
+        {
+          "d": 15,
+          "r": 697635594019722061064105053043401,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 13,
+          "r": 827821252120446748763504207614717,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 9,
+          "r": 232190943816243581082908506562141,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 15,
+          "r": 420455394086111916306411708011666,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 11,
+          "r": 47917884541610933739791856368515,
+          "status": "live",
+          "calls": 78
+        },
+        {
+          "d": 21,
+          "r": 57265662796356095060936048574309,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 9,
+          "r": 636942150406172465131000433130085,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 382995822203959275104163629307260,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 20,
+          "r": 265531085041417034851155119561446,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 27,
+          "r": 510537706668829257484726567402698,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 11,
+          "r": 344963155638789562734320154529446,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 25,
+          "r": 396748072956185313772144836781012,
+          "status": "dead",
+          "calls": 52
+        },
+        {
+          "d": 27,
+          "r": 777261485357088538024098426039998,
+          "status": "dead",
+          "calls": 4
+        },
+        {
+          "d": 15,
+          "r": 659600767460581871968605473221966,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 26,
+          "r": 23922843882738437609359389110272,
+          "status": "dead",
+          "calls": 562
+        },
+        {
+          "d": 11,
+          "r": 716562283234287598259206680814588,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 25,
+          "r": 245889880160022149368828539450175,
+          "status": "dead",
+          "calls": 16
+        },
+        {
+          "d": 19,
+          "r": 11133788396925645253256754954826,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 14,
+          "r": 163306017919594289768905104172697,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 14,
+          "r": 603155873964740525877125556312585,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 15,
+          "r": 444625563582818683114790515648432,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 5,
+          "r": 455123008345835007198073655429196,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 15,
+          "r": 42270726448310921057989980824055,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 13,
+          "r": 93984312857916781460984448357922,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 14,
+          "r": 512860147159412337202144638662826,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 19,
+          "r": 816303406338710838287574178213458,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 11,
+          "r": 51566604572827588862545924048360,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 3,
+          "r": 578601691414882117503042983858437,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 12,
+          "r": 559379156610441075474206414285196,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 18,
+          "r": 669297579371988948843578513582051,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 25,
+          "r": 242608946853030164968082128106517,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 20,
+          "r": 109036465379388538078176116521726,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 516622534128816297586644010881795,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 19,
+          "r": 516902222323264493723231445882147,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 13,
+          "r": 423541155712552209109248440747184,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 2,
+          "r": 496063426577024002289572938320712,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 26,
+          "r": 462810046988615082790788261618208,
+          "status": "dead",
+          "calls": 4
+        },
+        {
+          "d": 14,
+          "r": 807783590711428893047641594678985,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 10,
+          "r": 395515330234407175270748785286208,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 22,
+          "r": 753940689233685063895041034715342,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 13,
+          "r": 360454625764303599809582363928408,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 13,
+          "r": 509292345591759439041699219960942,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 5,
+          "r": 603031776185192359731656974144692,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 27,
+          "r": 544695485758173211889055048243407,
+          "status": "dead",
+          "calls": 1210
+        },
+        {
+          "d": 21,
+          "r": 534252452929680111666402156627824,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 17,
+          "r": 718552259618595270510163894332465,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 27,
+          "r": 246095216099582641417182761835825,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 807772353637876289878595195703429,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 18,
+          "r": 545798394874338676827902518166404,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 27,
+          "r": 395270362844241046153641657505848,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 7,
+          "r": 130645986479337649846725575863231,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 25,
+          "r": 242642550375795905881191858921451,
+          "status": "dead",
+          "calls": 16
+        },
+        {
+          "d": 22,
+          "r": 700396069550713611972537176258567,
+          "status": "dead",
+          "calls": 95287
+        },
+        {
+          "d": 1,
+          "r": 244461706432327308038300283383551,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 9,
+          "r": 317663686330310960333926459703454,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 22,
+          "r": 156240958168140069809790153275086,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 4,
+          "r": 826242744145258520380328044157766,
+          "status": "dead",
+          "calls": 1
+        },
+        {
+          "d": 0,
+          "r": 470232382776226900849981076936915,
+          "status": "live",
+          "calls": 17568
+        },
+        {
+          "d": 15,
+          "r": 770399436965972712949073875915861,
+          "status": "inconclusive",
+          "calls": 400001
+        },
+        {
+          "d": 23,
+          "r": 161375024511641512348917712725900,
+          "status": "dead",
+          "calls": 1
+        }
+      ],
+      "C": 5,
+      "m": 16,
+      "C2": 27,
+      "m2": 69,
+      "elapsed_sec": 26.63132095336914,
+      "small_side_live_fraction_exact": 0.11297283634371748,
+      "fraction_ratio_big_over_small": 0.5058105912203638
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "task": "rho(C) structure analysis for the killed-survivor-graph spectral radius certificate (COLLATZ_PROOF.md Certificate 6)",
+  "generated_by": "renorm_check/run_rho_sweep.sh + renorm_check/analyze_rho_structure.py, invoking the repo's own unmodified rust/spectral_radius_sparse.rs binary (built to /tmp/collatz-verify-build, outside the repo)",
+  "method": "Repo ships no stored per-C rho table (see cartography notes). We regenerated rho(C) ourselves: (1) a full, exhaustive sweep C=1..200 at m=3 (fast: build cost ~O((C+1)*3^m), 200/200 points completed), and (2) a targeted sweep at m=5 over 51 'anchor' C values deliberately chosen near and around lags 22, 53, 75 and their small multiples plus offsets 1..5,10 (C=1..~200, in flight -- see anchors_status below).",
+  "datasets": {
+    "m3_full_sweep": {
+      "file": "rho_sweep_m3_C1_200.csv",
+      "table": "rho_m3_analysis_table.csv",
+      "report": "rho_m3_analysis_report.json",
+      "status": "COMPLETE: 200/200 points, C=1..200"
+    },
+    "m5_anchor_sweep": {
+      "file": "rho_sweep_m5_anchors.csv",
+      "table": "rho_m5_anchors_analysis_table.csv",
+      "report": "rho_m5_anchors_analysis_report.json",
+      "status": "COMPLETE: 51/51 points, zero errors. C values = {1,2,3,4,5,10} union anchors near/around lags 22,53,75 and multiples/sums thereof up to C=169 (see c_list_anchors.txt for exact list)."
+    }
+  },
+  "headline_finding": {
+    "claim_tested": "Does rho(C) show periodic or lag-aligned structure at C-lags 22, 53, or 75 (the capacity formula's exact period/step), or mod-22 structure?",
+    "result": "NO -- rho(C) is NOT periodic. At every fixed precision m tested (m=3 and m=5), rho(C) is a short, strictly-nondecreasing transient for small C (roughly C=1 up to C~10), after which it LOCKS to a single constant value for every larger C tested, with zero deviation to 13 significant digits. This exact-constancy, not periodicity, is what produces the appearance of 'alignment' at any lag: differencing a constant sequence at ANY lag (22, 53, 75, or otherwise) trivially gives ~0. The lag-22/53/75 tests are therefore not distinguishing a real periodic mechanism -- they are re-detecting that rho(C) has (for practical purposes) NO C-dependence once C clears a small threshold set by m.",
+    "m3_locked_value": "0.2354443813768 (locks exactly for all tested C in [11,200], 190/190 consecutive C values identical)",
+    "m5_locked_value": "0.9635044131620 (locks exactly for all tested C in [23,169], confirmed identical across all 45/45 anchor points with C>=23, including every deliberately-chosen near-22/53/75-lag point; C=10 gives 0.9635044131614, off in the 12th digit -- last vestige of the transient, not lag structure)",
+    "transient_length_note": "The transient (where rho(C) still depends on C) appears to end once C is large enough that M_edge(C) = floor(53(C+1)/22) comfortably exceeds m (i.e. the corridor no longer bottlenecks the automaton's precision ceiling at that m). This matches COLLATZ_PROOF.md's own framing (Certificate 6: 'C=3: rho locks... C>=10: rho is a universal constant independent of C') -- our regenerated data is CONSISTENT with the document's claim, not merely similar to it.",
+    "monotonicity": "Non-decreasing in both sweeps: 9 increases / 0 decreases / 190 flats (m=3, full 200-pt sweep); 4 increases / 0 decreases / 28+ flats (m=5, anchor sweep, partial). No decrease events found anywhere.",
+    "autocorrelation_caveat": "Autocorrelation and first-difference statistics computed on the full m=3 series are dominated by the flat tail (190/200 points identical) -- lag-22/53/75 autocorrelation values are all near zero (-0.001 to -0.005), which in a constant-tailed series indicates ABSENCE of periodic signal, not presence. See rho_m3_analysis_report.json 'autocorrelation_at_22_53_75' and the script's own interpretation_note field."
+  },
+  "what_certificates_actually_store": {
+    "Certificate_6_spectral_radius": "NOT a per-C table. No raw CSV/log with 200 distinct rho(C) values exists anywhere in the repo (tracked or gitignored, checked data/, logs/, Lock3_*, target/). SPECTRAL_RADIUS_RESULTS.txt (repo root) stores exactly two curves: rho vs m at C=3 (m=1..13) and rho vs m at C=10 ('universal', m=1..12). COLLATZ_PROOF.md Appendix A Certificate 6 asserts C=1-200 x m=1-13 was tested and that C=10..200 values are 'identical to 12 decimal places' but does not retain that sweep's output in the repo. We regenerated the sweep ourselves (this directory) since none existed.",
+    "Certificate_9_product_automaton": "Similarly no stored output. rust/product_automaton.rs is a CSV-emitting binary (heartbeat,step,alive,killed_terminal,killed_exit,killed_precision,total_killed,elapsed_s) but no such CSV exists in data/runs or elsewhere in the repo for any of the claimed 27 configs up to C=10,000.",
+    "Certificate_1_precision_countdown_48_corridors": "This is a DIFFERENT tool (lock3_census, not spectral_radius_sparse) and a different quantity (max valid-1 lineage lifetime per (C,m), not spectral radius). Partial grids for C=3,4,5 are recorded by hand in LOCK3_PRECISION_COUNTDOWN_GRID.md. The claimed 48-corridor-width verification corresponds to scripts/run_lock3_m1_C8_C15.sh, _C16_C30.sh, _C31_C50.sh (43 of the 48; the remaining ~5, presumably C=1..7ish, were not located as a script but may be covered by earlier interactive runs) writing to data/runs/lock3_C*_N2000_residue_m1_lineage_cohorts_*/lock3_summary_C*.json -- NOT the spectral radius certificate."
+  }
+}

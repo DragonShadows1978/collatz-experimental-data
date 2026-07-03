@@ -1,0 +1,743 @@
+{
+  "summary": {
+    "provenance": {
+      "claim_source_file": "/mnt/ForgeRealm/collatz-experimental-data/COLLATZ_PROOF.md",
+      "claim_text_verbatim_excerpt": "Verified by Certificate 1:** the formula matches all 48 independently\nmeasured corridor widths ($C = 1$ through $50$) without exception.\nFull precision-countdown ladders verified exact for $C = 3, 4, 5$.\nThe automaton's zero-birth edge falls at exactly $M_{\\text{edge}}(C)+1$\nat every tested corridor",
+      "data_source_file": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md",
+      "certificate1_domain_text_in_backup_v2_md": "$C = 3, 4, 5$: all $m$ from 1 to $K(C)$. $C = 6\\text{--}50$: $m = 1$ only.",
+      "explanation": "The '48' in the COLLATZ_PROOF.md claim = 3 genuine full-sweep widths (C=3,4,5) + 45 m=1-only widths (C=6..50) whose zero-birth edge was never directly observed, only algebraically implied. COLLATZ_PROOF_backup_v2.md's own Certificate 1 table states this domain split honestly ('C=6-50: m=1 only'); the polished COLLATZ_PROOF.md prose drops the caveat and calls all 48 'independently measured ... without exception', which overstates what was actually run. LOCK3_PRECISION_COUNTDOWN_GRID.md itself says the C=6-50 probes 'are not enough to establish the full countdown ladders.'"
+    },
+    "genuine_full_sweep_widths": [
+      3,
+      4,
+      5
+    ],
+    "genuine_count": 3,
+    "inferred_m1_only_widths_count": 45,
+    "total_widths_in_claim": 48,
+    "all_48_numerically_consistent_with_formula": true,
+    "CAVEAT": "'all_48_numerically_consistent_with_formula' = True is expected and NOT strong independent evidence for 45 of the 48 rows, because their target value was computed as observed_m1_lifetime + 1 -- i.e. those rows are consistent with M_edge(C)+1 by construction (the linear-countdown assumption bakes in a fixed offset of +1 from a single sample), not because an independent zero-birth point was measured and found to agree.",
+    "periodicity_check": {
+      "pairs_checked": 26,
+      "pairs_with_delta_53": 26,
+      "pairs_both_tiers_genuine": 0,
+      "ANY_PAIR_BOTH_GENUINE": false,
+      "HONEST_FLAG": "No (C, C+22) pair exists where BOTH widths are genuine full-sweep measurements (the only genuine set is {3,4,5}, and {25,26,27} = {3,4,5}+22 were never independently swept). Therefore the exact periodicity M_edge(C+22)-M_edge(C)=53 CANNOT be confirmed in the measured data as currently available -- every one of the pairs checked below relies on at least one inferred (m=1-only) value, so periodicity holding there is consistent-by-construction with the linear-countdown assumption, not independent confirmation."
+    }
+  },
+  "rows": [
+    {
+      "C": 3,
+      "measurement_tier": "GENUINE_full_sweep",
+      "measured_zero_birth_m": 10,
+      "formula_M_edge_plus_1": 10,
+      "matches_formula_exactly": true,
+      "note": null,
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 4,
+      "measurement_tier": "GENUINE_full_sweep",
+      "measured_zero_birth_m": 13,
+      "formula_M_edge_plus_1": 13,
+      "matches_formula_exactly": true,
+      "note": null,
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 5,
+      "measurement_tier": "GENUINE_full_sweep",
+      "measured_zero_birth_m": 15,
+      "formula_M_edge_plus_1": 15,
+      "matches_formula_exactly": true,
+      "note": "zero-birth point m=15 was confirmed at DEPTH 50 (not the standard depth 2000 used for m=1..13), after the depth-1169 m=14 run was manually killed once its live count returned to 0; see LOCK3_PRECISION_COUNTDOWN_GRID.md 'Observed boundary probes'. Still a direct zero-birth observation, just at reduced depth budget for the confirming run.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 6,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 17,
+      "formula_M_edge_plus_1": 17,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 16,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 7,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 20,
+      "formula_M_edge_plus_1": 20,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 19,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 8,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 22,
+      "formula_M_edge_plus_1": 22,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 21,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 9,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 25,
+      "formula_M_edge_plus_1": 25,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 24,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 10,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 27,
+      "formula_M_edge_plus_1": 27,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 26,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 11,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 29,
+      "formula_M_edge_plus_1": 29,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 28,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 12,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 32,
+      "formula_M_edge_plus_1": 32,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 31,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 13,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 34,
+      "formula_M_edge_plus_1": 34,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 33,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 14,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 37,
+      "formula_M_edge_plus_1": 37,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 36,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 15,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 39,
+      "formula_M_edge_plus_1": 39,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 38,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 16,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 41,
+      "formula_M_edge_plus_1": 41,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 40,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 17,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 44,
+      "formula_M_edge_plus_1": 44,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 43,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 18,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 46,
+      "formula_M_edge_plus_1": 46,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 45,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 19,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 49,
+      "formula_M_edge_plus_1": 49,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 48,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 20,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 51,
+      "formula_M_edge_plus_1": 51,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 50,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 21,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 54,
+      "formula_M_edge_plus_1": 54,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 53,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 22,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 56,
+      "formula_M_edge_plus_1": 56,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 55,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 23,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 58,
+      "formula_M_edge_plus_1": 58,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 57,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 24,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 61,
+      "formula_M_edge_plus_1": 61,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 60,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 25,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 63,
+      "formula_M_edge_plus_1": 63,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 62,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 26,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 66,
+      "formula_M_edge_plus_1": 66,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 65,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 27,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 68,
+      "formula_M_edge_plus_1": 68,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 67,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 28,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 70,
+      "formula_M_edge_plus_1": 70,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 69,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 29,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 73,
+      "formula_M_edge_plus_1": 73,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 72,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 30,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 75,
+      "formula_M_edge_plus_1": 75,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 74,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 31,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 78,
+      "formula_M_edge_plus_1": 78,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 77,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 32,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 80,
+      "formula_M_edge_plus_1": 80,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 79,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 33,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 82,
+      "formula_M_edge_plus_1": 82,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 81,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 34,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 85,
+      "formula_M_edge_plus_1": 85,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 84,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 35,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 87,
+      "formula_M_edge_plus_1": 87,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 86,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 36,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 90,
+      "formula_M_edge_plus_1": 90,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 89,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 37,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 92,
+      "formula_M_edge_plus_1": 92,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 91,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 38,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 94,
+      "formula_M_edge_plus_1": 94,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 93,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 39,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 97,
+      "formula_M_edge_plus_1": 97,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 96,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 40,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 99,
+      "formula_M_edge_plus_1": 99,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 98,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 41,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 102,
+      "formula_M_edge_plus_1": 102,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 101,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 42,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 104,
+      "formula_M_edge_plus_1": 104,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 103,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 43,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 107,
+      "formula_M_edge_plus_1": 107,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 106,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 44,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 109,
+      "formula_M_edge_plus_1": 109,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 108,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 45,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 111,
+      "formula_M_edge_plus_1": 111,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 110,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 46,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 114,
+      "formula_M_edge_plus_1": 114,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 113,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 47,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 116,
+      "formula_M_edge_plus_1": 116,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 115,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 48,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 119,
+      "formula_M_edge_plus_1": 119,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 118,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 49,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 121,
+      "formula_M_edge_plus_1": 121,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 120,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    },
+    {
+      "C": 50,
+      "measurement_tier": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "measured_zero_birth_m": 123,
+      "formula_M_edge_plus_1": 123,
+      "matches_formula_exactly": true,
+      "raw_observed_m1_lifetime": 122,
+      "note": "zero-birth m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff = observed_m1_lifetime + 1, valid only if the linear countdown slope (-1 per unit m), established only at C=3,4,5, also holds here.",
+      "source": "/mnt/ForgeRealm/collatz-experimental-data/LOCK3_PRECISION_COUNTDOWN_GRID.md"
+    }
+  ],
+  "periodicity_pairs": [
+    {
+      "C": 3,
+      "C_plus_22": 25,
+      "tier_C": "GENUINE_full_sweep",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 4,
+      "C_plus_22": 26,
+      "tier_C": "GENUINE_full_sweep",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 5,
+      "C_plus_22": 27,
+      "tier_C": "GENUINE_full_sweep",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 6,
+      "C_plus_22": 28,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 7,
+      "C_plus_22": 29,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 8,
+      "C_plus_22": 30,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 9,
+      "C_plus_22": 31,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 10,
+      "C_plus_22": 32,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 11,
+      "C_plus_22": 33,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 12,
+      "C_plus_22": 34,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 13,
+      "C_plus_22": 35,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 14,
+      "C_plus_22": 36,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 15,
+      "C_plus_22": 37,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 16,
+      "C_plus_22": 38,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 17,
+      "C_plus_22": 39,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 18,
+      "C_plus_22": 40,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 19,
+      "C_plus_22": 41,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 20,
+      "C_plus_22": 42,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 21,
+      "C_plus_22": 43,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 22,
+      "C_plus_22": 44,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 23,
+      "C_plus_22": 45,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 24,
+      "C_plus_22": 46,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 25,
+      "C_plus_22": 47,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 26,
+      "C_plus_22": 48,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 27,
+      "C_plus_22": 49,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    },
+    {
+      "C": 28,
+      "C_plus_22": 50,
+      "tier_C": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "tier_C_plus_22": "INFERRED_m1_only_plus_linear_countdown_assumption",
+      "both_genuine": false,
+      "delta": 53,
+      "matches_53": true
+    }
+  ]
+}

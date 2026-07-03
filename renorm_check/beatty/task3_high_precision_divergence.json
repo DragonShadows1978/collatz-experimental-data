@@ -1,0 +1,740 @@
+{
+  "summary": {
+    "method": "mpmath at 60 decimal digits precision (120 digits for the C=148 spot-check); exact integer floor-division for the rational side. NOT float64.",
+    "range_searched": [
+      1,
+      1000000
+    ],
+    "confirm_C148_at_120_digits": {
+      "C": 148,
+      "precision_digits": 120,
+      "exact_value_(C+1)/(2-log2_3)": "359.0037051083281416827782452910530319691",
+      "floor": 359,
+      "target_rational": 358,
+      "genuine_divergence": true,
+      "distance_from_next_integer_below": "0.003705108328141682778245291053031969131967"
+    },
+    "total_divergences_found": 998420,
+    "divergence_density": 0.99842,
+    "first_divergence": {
+      "C": 148,
+      "target_rational": 358,
+      "irrational_value": 359,
+      "diff": 1
+    },
+    "last_divergence_in_range": {
+      "C": 1000000,
+      "target_rational": 2409093,
+      "irrational_value": 2409423,
+      "diff": 330
+    },
+    "max_abs_diff_observed": 330,
+    "running_checkpoints": [
+      {
+        "C": 50000,
+        "cumulative_divergence_count": 48420,
+        "max_abs_diff_so_far": 17
+      },
+      {
+        "C": 100000,
+        "cumulative_divergence_count": 98420,
+        "max_abs_diff_so_far": 33
+      },
+      {
+        "C": 150000,
+        "cumulative_divergence_count": 148420,
+        "max_abs_diff_so_far": 50
+      },
+      {
+        "C": 200000,
+        "cumulative_divergence_count": 198420,
+        "max_abs_diff_so_far": 66
+      },
+      {
+        "C": 250000,
+        "cumulative_divergence_count": 248420,
+        "max_abs_diff_so_far": 83
+      },
+      {
+        "C": 300000,
+        "cumulative_divergence_count": 298420,
+        "max_abs_diff_so_far": 99
+      },
+      {
+        "C": 350000,
+        "cumulative_divergence_count": 348420,
+        "max_abs_diff_so_far": 116
+      },
+      {
+        "C": 400000,
+        "cumulative_divergence_count": 398420,
+        "max_abs_diff_so_far": 132
+      },
+      {
+        "C": 450000,
+        "cumulative_divergence_count": 448420,
+        "max_abs_diff_so_far": 149
+      },
+      {
+        "C": 500000,
+        "cumulative_divergence_count": 498420,
+        "max_abs_diff_so_far": 165
+      },
+      {
+        "C": 550000,
+        "cumulative_divergence_count": 548420,
+        "max_abs_diff_so_far": 182
+      },
+      {
+        "C": 600000,
+        "cumulative_divergence_count": 598420,
+        "max_abs_diff_so_far": 198
+      },
+      {
+        "C": 650000,
+        "cumulative_divergence_count": 648420,
+        "max_abs_diff_so_far": 215
+      },
+      {
+        "C": 700000,
+        "cumulative_divergence_count": 698420,
+        "max_abs_diff_so_far": 231
+      },
+      {
+        "C": 750000,
+        "cumulative_divergence_count": 748420,
+        "max_abs_diff_so_far": 248
+      },
+      {
+        "C": 800000,
+        "cumulative_divergence_count": 798420,
+        "max_abs_diff_so_far": 264
+      },
+      {
+        "C": 850000,
+        "cumulative_divergence_count": 848420,
+        "max_abs_diff_so_far": 281
+      },
+      {
+        "C": 900000,
+        "cumulative_divergence_count": 898420,
+        "max_abs_diff_so_far": 297
+      },
+      {
+        "C": 950000,
+        "cumulative_divergence_count": 948420,
+        "max_abs_diff_so_far": 314
+      },
+      {
+        "C": 1000000,
+        "cumulative_divergence_count": 998420,
+        "max_abs_diff_so_far": 330
+      }
+    ],
+    "sample_divergences_first_50": [
+      {
+        "C": 148,
+        "target_rational": 358,
+        "irrational_value": 359,
+        "diff": 1
+      },
+      {
+        "C": 170,
+        "target_rational": 411,
+        "irrational_value": 412,
+        "diff": 1
+      },
+      {
+        "C": 192,
+        "target_rational": 464,
+        "irrational_value": 465,
+        "diff": 1
+      },
+      {
+        "C": 214,
+        "target_rational": 517,
+        "irrational_value": 518,
+        "diff": 1
+      },
+      {
+        "C": 236,
+        "target_rational": 570,
+        "irrational_value": 571,
+        "diff": 1
+      },
+      {
+        "C": 258,
+        "target_rational": 623,
+        "irrational_value": 624,
+        "diff": 1
+      },
+      {
+        "C": 275,
+        "target_rational": 664,
+        "irrational_value": 665,
+        "diff": 1
+      },
+      {
+        "C": 280,
+        "target_rational": 676,
+        "irrational_value": 677,
+        "diff": 1
+      },
+      {
+        "C": 297,
+        "target_rational": 717,
+        "irrational_value": 718,
+        "diff": 1
+      },
+      {
+        "C": 302,
+        "target_rational": 729,
+        "irrational_value": 730,
+        "diff": 1
+      },
+      {
+        "C": 319,
+        "target_rational": 770,
+        "irrational_value": 771,
+        "diff": 1
+      },
+      {
+        "C": 324,
+        "target_rational": 782,
+        "irrational_value": 783,
+        "diff": 1
+      },
+      {
+        "C": 341,
+        "target_rational": 823,
+        "irrational_value": 824,
+        "diff": 1
+      },
+      {
+        "C": 346,
+        "target_rational": 835,
+        "irrational_value": 836,
+        "diff": 1
+      },
+      {
+        "C": 363,
+        "target_rational": 876,
+        "irrational_value": 877,
+        "diff": 1
+      },
+      {
+        "C": 368,
+        "target_rational": 888,
+        "irrational_value": 889,
+        "diff": 1
+      },
+      {
+        "C": 385,
+        "target_rational": 929,
+        "irrational_value": 930,
+        "diff": 1
+      },
+      {
+        "C": 390,
+        "target_rational": 941,
+        "irrational_value": 942,
+        "diff": 1
+      },
+      {
+        "C": 407,
+        "target_rational": 982,
+        "irrational_value": 983,
+        "diff": 1
+      },
+      {
+        "C": 412,
+        "target_rational": 994,
+        "irrational_value": 995,
+        "diff": 1
+      },
+      {
+        "C": 424,
+        "target_rational": 1023,
+        "irrational_value": 1024,
+        "diff": 1
+      },
+      {
+        "C": 429,
+        "target_rational": 1035,
+        "irrational_value": 1036,
+        "diff": 1
+      },
+      {
+        "C": 434,
+        "target_rational": 1047,
+        "irrational_value": 1048,
+        "diff": 1
+      },
+      {
+        "C": 446,
+        "target_rational": 1076,
+        "irrational_value": 1077,
+        "diff": 1
+      },
+      {
+        "C": 451,
+        "target_rational": 1088,
+        "irrational_value": 1089,
+        "diff": 1
+      },
+      {
+        "C": 456,
+        "target_rational": 1100,
+        "irrational_value": 1101,
+        "diff": 1
+      },
+      {
+        "C": 468,
+        "target_rational": 1129,
+        "irrational_value": 1130,
+        "diff": 1
+      },
+      {
+        "C": 473,
+        "target_rational": 1141,
+        "irrational_value": 1142,
+        "diff": 1
+      },
+      {
+        "C": 478,
+        "target_rational": 1153,
+        "irrational_value": 1154,
+        "diff": 1
+      },
+      {
+        "C": 490,
+        "target_rational": 1182,
+        "irrational_value": 1183,
+        "diff": 1
+      },
+      {
+        "C": 495,
+        "target_rational": 1194,
+        "irrational_value": 1195,
+        "diff": 1
+      },
+      {
+        "C": 500,
+        "target_rational": 1206,
+        "irrational_value": 1207,
+        "diff": 1
+      },
+      {
+        "C": 512,
+        "target_rational": 1235,
+        "irrational_value": 1236,
+        "diff": 1
+      },
+      {
+        "C": 517,
+        "target_rational": 1247,
+        "irrational_value": 1248,
+        "diff": 1
+      },
+      {
+        "C": 522,
+        "target_rational": 1259,
+        "irrational_value": 1260,
+        "diff": 1
+      },
+      {
+        "C": 534,
+        "target_rational": 1288,
+        "irrational_value": 1289,
+        "diff": 1
+      },
+      {
+        "C": 539,
+        "target_rational": 1300,
+        "irrational_value": 1301,
+        "diff": 1
+      },
+      {
+        "C": 544,
+        "target_rational": 1312,
+        "irrational_value": 1313,
+        "diff": 1
+      },
+      {
+        "C": 551,
+        "target_rational": 1329,
+        "irrational_value": 1330,
+        "diff": 1
+      },
+      {
+        "C": 556,
+        "target_rational": 1341,
+        "irrational_value": 1342,
+        "diff": 1
+      },
+      {
+        "C": 561,
+        "target_rational": 1353,
+        "irrational_value": 1354,
+        "diff": 1
+      },
+      {
+        "C": 566,
+        "target_rational": 1365,
+        "irrational_value": 1366,
+        "diff": 1
+      },
+      {
+        "C": 573,
+        "target_rational": 1382,
+        "irrational_value": 1383,
+        "diff": 1
+      },
+      {
+        "C": 578,
+        "target_rational": 1394,
+        "irrational_value": 1395,
+        "diff": 1
+      },
+      {
+        "C": 583,
+        "target_rational": 1406,
+        "irrational_value": 1407,
+        "diff": 1
+      },
+      {
+        "C": 588,
+        "target_rational": 1418,
+        "irrational_value": 1419,
+        "diff": 1
+      },
+      {
+        "C": 595,
+        "target_rational": 1435,
+        "irrational_value": 1436,
+        "diff": 1
+      },
+      {
+        "C": 600,
+        "target_rational": 1447,
+        "irrational_value": 1448,
+        "diff": 1
+      },
+      {
+        "C": 605,
+        "target_rational": 1459,
+        "irrational_value": 1460,
+        "diff": 1
+      },
+      {
+        "C": 610,
+        "target_rational": 1471,
+        "irrational_value": 1472,
+        "diff": 1
+      }
+    ],
+    "sample_divergences_last_50": [
+      {
+        "C": 999951,
+        "target_rational": 2408975,
+        "irrational_value": 2409305,
+        "diff": 330
+      },
+      {
+        "C": 999952,
+        "target_rational": 2408977,
+        "irrational_value": 2409307,
+        "diff": 330
+      },
+      {
+        "C": 999953,
+        "target_rational": 2408980,
+        "irrational_value": 2409310,
+        "diff": 330
+      },
+      {
+        "C": 999954,
+        "target_rational": 2408982,
+        "irrational_value": 2409312,
+        "diff": 330
+      },
+      {
+        "C": 999955,
+        "target_rational": 2408984,
+        "irrational_value": 2409314,
+        "diff": 330
+      },
+      {
+        "C": 999956,
+        "target_rational": 2408987,
+        "irrational_value": 2409317,
+        "diff": 330
+      },
+      {
+        "C": 999957,
+        "target_rational": 2408989,
+        "irrational_value": 2409319,
+        "diff": 330
+      },
+      {
+        "C": 999958,
+        "target_rational": 2408992,
+        "irrational_value": 2409322,
+        "diff": 330
+      },
+      {
+        "C": 999959,
+        "target_rational": 2408994,
+        "irrational_value": 2409324,
+        "diff": 330
+      },
+      {
+        "C": 999960,
+        "target_rational": 2408996,
+        "irrational_value": 2409326,
+        "diff": 330
+      },
+      {
+        "C": 999961,
+        "target_rational": 2408999,
+        "irrational_value": 2409329,
+        "diff": 330
+      },
+      {
+        "C": 999962,
+        "target_rational": 2409001,
+        "irrational_value": 2409331,
+        "diff": 330
+      },
+      {
+        "C": 999963,
+        "target_rational": 2409004,
+        "irrational_value": 2409334,
+        "diff": 330
+      },
+      {
+        "C": 999964,
+        "target_rational": 2409006,
+        "irrational_value": 2409336,
+        "diff": 330
+      },
+      {
+        "C": 999965,
+        "target_rational": 2409009,
+        "irrational_value": 2409338,
+        "diff": 329
+      },
+      {
+        "C": 999966,
+        "target_rational": 2409011,
+        "irrational_value": 2409341,
+        "diff": 330
+      },
+      {
+        "C": 999967,
+        "target_rational": 2409013,
+        "irrational_value": 2409343,
+        "diff": 330
+      },
+      {
+        "C": 999968,
+        "target_rational": 2409016,
+        "irrational_value": 2409346,
+        "diff": 330
+      },
+      {
+        "C": 999969,
+        "target_rational": 2409018,
+        "irrational_value": 2409348,
+        "diff": 330
+      },
+      {
+        "C": 999970,
+        "target_rational": 2409021,
+        "irrational_value": 2409350,
+        "diff": 329
+      },
+      {
+        "C": 999971,
+        "target_rational": 2409023,
+        "irrational_value": 2409353,
+        "diff": 330
+      },
+      {
+        "C": 999972,
+        "target_rational": 2409025,
+        "irrational_value": 2409355,
+        "diff": 330
+      },
+      {
+        "C": 999973,
+        "target_rational": 2409028,
+        "irrational_value": 2409358,
+        "diff": 330
+      },
+      {
+        "C": 999974,
+        "target_rational": 2409030,
+        "irrational_value": 2409360,
+        "diff": 330
+      },
+      {
+        "C": 999975,
+        "target_rational": 2409033,
+        "irrational_value": 2409363,
+        "diff": 330
+      },
+      {
+        "C": 999976,
+        "target_rational": 2409035,
+        "irrational_value": 2409365,
+        "diff": 330
+      },
+      {
+        "C": 999977,
+        "target_rational": 2409037,
+        "irrational_value": 2409367,
+        "diff": 330
+      },
+      {
+        "C": 999978,
+        "target_rational": 2409040,
+        "irrational_value": 2409370,
+        "diff": 330
+      },
+      {
+        "C": 999979,
+        "target_rational": 2409042,
+        "irrational_value": 2409372,
+        "diff": 330
+      },
+      {
+        "C": 999980,
+        "target_rational": 2409045,
+        "irrational_value": 2409375,
+        "diff": 330
+      },
+      {
+        "C": 999981,
+        "target_rational": 2409047,
+        "irrational_value": 2409377,
+        "diff": 330
+      },
+      {
+        "C": 999982,
+        "target_rational": 2409049,
+        "irrational_value": 2409379,
+        "diff": 330
+      },
+      {
+        "C": 999983,
+        "target_rational": 2409052,
+        "irrational_value": 2409382,
+        "diff": 330
+      },
+      {
+        "C": 999984,
+        "target_rational": 2409054,
+        "irrational_value": 2409384,
+        "diff": 330
+      },
+      {
+        "C": 999985,
+        "target_rational": 2409057,
+        "irrational_value": 2409387,
+        "diff": 330
+      },
+      {
+        "C": 999986,
+        "target_rational": 2409059,
+        "irrational_value": 2409389,
+        "diff": 330
+      },
+      {
+        "C": 999987,
+        "target_rational": 2409062,
+        "irrational_value": 2409391,
+        "diff": 329
+      },
+      {
+        "C": 999988,
+        "target_rational": 2409064,
+        "irrational_value": 2409394,
+        "diff": 330
+      },
+      {
+        "C": 999989,
+        "target_rational": 2409066,
+        "irrational_value": 2409396,
+        "diff": 330
+      },
+      {
+        "C": 999990,
+        "target_rational": 2409069,
+        "irrational_value": 2409399,
+        "diff": 330
+      },
+      {
+        "C": 999991,
+        "target_rational": 2409071,
+        "irrational_value": 2409401,
+        "diff": 330
+      },
+      {
+        "C": 999992,
+        "target_rational": 2409074,
+        "irrational_value": 2409403,
+        "diff": 329
+      },
+      {
+        "C": 999993,
+        "target_rational": 2409076,
+        "irrational_value": 2409406,
+        "diff": 330
+      },
+      {
+        "C": 999994,
+        "target_rational": 2409078,
+        "irrational_value": 2409408,
+        "diff": 330
+      },
+      {
+        "C": 999995,
+        "target_rational": 2409081,
+        "irrational_value": 2409411,
+        "diff": 330
+      },
+      {
+        "C": 999996,
+        "target_rational": 2409083,
+        "irrational_value": 2409413,
+        "diff": 330
+      },
+      {
+        "C": 999997,
+        "target_rational": 2409086,
+        "irrational_value": 2409416,
+        "diff": 330
+      },
+      {
+        "C": 999998,
+        "target_rational": 2409088,
+        "irrational_value": 2409418,
+        "diff": 330
+      },
+      {
+        "C": 999999,
+        "target_rational": 2409090,
+        "irrational_value": 2409420,
+        "diff": 330
+      },
+      {
+        "C": 1000000,
+        "target_rational": 2409093,
+        "irrational_value": 2409423,
+        "diff": 330
+      }
+    ],
+    "interpretation": "The empirically-exact formula floor(53(C+1)/22) = floor((C+1)/(22/53)) is a rational CONVERGENT-based approximation of the true irrational relationship floor((C+1)/(2-log2(3))); see continued_fraction_analysis.py/.json for the full derivation. 22/53 is an exact continued-fraction convergent of (2-log2(3)) (confirmed there), which is why the two formulas track closely for small C. But because this is a DIVISION-form formula, the relevant per-unit-C drift rate is the gap between the RECIPROCALS, (1/(2-log2(3))) - 53/22 =~ 3.2993e-4, not the raw slope gap |22/53-(2-log2(3))| =~ 5.684e-5 (an earlier, incorrect estimate). The reciprocal-gap rate predicts a drift of ~329.9 at C=1e6, matching the measured max|diff|=330 to <0.3% -- confirming this is a real, quantitatively-understood LINEAR drift, not noise or a rare edge case. Divergence density jumps to ~100% almost immediately after the first mismatch (measured 99.842% over C=1..1e6) because once the accumulated drift exceeds roughly half an integer, floor() disagreements become the norm rather than the exception, and the drift only continues to grow with C. A NEW, better convergent of log2(3) beyond 22/53 (continued fraction of (2-log2(3)) = [0;2,2,2,3,1,5,2,23,2,2,1,1,55,1,...], next convergent 127/306) does not rescue this: no finite rational convergent stays valid forever against an irrational target."
+  }
+}

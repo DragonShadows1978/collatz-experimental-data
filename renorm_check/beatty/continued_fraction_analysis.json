@@ -1,0 +1,136 @@
+{
+  "target_irrational": "2 - log2(3)",
+  "target_irrational_value": "0.415037499278843818546261056052",
+  "continued_fraction_terms": [
+    0,
+    2,
+    2,
+    2,
+    3,
+    1,
+    5,
+    2,
+    23,
+    2,
+    2,
+    1,
+    1,
+    55,
+    1,
+    4
+  ],
+  "convergents": [
+    {
+      "index": 0,
+      "p": 0,
+      "q": 1,
+      "value": "0.0"
+    },
+    {
+      "index": 1,
+      "p": 1,
+      "q": 2,
+      "value": "0.5"
+    },
+    {
+      "index": 2,
+      "p": 2,
+      "q": 5,
+      "value": "0.4"
+    },
+    {
+      "index": 3,
+      "p": 5,
+      "q": 12,
+      "value": "0.416666666667"
+    },
+    {
+      "index": 4,
+      "p": 17,
+      "q": 41,
+      "value": "0.414634146341"
+    },
+    {
+      "index": 5,
+      "p": 22,
+      "q": 53,
+      "value": "0.415094339623"
+    },
+    {
+      "index": 6,
+      "p": 127,
+      "q": 306,
+      "value": "0.415032679739"
+    },
+    {
+      "index": 7,
+      "p": 276,
+      "q": 665,
+      "value": "0.415037593985"
+    },
+    {
+      "index": 8,
+      "p": 6475,
+      "q": 15601,
+      "value": "0.415037497596"
+    },
+    {
+      "index": 9,
+      "p": 13226,
+      "q": 31867,
+      "value": "0.415037499608"
+    },
+    {
+      "index": 10,
+      "p": 32927,
+      "q": 79335,
+      "value": "0.415037499212"
+    },
+    {
+      "index": 11,
+      "p": 46153,
+      "q": 111202,
+      "value": "0.415037499326"
+    },
+    {
+      "index": 12,
+      "p": 79080,
+      "q": 190537,
+      "value": "0.415037499278"
+    },
+    {
+      "index": 13,
+      "p": 4395553,
+      "q": 10590737,
+      "value": "0.415037499279"
+    },
+    {
+      "index": 14,
+      "p": 4474633,
+      "q": 10781274,
+      "value": "0.415037499279"
+    },
+    {
+      "index": 15,
+      "p": 22294085,
+      "q": 53715833,
+      "value": "0.415037499279"
+    }
+  ],
+  "is_22_over_53_a_convergent": true,
+  "convergent_index_of_22_53": 5,
+  "next_convergent_after_22_53": {
+    "p": 127,
+    "q": 306
+  },
+  "error_of_22_53_vs_true_irrational_unlnverted_slopes": "0.000056840343797690887701",
+  "theoretical_error_bound_1_over_q_qnext_unlnverted_slopes": "0.000061659884079417930694",
+  "reciprocal_gap_1_over_alpha_minus_53_over_22": "0.00032993056229991367331",
+  "predicted_diff_at_C_1e6_from_reciprocal_gap_model": "329.9305623",
+  "observed_max_abs_diff_at_C_1e6_from_task3_sweep": 330,
+  "reciprocal_gap_model_agreement": "predicted 329.93 vs observed 330 -- matches to <0.3%",
+  "mean_drift_onset_scale_C": "1515.470396",
+  "observed_first_divergence_C": 148,
+  "observed_divergence_density_up_to_1e6": 0.99842,
+  "conclusion": "22/53 IS an exact continued-fraction convergent of (2 - log2(3)) [equivalently 31/53 is a convergent of (log2(3)-1)], confirming the mission's structural hypothesis that the 53-step/22-support heartbeat is a rational-convergent shadow of the true log2(3) Sturmian slope, not an independent integer coincidence. BUT this also proves the capacity formula floor(53(C+1)/22) is NOT the exact irrational-slope law -- it is a finite-precision rational stand-in that is guaranteed by continued-fraction theory to eventually and then persistently disagree with the true floor((C+1)/(2-log2(3))) law. The reciprocal-gap model (1/alpha - 53/22, the correct quantity for this division-form formula) predicts a drift of ~329.9 at C=1e6, matching the measured 330 to <0.3% -- this confirms the divergence is a genuine, quantitatively-understood linear drift, not noise. The naive mean-drift onset threshold (~1516, where the average drift alone would reach 0.5) is much later than the actual observed first divergence (C=148); this gap is expected, since individual floor() flips depend on the fractional-part trajectory (equidistribution / three-distance theorem), which fluctuates around the mean trend rather than tracking it monotonically -- early outlier crossings well before the mean-onset scale are normal. After onset, divergence density jumps almost immediately to ~100% (measured 99.842% over C=1..10^6) and |diff| grows WITHOUT BOUND as C increases, because no finite rational convergent stays valid forever against an irrational target."
+}

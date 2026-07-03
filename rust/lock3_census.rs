@@ -9,7 +9,6 @@ use std::time::Instant;
 
 use rayon::prelude::*;
 
-const ALPHA: f64 = 1.5849625007211563;
 const CONVERGENT_DENOMINATORS: [usize; 10] = [1, 2, 7, 12, 53, 359, 665, 16266, 31867, 111202];
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -514,6 +513,7 @@ fn try_follow_down_exit_u128(
     let mut a_sum = down_witness.a_sum;
     row.min_d_seen_after_exit = row.d_k;
     row.max_d_seen_after_exit = row.d_k;
+    let mut floor_cursor = ExactFloorCursor::at(follow_depth);
 
     while value != 1 && row.follow_steps < config.max_follow_steps {
         let Some((next_value, exponent)) = odd_collatz_step_u128(value) else {
@@ -525,7 +525,8 @@ fn try_follow_down_exit_u128(
         a_sum = a_sum.saturating_add(exponent);
         row.follow_steps += 1;
         row.peak_value_bit_length = row.peak_value_bit_length.max(bit_length_u128(value));
-        let d = ((follow_depth as f64 * ALPHA).floor() as i64) - a_sum as i64;
+        floor_cursor.step_credit();
+        let d = floor_cursor.floor() - a_sum as i64;
         row.min_d_seen_after_exit = row.min_d_seen_after_exit.min(d);
         row.max_d_seen_after_exit = row.max_d_seen_after_exit.max(d);
         if !row.re_entered_corridor && d >= 0 && d <= config.c {
@@ -1194,8 +1195,57 @@ fn run_prior_odd_after_dirty(config: &Config) {
     }
 }
 
+/// Exact floor(k * log2(3)) via floor(log2(3^k)) = bit_length(3^k) - 1.
+/// Uses arbitrary-precision integer arithmetic (BigBits) — no f64 involved,
+/// so results are exact even near convergent denominators (53, 306, 359, ...)
+/// where f64 floors of k*log2(3) can silently flip. See renorm_check/SYNTHESIS.md W1.
+fn exact_floor_k_log2_3(k: usize) -> i64 {
+    if k == 0 {
+        return 0;
+    }
+    let mut pow3 = BigBits::one();
+    for _ in 0..k {
+        pow3.mul_small(3);
+    }
+    (pow3.bit_length() - 1) as i64
+}
+
+/// Incremental cursor for exact_floor_k_log2_3, advanced one step at a time.
+/// Avoids recomputing 3^k from scratch on every call in depth-increasing loops.
+struct ExactFloorCursor {
+    pow3: BigBits,
+    floor_value: i64,
+}
+
+impl ExactFloorCursor {
+    fn at(k: usize) -> Self {
+        let mut pow3 = BigBits::one();
+        for _ in 0..k {
+            pow3.mul_small(3);
+        }
+        let floor_value = if k == 0 {
+            0
+        } else {
+            (pow3.bit_length() - 1) as i64
+        };
+        Self { pow3, floor_value }
+    }
+
+    /// Advance from k to k+1 and return floor((k+1)*log2(3)) - floor(k*log2(3)).
+    fn step_credit(&mut self) -> i64 {
+        let prev_floor = self.floor_value;
+        self.pow3.mul_small(3);
+        self.floor_value = (self.pow3.bit_length() - 1) as i64;
+        self.floor_value - prev_floor
+    }
+
+    fn floor(&self) -> i64 {
+        self.floor_value
+    }
+}
+
 fn credit_at_step(k: usize) -> i64 {
-    (((k + 1) as f64 * ALPHA).floor() - (k as f64 * ALPHA).floor()) as i64
+    exact_floor_k_log2_3(k + 1) - exact_floor_k_log2_3(k)
 }
 
 fn deficit_branch_capacity(c: i64) -> usize {
@@ -1571,6 +1621,7 @@ fn try_follow_breach_u128(
 
     let mut depth = event.depth;
     let mut a_sum = witness.a_sum;
+    let mut floor_cursor = ExactFloorCursor::at(depth);
     while value != 1 && row.follow_steps < config.max_follow_steps {
         let Some((next_value, exponent)) = odd_collatz_step_u128(value) else {
             row.status = "u128_overflow_during_follow".to_string();
@@ -1582,7 +1633,8 @@ fn try_follow_breach_u128(
         a_sum = a_sum.saturating_add(exponent);
         row.follow_steps += 1;
         row.peak_value_bit_length = row.peak_value_bit_length.max(bit_length_u128(value));
-        let d = ((depth as f64 * ALPHA).floor() as i64) - a_sum as i64;
+        floor_cursor.step_credit();
+        let d = floor_cursor.floor() - a_sum as i64;
         row.min_d_seen_after_breach = row.min_d_seen_after_breach.min(d);
         row.max_d_seen_after_breach = row.max_d_seen_after_breach.max(d);
         row.max_c_seen_after_breach = row.max_c_seen_after_breach.max(d);

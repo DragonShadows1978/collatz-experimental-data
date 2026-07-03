@@ -1,0 +1,6079 @@
+{
+  "description": "Embedding test: candidate maps phi tested against big-side membership oracle (backward reachability, compute-capped). See oracle.py docstring for the honest tractability limitations. Pair selection is BREADTH-FIRST across C (lowest+highest persisted m per C), not exhaustive -- see select_pairs().",
+  "corridor_shift": 22,
+  "heartbeat": 53,
+  "max_elements_per_pair": 15,
+  "oracle_call_cap": 150000,
+  "pair_time_budget_sec": 90,
+  "pairs_available": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      4
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      7
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      2,
+      9
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      9
+    ],
+    [
+      3,
+      10
+    ],
+    [
+      3,
+      11
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      12
+    ],
+    [
+      4,
+      13
+    ],
+    [
+      4,
+      14
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      14
+    ],
+    [
+      5,
+      15
+    ],
+    [
+      5,
+      16
+    ]
+  ],
+  "pairs_selected": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      6
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      2,
+      9
+    ],
+    [
+      3,
+      1
+    ],
+    [
+      3,
+      11
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      14
+    ],
+    [
+      5,
+      1
+    ],
+    [
+      5,
+      16
+    ]
+  ],
+  "pairs": [
+    {
+      "C": 1,
+      "m": 1,
+      "C2": 23,
+      "m2": 54,
+      "total_live_small": 4,
+      "sample_size": 4,
+      "was_sampled": false,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 4,
+          "matched": 3,
+          "failed": 0,
+          "inconclusive": 1,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.4092092514038086,
+          "shared_memo_final_size": 150073,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 9.012222290039062e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.40894389152526855
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 0.00011491775512695312
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 3.5762786865234375e-06
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 4,
+          "matched": 0,
+          "failed": 4,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.008794069290161133,
+          "shared_memo_final_size": 153536,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 121,
+              "oracle_time_sec": 0.0003323554992675781
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 3328,
+              "oracle_time_sec": 0.00839686393737793
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 13,
+              "oracle_time_sec": 3.3855438232421875e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 4,
+              "oracle_time_sec": 6.9141387939453125e-06
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 4,
+          "matched": 0,
+          "failed": 4,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00011110305786132812,
+          "shared_memo_final_size": 153540,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.7642974853515625e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.621246337890625e-05
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5497207641601562e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6927719116210938e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 4,
+          "matched": 0,
+          "failed": 4,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 3.266334533691406e-05,
+          "shared_memo_final_size": 153544,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.291534423828125e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 4,
+          "matched": 4,
+          "failed": 0,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.00018835067749023438,
+          "shared_memo_final_size": 153544,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 1,
+      "m": 6,
+      "C2": 23,
+      "m2": 59,
+      "total_live_small": 72,
+      "sample_size": 15,
+      "was_sampled": true,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 15,
+          "matched": 2,
+          "failed": 0,
+          "inconclusive": 13,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 5.91372537612915,
+          "shared_memo_final_size": 1951022,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 10,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4420914649963379
+            },
+            {
+              "d": 0,
+              "r": 167,
+              "d2": 0,
+              "r2": 167,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3951842784881592
+            },
+            {
+              "d": 0,
+              "r": 281,
+              "d2": 0,
+              "r2": 281,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37304234504699707
+            },
+            {
+              "d": 0,
+              "r": 362,
+              "d2": 0,
+              "r2": 362,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.35998010635375977
+            },
+            {
+              "d": 0,
+              "r": 442,
+              "d2": 0,
+              "r2": 442,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3532991409301758
+            },
+            {
+              "d": 0,
+              "r": 514,
+              "d2": 0,
+              "r2": 514,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3602719306945801
+            },
+            {
+              "d": 0,
+              "r": 587,
+              "d2": 0,
+              "r2": 587,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 1.0287439823150635
+            },
+            {
+              "d": 0,
+              "r": 695,
+              "d2": 0,
+              "r2": 695,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3667726516723633
+            },
+            {
+              "d": 1,
+              "r": 103,
+              "d2": 1,
+              "r2": 103,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.48612499237060547
+            },
+            {
+              "d": 1,
+              "r": 179,
+              "d2": 1,
+              "r2": 179,
+              "status": "matched",
+              "oracle_calls": 234,
+              "oracle_time_sec": 0.0013151168823242188
+            },
+            {
+              "d": 1,
+              "r": 314,
+              "d2": 1,
+              "r2": 314,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4532914161682129
+            },
+            {
+              "d": 1,
+              "r": 380,
+              "d2": 1,
+              "r2": 380,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5373525619506836
+            },
+            {
+              "d": 1,
+              "r": 481,
+              "d2": 1,
+              "r2": 481,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.387833833694458
+            },
+            {
+              "d": 1,
+              "r": 604,
+              "d2": 1,
+              "r2": 604,
+              "status": "matched",
+              "oracle_calls": 1386,
+              "oracle_time_sec": 0.0042879581451416016
+            },
+            {
+              "d": 1,
+              "r": 724,
+              "d2": 1,
+              "r2": 724,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.363872766494751
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 11,
+          "inconclusive": 4,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 1.7278516292572021,
+          "shared_memo_final_size": 2658725,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 22,
+              "r2": 10,
+              "status": "failed",
+              "oracle_calls": 3604,
+              "oracle_time_sec": 0.007906913757324219
+            },
+            {
+              "d": 0,
+              "r": 167,
+              "d2": 22,
+              "r2": 167,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3919970989227295
+            },
+            {
+              "d": 0,
+              "r": 281,
+              "d2": 22,
+              "r2": 281,
+              "status": "failed",
+              "oracle_calls": 1114,
+              "oracle_time_sec": 0.0031142234802246094
+            },
+            {
+              "d": 0,
+              "r": 362,
+              "d2": 22,
+              "r2": 362,
+              "status": "failed",
+              "oracle_calls": 1114,
+              "oracle_time_sec": 0.0030519962310791016
+            },
+            {
+              "d": 0,
+              "r": 442,
+              "d2": 22,
+              "r2": 442,
+              "status": "failed",
+              "oracle_calls": 3280,
+              "oracle_time_sec": 0.008198976516723633
+            },
+            {
+              "d": 0,
+              "r": 514,
+              "d2": 22,
+              "r2": 514,
+              "status": "failed",
+              "oracle_calls": 3280,
+              "oracle_time_sec": 0.007129192352294922
+            },
+            {
+              "d": 0,
+              "r": 587,
+              "d2": 22,
+              "r2": 587,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.32920265197753906
+            },
+            {
+              "d": 0,
+              "r": 695,
+              "d2": 22,
+              "r2": 695,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36943554878234863
+            },
+            {
+              "d": 1,
+              "r": 103,
+              "d2": 23,
+              "r2": 103,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3674631118774414
+            },
+            {
+              "d": 1,
+              "r": 179,
+              "d2": 23,
+              "r2": 179,
+              "status": "failed",
+              "oracle_calls": 1129,
+              "oracle_time_sec": 0.0027806758880615234
+            },
+            {
+              "d": 1,
+              "r": 314,
+              "d2": 23,
+              "r2": 314,
+              "status": "failed",
+              "oracle_calls": 1291,
+              "oracle_time_sec": 0.0034723281860351562
+            },
+            {
+              "d": 1,
+              "r": 380,
+              "d2": 23,
+              "r2": 380,
+              "status": "failed",
+              "oracle_calls": 88573,
+              "oracle_time_sec": 0.22374248504638672
+            },
+            {
+              "d": 1,
+              "r": 481,
+              "d2": 23,
+              "r2": 481,
+              "status": "failed",
+              "oracle_calls": 3280,
+              "oracle_time_sec": 0.007208347320556641
+            },
+            {
+              "d": 1,
+              "r": 604,
+              "d2": 23,
+              "r2": 604,
+              "status": "failed",
+              "oracle_calls": 1093,
+              "oracle_time_sec": 0.002964019775390625
+            },
+            {
+              "d": 1,
+              "r": 724,
+              "d2": 23,
+              "r2": 724,
+              "status": "failed",
+              "oracle_calls": 4,
+              "oracle_time_sec": 6.9141387939453125e-06
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.0003142356872558594,
+          "shared_memo_final_size": 2658740,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 193832456676800198967967230,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-05
+            },
+            {
+              "d": 0,
+              "r": 167,
+              "d2": 0,
+              "r2": 3237002026502563322765052741,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5735626220703125e-05
+            },
+            {
+              "d": 0,
+              "r": 281,
+              "d2": 0,
+              "r2": 5446692032618085590999879163,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.002716064453125e-05
+            },
+            {
+              "d": 0,
+              "r": 362,
+              "d2": 0,
+              "r2": 7016734931700167202640413726,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6927719116210938e-05
+            },
+            {
+              "d": 0,
+              "r": 442,
+              "d2": 0,
+              "r2": 8567394585114568794384151566,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.621246337890625e-05
+            },
+            {
+              "d": 0,
+              "r": 514,
+              "d2": 0,
+              "r2": 9962988273187530226953515622,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5735626220703125e-05
+            },
+            {
+              "d": 0,
+              "r": 587,
+              "d2": 0,
+              "r2": 11377965206928171679419676401,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.621246337890625e-05
+            },
+            {
+              "d": 0,
+              "r": 695,
+              "d2": 0,
+              "r2": 13471355739037613828273722485,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.621246337890625e-05
+            },
+            {
+              "d": 1,
+              "r": 103,
+              "d2": 1,
+              "r2": 1996474303771042049370062469,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5974044799804688e-05
+            },
+            {
+              "d": 1,
+              "r": 179,
+              "d2": 1,
+              "r2": 3469600974514723561526613417,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5735626220703125e-05
+            },
+            {
+              "d": 1,
+              "r": 314,
+              "d2": 1,
+              "r2": 6086339139651526247594171022,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6689300537109375e-05
+            },
+            {
+              "d": 1,
+              "r": 380,
+              "d2": 1,
+              "r2": 7365633353718407560782754740,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.621246337890625e-05
+            },
+            {
+              "d": 1,
+              "r": 481,
+              "d2": 1,
+              "r2": 9323341166154089570359223763,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6689300537109375e-05
+            },
+            {
+              "d": 1,
+              "r": 604,
+              "d2": 1,
+              "r2": 11707480383278732017665220692,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6927719116210938e-05
+            },
+            {
+              "d": 1,
+              "r": 724,
+              "d2": 1,
+              "r2": 14033469863400334405280827452,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5974044799804688e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00013208389282226562,
+          "shared_memo_final_size": 2658755,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 22,
+              "r2": 193832456676800198967967230,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-06
+            },
+            {
+              "d": 0,
+              "r": 167,
+              "d2": 22,
+              "r2": 3237002026502563322765052741,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.0067901611328125e-06
+            },
+            {
+              "d": 0,
+              "r": 281,
+              "d2": 22,
+              "r2": 5446692032618085590999879163,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 0,
+              "r": 362,
+              "d2": 22,
+              "r2": 7016734931700167202640413726,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 0,
+              "r": 442,
+              "d2": 22,
+              "r2": 8567394585114568794384151566,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 0,
+              "r": 514,
+              "d2": 22,
+              "r2": 9962988273187530226953515622,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 0,
+              "r": 587,
+              "d2": 22,
+              "r2": 11377965206928171679419676401,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 0,
+              "r": 695,
+              "d2": 22,
+              "r2": 13471355739037613828273722485,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.5299530029296875e-06
+            },
+            {
+              "d": 1,
+              "r": 103,
+              "d2": 23,
+              "r2": 1996474303771042049370062469,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 6.4373016357421875e-06
+            },
+            {
+              "d": 1,
+              "r": 179,
+              "d2": 23,
+              "r2": 3469600974514723561526613417,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 1,
+              "r": 314,
+              "d2": 23,
+              "r2": 6086339139651526247594171022,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 1,
+              "r": 380,
+              "d2": 23,
+              "r2": 7365633353718407560782754740,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 1,
+              "r": 481,
+              "d2": 23,
+              "r2": 9323341166154089570359223763,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 1,
+              "r": 604,
+              "d2": 23,
+              "r2": 11707480383278732017665220692,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 1,
+              "r": 724,
+              "d2": 23,
+              "r2": 14033469863400334405280827452,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 0,
+          "inconclusive": 15,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": null,
+          "elapsed_sec": 5.851177453994751,
+          "shared_memo_final_size": 4907760,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5362098217010498
+            },
+            {
+              "d": 0,
+              "r": 167,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3698704242706299
+            },
+            {
+              "d": 0,
+              "r": 281,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3711085319519043
+            },
+            {
+              "d": 0,
+              "r": 362,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36872196197509766
+            },
+            {
+              "d": 0,
+              "r": 442,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37186503410339355
+            },
+            {
+              "d": 0,
+              "r": 514,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37329673767089844
+            },
+            {
+              "d": 0,
+              "r": 587,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37482357025146484
+            },
+            {
+              "d": 0,
+              "r": 695,
+              "d2": 0,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3926389217376709
+            },
+            {
+              "d": 1,
+              "r": 103,
+              "d2": 1,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3787713050842285
+            },
+            {
+              "d": 1,
+              "r": 179,
+              "d2": 1,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.38504838943481445
+            },
+            {
+              "d": 1,
+              "r": 314,
+              "d2": 1,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37509918212890625
+            },
+            {
+              "d": 1,
+              "r": 380,
+              "d2": 1,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3806004524230957
+            },
+            {
+              "d": 1,
+              "r": 481,
+              "d2": 1,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.38135600090026855
+            },
+            {
+              "d": 1,
+              "r": 604,
+              "d2": 1,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3817005157470703
+            },
+            {
+              "d": 1,
+              "r": 724,
+              "d2": 1,
+              "r2": 361,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4090852737426758
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 2,
+      "m": 1,
+      "C2": 24,
+      "m2": 54,
+      "total_live_small": 6,
+      "sample_size": 6,
+      "was_sampled": false,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 6,
+          "matched": 5,
+          "failed": 0,
+          "inconclusive": 1,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.3713052272796631,
+          "shared_memo_final_size": 150123,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 8.749961853027344e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3709712028503418
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 0.00010132789611816406
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 9.799003601074219e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 1.9073486328125e-06
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 6,
+          "matched": 0,
+          "failed": 6,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.07812786102294922,
+          "shared_memo_final_size": 183600,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 3328,
+              "oracle_time_sec": 0.006929159164428711
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 30013,
+              "oracle_time_sec": 0.07086968421936035
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 121,
+              "oracle_time_sec": 0.0002448558807373047
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 7,
+              "oracle_time_sec": 9.5367431640625e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 13,
+              "oracle_time_sec": 3.075599670410156e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 4,
+              "oracle_time_sec": 4.291534423828125e-06
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 6,
+          "matched": 0,
+          "failed": 6,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00010180473327636719,
+          "shared_memo_final_size": 183606,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5020370483398438e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.33514404296875e-05
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.33514404296875e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.33514404296875e-05
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2636184692382812e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2636184692382812e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 6,
+          "matched": 0,
+          "failed": 6,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 6.031990051269531e-05,
+          "shared_memo_final_size": 183612,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.1457672119140625e-06
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 6,
+          "matched": 6,
+          "failed": 0,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.00023674964904785156,
+          "shared_memo_final_size": 183612,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-06
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.1920928955078125e-06
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 2,
+      "m": 9,
+      "C2": 24,
+      "m2": 62,
+      "total_live_small": 3220,
+      "sample_size": 15,
+      "was_sampled": true,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 15,
+          "matched": 1,
+          "failed": 0,
+          "inconclusive": 14,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 5.4458606243133545,
+          "shared_memo_final_size": 2099702,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 0,
+              "r2": 38,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.33834385871887207
+            },
+            {
+              "d": 0,
+              "r": 3721,
+              "d2": 0,
+              "r2": 3721,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4010353088378906
+            },
+            {
+              "d": 0,
+              "r": 7246,
+              "d2": 0,
+              "r2": 7246,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.41820788383483887
+            },
+            {
+              "d": 0,
+              "r": 10865,
+              "d2": 0,
+              "r2": 10865,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.41809773445129395
+            },
+            {
+              "d": 0,
+              "r": 14656,
+              "d2": 0,
+              "r2": 14656,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.42307615280151367
+            },
+            {
+              "d": 0,
+              "r": 18154,
+              "d2": 0,
+              "r2": 18154,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.42067503929138184
+            },
+            {
+              "d": 1,
+              "r": 2197,
+              "d2": 1,
+              "r2": 2197,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36815977096557617
+            },
+            {
+              "d": 1,
+              "r": 5923,
+              "d2": 1,
+              "r2": 5923,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.38797450065612793
+            },
+            {
+              "d": 1,
+              "r": 9632,
+              "d2": 1,
+              "r2": 9632,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3967902660369873
+            },
+            {
+              "d": 1,
+              "r": 13223,
+              "d2": 1,
+              "r2": 13223,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.41049695014953613
+            },
+            {
+              "d": 1,
+              "r": 16625,
+              "d2": 1,
+              "r2": 16625,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36558079719543457
+            },
+            {
+              "d": 2,
+              "r": 1225,
+              "d2": 2,
+              "r2": 1225,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.33394289016723633
+            },
+            {
+              "d": 2,
+              "r": 7235,
+              "d2": 2,
+              "r2": 7235,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.40383100509643555
+            },
+            {
+              "d": 2,
+              "r": 13259,
+              "d2": 2,
+              "r2": 13259,
+              "status": "matched",
+              "oracle_calls": 246,
+              "oracle_time_sec": 0.000820159912109375
+            },
+            {
+              "d": 2,
+              "r": 19678,
+              "d2": 2,
+              "r2": 19678,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3585476875305176
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 7,
+          "inconclusive": 8,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 4.213756561279297,
+          "shared_memo_final_size": 3690246,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 22,
+              "r2": 38,
+              "status": "failed",
+              "oracle_calls": 30985,
+              "oracle_time_sec": 0.0776364803314209
+            },
+            {
+              "d": 0,
+              "r": 3721,
+              "d2": 22,
+              "r2": 3721,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3717834949493408
+            },
+            {
+              "d": 0,
+              "r": 7246,
+              "d2": 22,
+              "r2": 7246,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37079477310180664
+            },
+            {
+              "d": 0,
+              "r": 10865,
+              "d2": 22,
+              "r2": 10865,
+              "status": "failed",
+              "oracle_calls": 38437,
+              "oracle_time_sec": 0.09171843528747559
+            },
+            {
+              "d": 0,
+              "r": 14656,
+              "d2": 22,
+              "r2": 14656,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.41420650482177734
+            },
+            {
+              "d": 0,
+              "r": 18154,
+              "d2": 22,
+              "r2": 18154,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3376164436340332
+            },
+            {
+              "d": 1,
+              "r": 2197,
+              "d2": 23,
+              "r2": 2197,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5181384086608887
+            },
+            {
+              "d": 1,
+              "r": 5923,
+              "d2": 23,
+              "r2": 5923,
+              "status": "failed",
+              "oracle_calls": 30577,
+              "oracle_time_sec": 0.06769609451293945
+            },
+            {
+              "d": 1,
+              "r": 9632,
+              "d2": 23,
+              "r2": 9632,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.40520429611206055
+            },
+            {
+              "d": 1,
+              "r": 13223,
+              "d2": 23,
+              "r2": 13223,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4106416702270508
+            },
+            {
+              "d": 1,
+              "r": 16625,
+              "d2": 23,
+              "r2": 16625,
+              "status": "failed",
+              "oracle_calls": 130201,
+              "oracle_time_sec": 0.31644773483276367
+            },
+            {
+              "d": 2,
+              "r": 1225,
+              "d2": 24,
+              "r2": 1225,
+              "status": "failed",
+              "oracle_calls": 29524,
+              "oracle_time_sec": 0.07512855529785156
+            },
+            {
+              "d": 2,
+              "r": 7235,
+              "d2": 24,
+              "r2": 7235,
+              "status": "failed",
+              "oracle_calls": 101407,
+              "oracle_time_sec": 0.28211140632629395
+            },
+            {
+              "d": 2,
+              "r": 13259,
+              "d2": 24,
+              "r2": 13259,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.398956298828125
+            },
+            {
+              "d": 2,
+              "r": 19678,
+              "d2": 24,
+              "r2": 19678,
+              "status": "failed",
+              "oracle_calls": 29524,
+              "oracle_time_sec": 0.0753624439239502
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.0002627372741699219,
+          "shared_memo_final_size": 3690261,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 0,
+              "r2": 736563335371840756078275474,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6927719116210938e-05
+            },
+            {
+              "d": 0,
+              "r": 3721,
+              "d2": 0,
+              "r2": 72125057129437354035980606283,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-05
+            },
+            {
+              "d": 0,
+              "r": 7246,
+              "d2": 0,
+              "r2": 140450998108009424172189054858,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.33514404296875e-05
+            },
+            {
+              "d": 0,
+              "r": 10865,
+              "d2": 0,
+              "r2": 210598964179343416178696395395,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5735626220703125e-05
+            },
+            {
+              "d": 0,
+              "r": 14656,
+              "d2": 0,
+              "r2": 284080848505518371607452772288,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.52587890625e-05
+            },
+            {
+              "d": 0,
+              "r": 18154,
+              "d2": 0,
+              "r2": 351883441851063081206447709342,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3113021850585938e-05
+            },
+            {
+              "d": 1,
+              "r": 2197,
+              "d2": 1,
+              "r2": 42584990731893003713262400431,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3589859008789062e-05
+            },
+            {
+              "d": 1,
+              "r": 5923,
+              "d2": 1,
+              "r2": 114806964089668757848726990329,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3113021850585938e-05
+            },
+            {
+              "d": 1,
+              "r": 9632,
+              "d2": 1,
+              "r2": 186699422271093951645946035936,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3113021850585938e-05
+            },
+            {
+              "d": 1,
+              "r": 13223,
+              "d2": 1,
+              "r2": 256304657463732903095343068229,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2636184692382812e-05
+            },
+            {
+              "d": 1,
+              "r": 16625,
+              "d2": 1,
+              "r2": 322246459225180330784245519875,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4781951904296875e-05
+            },
+            {
+              "d": 2,
+              "r": 1225,
+              "d2": 2,
+              "r2": 23744475942908024373575985675,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-05
+            },
+            {
+              "d": 2,
+              "r": 7235,
+              "d2": 2,
+              "r2": 140237782405664943953324290905,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2159347534179688e-05
+            },
+            {
+              "d": 2,
+              "r": 13259,
+              "d2": 2,
+              "r2": 257002454307769383811627750257,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2874603271484375e-05
+            },
+            {
+              "d": 2,
+              "r": 19678,
+              "d2": 2,
+              "r2": 381423508248607431529165915194,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.239776611328125e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.0001277923583984375,
+          "shared_memo_final_size": 3690276,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 22,
+              "r2": 736563335371840756078275474,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 0,
+              "r": 3721,
+              "d2": 22,
+              "r2": 72125057129437354035980606283,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 0,
+              "r": 7246,
+              "d2": 22,
+              "r2": 140450998108009424172189054858,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 0,
+              "r": 10865,
+              "d2": 22,
+              "r2": 210598964179343416178696395395,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 0,
+              "r": 14656,
+              "d2": 22,
+              "r2": 284080848505518371607452772288,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 8.58306884765625e-06
+            },
+            {
+              "d": 0,
+              "r": 18154,
+              "d2": 22,
+              "r2": 351883441851063081206447709342,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 1,
+              "r": 2197,
+              "d2": 23,
+              "r2": 42584990731893003713262400431,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 1,
+              "r": 5923,
+              "d2": 23,
+              "r2": 114806964089668757848726990329,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 1,
+              "r": 9632,
+              "d2": 23,
+              "r2": 186699422271093951645946035936,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 1,
+              "r": 13223,
+              "d2": 23,
+              "r2": 256304657463732903095343068229,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 1,
+              "r": 16625,
+              "d2": 23,
+              "r2": 322246459225180330784245519875,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 2,
+              "r": 1225,
+              "d2": 24,
+              "r2": 23744475942908024373575985675,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-06
+            },
+            {
+              "d": 2,
+              "r": 7235,
+              "d2": 24,
+              "r2": 140237782405664943953324290905,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-06
+            },
+            {
+              "d": 2,
+              "r": 13259,
+              "d2": 24,
+              "r2": 257002454307769383811627750257,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 2,
+              "r": 19678,
+              "d2": 24,
+              "r2": 381423508248607431529165915194,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 15,
+          "matched": 15,
+          "failed": 0,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.0033235549926757812,
+          "shared_memo_final_size": 3691053,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 0,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 93,
+              "oracle_time_sec": 0.00044155120849609375
+            },
+            {
+              "d": 0,
+              "r": 3721,
+              "d2": 0,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.1920928955078125e-06
+            },
+            {
+              "d": 0,
+              "r": 7246,
+              "d2": 0,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 0,
+              "r": 10865,
+              "d2": 0,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 0,
+              "r": 14656,
+              "d2": 0,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-07
+            },
+            {
+              "d": 0,
+              "r": 18154,
+              "d2": 0,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 2197,
+              "d2": 1,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 93,
+              "oracle_time_sec": 0.0004470348358154297
+            },
+            {
+              "d": 1,
+              "r": 5923,
+              "d2": 1,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 1,
+              "r": 9632,
+              "d2": 1,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 13223,
+              "d2": 1,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 1,
+              "r": 16625,
+              "d2": 1,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 2,
+              "r": 1225,
+              "d2": 2,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 594,
+              "oracle_time_sec": 0.0017082691192626953
+            },
+            {
+              "d": 2,
+              "r": 7235,
+              "d2": 2,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 2,
+              "r": 13259,
+              "d2": 2,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 2,
+              "r": 19678,
+              "d2": 2,
+              "r2": 9109,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-07
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 3,
+      "m": 1,
+      "C2": 25,
+      "m2": 54,
+      "total_live_small": 8,
+      "sample_size": 8,
+      "was_sampled": false,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 8,
+          "matched": 7,
+          "failed": 0,
+          "inconclusive": 1,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.32962632179260254,
+          "shared_memo_final_size": 150176,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 8.130073547363281e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.32918286323547363
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 0.00011014938354492188
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 9.870529174804688e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 2.6226043701171875e-06
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 9.655952453613281e-05
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 2.1457672119140625e-06
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 8,
+          "matched": 0,
+          "failed": 7,
+          "inconclusive": 1,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.4058389663696289,
+          "shared_memo_final_size": 333646,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 30013,
+              "oracle_time_sec": 0.0676424503326416
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.33054280281066895
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 3328,
+              "oracle_time_sec": 0.007274150848388672
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 7,
+              "oracle_time_sec": 1.0967254638671875e-05
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 121,
+              "oracle_time_sec": 0.00026154518127441406
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 7,
+              "oracle_time_sec": 6.4373016357421875e-06
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 25,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 13,
+              "oracle_time_sec": 2.7418136596679688e-05
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 25,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 4,
+              "oracle_time_sec": 3.814697265625e-06
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 8,
+          "matched": 0,
+          "failed": 8,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00015282630920410156,
+          "shared_memo_final_size": 333654,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.0503997802734375e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.811981201171875e-05
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4066696166992188e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4066696166992188e-05
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3828277587890625e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3589859008789062e-05
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2874603271484375e-05
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2874603271484375e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 8,
+          "matched": 0,
+          "failed": 8,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 5.888938903808594e-05,
+          "shared_memo_final_size": 333662,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.9604644775390625e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.9604644775390625e-06
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 25,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 25,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.1457672119140625e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 8,
+          "matched": 8,
+          "failed": 0,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.00033354759216308594,
+          "shared_memo_final_size": 333662,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.1920928955078125e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-07
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-07
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 3,
+      "m": 11,
+      "C2": 25,
+      "m2": 64,
+      "total_live_small": 52400,
+      "sample_size": 15,
+      "was_sampled": true,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 15,
+          "matched": 2,
+          "failed": 0,
+          "inconclusive": 13,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 7.3652966022491455,
+          "shared_memo_final_size": 2054113,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 0,
+              "r2": 38,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.34746384620666504
+            },
+            {
+              "d": 0,
+              "r": 36661,
+              "d2": 0,
+              "r2": 36661,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4069094657897949
+            },
+            {
+              "d": 0,
+              "r": 73343,
+              "d2": 0,
+              "r2": 73343,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3815953731536865
+            },
+            {
+              "d": 0,
+              "r": 109895,
+              "d2": 0,
+              "r2": 109895,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.43032097816467285
+            },
+            {
+              "d": 0,
+              "r": 146624,
+              "d2": 0,
+              "r2": 146624,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 1.3459734916687012
+            },
+            {
+              "d": 1,
+              "r": 5996,
+              "d2": 1,
+              "r2": 5996,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.38297390937805176
+            },
+            {
+              "d": 1,
+              "r": 42634,
+              "d2": 1,
+              "r2": 42634,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3747861385345459
+            },
+            {
+              "d": 1,
+              "r": 79237,
+              "d2": 1,
+              "r2": 79237,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3970508575439453
+            },
+            {
+              "d": 1,
+              "r": 115733,
+              "d2": 1,
+              "r2": 115733,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.8218624591827393
+            },
+            {
+              "d": 1,
+              "r": 152327,
+              "d2": 1,
+              "r2": 152327,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.44947099685668945
+            },
+            {
+              "d": 2,
+              "r": 18602,
+              "d2": 2,
+              "r2": 18602,
+              "status": "matched",
+              "oracle_calls": 2154,
+              "oracle_time_sec": 0.005255699157714844
+            },
+            {
+              "d": 2,
+              "r": 76535,
+              "d2": 2,
+              "r2": 76535,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3580923080444336
+            },
+            {
+              "d": 2,
+              "r": 134438,
+              "d2": 2,
+              "r2": 134438,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.9449644088745117
+            },
+            {
+              "d": 3,
+              "r": 36625,
+              "d2": 3,
+              "r2": 36625,
+              "status": "matched",
+              "oracle_calls": 102507,
+              "oracle_time_sec": 0.32816004753112793
+            },
+            {
+              "d": 3,
+              "r": 177142,
+              "d2": 3,
+              "r2": 177142,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3901238441467285
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 0,
+          "inconclusive": 15,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": null,
+          "elapsed_sec": 6.017508029937744,
+          "shared_memo_final_size": 4303913,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 22,
+              "r2": 38,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4086596965789795
+            },
+            {
+              "d": 0,
+              "r": 36661,
+              "d2": 22,
+              "r2": 36661,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.40845298767089844
+            },
+            {
+              "d": 0,
+              "r": 73343,
+              "d2": 22,
+              "r2": 73343,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3454756736755371
+            },
+            {
+              "d": 0,
+              "r": 109895,
+              "d2": 22,
+              "r2": 109895,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.39553070068359375
+            },
+            {
+              "d": 0,
+              "r": 146624,
+              "d2": 22,
+              "r2": 146624,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5773203372955322
+            },
+            {
+              "d": 1,
+              "r": 5996,
+              "d2": 23,
+              "r2": 5996,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3796570301055908
+            },
+            {
+              "d": 1,
+              "r": 42634,
+              "d2": 23,
+              "r2": 42634,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3876199722290039
+            },
+            {
+              "d": 1,
+              "r": 79237,
+              "d2": 23,
+              "r2": 79237,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.382413387298584
+            },
+            {
+              "d": 1,
+              "r": 115733,
+              "d2": 23,
+              "r2": 115733,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3824808597564697
+            },
+            {
+              "d": 1,
+              "r": 152327,
+              "d2": 23,
+              "r2": 152327,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.43712878227233887
+            },
+            {
+              "d": 2,
+              "r": 18602,
+              "d2": 24,
+              "r2": 18602,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37078237533569336
+            },
+            {
+              "d": 2,
+              "r": 76535,
+              "d2": 24,
+              "r2": 76535,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3618597984313965
+            },
+            {
+              "d": 2,
+              "r": 134438,
+              "d2": 24,
+              "r2": 134438,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36909031867980957
+            },
+            {
+              "d": 3,
+              "r": 36625,
+              "d2": 25,
+              "r2": 36625,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.41561126708984375
+            },
+            {
+              "d": 3,
+              "r": 177142,
+              "d2": 25,
+              "r2": 177142,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3951406478881836
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00030875205993652344,
+          "shared_memo_final_size": 4303928,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 0,
+              "r2": 736563335371840756078275474,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.193450927734375e-05
+            },
+            {
+              "d": 0,
+              "r": 36661,
+              "d2": 0,
+              "r2": 710609169422817209436464661903,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.7881393432617188e-05
+            },
+            {
+              "d": 0,
+              "r": 73343,
+              "d2": 0,
+              "r2": 1421625387004655699290762054989,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4781951904296875e-05
+            },
+            {
+              "d": 0,
+              "r": 109895,
+              "d2": 0,
+              "r2": 2130121782649695786558475874085,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4543533325195312e-05
+            },
+            {
+              "d": 0,
+              "r": 146624,
+              "d2": 0,
+              "r2": 2842049012777915237347922713152,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5020370483398438e-05
+            },
+            {
+              "d": 1,
+              "r": 5996,
+              "d2": 1,
+              "r2": 116221941023409399301193151108,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.621246337890625e-05
+            },
+            {
+              "d": 1,
+              "r": 42634,
+              "d2": 1,
+              "r2": 826385295795869968280031488382,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4543533325195312e-05
+            },
+            {
+              "d": 1,
+              "r": 79237,
+              "d2": 1,
+              "r2": 1535870236969961736562481940351,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-05
+            },
+            {
+              "d": 1,
+              "r": 115733,
+              "d2": 1,
+              "r2": 2243281170857611742715975142959,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3828277587890625e-05
+            },
+            {
+              "d": 1,
+              "r": 152327,
+              "d2": 1,
+              "r2": 2952591662820694390819354424421,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3828277587890625e-05
+            },
+            {
+              "d": 2,
+              "r": 18602,
+              "d2": 2,
+              "r2": 360567135910183730120212641246,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2874603271484375e-05
+            },
+            {
+              "d": 2,
+              "r": 76535,
+              "d2": 2,
+              "r2": 1483496707175890322801337194805,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3589859008789062e-05
+            },
+            {
+              "d": 2,
+              "r": 134438,
+              "d2": 2,
+              "r2": 2605844781071566514885557846674,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3113021850585938e-05
+            },
+            {
+              "d": 3,
+              "r": 36625,
+              "d2": 3,
+              "r2": 709911372578780728720179979875,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2636184692382812e-05
+            },
+            {
+              "d": 3,
+              "r": 177142,
+              "d2": 3,
+              "r2": 3433586904064174084558365105666,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.8596649169921875e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00010752677917480469,
+          "shared_memo_final_size": 4303943,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 22,
+              "r2": 736563335371840756078275474,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.3909759521484375e-06
+            },
+            {
+              "d": 0,
+              "r": 36661,
+              "d2": 22,
+              "r2": 710609169422817209436464661903,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.245208740234375e-06
+            },
+            {
+              "d": 0,
+              "r": 73343,
+              "d2": 22,
+              "r2": 1421625387004655699290762054989,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 0,
+              "r": 109895,
+              "d2": 22,
+              "r2": 2130121782649695786558475874085,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 0,
+              "r": 146624,
+              "d2": 22,
+              "r2": 2842049012777915237347922713152,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 1,
+              "r": 5996,
+              "d2": 23,
+              "r2": 116221941023409399301193151108,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 1,
+              "r": 42634,
+              "d2": 23,
+              "r2": 826385295795869968280031488382,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.9604644775390625e-06
+            },
+            {
+              "d": 1,
+              "r": 79237,
+              "d2": 23,
+              "r2": 1535870236969961736562481940351,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 1,
+              "r": 115733,
+              "d2": 23,
+              "r2": 2243281170857611742715975142959,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 1,
+              "r": 152327,
+              "d2": 23,
+              "r2": 2952591662820694390819354424421,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 2,
+              "r": 18602,
+              "d2": 24,
+              "r2": 360567135910183730120212641246,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 2,
+              "r": 76535,
+              "d2": 24,
+              "r2": 1483496707175890322801337194805,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-06
+            },
+            {
+              "d": 2,
+              "r": 134438,
+              "d2": 24,
+              "r2": 2605844781071566514885557846674,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 3,
+              "r": 36625,
+              "d2": 25,
+              "r2": 709911372578780728720179979875,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 3,
+              "r": 177142,
+              "d2": 25,
+              "r2": 3433586904064174084558365105666,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 0,
+          "inconclusive": 15,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": null,
+          "elapsed_sec": 8.206673860549927,
+          "shared_memo_final_size": 6552739,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 38,
+              "d2": 0,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.52557373046875
+            },
+            {
+              "d": 0,
+              "r": 36661,
+              "d2": 0,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.536468505859375
+            },
+            {
+              "d": 0,
+              "r": 73343,
+              "d2": 0,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5203080177307129
+            },
+            {
+              "d": 0,
+              "r": 109895,
+              "d2": 0,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5245585441589355
+            },
+            {
+              "d": 0,
+              "r": 146624,
+              "d2": 0,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5248534679412842
+            },
+            {
+              "d": 1,
+              "r": 5996,
+              "d2": 1,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.42461681365966797
+            },
+            {
+              "d": 1,
+              "r": 42634,
+              "d2": 1,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5814039707183838
+            },
+            {
+              "d": 1,
+              "r": 79237,
+              "d2": 1,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.599123477935791
+            },
+            {
+              "d": 1,
+              "r": 115733,
+              "d2": 1,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.8596210479736328
+            },
+            {
+              "d": 1,
+              "r": 152327,
+              "d2": 1,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5501236915588379
+            },
+            {
+              "d": 2,
+              "r": 18602,
+              "d2": 2,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5973787307739258
+            },
+            {
+              "d": 2,
+              "r": 76535,
+              "d2": 2,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5753223896026611
+            },
+            {
+              "d": 2,
+              "r": 134438,
+              "d2": 2,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5736234188079834
+            },
+            {
+              "d": 3,
+              "r": 36625,
+              "d2": 3,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4100019931793213
+            },
+            {
+              "d": 3,
+              "r": 177142,
+              "d2": 3,
+              "r2": 68158,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.40265893936157227
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 4,
+      "m": 1,
+      "C2": 26,
+      "m2": 54,
+      "total_live_small": 10,
+      "sample_size": 10,
+      "was_sampled": false,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 10,
+          "matched": 9,
+          "failed": 0,
+          "inconclusive": 1,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.3617238998413086,
+          "shared_memo_final_size": 150227,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 0.0001010894775390625
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36124467849731445
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 8.916854858398438e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 2.1457672119140625e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 7.62939453125e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 8.0108642578125e-05
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 1.9073486328125e-06
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 4,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 7.343292236328125e-05
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 4,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 1.9073486328125e-06
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 10,
+          "matched": 0,
+          "failed": 7,
+          "inconclusive": 3,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 1.0413684844970703,
+          "shared_memo_final_size": 633658,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 1,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.322141170501709
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3256349563598633
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 30013,
+              "oracle_time_sec": 0.0640573501586914
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3219778537750244
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 3328,
+              "oracle_time_sec": 0.007158517837524414
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 7,
+              "oracle_time_sec": 1.1920928955078125e-05
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 25,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 121,
+              "oracle_time_sec": 0.00025534629821777344
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 25,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 7,
+              "oracle_time_sec": 6.198883056640625e-06
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 26,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 13,
+              "oracle_time_sec": 2.6941299438476562e-05
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 26,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 4,
+              "oracle_time_sec": 6.198883056640625e-06
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 10,
+          "matched": 0,
+          "failed": 10,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00017404556274414062,
+          "shared_memo_final_size": 633668,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5974044799804688e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5020370483398438e-05
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4066696166992188e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4066696166992188e-05
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.52587890625e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.33514404296875e-05
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5497207641601562e-05
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2874603271484375e-05
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 4,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.239776611328125e-05
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 4,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2159347534179688e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 10,
+          "matched": 0,
+          "failed": 10,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00010180473327636719,
+          "shared_memo_final_size": 633678,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.9604644775390625e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.4836273193359375e-06
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-06
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.867813110351562e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 25,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 25,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 26,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.6226043701171875e-06
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 26,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.1948089599609375e-05
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 10,
+          "matched": 10,
+          "failed": 0,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.0003726482391357422,
+          "shared_memo_final_size": 633678,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.1920928955078125e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-07
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 4,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 4,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 4,
+      "m": 14,
+      "C2": 26,
+      "m2": 67,
+      "total_live_small": 2094423,
+      "sample_size": 15,
+      "was_sampled": true,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 15,
+          "matched": 5,
+          "failed": 0,
+          "inconclusive": 10,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 4.700291872024536,
+          "shared_memo_final_size": 1506971,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 10,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3277442455291748
+            },
+            {
+              "d": 0,
+              "r": 1051499,
+              "d2": 0,
+              "r2": 1051499,
+              "status": "matched",
+              "oracle_calls": 7047,
+              "oracle_time_sec": 0.05106711387634277
+            },
+            {
+              "d": 0,
+              "r": 2103296,
+              "d2": 0,
+              "r2": 2103296,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3789863586425781
+            },
+            {
+              "d": 0,
+              "r": 3154307,
+              "d2": 0,
+              "r2": 3154307,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4059734344482422
+            },
+            {
+              "d": 0,
+              "r": 4205710,
+              "d2": 0,
+              "r2": 4205710,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37288856506347656
+            },
+            {
+              "d": 1,
+              "r": 474680,
+              "d2": 1,
+              "r2": 474680,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 1.1349291801452637
+            },
+            {
+              "d": 1,
+              "r": 1526329,
+              "d2": 1,
+              "r2": 1526329,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37094902992248535
+            },
+            {
+              "d": 1,
+              "r": 2577329,
+              "d2": 1,
+              "r2": 2577329,
+              "status": "matched",
+              "oracle_calls": 87,
+              "oracle_time_sec": 0.0003814697265625
+            },
+            {
+              "d": 1,
+              "r": 3628778,
+              "d2": 1,
+              "r2": 3628778,
+              "status": "matched",
+              "oracle_calls": 87,
+              "oracle_time_sec": 0.00045371055603027344
+            },
+            {
+              "d": 1,
+              "r": 4680074,
+              "d2": 1,
+              "r2": 4680074,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4806404113769531
+            },
+            {
+              "d": 2,
+              "r": 1440109,
+              "d2": 2,
+              "r2": 1440109,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3846700191497803
+            },
+            {
+              "d": 2,
+              "r": 3034369,
+              "d2": 2,
+              "r2": 3034369,
+              "status": "matched",
+              "oracle_calls": 90,
+              "oracle_time_sec": 0.0004215240478515625
+            },
+            {
+              "d": 2,
+              "r": 4630468,
+              "d2": 2,
+              "r2": 4630468,
+              "status": "matched",
+              "oracle_calls": 90,
+              "oracle_time_sec": 0.0004227161407470703
+            },
+            {
+              "d": 3,
+              "r": 3098357,
+              "d2": 3,
+              "r2": 3098357,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36667299270629883
+            },
+            {
+              "d": 4,
+              "r": 4782964,
+              "d2": 4,
+              "r2": 4782964,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4238736629486084
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 0,
+          "inconclusive": 15,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": null,
+          "elapsed_sec": 5.802671670913696,
+          "shared_memo_final_size": 3756753,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 22,
+              "r2": 10,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37576746940612793
+            },
+            {
+              "d": 0,
+              "r": 1051499,
+              "d2": 22,
+              "r2": 1051499,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3791675567626953
+            },
+            {
+              "d": 0,
+              "r": 2103296,
+              "d2": 22,
+              "r2": 2103296,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3711662292480469
+            },
+            {
+              "d": 0,
+              "r": 3154307,
+              "d2": 22,
+              "r2": 3154307,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.363330602645874
+            },
+            {
+              "d": 0,
+              "r": 4205710,
+              "d2": 22,
+              "r2": 4205710,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3689436912536621
+            },
+            {
+              "d": 1,
+              "r": 474680,
+              "d2": 23,
+              "r2": 474680,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.38480257987976074
+            },
+            {
+              "d": 1,
+              "r": 1526329,
+              "d2": 23,
+              "r2": 1526329,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.39830875396728516
+            },
+            {
+              "d": 1,
+              "r": 2577329,
+              "d2": 23,
+              "r2": 2577329,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36713695526123047
+            },
+            {
+              "d": 1,
+              "r": 3628778,
+              "d2": 23,
+              "r2": 3628778,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5374267101287842
+            },
+            {
+              "d": 1,
+              "r": 4680074,
+              "d2": 23,
+              "r2": 4680074,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.33560991287231445
+            },
+            {
+              "d": 2,
+              "r": 1440109,
+              "d2": 24,
+              "r2": 1440109,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.39298152923583984
+            },
+            {
+              "d": 2,
+              "r": 3034369,
+              "d2": 24,
+              "r2": 3034369,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.34007763862609863
+            },
+            {
+              "d": 2,
+              "r": 4630468,
+              "d2": 24,
+              "r2": 4630468,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.36978650093078613
+            },
+            {
+              "d": 3,
+              "r": 3098357,
+              "d2": 25,
+              "r2": 3098357,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.43791699409484863
+            },
+            {
+              "d": 4,
+              "r": 4782964,
+              "d2": 26,
+              "r2": 4782964,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.37998151779174805
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00030159950256347656,
+          "shared_memo_final_size": 3756768,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 193832456676800198967967230,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.2411346435546875e-05
+            },
+            {
+              "d": 0,
+              "r": 1051499,
+              "d2": 0,
+              "r2": 20381463436319873241461857437777,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.8835067749023438e-05
+            },
+            {
+              "d": 0,
+              "r": 2103296,
+              "d2": 0,
+              "r2": 40768703079848715128852960299008,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5735626220703125e-05
+            },
+            {
+              "d": 0,
+              "r": 3154307,
+              "d2": 0,
+              "r2": 61140707492282760520605180935961,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5020370483398438e-05
+            },
+            {
+              "d": 0,
+              "r": 4205710,
+              "d2": 0,
+              "r2": 81520310137018536480156945888330,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5497207641601562e-05
+            },
+            {
+              "d": 1,
+              "r": 474680,
+              "d2": 1,
+              "r2": 9200839053534351844611468473640,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4781951904296875e-05
+            },
+            {
+              "d": 1,
+              "r": 1526329,
+              "d2": 1,
+              "r2": 29585209976704377089057845419867,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4543533325195312e-05
+            },
+            {
+              "d": 1,
+              "r": 2577329,
+              "d2": 1,
+              "r2": 49957001173436078000591201292867,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5020370483398438e-05
+            },
+            {
+              "d": 1,
+              "r": 3628778,
+              "d2": 1,
+              "r2": 70337495447472567241058218894494,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4543533325195312e-05
+            },
+            {
+              "d": 1,
+              "r": 4680074,
+              "d2": 1,
+              "r2": 90715024084921901438481026597502,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4543533325195312e-05
+            },
+            {
+              "d": 2,
+              "r": 1440109,
+              "d2": 2,
+              "r2": 27913986535237005773556031962807,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6450881958007812e-05
+            },
+            {
+              "d": 2,
+              "r": 3034369,
+              "d2": 2,
+              "r2": 58815919773392554294223175572787,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.4066696166992188e-05
+            },
+            {
+              "d": 2,
+              "r": 4630468,
+              "d2": 2,
+              "r2": 89753498800330966371480528356364,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3828277587890625e-05
+            },
+            {
+              "d": 3,
+              "r": 3098357,
+              "d2": 3,
+              "r2": 60056214897176063407379404284111,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3828277587890625e-05
+            },
+            {
+              "d": 4,
+              "r": 4782964,
+              "d2": 4,
+              "r2": 92709366231669498685662441426972,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.3126602172851562e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00012636184692382812,
+          "shared_memo_final_size": 3756783,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 22,
+              "r2": 193832456676800198967967230,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 6.198883056640625e-06
+            },
+            {
+              "d": 0,
+              "r": 1051499,
+              "d2": 22,
+              "r2": 20381463436319873241461857437777,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 6.198883056640625e-06
+            },
+            {
+              "d": 0,
+              "r": 2103296,
+              "d2": 22,
+              "r2": 40768703079848715128852960299008,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 8.821487426757812e-06
+            },
+            {
+              "d": 0,
+              "r": 3154307,
+              "d2": 22,
+              "r2": 61140707492282760520605180935961,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.4836273193359375e-06
+            },
+            {
+              "d": 0,
+              "r": 4205710,
+              "d2": 22,
+              "r2": 81520310137018536480156945888330,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.059906005859375e-06
+            },
+            {
+              "d": 1,
+              "r": 474680,
+              "d2": 23,
+              "r2": 9200839053534351844611468473640,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 1,
+              "r": 1526329,
+              "d2": 23,
+              "r2": 29585209976704377089057845419867,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 1,
+              "r": 2577329,
+              "d2": 23,
+              "r2": 49957001173436078000591201292867,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 1,
+              "r": 3628778,
+              "d2": 23,
+              "r2": 70337495447472567241058218894494,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 1,
+              "r": 4680074,
+              "d2": 23,
+              "r2": 90715024084921901438481026597502,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 2,
+              "r": 1440109,
+              "d2": 24,
+              "r2": 27913986535237005773556031962807,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.7220458984375e-06
+            },
+            {
+              "d": 2,
+              "r": 3034369,
+              "d2": 24,
+              "r2": 58815919773392554294223175572787,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 2,
+              "r": 4630468,
+              "d2": 24,
+              "r2": 89753498800330966371480528356364,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 3,
+              "r": 3098357,
+              "d2": 25,
+              "r2": 60056214897176063407379404284111,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 4,
+              "r": 4782964,
+              "d2": 26,
+              "r2": 92709366231669498685662441426972,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.6226043701171875e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 15,
+          "matched": 15,
+          "failed": 0,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.002451658248901367,
+          "shared_memo_final_size": 3757198,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 84,
+              "oracle_time_sec": 0.000438690185546875
+            },
+            {
+              "d": 0,
+              "r": 1051499,
+              "d2": 0,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-06
+            },
+            {
+              "d": 0,
+              "r": 2103296,
+              "d2": 0,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 0,
+              "r": 3154307,
+              "d2": 0,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 0,
+              "r": 4205710,
+              "d2": 0,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 474680,
+              "d2": 1,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 84,
+              "oracle_time_sec": 0.00035834312438964844
+            },
+            {
+              "d": 1,
+              "r": 1526329,
+              "d2": 1,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 1,
+              "r": 2577329,
+              "d2": 1,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 3628778,
+              "d2": 1,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 4680074,
+              "d2": 1,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 2,
+              "r": 1440109,
+              "d2": 2,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 84,
+              "oracle_time_sec": 0.0003368854522705078
+            },
+            {
+              "d": 2,
+              "r": 3034369,
+              "d2": 2,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 2,
+              "r": 4630468,
+              "d2": 2,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 3,
+              "r": 3098357,
+              "d2": 3,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 84,
+              "oracle_time_sec": 0.0003304481506347656
+            },
+            {
+              "d": 4,
+              "r": 4782964,
+              "d2": 4,
+              "r2": 1839628,
+              "status": "matched",
+              "oracle_calls": 84,
+              "oracle_time_sec": 0.0003044605255126953
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 5,
+      "m": 1,
+      "C2": 27,
+      "m2": 54,
+      "total_live_small": 12,
+      "sample_size": 12,
+      "was_sampled": false,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 12,
+          "matched": 11,
+          "failed": 0,
+          "inconclusive": 1,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.36571502685546875,
+          "shared_memo_final_size": 150286,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 8.273124694824219e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3651282787322998
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 9.250640869140625e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 9.822845458984375e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 2.1457672119140625e-06
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 7.581710815429688e-05
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 1.9073486328125e-06
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 4,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 7.724761962890625e-05
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 4,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 1.9073486328125e-06
+            },
+            {
+              "d": 5,
+              "r": 1,
+              "d2": 5,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 54,
+              "oracle_time_sec": 7.557868957519531e-05
+            },
+            {
+              "d": 5,
+              "r": 2,
+              "d2": 5,
+              "r2": 2,
+              "status": "matched",
+              "oracle_calls": 2,
+              "oracle_time_sec": 1.430511474609375e-06
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 12,
+          "matched": 0,
+          "failed": 7,
+          "inconclusive": 5,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 1.8045415878295898,
+          "shared_memo_final_size": 933672,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 1,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.33451056480407715
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3423044681549072
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 1,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.33167552947998047
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3666222095489502
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 30013,
+              "oracle_time_sec": 0.06757903099060059
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 2,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.35390639305114746
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 25,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 3328,
+              "oracle_time_sec": 0.007469892501831055
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 25,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 7,
+              "oracle_time_sec": 1.1205673217773438e-05
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 26,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 121,
+              "oracle_time_sec": 0.0002605915069580078
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 26,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 7,
+              "oracle_time_sec": 6.198883056640625e-06
+            },
+            {
+              "d": 5,
+              "r": 1,
+              "d2": 27,
+              "r2": 1,
+              "status": "failed",
+              "oracle_calls": 13,
+              "oracle_time_sec": 2.9087066650390625e-05
+            },
+            {
+              "d": 5,
+              "r": 2,
+              "d2": 27,
+              "r2": 2,
+              "status": "failed",
+              "oracle_calls": 4,
+              "oracle_time_sec": 3.814697265625e-06
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 12,
+          "matched": 0,
+          "failed": 12,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.0002541542053222656,
+          "shared_memo_final_size": 933684,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.193450927734375e-05
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.8596649169921875e-05
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.0265579223632812e-05
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.5020370483398438e-05
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.621246337890625e-05
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-05
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3113021850585938e-05
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.33514404296875e-05
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 4,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.2636184692382812e-05
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 4,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.3113021850585938e-05
+            },
+            {
+              "d": 5,
+              "r": 1,
+              "d2": 5,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.6450881958007812e-05
+            },
+            {
+              "d": 5,
+              "r": 2,
+              "d2": 5,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.7881393432617188e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 12,
+          "matched": 0,
+          "failed": 12,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 8.749961853027344e-05,
+          "shared_memo_final_size": 933696,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 22,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 6.9141387939453125e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 22,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 6.67572021484375e-06
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 23,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-06
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 23,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.291534423828125e-06
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 24,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.5299530029296875e-06
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 24,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 25,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.337860107421875e-06
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 25,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 26,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.0994415283203125e-06
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 26,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.86102294921875e-06
+            },
+            {
+              "d": 5,
+              "r": 1,
+              "d2": 27,
+              "r2": 19383245667680019896796723,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.6226043701171875e-06
+            },
+            {
+              "d": 5,
+              "r": 2,
+              "d2": 27,
+              "r2": 38766491335360039793593446,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.6226043701171875e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 12,
+          "matched": 12,
+          "failed": 0,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 0.0004372596740722656,
+          "shared_memo_final_size": 933696,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 1,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.430511474609375e-06
+            },
+            {
+              "d": 0,
+              "r": 2,
+              "d2": 0,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 1,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 1,
+              "r": 2,
+              "d2": 1,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 2,
+              "r": 1,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 2,
+              "r": 2,
+              "d2": 2,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-07
+            },
+            {
+              "d": 3,
+              "r": 1,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 3,
+              "r": 2,
+              "d2": 3,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 4,
+              "r": 1,
+              "d2": 4,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 4,
+              "r": 2,
+              "d2": 4,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 5,
+              "r": 1,
+              "d2": 5,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 5,
+              "r": 2,
+              "d2": 5,
+              "r2": 1,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    },
+    {
+      "C": 5,
+      "m": 16,
+      "C2": 27,
+      "m2": 69,
+      "total_live_small": 29178661,
+      "sample_size": 15,
+      "was_sampled": true,
+      "candidates": {
+        "a_identity_no_dshift": {
+          "n_tested": 15,
+          "matched": 3,
+          "failed": 0,
+          "inconclusive": 12,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 5.6294941902160645,
+          "shared_memo_final_size": 1934639,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 10,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.35909056663513184
+            },
+            {
+              "d": 0,
+              "r": 9969233,
+              "d2": 0,
+              "r2": 9969233,
+              "status": "matched",
+              "oracle_calls": 123705,
+              "oracle_time_sec": 0.6491241455078125
+            },
+            {
+              "d": 0,
+              "r": 19933135,
+              "d2": 0,
+              "r2": 19933135,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.41114187240600586
+            },
+            {
+              "d": 0,
+              "r": 29896975,
+              "d2": 0,
+              "r2": 29896975,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4243659973144531
+            },
+            {
+              "d": 0,
+              "r": 39859918,
+              "d2": 0,
+              "r2": 39859918,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.38426733016967773
+            },
+            {
+              "d": 1,
+              "r": 6780952,
+              "d2": 1,
+              "r2": 6780952,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3782839775085449
+            },
+            {
+              "d": 1,
+              "r": 16746554,
+              "d2": 1,
+              "r2": 16746554,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4191863536834717
+            },
+            {
+              "d": 1,
+              "r": 26707169,
+              "d2": 1,
+              "r2": 26707169,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4029881954193115
+            },
+            {
+              "d": 1,
+              "r": 36672428,
+              "d2": 1,
+              "r2": 36672428,
+              "status": "matched",
+              "oracle_calls": 11343,
+              "oracle_time_sec": 0.08064150810241699
+            },
+            {
+              "d": 2,
+              "r": 5217691,
+              "d2": 2,
+              "r2": 5217691,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3939230442047119
+            },
+            {
+              "d": 2,
+              "r": 19713104,
+              "d2": 2,
+              "r2": 19713104,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.49245667457580566
+            },
+            {
+              "d": 2,
+              "r": 34199879,
+              "d2": 2,
+              "r2": 34199879,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.40975022315979004
+            },
+            {
+              "d": 3,
+              "r": 11030948,
+              "d2": 3,
+              "r2": 11030948,
+              "status": "matched",
+              "oracle_calls": 90,
+              "oracle_time_sec": 0.00058746337890625
+            },
+            {
+              "d": 3,
+              "r": 39363023,
+              "d2": 3,
+              "r2": 39363023,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3490598201751709
+            },
+            {
+              "d": 5,
+              "r": 43046716,
+              "d2": 5,
+              "r2": 43046716,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.47429418563842773
+            }
+          ]
+        },
+        "a_identity_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 0,
+          "inconclusive": 15,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": null,
+          "elapsed_sec": 6.143022537231445,
+          "shared_memo_final_size": 4184326,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 22,
+              "r2": 10,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3916294574737549
+            },
+            {
+              "d": 0,
+              "r": 9969233,
+              "d2": 22,
+              "r2": 9969233,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3756885528564453
+            },
+            {
+              "d": 0,
+              "r": 19933135,
+              "d2": 22,
+              "r2": 19933135,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4411473274230957
+            },
+            {
+              "d": 0,
+              "r": 29896975,
+              "d2": 22,
+              "r2": 29896975,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.39937257766723633
+            },
+            {
+              "d": 0,
+              "r": 39859918,
+              "d2": 22,
+              "r2": 39859918,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.39890098571777344
+            },
+            {
+              "d": 1,
+              "r": 6780952,
+              "d2": 23,
+              "r2": 6780952,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.5429842472076416
+            },
+            {
+              "d": 1,
+              "r": 16746554,
+              "d2": 23,
+              "r2": 16746554,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3847470283508301
+            },
+            {
+              "d": 1,
+              "r": 26707169,
+              "d2": 23,
+              "r2": 26707169,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.39940309524536133
+            },
+            {
+              "d": 1,
+              "r": 36672428,
+              "d2": 23,
+              "r2": 36672428,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4072704315185547
+            },
+            {
+              "d": 2,
+              "r": 5217691,
+              "d2": 24,
+              "r2": 5217691,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3781425952911377
+            },
+            {
+              "d": 2,
+              "r": 19713104,
+              "d2": 24,
+              "r2": 19713104,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.42693233489990234
+            },
+            {
+              "d": 2,
+              "r": 34199879,
+              "d2": 24,
+              "r2": 34199879,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.3775472640991211
+            },
+            {
+              "d": 3,
+              "r": 11030948,
+              "d2": 25,
+              "r2": 11030948,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.391573429107666
+            },
+            {
+              "d": 3,
+              "r": 39363023,
+              "d2": 25,
+              "r2": 39363023,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.42546701431274414
+            },
+            {
+              "d": 5,
+              "r": 43046716,
+              "d2": 27,
+              "r2": 43046716,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4018876552581787
+            }
+          ]
+        },
+        "b_mult3pow53_no_dshift": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.0003821849822998047,
+          "shared_memo_final_size": 4184341,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 193832456676800198967967230,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.8596649169921875e-05
+            },
+            {
+              "d": 0,
+              "r": 9969233,
+              "d2": 0,
+              "r2": 193236092357342687795802485223459,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.002716064453125e-05
+            },
+            {
+              "d": 0,
+              "r": 19933135,
+              "d2": 0,
+              "r2": 386368852632030973405535147116605,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.0265579223632812e-05
+            },
+            {
+              "d": 0,
+              "r": 29896975,
+              "d2": 0,
+              "r2": 579500411145487862854034207612925,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.9788742065429688e-05
+            },
+            {
+              "d": 0,
+              "r": 39859918,
+              "d2": 0,
+              "r2": 772614582887580843324685841448714,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.9073486328125e-05
+            },
+            {
+              "d": 1,
+              "r": 6780952,
+              "d2": 1,
+              "r2": 131436858476746166279223532420296,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.0742416381835938e-05
+            },
+            {
+              "d": 1,
+              "r": 16746554,
+              "d2": 1,
+              "r2": 324602570269069507922780748742542,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.9311904907226562e-05
+            },
+            {
+              "d": 1,
+              "r": 26707169,
+              "d2": 1,
+              "r2": 517671617815248129307112639807187,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.8596649169921875e-05
+            },
+            {
+              "d": 1,
+              "r": 36672428,
+              "d2": 1,
+              "r2": 710830681154307456703845254853444,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.0265579223632812e-05
+            },
+            {
+              "d": 2,
+              "r": 5217691,
+              "d2": 2,
+              "r2": 101135786471043030695337190426593,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.9788742065429688e-05
+            },
+            {
+              "d": 2,
+              "r": 19713104,
+              "d2": 2,
+              "r2": 382103937704525670947623067358192,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.8596649169921875e-05
+            },
+            {
+              "d": 2,
+              "r": 34199879,
+              "d2": 2,
+              "r2": 662904656461930891188040414196517,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.0265579223632812e-05
+            },
+            {
+              "d": 3,
+              "r": 11030948,
+              "d2": 3,
+              "r2": 213815575031403580120530017983404,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.8835067749023438e-05
+            },
+            {
+              "d": 3,
+              "r": 39363023,
+              "d2": 3,
+              "r2": 762983145031538979838067033773629,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.7881393432617188e-05
+            },
+            {
+              "d": 5,
+              "r": 43046716,
+              "d2": 5,
+              "r2": 834385071414852195371757844711668,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.7404556274414062e-05
+            }
+          ]
+        },
+        "b_mult3pow53_dshift22": {
+          "n_tested": 15,
+          "matched": 0,
+          "failed": 15,
+          "inconclusive": 0,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 0.0,
+          "elapsed_sec": 0.00011754035949707031,
+          "shared_memo_final_size": 4184356,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 22,
+              "r2": 193832456676800198967967230,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.62939453125e-06
+            },
+            {
+              "d": 0,
+              "r": 9969233,
+              "d2": 22,
+              "r2": 193236092357342687795802485223459,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.245208740234375e-06
+            },
+            {
+              "d": 0,
+              "r": 19933135,
+              "d2": 22,
+              "r2": 386368852632030973405535147116605,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.4836273193359375e-06
+            },
+            {
+              "d": 0,
+              "r": 29896975,
+              "d2": 22,
+              "r2": 579500411145487862854034207612925,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 5.0067901611328125e-06
+            },
+            {
+              "d": 0,
+              "r": 39859918,
+              "d2": 22,
+              "r2": 772614582887580843324685841448714,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.62939453125e-06
+            },
+            {
+              "d": 1,
+              "r": 6780952,
+              "d2": 23,
+              "r2": 131436858476746166279223532420296,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.5299530029296875e-06
+            },
+            {
+              "d": 1,
+              "r": 16746554,
+              "d2": 23,
+              "r2": 324602570269069507922780748742542,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 1,
+              "r": 26707169,
+              "d2": 23,
+              "r2": 517671617815248129307112639807187,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.291534423828125e-06
+            },
+            {
+              "d": 1,
+              "r": 36672428,
+              "d2": 23,
+              "r2": 710830681154307456703845254853444,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.0531158447265625e-06
+            },
+            {
+              "d": 2,
+              "r": 5217691,
+              "d2": 24,
+              "r2": 101135786471043030695337190426593,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 2,
+              "r": 19713104,
+              "d2": 24,
+              "r2": 382103937704525670947623067358192,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 2,
+              "r": 34199879,
+              "d2": 24,
+              "r2": 662904656461930891188040414196517,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 3,
+              "r": 11030948,
+              "d2": 25,
+              "r2": 213815575031403580120530017983404,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.814697265625e-06
+            },
+            {
+              "d": 3,
+              "r": 39363023,
+              "d2": 25,
+              "r2": 762983145031538979838067033773629,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 3.5762786865234375e-06
+            },
+            {
+              "d": 5,
+              "r": 43046716,
+              "d2": 27,
+              "r2": 834385071414852195371757844711668,
+              "status": "failed",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.6226043701171875e-06
+            }
+          ]
+        },
+        "c_forward53_a_eq_ck": {
+          "n_tested": 15,
+          "matched": 11,
+          "failed": 0,
+          "inconclusive": 4,
+          "undefined": 0,
+          "skipped_time_budget": 0,
+          "matched_fraction_of_decided": 1.0,
+          "elapsed_sec": 2.7253761291503906,
+          "shared_memo_final_size": 4976060,
+          "per_element": [
+            {
+              "d": 0,
+              "r": 10,
+              "d2": 0,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 999,
+              "oracle_time_sec": 0.0034110546112060547
+            },
+            {
+              "d": 0,
+              "r": 9969233,
+              "d2": 0,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 1.1920928955078125e-06
+            },
+            {
+              "d": 0,
+              "r": 19933135,
+              "d2": 0,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 0,
+              "r": 29896975,
+              "d2": 0,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 9.5367431640625e-07
+            },
+            {
+              "d": 0,
+              "r": 39859918,
+              "d2": 0,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 4.76837158203125e-07
+            },
+            {
+              "d": 1,
+              "r": 6780952,
+              "d2": 1,
+              "r2": 6622597,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.41585397720336914
+            },
+            {
+              "d": 1,
+              "r": 16746554,
+              "d2": 1,
+              "r2": 6622597,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4448091983795166
+            },
+            {
+              "d": 1,
+              "r": 26707169,
+              "d2": 1,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 50541,
+              "oracle_time_sec": 0.15495991706848145
+            },
+            {
+              "d": 1,
+              "r": 36672428,
+              "d2": 1,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.1457672119140625e-06
+            },
+            {
+              "d": 2,
+              "r": 5217691,
+              "d2": 2,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 37872,
+              "oracle_time_sec": 0.1544814109802246
+            },
+            {
+              "d": 2,
+              "r": 19713104,
+              "d2": 2,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 2.384185791015625e-06
+            },
+            {
+              "d": 2,
+              "r": 34199879,
+              "d2": 2,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 1,
+              "oracle_time_sec": 7.152557373046875e-07
+            },
+            {
+              "d": 3,
+              "r": 11030948,
+              "d2": 3,
+              "r2": 6622597,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4078071117401123
+            },
+            {
+              "d": 3,
+              "r": 39363023,
+              "d2": 3,
+              "r2": 6622597,
+              "status": "inconclusive",
+              "oracle_calls": 150001,
+              "oracle_time_sec": 0.4067559242248535
+            },
+            {
+              "d": 5,
+              "r": 43046716,
+              "d2": 5,
+              "r2": 6622597,
+              "status": "matched",
+              "oracle_calls": 102633,
+              "oracle_time_sec": 0.736475944519043
+            }
+          ]
+        }
+      },
+      "pair_time_budget_exceeded": false
+    }
+  ]
+}

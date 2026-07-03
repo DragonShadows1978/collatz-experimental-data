@@ -1,0 +1,76 @@
+{
+  "task1_periodicity_rational_formula": {
+    "range_checked": [
+      1,
+      5000
+    ],
+    "expected_delta": 53,
+    "period": 22,
+    "num_violations": 0,
+    "violations": [],
+    "exact_periodicity_holds": true,
+    "note": "This is an algebraic property of floor(53*(C+1)/22): since 53 and 22 are exact integers, floor(53*(C+22+1)/22) = floor(53*(C+1)/22 + 53) = M_edge(C)+53 identically, for ALL integer C, not just empirically. This function verifies it computationally over a wide range as a sanity check; it does not by itself say anything about whether the MEASURED automaton capacities are periodic \u2014 that must be checked against the repo's raw measured data separately (see companion report)."
+  },
+  "heartbeat_word": {
+    "source": "/mnt/ForgeRealm/collatz-experimental-data/Lock3_support_cell_audit/lock3_support_cell_summary.json",
+    "support_phase_count": 22,
+    "drop_phase_count": 31,
+    "word": "10101001010010101001010010101001010010101001010010100"
+  },
+  "task2_fit_range": [
+    1,
+    200
+  ],
+  "task2_family_a_beatty_rational": {
+    "A1_N=C+1_theta=p/q": false,
+    "A2_floor((C+1)*q/p)": true,
+    "A3_floor((C+1)/(p/q))_==target_by_construction": true
+  },
+  "task2_family_b_mechanical_word": {
+    "B2_S(53*ceil((C+1)/22))": false,
+    "B3_first_passage_S(k)>=C+1_report_k_minus_1": false
+  },
+  "task2_family_c_first_passage": {
+    "C1_largest_m_22m<=53(C+1)": true,
+    "C2_first_passage_step_count(support>=C+1)": false,
+    "C2_as_heartbeats_k/53": false
+  },
+  "task2_irrational_slope_variants_exact_over_1_200": {
+    "v1_floor((C+1)/(2-log2_3))": false,
+    "v4_floor(53(C+1)/(53(2-log2_3)))": false
+  },
+  "task2_irrational_slope_variants_first_mismatch_over_1_200": {
+    "v1_floor((C+1)/(2-log2_3))": {
+      "C": 148,
+      "target": 358,
+      "irrational_value": 359,
+      "diff": 1
+    },
+    "v4_floor(53(C+1)/(53(2-log2_3)))": {
+      "C": 148,
+      "target": 358,
+      "irrational_value": 359,
+      "diff": 1
+    }
+  },
+  "task3_first_divergence_search": {
+    "v1_floor((C+1)/(2-log2_3))": {
+      "first_divergence_C_up_to_1e6": {
+        "C": 148,
+        "target_rational": 358,
+        "irrational_value": 359,
+        "diff": 1
+      },
+      "searched_up_to": 1000000
+    },
+    "v4_floor(53(C+1)/(53(2-log2_3)))": {
+      "first_divergence_C_up_to_1e6": {
+        "C": 148,
+        "target_rational": 358,
+        "irrational_value": 359,
+        "diff": 1
+      },
+      "searched_up_to": 1000000
+    }
+  }
+}

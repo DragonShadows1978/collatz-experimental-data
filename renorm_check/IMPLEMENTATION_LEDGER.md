@@ -4,6 +4,232 @@ Tracks execution of the work orders (W1–W4) registered in SYNTHESIS.md.
 Per the execution notes: updated after every completed step, commit after
 every completed work item.
 
+## Round 2 (Fable, 2026-07-03) — death shell discovered
+
+Attempting the W2 commuting-diagram proof surfaced a sharper object than
+the embedding: a universal ceiling-anchored dead set ("death shell")
+whose descent with m IS the capacity law. Findings F6–F9 + revised work
+orders W2′/W5/W6/W7 registered in SYNTHESIS.md (Execution round 2
+section). Artifacts: `shell/shell_probe.py` + `shell/shell_probe.log`
+(probes P1–P6, all asserted, all passing): shell existence/growth,
+cross-C universality, M_edge reproduced 5/5 densely, edge
+steps-invariance, D(m) inverse-law match m=2..12 with first divergence
+confirmed at m=359, and trit-locality (k-step liveness reads only the
+low k+1 trits) machine-verified. F5 remains OPEN; W7 (shell-guided
+witness search) and W6 (shell recursion) are the two live routes.
+
+**W6 first execution (same day, `shell/boundary_probe.py` + log):**
+death proven+verified hereditary (shell = monotone 3-adic closed set);
+no naive cylinder compression (newly-dead sets read all m trits); but
+ceiling subtree-types saturate (19→54, increments dying) and die-rate
+tracks the credit word 10/10 — evidence the boundary recursion is a
+finite transducer driven by the Sturmian word. Transducer-extraction
+work order + frozen validation gates registered in SYNTHESIS.md W6.
+This is the current cheapest route to deciding 358 vs 359.
+
+**W6 second execution (2026-07-03, `shell/transducer_extract.py` +
+log): preliminary, SUPERSEDED — see the authoritative E1 run below.**
+This first re-attempt used a self-invented "ratio < 3x" stabilization
+threshold read out of SYNTHESIS.md's prose rather than a written work
+order, and only tested ceiling depth (delta=0). It found the same
+qualitative signal (h=4 growing, not saturating) but is not the
+canonical execution; superseded once `shell/W6_WORK_ORDER.md` (the
+precise, authoritative E1-E4 spec, apparently written by whichever
+session most recently extended this track) was found on disk.
+
+**W6 authoritative execution (2026-07-03, `shell/e1_stabilization.py`
++ `e1_stabilization.log`, exactly per `shell/W6_WORK_ORDER.md`'s E1):
+FAILED, unambiguously — E2/E3/E4 correctly never attempted.** Per the
+work order's exact criterion (h=3→h=4 type count UNCHANGED, no
+threshold), tested at all 9 required (delta, m0) pairs — delta=0,1,2 x
+m0=8,9,10 — plus the fallback h=4→h=5 check at the 3 pairs where h=5
+was reachable (m0=8 only; m0=9,10 need dense level 14/15, beyond the
+13-level ceiling this repo's 4e8-state guard allows at C=12). **Every
+single (delta, m0) pair is unstable, by a wide margin** — h3→h4 counts
+roughly double or more everywhere (e.g. delta=2, m0=9: 492→1282;
+delta=1, m0=9: 354→815), and the one h4→h5 data point available
+(delta=2, m0=8: 767→1174) shows the same continued growth, not a
+narrowing gap. This is not a borderline call decided by an arbitrary
+threshold — the work order's own hard bar (exact count equality) is
+missed by hundreds of states at every test point.
+
+**Per the work order: STOP. E2 (transducer extraction) was correctly
+NOT attempted.** The follower set does not stabilize at any reachable
+horizon (2 through 5) or corridor depth (0 through 2) under dense
+enumeration at C=12, m≤13. This is reported as the work order requires
+— plainly, without retrying against a looser bar to manufacture a
+pass. **W6's transducer route is a dead end at every scale this repo
+can compute densely.** It remains possible (not ruled out) that the
+boundary map is sofic in a different coordinate system (the work
+order's own suggested fallback: Ostrowski reindexing) or at horizons
+beyond what dense enumeration reaches — but that is a materially
+different, harder undertaking than what W6 registered, not a next step
+already in scope. F5 remains OPEN; W7 (shell-guided witness search) is
+now the only registered live route to F5, and it was not run this
+round (see W1).
+
+## W6B — Toy-word mechanism experiment (`shell/W6B_TOY_WORD_ORDER.md`)
+
+**Context:** registered as W6's replacement after E1 failed — a direct
+mechanism test needing no transducer/extrapolation, on a system whose
+own divergence points are densely computable (unlike the real word's
+m=359). Same automaton (`shell/toy_word/toy_automaton.py`,
+`run_heartbeat_generic`, imports the real `allowed_exponents`/
+`mod_inverse` unchanged from `embedding/automaton.py`), driven by
+`credit_toy(k) = floor((k+1)φ) − floor(kφ)`, φ = golden ratio, exact
+via `(k + isqrt(5k²))//2` — cross-checked against 60-digit `Decimal`
+for k=0..100000, zero mismatches.
+
+**T1 (port sanity): PASSED.** `run_heartbeat_generic` + the TRUE word
+reproduces D(m) for m=2..12 and all five known edges (C=1..5) bit-for-
+bit against `shell_probe.py`'s own results, using the exact same code
+path the toy run uses. Confirms the generic automaton is a faithful
+port, not a reimplementation with its own bugs.
+
+**T2 (toy shell survey): PASSED, as expected.** Heredity holds exactly
+(0 violations, m=3..10, C=12 — the underlying proof is word-
+independent, so this is a confirmation not a discovery). Universality
+holds across C=8/12/23 at m=2..6. The toy shell grows qualitatively
+like the real one (shell-depth 0→9, dead-fraction 2%→17% over m=1..10
+at C=23) — a genuine structural analogue, not a degenerate toy.
+
+**T3 (the measurement): D_toy(m) computed, C=23, m=2..13, dense** (raw
+data: `shell/toy_word/D_toy_table.csv`). Candidate laws (irrational
+β_toy=2−φ; Fibonacci convergents 1/2, 2/5, 3/8, 5/13) tabulated via
+exact integer arithmetic (isqrt-based comparison for the irrational
+law, exact ceiling division for the rationals — both cross-checked
+against 60-digit Decimal before use) BEFORE reading any D_toy value,
+per the pre-registration discipline.
+
+**T4 (readout): MIXED RESULT — the work order's own flagged "most
+important possible outcome."** The work order's ideal case (one exact
+constant offset between D_toy and a law, fit on the agreement region)
+did NOT hold: agreement-row offsets are [1,0,1,1] at m=2,3,4,6, not
+constant. Reported the honest fallback instead — best-fit constant
+offset per law, mismatches counted openly, no cherry-picking:
+- irrational (offset +1): 9/12 rows match, misses at m=3,8,11
+- **3/8 (offset +1): 10/12 rows match, misses only at m=3,11 — the
+  single best-fitting law of the five tested**
+- 5/13 (+1): 9/12; 2/5 (+1): 8/12; 1/2 (+0): 7/12 (worst)
+
+Critically, **every row where D_toy disagrees with BOTH the
+irrational law and its best convergent (m=3, m=11) is a SHARED
+failure** — not evidence for either side, most plausibly a small-m/
+small-corridor-width transient (C=23's own boundary effects at low
+depth). Where the two candidates genuinely differ (m=8, m=13), the
+convergent 3/8 wins both times, and no row favors the irrational law
+over 3/8. **Per the work order's pre-declared asymmetry: a convergent-
+pinned toy is STRONG evidence against the registered F5 prediction
+(359).** This is that outcome, though modest (10/12 vs 9/12, not a
+landslide) and partly confounded by the shared-failure rows. Registered
+plainly, not softened: **the toy experiment leans AGAINST 359, not
+for it.** Per the work order's own framing, this materially weakens
+(does not refute) the registered F5 prediction — the real word's α
+being arithmetic-native (generated by the same 2 and 3 the corridor
+itself is built from) remains a live reason the true system could
+still differ from this toy. F5 remains formally OPEN; this is evidence,
+not a resolution.
+
+Artifacts: `shell/toy_word/{toy_automaton.py, t1_port_sanity.py,
+t2_toy_shell_survey.py, t3_measurement.py, t4_readout.py}` +
+`.log` files for each + `D_toy_table.csv`.
+
+**Verification note (Fable, 2026-07-03, post-hoc, independent):** the
+D_toy measurements REPRODUCE exactly — an independent from-scratch
+implementation (no shared code with `toy_automaton.py`) returns
+identical D_toy at m=5,8,11,13, and the values are steps-invariant
+(53 vs 106 steps). Two corrections to the readout prose, from the
+run's own CSV:
+1. **There is ONE genuinely discriminating row, not two.** With the
+   fitted +1 offsets, the irrational law and 3/8 differ only at m=8
+   (predictions 4 vs 3; D_toy=3, convergent wins). At m=13 both
+   predict 5 and both match — m=13 discriminates nothing between
+   them. The 10/12-vs-9/12 lead rests entirely on the single m=8 row.
+2. **"Small-m transient" mislabels m=11.** The shared-miss rows are
+   m=3 AND m=11; the latter is not small-m. Note also every miss is
+   D_toy running BELOW the laws (shell lagging), and the real system
+   shows NO such transient (D matched exactly from m=2) — the toy's
+   D-sequence is qualitatively messier than the real one, which
+   weakens toy→real inference in BOTH directions.
+Reinterpretation registered pre-capstone: the data pattern (all
+misses on the slow side; best-fit line = the slightly-slower
+convergent) is equally consistent with (a) genuine convergent
+pinning, or (b) an irrational-slope law approached FROM BELOW with a
+slowly-decaying transient that the toy's early divergence points sit
+inside — a design weakness of W6B (golden's small denominators put
+the decisive rows in the transient regime; the real system's m=359
+sits far outside it). **Capstone row to discriminate: m=16, the next
+irr-vs-3/8 head-to-head (predictions with +1 offsets: irrational 7,
+3/8 pins 6; 5/13 also says 7, so m=16 additionally separates "pins
+to 3/8 specifically" from "tracks finer convergents"). Dense at
+C=14, ~hours, memory-guarded. Registered predictions: pinning ⟹ 6;
+Fable ⟹ 7.** Belief update recorded honestly: the registered F5=359
+confidence drops (one thin row against, transient-confounded), not
+collapses.
+
+**W6B capstone (m=16), executed 2026-07-03
+(`shell/toy_word/capstone_m16.{py,log,csv}`): D_toy(16) = 6 —
+CONVERGENT PINNING. Fable's registered irrational prediction (7) is
+WRONG.** Controls first, both PASS: at C=14, D_toy(11)=4 and
+D_toy(13)=5, identical to the prior C=23 run — corridor C=14 is not
+floor-contaminated at these precisions; `credit_toy` cross-checked
+against `toy_automaton.py`'s for k=0..100000, zero mismatches. The
+measured 6 matches the 3/8 convergent's +1-offset prediction
+specifically — it excludes BOTH the irrational law AND the finer 5/13
+convergent (both predicted 7), answering the verification note's
+secondary question: the toy pins to 3/8; it does not track finer
+convergents. Shell depth at m=16 is 11, floor margin 3 to the C=14
+floor (the death shell is not floor-truncated). Dense, 53 steps from
+the fully populated start, 15.2 min total, peak RSS ~3.8GB in-run
+(~4.3GB observed externally during permutation precompute), under the
+8GB guard. Interpretation, no further: with both head-to-head rows on
+record (m=8 and m=16) favoring the 3/8 convergent and none favoring
+the golden slope, the transient-from-below alternative registered
+pre-capstone is no longer the more economical reading of the toy
+data — per the work order's pre-declared asymmetry this is further
+evidence AGAINST the registered F5=359 prediction, while the real
+word's arithmetic-native α remains the one registered reason the
+true system could still differ.
+
+**Capstone VERIFIED + post-capstone assessment (Fable, 2026-07-03):**
+independent from-scratch reimplementation (no shared code;
+`shell/toy_word/verify_m16.{py,log}`) returns D_toy(16)=6, shell
+depth 11, control D_toy(13)=5 at C=14 — exact agreement. The
+capstone stands. Assessment, recorded as the program's current best
+model (not a resolution — F5 stays OPEN pending the real
+measurement):
+1. **Mechanism reading:** 53 is the near-identity return time of the
+   2-3 rotation (3^53/2^84 ≈ 1.0005) — a convergent denominator IS a
+   near-return time. The toy's lock to 3/8 (golden's den-8 return)
+   over the finer den-13, with both in dense view, reads as the
+   corridor QUANTIZING TO ITS OWN RETURN MAP, visible most strongly
+   at the edge where trajectories are forced (F6 steering slack
+   vanishes at the ceiling). This coheres with E1's failure: the
+   dead SET is not finite-state, but the descent RATE is
+   convergent-locked — complexity in the where, rationality in the
+   how-fast.
+2. **Transfer to the real system:** under either reading (permanent
+   lock, or scale-graded upgrade — the toy rejected den-13 at m=16
+   despite a full den-13 cycle being in view, suggesting an upgrade
+   needs ≳2 full return cycles), the operative convergent at m=359
+   is 22/53 (successor 127/306 would need m ≈ 306–612). Current
+   best model therefore says **D(359)=149, C=148 edge = 358 — the
+   published formula is exact at the decisive point, not a shadow.**
+   The registered F5=359 prediction now trails by its own author's
+   assessment (~30% from 85% pre-toy). The ~2-cycle upgrade rule is
+   a one-data-point conjecture; the toy's next discriminator (m=21,
+   3/8 vs 5/13) is dense-walled (3^21).
+3. **Provability upshot:** convergent-locking moves the capacity
+   lemma (the published framework's central gap) from irrational
+   terrain (equidistribution) to rational terrain (finite periodic
+   53-block algebra) — the periodicized scope of the ρ certificates
+   (F2's worry) may be exactly right rather than an approximation.
+4. **New central theory question:** the convergent-selection
+   mechanism — what picks the lock, and where (if ever) it
+   upgrades. Answering it analytically settles F5 without any
+   m=359 computation. This appears to be new phenomenology for
+   Beatty/Sturmian corridor systems generally.
+
 ## W1 — Exact-credit patch + F5 decisive experiment
 
 **Patch: DONE.** `rust/lock3_census.rs`'s `credit_at_step` and the three

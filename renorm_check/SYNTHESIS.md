@@ -620,3 +620,47 @@ exposed twice, so this is recorded as a ROUTE, not a result. The
 decision is now purely algebraic: P1's return-map derivation of the
 exact forms, over- and under-side, settles F5 with no computation at
 m=359. F5 remains OPEN.
+
+## W6D-M — The support-cost mechanism (HYPOTHESIS, Fable, 2026-07-04)
+
+**Statement:** in the residue-constrained window (the last ~m letters,
+per trit-locality), each SUPPORT letter costs the backward walker one
+level of depth and each drop is neutral, up to a system constant — so
+D(m) = (support count of the constrained window) + O(1).
+
+**Evidence tally:** slope of every measured law = the driving word's
+support density; the toys' +1 bonus and the real system's −1 mirror
+both reduce to window support-count arithmetic (under-side convergent
+words carry FEWER supports than their true words, over-side MORE —
+signs match exactly); A2's measured D-vs-support-count correlation.
+**Not proven, and one honest gap:** raw window support counts
+oscillate with phase while the measured laws are phase-smooth — the
+steering must absorb phase, and the periodic words' ±1 step-count
+oscillation is this residue showing.
+
+**Conditional F5 route (exact integer counting, no fitting):** the
+true word's first 359 letters carry 149 supports (credit sum
+⌊359·log₂3⌋ = 569); the 22/53-periodicization carries 150 (credit
+sum 568). The single correction letter at position 358 flips
+support→drop. Under the mechanism, the true corridor at the decisive
+window sits one level shallower than the periodic form's 149:
+D(359) = 148 → **edge = 359.** Conditional on the mechanism lemma +
+the end-anchored window convention at the real system's step count
+(phase must be pinned in the derivation, not assumed).
+
+**Derivation state (see shell/underlock/DERIVATION_NOTES.md):** the
+game is now exactly posed. Backward from a terminal, the exponent
+menu at depth δ with credit c is a ∈ [1, δ+c] with PARITY forced by
+the residue class (F6); the unique kill is (δ=0, support letter,
+even parity forced); steering the next parity costs 0/2/4 extra
+exponent by the mod-9 dice. Conservation identity: depth at backward
+step k equals δ_T − Σ_{j≤k}(a_j − c_j), so **D(m) = min over
+strategies of the max partial sum of (a_j − c_j)** — an integer
+minimax of the exponent process against the credit word. The drift
+is E[a] − E[c] = 2 − (2−β) = β, since optimal constrained play
+realizes the generic 2-adic valuation mean E[a] = 2 — the classic
+3x+1 heuristic constant appearing as a game value. The exact ±1
+boundary constants and the over/under mirror are the block-phase
+structure of the max partial sum (cycle-lemma territory). P1 = solve
+this minimax exactly for periodic words; P3 = the true-word window
+version.

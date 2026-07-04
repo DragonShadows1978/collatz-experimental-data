@@ -265,6 +265,32 @@ is SUPERSEDED (golden could not separate the rules; √2 and √3 did).**
 F5 remains formally OPEN. Next: W6D analytic lock proof (golden
 period-8 block), upgrade-scale theory.
 
+## W6D-G — Periodic-word ground truth (`shell/W6D_GROUND_TRUTH_ORDER.md`)
+
+Executed by one agent in `shell/underlock/` (RESULTS_D1.md + CSVs +
+laws files, mtime pre-registration held, independent brute-force
+cross-check of the vectorized automaton, margin rule satisfied
+everywhere, heavy √2 rows to m=16 at C=18 without guard hits).
+Findings registered in SYNTHESIS.md W6D-G: exact periodic law
+D_per(m)=⌊(pm+1)/q⌋ 28/28 with a confirmed forward prediction
+(golden m=16 called =6 pre-computation, measured 6); PD1/PD2
+REFUTED — true words carry a sign-definite intermittent +1 bonus
+over their convergent words (golden 5/13 rows equal, √2 2/15, all
+disagreements +1, rerun-confirmed), so the corridor DOES read
+aperiodicity below the wall and P3 does not collapse; PD3 confirmed
+(tiling-vs-mechanical trap real); periodic words show a ±1 phase
+oscillation in step count (Sturmian words don't); real system's own
+agreement-zone form is the mirror variant ⌊(22m−1)/53⌋ 11/11. F5
+compressed to pure algebra: at m=359, 22/53 gives 149 (→358) under
+both variants, 127/306 sits exactly on its coincidence boundary and
+splits (+1→149/358, −1→148/359) — P1's return-map derivation of the
+over/under form asymmetry decides. Process note: mid-run, a user
+message reached this agent's session asking it to check GEMV router
+state; it spawned one read-only Explore child for that lookup (no
+writes, no collision with Codex's concurrent GraftRepository work),
+reported it under the main session's scope check, and returned to
+order. Coordination law otherwise held throughout.
+
 ## W1 — Exact-credit patch + F5 decisive experiment
 
 **Patch: DONE.** `rust/lock3_census.rs`'s `credit_at_step` and the three

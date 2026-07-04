@@ -567,3 +567,56 @@ period-8 block — template for 22/53 and the capacity lemma), and the
 upgrade question (does the lock shift 22/53 → 127/306 exactly when
 the window admits den 306; the toys' upgrade windows are all
 dense-walled, so this is theory work, not measurement).
+
+## W6D-G — Periodic-word ground truth (2026-07-03, one agent, `shell/underlock/`)
+
+Registered in `shell/W6D_GROUND_TRUTH_ORDER.md` (parent plan
+`shell/W6D_UNDERLOCK_PROOF_PLAN.md`). Key spec point, now empirically
+enforced: the periodic comparison word for a lock p/q is the MECHANICAL
+word of the convergent, not a first-q tiling (PD3 confirmed the tiled
+word lands on slope 1/2, not 3/8 — the distinction is real and the
+trap is armed for anyone who forgets).
+
+**The periodic law is EXACT and closed-form: D_per(m) = ⌊(pm+1)/q⌋ —
+28/28 rows across golden-per8 and √2-per12, zero anomalies, including
+one confirmed forward prediction** (the form was registered from the
+m≤13 tables and called the then-uncomputed golden m=16 row = 6; it
+measured 6). This is P1's derivation target, now with no free
+parameters. Caveat logged: exactly-periodic words show a ±1
+step-count phase oscillation at isolated rows (the Sturmian words
+never did); 53-step readout governs, matching all prior tables.
+
+**PD1/PD2 (under-lock identity): REFUTED.** The true words sit at
+D_true − D_per ∈ {0, +1}, never negative — golden matches its
+periodic system on only 5/13 rows, √2 on 2/15, every disagreement
++1, every one rerun-confirmed. The corridor DOES read aperiodicity
+below the wall: the true word earns an intermittent one-level bonus
+over its convergent word. √2's bonus-off rows are exactly the
+coincidence rows (pm ≡ 0 or −1 mod q); golden has two additional
+bonus-off rows (m=3, 11 — the old "anomaly" rows, now identified:
+they are where the true word DIPS ONTO the periodic branch). P3's
+task is now concrete: prove the bonus schedule = the window's
+extra-support schedule (balance/three-distance structure).
+
+**The real system's own form, verified from shell_probe P5:**
+D_real(m) = ⌊(22m−1)/53⌋ exactly, 11/11 on the agreement zone
+(m=2..12) — the MIRROR (−1) variant of the toys' (+1) form,
+consistent with 22/53 being an OVER-side convergent where the toys
+locked to UNDER-side ones. The over/under mirror asymmetry is now a
+required output of P1's algebra.
+
+**F5, maximally compressed.** At m=359 (exact arithmetic):
+- 22/53: 22·359 ≡ 1 (mod 53) → BOTH form variants give D=149 → 358.
+- 127/306: 127·359 ≡ −1 (mod 306) — exactly on the coincidence
+  boundary → the two variants SPLIT: +1 form gives 149 (→358),
+  −1 form gives 148 (→359).
+So the entire question is now: (i) which convergent is operative at
+window 359 (W6C's under-selection says 127/306), and (ii) which
+boundary convention its law takes there (the real system's own
+measured family is the −1 form). Those two best-attested facts
+combine to 148 → 359 — but combining conventions measured on
+different systems is exactly the fitting-family trap this round
+exposed twice, so this is recorded as a ROUTE, not a result. The
+decision is now purely algebraic: P1's return-map derivation of the
+exact forms, over- and under-side, settles F5 with no computation at
+m=359. F5 remains OPEN.

@@ -482,3 +482,88 @@ computation, and appears to be new phenomenology for Beatty corridor
 systems generally. The registered F5=359 prediction stays on the
 books until the real measurement, now trailing by its own author's
 assessment.
+
+## W6C — Convergent-selection mechanism (2026-07-03, three parallel designs)
+
+Registered in `shell/W6C_SELECTION_ORDER.md`: two candidate selection
+rules survived W6B (golden's lock 3/8 is simultaneously the coarser
+AND the under-side choice, so golden cannot separate them), and they
+map to OPPOSITE F5 answers: R-coarse → 22/53 at m=359 → edge 358;
+R-under → 127/306 at m=359 → edge 359. Three designs ran as parallel
+agents, each in its own directory under `shell/selection/`, results
+files RESULTS_A/B/C.md. All measurements below follow the house
+pre-registration discipline (laws tabulated before data; file mtimes
+are the record).
+
+**Readout correction (Fable, owned):** the order's B3 parenthetical
+literals ("7/12 predicts 6; others predict 7") assumed zero offset,
+contradicting the order's own registered offset protocol (fit constant
+per-law offsets on agreement rows, freeze, then read decisive rows).
+The toys carry a +1 offset (as W6B's did); the literals were pre-data
+arithmetic errors by the order's author. The registered PROCEDURE
+governs. Design B's agent correctly reported both readings and
+deferred; the procedural verdict is recorded here.
+
+**Design A (real word):** A1 — true word vs 53-periodicized word,
+m=2..13, steps 106/159: 24/24 identical. But the agent caught that
+the comparison is VACUOUS BY DESIGN (Fable's design error, honestly
+reported): **the true word and its 53-periodicization are
+letter-for-letter identical for k=0..357, first diverging at k=358**
+— the same scale as the m=359 D-divergence. No experiment below ~359
+letters can distinguish the words. Profound reframe: up to the
+decisive scale, the real corridor is driven by an EXACTLY PERIODIC
+word; the entire F5 question is the effect of ONE corrected letter
+per convergent period. A2 — window slide (m=8,10; steps 53..106): D
+varies by exactly ±1, positively correlated with the window's
+support-count (r≈0.4) — the corridor reads its window coarsely but
+genuinely.
+
+**Design B (√2 crux):** controls pass; laws frozen pre-data;
+**D_√2(m) = ⌈7m/12⌉ exactly for ALL 15 measured rows (m=2..16)** —
+the under-side convergent 7/12 at frozen offset +1 fits 15/15, while
+the irrational law, 3/5 (over), 17/29, 41/70 each miss exactly at the
+unique separating row m=12 (measured 7 = 7/12's prediction;
+triple-confirmed at C=14/16/18; independently reproduced from scratch
+by Fable for m=9..13). **Verdict under the registered protocol:
+R-UNDER.** Note 41/70 is also under-side and finer but den 70 exceeds
+the readable window — rejected by the data, sharpening the rule.
+
+**Design C (family sweep):** √3 — clean lock on 1/4 (UNDER), 13/14
+rows, including the PRE-REGISTERED side-discriminating row m=15
+(under laws predicted 4, over + irrational predicted 5; measured 4 —
+a forward prediction landing). √6−1 and √7−1 — exact three-way ties
+(irrational vs finest over vs finest under, identical miss-rows):
+honest no-decisions; their convergents hug β too tightly for any
+reachable row to discriminate. They neither test nor dent the rule.
+
+**Unified selection law (current best, 3/3 side-calls UNDER — golden,
+√2, √3 — zero counterexamples):** the corridor locks to the FINEST
+UNDER-SIDE convergent whose denominator fits the readable window
+(den ≲ m). Mechanistically natural: the shell can only certify the
+descent its length-m word-factor guarantees from below, and the best
+under-approximation with bounded denominator is exactly that object;
+the den ≲ m condition IS the trit-locality window (F9).
+
+**F5 implication (inference, F5 formally OPEN):** at m=359 the window
+(~360 letters) resolves den 306, so the operative lock is 127/306 —
+UNDER-side — giving D(359)=148 → **C=148 edge = 359**. The W6B
+post-capstone assessment (which favored 358 via R-coarse) is
+SUPERSEDED: golden alone could not separate the rules; √2 and √3
+did, and both chose under. The registered F5=359 prediction returns
+to leading by its author's assessment (~70%; was ~30% post-capstone,
+85% at registration). The swing itself is the honest record of an
+evidence-driven day.
+
+**Context note:** non-trivial cycle lengths are quantized to the SAME
+convergent ladder (3^k≈2^n forces n/k onto convergents of log₂3:
+84/53, 485/306 — same denominators as the capacity story), per
+Eliahou-line results already cited in the published bundle. The
+trivial cycle (1: k=1, n=2) sits at the first convergent — the only
+rung where the +1 correction is coarse enough to forgive. Capacity
+and cycles are one CF ladder viewed from two sides.
+
+**Open next:** W6D (analytic: prove the under-lock for golden's exact
+period-8 block — template for 22/53 and the capacity lemma), and the
+upgrade question (does the lock shift 22/53 → 127/306 exactly when
+the window admits den 306; the toys' upgrade windows are all
+dense-walled, so this is theory work, not measurement).

@@ -230,6 +230,41 @@ measurement):
    m=359 computation. This appears to be new phenomenology for
    Beatty/Sturmian corridor systems generally.
 
+## W6C — Convergent-selection mechanism (`shell/W6C_SELECTION_ORDER.md`)
+
+Three designs, three parallel agents, disjoint directories under
+`shell/selection/` (coordination law held: no shared-file edits, no
+commits by agents; integration by Fable). Full findings in
+SYNTHESIS.md W6C section; execution record:
+
+- **Design A** (`selection/real_word/RESULTS_A.md`): A1 24/24
+  identical rows — and the agent caught the comparison was vacuous by
+  design (order author's error): the true word ≡ its 53-periodicization
+  for k=0..357, first divergence k=358. Reported prominently per the
+  honest-reporting law. A2 window slide: D varies ±1 with window
+  support-count (r≈0.4). 6.8 min, 284MB peak.
+- **Design B** (`selection/sqrt2/RESULTS_B.md`): pre-registration
+  mtime-documented; controls pass; **D_√2(m)=⌈7m/12⌉ for all 15 rows**;
+  unique separating row m=12 measured 7 (=7/12+1), triple-confirmed
+  C=14/16/18, independently reproduced from scratch by Fable
+  (m=9..13). Agent correctly surfaced the order's literal-vs-protocol
+  conflict and deferred; procedural verdict (integration): **R-UNDER**.
+  The order's zero-offset literals recorded as Fable's pre-data
+  arithmetic error; the registered offset protocol governs. ~55 min,
+  4.2GB peak.
+- **Design C** (`selection/families/RESULTS_C.md`): √3 locks 1/4
+  (UNDER, 13/14 rows, pre-registered side-row m=15 HIT); √6−1 and
+  √7−1 exact three-way ties — honest no-decisions. ~13-27 min/family
+  concurrent, 1.6GB peak.
+
+**Integrated verdict: selection rule = finest under-side convergent
+within the readable window (den ≲ m). 3/3 side-calls UNDER, zero
+counterexamples. F5 inference flips back: 127/306 operative at m=359
+→ D(359)=148 → edge 359. The W6B post-capstone 358-leaning assessment
+is SUPERSEDED (golden could not separate the rules; √2 and √3 did).**
+F5 remains formally OPEN. Next: W6D analytic lock proof (golden
+period-8 block), upgrade-scale theory.
+
 ## W1 — Exact-credit patch + F5 decisive experiment
 
 **Patch: DONE.** `rust/lock3_census.rs`'s `credit_at_step` and the three

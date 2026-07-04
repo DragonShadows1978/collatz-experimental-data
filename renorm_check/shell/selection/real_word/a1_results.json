@@ -1,0 +1,242 @@
+[
+  {
+    "m": 2,
+    "steps": 106,
+    "D_true": 0,
+    "D_periodic": 0,
+    "equal": true,
+    "margin_true": 12,
+    "margin_periodic": 12,
+    "runtime_s": 0.07
+  },
+  {
+    "m": 3,
+    "steps": 106,
+    "D_true": 1,
+    "D_periodic": 1,
+    "equal": true,
+    "margin_true": 11,
+    "margin_periodic": 11,
+    "runtime_s": 0.07
+  },
+  {
+    "m": 4,
+    "steps": 106,
+    "D_true": 1,
+    "D_periodic": 1,
+    "equal": true,
+    "margin_true": 11,
+    "margin_periodic": 11,
+    "runtime_s": 0.07
+  },
+  {
+    "m": 5,
+    "steps": 106,
+    "D_true": 2,
+    "D_periodic": 2,
+    "equal": true,
+    "margin_true": 10,
+    "margin_periodic": 10,
+    "runtime_s": 0.08
+  },
+  {
+    "m": 6,
+    "steps": 106,
+    "D_true": 2,
+    "D_periodic": 2,
+    "equal": true,
+    "margin_true": 10,
+    "margin_periodic": 10,
+    "runtime_s": 0.1
+  },
+  {
+    "m": 7,
+    "steps": 106,
+    "D_true": 2,
+    "D_periodic": 2,
+    "equal": true,
+    "margin_true": 10,
+    "margin_periodic": 10,
+    "runtime_s": 0.16
+  },
+  {
+    "m": 8,
+    "steps": 106,
+    "D_true": 3,
+    "D_periodic": 3,
+    "equal": true,
+    "margin_true": 9,
+    "margin_periodic": 9,
+    "runtime_s": 0.29
+  },
+  {
+    "m": 9,
+    "steps": 106,
+    "D_true": 3,
+    "D_periodic": 3,
+    "equal": true,
+    "margin_true": 9,
+    "margin_periodic": 9,
+    "runtime_s": 0.7
+  },
+  {
+    "m": 10,
+    "steps": 106,
+    "D_true": 4,
+    "D_periodic": 4,
+    "equal": true,
+    "margin_true": 8,
+    "margin_periodic": 8,
+    "runtime_s": 1.92
+  },
+  {
+    "m": 11,
+    "steps": 106,
+    "D_true": 4,
+    "D_periodic": 4,
+    "equal": true,
+    "margin_true": 8,
+    "margin_periodic": 8,
+    "runtime_s": 5.37
+  },
+  {
+    "m": 12,
+    "steps": 106,
+    "D_true": 4,
+    "D_periodic": 4,
+    "equal": true,
+    "margin_true": 8,
+    "margin_periodic": 8,
+    "runtime_s": 17.27
+  },
+  {
+    "m": 13,
+    "steps": 106,
+    "D_true": 5,
+    "D_periodic": 5,
+    "equal": true,
+    "margin_true": 7,
+    "margin_periodic": 7,
+    "runtime_s": 78.22
+  },
+  {
+    "m": 2,
+    "steps": 159,
+    "D_true": 0,
+    "D_periodic": 0,
+    "equal": true,
+    "margin_true": 12,
+    "margin_periodic": 12,
+    "runtime_s": 0.11
+  },
+  {
+    "m": 3,
+    "steps": 159,
+    "D_true": 1,
+    "D_periodic": 1,
+    "equal": true,
+    "margin_true": 11,
+    "margin_periodic": 11,
+    "runtime_s": 0.12
+  },
+  {
+    "m": 4,
+    "steps": 159,
+    "D_true": 1,
+    "D_periodic": 1,
+    "equal": true,
+    "margin_true": 11,
+    "margin_periodic": 11,
+    "runtime_s": 0.12
+  },
+  {
+    "m": 5,
+    "steps": 159,
+    "D_true": 2,
+    "D_periodic": 2,
+    "equal": true,
+    "margin_true": 10,
+    "margin_periodic": 10,
+    "runtime_s": 0.13
+  },
+  {
+    "m": 6,
+    "steps": 159,
+    "D_true": 2,
+    "D_periodic": 2,
+    "equal": true,
+    "margin_true": 10,
+    "margin_periodic": 10,
+    "runtime_s": 0.17
+  },
+  {
+    "m": 7,
+    "steps": 159,
+    "D_true": 2,
+    "D_periodic": 2,
+    "equal": true,
+    "margin_true": 10,
+    "margin_periodic": 10,
+    "runtime_s": 0.27
+  },
+  {
+    "m": 8,
+    "steps": 159,
+    "D_true": 3,
+    "D_periodic": 3,
+    "equal": true,
+    "margin_true": 9,
+    "margin_periodic": 9,
+    "runtime_s": 0.47
+  },
+  {
+    "m": 9,
+    "steps": 159,
+    "D_true": 3,
+    "D_periodic": 3,
+    "equal": true,
+    "margin_true": 9,
+    "margin_periodic": 9,
+    "runtime_s": 1.14
+  },
+  {
+    "m": 10,
+    "steps": 159,
+    "D_true": 4,
+    "D_periodic": 4,
+    "equal": true,
+    "margin_true": 8,
+    "margin_periodic": 8,
+    "runtime_s": 3.41
+  },
+  {
+    "m": 11,
+    "steps": 159,
+    "D_true": 4,
+    "D_periodic": 4,
+    "equal": true,
+    "margin_true": 8,
+    "margin_periodic": 8,
+    "runtime_s": 13.32
+  },
+  {
+    "m": 12,
+    "steps": 159,
+    "D_true": 4,
+    "D_periodic": 4,
+    "equal": true,
+    "margin_true": 8,
+    "margin_periodic": 8,
+    "runtime_s": 40.26
+  },
+  {
+    "m": 13,
+    "steps": 159,
+    "D_true": 5,
+    "D_periodic": 5,
+    "equal": true,
+    "margin_true": 7,
+    "margin_periodic": 7,
+    "runtime_s": 137.15
+  }
+]

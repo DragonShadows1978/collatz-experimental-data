@@ -826,7 +826,10 @@ extremal object IS the measured corridor's extremal object.
 With D = L, F5 reduces to evaluating the loop-discrepancy functional
 on the exact true word (integer-exact credits via bit_length, no
 floats) in the PHYSICAL frame — the C=148 run is 371 = 7·53 steps
-(measured, W2), window ends at position 370 ≡ 52 (mod 53). Frame
+(CORRECTION 2026-07-05 per W6T-PROV: 371 is an exact symbolic
+computation, NOT a census measurement — W1/W2 never reached C=148;
+the original "(measured, W2)" tag here was the architect's mislabel),
+window ends at position 370 ≡ 52 (mod 53). Frame
 rule validated: reproduces edges 4, 7, 9, 12, 14 for C = 1..5 and
 the 11 true-word ground-truth rows exactly.
 
@@ -1327,3 +1330,218 @@ validation row lived where the conventions coincide.
   validation row exists that BREAKS under every alternative
   convention. Root-vs-end anchoring never had one until m = 29
   supplied it.
+
+## W6R — root-anchored re-grounding (2026-07-05, verdict: the break is real in the corrected frame)
+
+Ledger W6R-R1..R4 + digest. Architect's 70% "root-anchoring restores
+the trinity": 1/3 — MISS on the parts that matter.
+
+- **R1 (leads): D_root < L_root at m = 29..40 on the true word**
+  (clean m ≤ 28; independent re-derivation 6/6) — the m=29 break is
+  NOT an end-anchor artifact; it survives the census-matching
+  convention. Analogues: golden m=30, sqrt2 m=24 (R3, same at the
+  per-prefix level).
+- **R2: loop uniqueness HOLDS, 39/39 (m ≤ 16), 3-way independence
+  gate.**
+- **R4: the frame-alignment explanation for H5's 48/48 is REFUTED**
+  (2/8 extremal windows align, no constant offset). H5's value
+  match stands, mechanism unexplained — the F5 transfer question
+  stays open.
+
+**Architect's standing contradiction (still live, sharpened):**
+a root-anchored cost-11 chain at m=29 implies M_edge(11) ≥ 29;
+the archived census measured 28. The game↔census divergence is
+REAL and STILL UNLOCATED — W6R matched what it believed to be the
+census convention and the contradiction persists, so the remaining
+difference lives in a census rule the game still lacks (bankruptcy/
+negative-deficit termination, trit-vs-step depth units, credit
+offset, or the countdown's own scope). → W6S-CENSUS: the W6Q
+surgical pattern applied to W6R's witness — verbatim census
+recursion vs game score, step by step, until the divergent line is
+named. Until then, the game remains impeached as a corridor model
+above m ≈ 28 while the corridor's own receipts stand.
+
+## W6S-CENSUS — the three-conventions diagnosis (2026-07-05)
+
+Ledger W6S-CENSUS. Verdict: DISAGREE, uniformly — and the mechanism
+is structural, not a switch at m=29. **Three non-equivalent
+conventions share one formula:** (1) the game's g — backward,
+TERMINAL-anchored; (2) the census's d — forward, ROOT-anchored
+(Key(0,0)); (3) M_edge — forward, BIRTH-anchored (next_depth −
+birth_depth, lock3_census.rs:2632-2637). W6R's "root-anchoring"
+re-indexed (1)'s letters only; (1) vs (2)/(3) were never the same
+object at ANY m (uniform disagreement m=20..29). The witness chain
+under literal census semantics at C=11: legal 8 steps, then
+LOWER-BOUND BANKRUPTCY (d < 0) — a census rule the game never
+modeled; max d ≤ 1 throughout (never near the ceiling).
+
+**PROVENANCE ALARM (corroborating W6Q's side-note): M_edge(11)=28
+appears to be formula-derived, not independently m-swept — genuine
+sweeps exist only at C=3,4,5.** If confirmed, H5's 48/48 was
+partially formula-vs-proxy, and the corridor law's measured base is
+C ≤ 5 + the reserve scans + the verified range — NOT C ≤ 50. This
+is the verify-the-receipts lesson at the worst location; a full
+provenance audit of the corridor record (measured vs derived, C by
+C, with the producing tool named for each number) is now top
+priority (→ W6T-PROV), alongside the reconciliation (→ W6U-RECON:
+one capacity statement — census tree conditioned on reaching
+valid1 at exactly depth m — implemented, validated at C ≤ 5
+against genuine data, then evaluated at the contested m).
+
+Status: the game is a well-defined object with its own laws
+(uniqueness, tax curves, the m=29 structure); its corridor meaning
+is UNDEFINED pending W6U's reconciled statement. The corridor
+formula stands on: genuine C ≤ 5 sweeps, the reserve scans
+(max reserve 23 through 250M), and the 2^68-scale verified range —
+its C = 6..50 receipts are in escrow pending W6T.
+
+## W6T-PROV — Provenance audit: the escrowed C=6..50 receipts are the
+m=1 proxy, mislabeled (2026-07-05)
+
+Ledger W6T-PROV. Verdict: **the alarm is confirmed, and it is a
+regression, not a discovery.** Traced `w6h/h5_frame_rule_crosscheck.py`
+to its real source: `data/runs/lock3_C{1..50}_N2000_residue_m1_
+lineage_cohorts_*/` — genuine, dated (2026-05-23/24) Rust `lock3_census`
+runs (confirmed not fabricated: real run.log/live_events.jsonl/CSV at
+C=11, `lock3_census.rs:2632`'s birth-anchored lifetime formula matches
+W6S-CENSUS's own citation exactly). **But `residue_mod_power=1`
+throughout** (`lock3_census.rs:1267-1268`: modulus capped at 3¹ for the
+whole depth-2000 run) — a coarse compatibility proxy, never swept to
+the true desert edge. `LOCK3_PRECISION_COUNTDOWN_GRID.md`, verbatim:
+**"Only `m1` has been checked for C6-C50 in this series."** Only
+C=1..5 have genuine dense per-m sweeps to the zero-birth edge
+(`LOCK3_BIRTH_INVARIANT_AUDIT.md`) and archived witness sets
+(`embedding/small_side_live_sets/*.npz`, C≤5 only).
+
+**This exact tiering already existed once and was dropped.**
+`renorm_check/beatty/task1_measured_widths.csv` (pre-dates W6) labels
+C=3,4,5 `GENUINE_full_sweep` and C=6..50
+`INFERRED_m1_only_plus_linear_countdown_assumption` explicitly, tracing
+the overclaim to `COLLATZ_PROOF.md:230`'s "48 independently measured
+corridor widths... without exception" — its own superseded predecessor
+`COLLATZ_PROOF_backup_v2.md` had the honest caveat ("C=6-50: m=1
+only"), dropped in the polished version. W6H-H5 (2026-07-04)
+re-derived the same 48 numbers from the same raw archive and
+re-introduced the identical overclaim ("48/48 EXACT... never
+individually checked before"). Independent from-scratch re-verification
+this round (`w6t_prov/t1_provenance_table.py`, not reusing h5's script):
+**C=1..5 MEASURED (5/5), C=6..50 DERIVED (45/45, 0 mismatches) —** the
+proxy agrees with the formula everywhere, which is exactly why the
+mislabel was easy to miss (no numeric daylight, only a methodological
+gap).
+
+**C=148 (F5): confirmed OPEN, not a second measured point.** W1's own
+entry: the C=147/148 countdown ladder was killed before completing;
+W2's telescoping route never reached C=148 either ("NOT yet attempted
+— W2's own exhaustive test hit its own tractability wall"). F5
+COMPUTATION's "(measured, W2)" parenthetical (line ~828) is a mislabel:
+371=53⌈360/53⌉ is the run-length rule applied to the formula's own
+m_irr(148), and L(359)=149 is an exact but SYMBOLIC loop-word
+discrepancy computation, not a census read — the ledger's own
+B1.3-prep entry says plainly "D(m=358 or 359) was NOT computed —
+genuine wall." The same real-word/measured-word conflation recurs at
+W6E-E2. No `lock3_C147/148/149` directory exists anywhere in the repo
+(confirmed by background sweep).
+
+**Background sweep found nothing that changes the verdict:**
+`data/runs/corridor_bound_*`/`k53_capacity_*`/`macro_corridors_*` are
+an unrelated investigation (real orbit integers, different C entirely);
+`certs/product_automaton_*` are genuine dated runs of a DIFFERENT
+quantity (extinction-heartbeat scaling, Certificate 9), not M_edge, at
+C up to 10,000 — real data, wrong quantity, must not be cited as
+corridor-capacity corroboration; `LOCK3_CUTOFF_NUMBERS_CNEG20_TO_C50.txt`
+is a closed-form table presented without a run-log.
+
+**THE MEASURED BASE:** C = 1,2,3,4,5 genuinely measured (`lock3_census`,
+dense per-m sweep to the true desert edge, 2026-05-24, +
+`embedding/small_side_live_sets/*.npz` witnesses). C = 6..50: real runs
+exist but only at a coarse m=1 proxy that cannot discriminate the
+formula from an independent measurement — formula-consistent, not
+formula-independent. C=148 and the whole 147..149 neighborhood: OPEN,
+no exhaustive measurement exists; reported numbers there are exact
+conditional/symbolic computations, not physical measurements. The
+250M-integer reserve scan (max reserve 23, 2026-05-21) is a separate,
+genuine, already-corroborated evidence line.
+
+**Downstream re-scoping needed:** H5's "48/48 EXACT" (drop to "5/5
+measured exact + 45/45 formula-consistent proxy, not independently
+tested"); `COLLATZ_PROOF.md:230` (restore the backup version's
+caveat — this is v1.1 correction item 1, registered 2026-07-03,
+still unapplied); SYNTHESIS.md's F5 COMPUTATION "(measured, W2)"
+parenthetical (remove/correct); W6E-E2/LOCK4-B1.3's "real 371-step
+measurement" phrasing (reword — "real word" ≠ "measured"); any future
+citation of "C≤50 verified" (say "C≤5 verified, C=6..50
+formula-consistent at a coarse proxy" instead) — this binds W6U-RECON
+when it runs.
+
+**Honest walls:** none computationally (every check under a second,
+negligible RSS); no new measurement was taken (the C=6..50 status
+resolved cleanly from existing primary-source text, not from ambiguity
+a rerun would settle). Decisive artifacts:
+`shell/underlock/w6t_prov/t1_provenance_table.py` (+ `.csv`, 50 rows,
++ `.log`). No commits, per house rules.
+
+## LOCK4-B1 — bridge economics, measured exactly (2026-07-05)
+
+Ledger LOCK4-B1.0..B1.4; artifacts shell/bridge/b1/. Scope note:
+game-frame results (the W6S three-conventions caveat applies; the
+corridor-form inequality awaits W6U's reconciled object) — but
+B1.0's anchor is REAL-integer data (May scans reproduced 8/8
+fields; the [1,1]/ghost-−1 growth segments confirmed LITERALLY
+identical to the game's cheap ray ρ≡−1, not analogous).
+
+- **B1.1**: phase-relaxed climb cap, closed form climb(k) =
+  k − 2·supports(k), validated; value at the 306-letter bridge:
+  **50** — under the 149 requirement with no residue arithmetic at
+  all. (Architect's distrusted ~52 estimate: close; both frozen
+  HIT.)
+- **B1.2 (the gem)**: residue-legal max climb over ANY 53-letter
+  window, exact, all launch classes: **−6. Net climbing across even
+  one full heartbeat is impossible — every legal chain loses ≥ 6
+  per 53 letters, from every launch.** (A pruning-soundness gate
+  caught and fixed a real bug first; k=306 exact walled — honest
+  brackets reported.)
+- **B1.3**: the assembled first-bridge inequality HOLDS — slack
+  ≥ 237 (conservative) / 132 (exact k=53 control) vs frozen ≥ 30.
+  Stated caveats: LHS a lower bound; RHS (149) is L-based.
+- **B1.4**: crash tax exceeded its prediction — maximal-climb
+  witnesses don't descend after landing, they DIE outright (no
+  legal move) within 1-3 steps. Not a tax; a cliff.
+- **Side observation (game-fact, flagged for W6U re-grounding):**
+  the agent independently reproduced D < L from m=29 and extended
+  toward m≈130 — game-D grows ~4× slower than L there. The game's
+  own capacity law changes slope at m≈29; corridor meaning pending
+  the reconciled object.
+
+Lock 4 status: the red team's demanded inequality now exists in
+measured form with wide slack, anchored at one end in real orbit
+data (May scans) — its corridor-form restatement is the remaining
+step, blocked only on W6U's dictionary.
+
+## Architect's note on W6T-PROV (Fable, 2026-07-05) — owning the regression
+
+The provenance audit's sharpest finding is about process, and it
+runs through the architect: the repo's OWN first-day recon
+(task1_measured_widths.csv, 2026-07-03) had already tagged C=6..50
+as INFERRED_m1_only, and v1.1 correction item 1 was registered to
+fix COLLATZ_PROOF.md:230's phrasing — and never applied. On
+2026-07-04, W6H-H5 re-derived the same numbers, reported "48/48
+EXACT," and the architect amplified it into the record ("receipt-
+exact everywhere ever measured") without checking it against the
+correction list the architect helped write the day before. The
+overclaim was a REGRESSION of an already-known caveat, republished
+through the very discipline meant to prevent it.
+
+Corrections applied today: COLLATZ_PROOF.md:230 rephrased (v1.1
+item 1 finally executed); the F5 computation's "(measured, W2)"
+mislabel fixed in place. Standing evidentiary tiers, stated once,
+plainly: TIER 1 (genuine edge measurement): C = 1..5 dense sweeps +
+witnesses; the 250M reserve scan; the 2^68-scale verified range.
+TIER 2 (real runs, proxy precision — consistency evidence):
+C = 6..50 m1-lineage cohorts. TIER 3 (symbolic/game computation,
+corridor meaning pending W6U): everything at C = 148 / m ≥ 29,
+including L(358)/L(359) and the divergence-point sweep. F5 is
+empirically OPEN — as the day-one recon said before the week's
+enthusiasm papered it over. NEW HOUSE LAW: before any result is
+promoted into the record, it gets checked against the standing
+correction list; and every claim carries its tier.

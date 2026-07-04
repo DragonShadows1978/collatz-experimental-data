@@ -1,0 +1,9 @@
+k,launch_class,witness_value,replay_ok,continuation_len,continuation_status,died_at,net_climb_change_over_continuation,crash_tax
+53,20,-6,True,20,DIED(class-0),2,0,0
+53,20,-6,True,50,DIED(class-0),2,0,0
+100,2,-24,True,20,DIED(class-0),1,0,0
+100,2,-24,True,50,DIED(class-0),1,0,0
+200,2,-67,True,20,DIED(class-0),3,-1,1
+200,2,-67,True,50,DIED(class-0),3,-1,1
+306,2,-111,True,20,DIED(class-0),3,-1,1
+306,2,-111,True,50,DIED(class-0),3,-1,1

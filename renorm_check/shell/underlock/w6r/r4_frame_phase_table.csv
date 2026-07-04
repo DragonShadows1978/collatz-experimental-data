@@ -1,0 +1,9 @@
+C,M_edge,m_irr,run_predicted,M_edge_matches_m_irr,birth_depth,last_alive_depth,end_depth_death_record,phase_last_alive_mod53,phase_death_record_mod53,phase_birth_mod53,run_expected_phase_mod53,last_alive_matches_frame_phase
+3,9,9,53,True,10,18,19,18,19,10,52,False
+4,12,12,53,True,41,52,53,52,0,41,52,True
+5,14,14,53,True,10,23,24,23,24,10,52,False
+6,16,16,53,True,15,30,31,30,31,15,52,False
+7,19,19,53,True,17,35,36,35,36,17,52,False
+8,21,21,53,True,15,35,36,35,36,15,52,False
+9,24,24,53,True,29,52,53,52,0,29,52,True
+10,26,26,53,True,22,47,48,47,48,22,52,False

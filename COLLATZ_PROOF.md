@@ -227,9 +227,16 @@ $$M_{\text{edge}}(C) = \left\lfloor \frac{53(C+1)}{22} \right\rfloor.$$
 
 For $m > M_{\text{edge}}(C)$: zero births, empty state set.
 
-**Verified by Certificate 1:** the formula matches all 48 independently
-measured corridor widths ($C = 1$ through $50$) without exception.
-Full precision-countdown ladders verified exact for $C = 3, 4, 5$.
+**Verified by Certificate 1** *(phrasing corrected 2026-07-05, per the
+v1.1 correction list item 1 and the W6T provenance audit)*: full
+precision-countdown ladders verified exact for $C = 3, 4, 5$ (dense
+per-$m$ sweeps to the true desert edge, with archived witnesses). For
+$C = 6$ through $50$, genuine dated census runs exist but at the
+$m{=}1$ proxy precision only (`residue_mod_power=1`); their agreement
+with the formula is real consistency evidence, not independent
+measurement of the edge. The earlier phrasing "48 independently
+measured corridor widths without exception" overstated this and is
+withdrawn.
 The automaton's zero-birth edge falls at exactly $M_{\text{edge}}(C)+1$
 at every tested corridor width. $\square$
 

@@ -3798,10 +3798,29 @@ cheap ray, not merely analogous. Identity confirmed: `True`.
 reconciliation explicit and verified; ghost/cheap-ray identity
 confirmed both algebraically and by direct fixed-point check).**
 
-**Decisive artifacts:** `b1/b0_audit_reconcile.py`, `b1/b0_audit_results.json`,
-`b1/b0_run_output.log`. Wall <0.01s, peak RSS negligible.
+**Artifact-level corroboration (additional, beyond the fresh-code
+spot-check above):** the raw source CSVs referenced by LOCK4_RESULTS.md
+still exist and directly corroborate the claimed aggregate counts —
+`data/runs/scan_limit250000000_D24_*.csv` is EMPTY (0 data rows,
+confirming "0 starts reached reserve 24" through 250M exhaustively);
+`data/runs/scan_limit250000000_D23_*.csv` has exactly 6 data rows
+(confirming "6 hits, max reserve 23"), including the two rows
+(80049391, 120080895) whose fields match the fresh-code reproduction
+above verbatim. The full 250M-integer exhaustive scan itself was NOT
+re-run this round (infeasible in scope; B1.0's mandate was audit +
+spot-reproduction, not re-execution of the whole scan) — this is
+inherited empirical evidence, corroborated at the artifact level and
+spot-verified at the individual-orbit level, not independently
+re-derived at the full-scan level.
 
-**Honest walls:** none.
+**Decisive artifacts:** `b1/b0_audit_reconcile.py`, `b1/b0_audit_results.json`,
+`b1/b0_run_output.log`, plus the pre-existing
+`data/runs/scan_limit250000000_D23_20260521T190952Z.csv` (7 lines) and
+`data/runs/scan_limit250000000_D24_20260521T190900Z.csv` (0 lines, empty)
+cross-checked as artifact corroboration. Wall <0.01s, peak RSS negligible.
+
+**Honest walls:** the full 250M exhaustive scan was not re-executed
+(inherited, artifact-corroborated, not re-derived from scratch).
 
 ### LOCK4-B1.1 — Phase-relaxed climb cap (`b1/b1_phase_relaxed_climb.py`)
 
@@ -3841,3 +3860,945 @@ measured anywhere).
 
 **Honest walls:** none.
 
+## W6R — Root-Anchored Re-Grounding (Sonnet exec, 2026-07-05)
+
+Order (frozen prompt, no separate order file). Context: W6Q-REALITY
+established the census's own convention (rust/lock3_census.rs) scores
+deficit ROOT-anchored (credit_at_step(k), k=0 at the trajectory's own
+start, no external calendar anchor) and CEILING-ON (deficit clamped to
+[0,C] — `deficit_branch_capacity`/`max_deficit_for_c`, lines 1251-1265,
+c>=0 required; `Key::new` panics on negative deficit, lines 268-271),
+whereas the GAME's entire proof program (W6E-W6Q) used an END-anchored
+window (`anchor_steps=53`, w6e/engine.py). DERIVATION_NOTES sec 15
+registered the architect's prediction that re-grounding the whole
+program root-anchored would RESTORE universality/uniqueness/floor at
+all m (70%). This round tests that directly. Work under
+`shell/underlock/w6r/`, no commits, CPU only, peak RSS ~0.03GB across
+every script (well under the 8GB cap), no wallclock cap ever hit.
+
+**Shared instrument (`w6r/root_anchor.py`):** root-anchoring is a
+SURGICAL change to the existing, already-validated machinery —
+`root_anchored_word(credit_fn, m)` = `backward_letters(credit_fn, m,
+anchor_steps=m)` (i.e. the window is [0,m) in the census's own
+indexing, instead of the game's fixed [53-m,53)) — verified against a
+fresh, independent forward recursion built directly from
+`credit_at_step`'s own definition (`verify_root_anchor_equivalence`,
+PASS) and against the g/d sign-duality fact stated in
+w6q_reality/q3 (`verify_g_d_duality`, PASS, re-derived independently
+here). `w6r/r0_validation_gate.py` (binding house rule: asymmetric/
+convention-sensitive validation rows FIRST) ran two required rows
+before anything else: Row A (root vs end anchoring genuinely
+DIFFERENT at true-word m=29 — root word != end word, L_end=12 matches
+the archived ledger value — PASS); Row B (this round's OWN fresh code,
+two independently-coded methods — step recursion and closed-form
+telescoping credit sum — reproduce W6Q-REALITY's own reported numbers
+on the 839 chain EXACTLY: max d=1, min d=-11, digit-for-digit matching
+the ledger's own table — PASS). Both rows PASS; round proceeded.
+
+### W6R-R1 — Does the m=29 break vanish under the convention of record? (`w6r/r1_root_break_check.py`) — **LEADS THE ROUND, MISS**
+
+Ceiling variant stated explicitly per the order: D_ceil
+(`canonical_D(ceiling_on=True)`, g(k)>=0 at every prefix), matching
+rust/lock3_census.rs's own deficit recursion at lines 2080-2081
+(`credit_at_step(next_depth-1)`, root-anchored at depth 0 per line
+2049) combined with the ceiling-on branch capacity at lines 1251-1265
+and 268-271 — the SAME variant W6P-URGENT itself used for its
+from-scratch D_ceil search.
+
+**THE FROZEN PREDICTION IS FALSIFIED: universality D_root=L_root does
+NOT hold at all m under root anchoring. It holds cleanly through
+m=24..28 (5/5 clean match, D_root==L_root exactly) and BREAKS at
+m=29, staying broken through m=40 (12/17 total MISS, only 5/17 match).**
+At m=29, D_root(ceil)=12 while L_root=13 (a strict miss); the break
+value pins in a narrow 11-12 band while L_root climbs 13→17 over
+m=29..40 — the SAME qualitative shape as the end-anchored break W6O/
+W6P found (a cheap "detour" chain beating the loop), just with
+different numbers under the corrected anchoring. Every cell's A_CAP
+margin check (40 vs 80) passed; a witness was recovered and
+independently replayed for all 17 cells (all PASS, 0 replay failures).
+`root_anchor.canonical_D` fed the census's own D_ceil semantics with
+NO other change to the validated backward-DFS machinery.
+
+**Independent re-derivation (house rule, this is the lead finding):**
+`w6r/r1b_independent_rederivation.py`, a COMPLETELY FRESH
+implementation (own `credit_true_fresh`, own parity/predecessor
+functions, own branch-and-bound DFS, no shared imports with
+root_anchor.py or k0_canonical_engine.py) re-derived m=24,28,29,30,31,32
+from scratch and agrees EXACTLY with the production run on every cell,
+including the m=29 breach (D=12, L=13) and its continuation through
+m=32 — 6/6 agreement, 0 discrepancies.
+
+**Decisive artifacts:** `w6r/r1_root_break_table.csv` (17 rows, m=24..40),
+`w6r/r1_root_break_check.log`, `w6r/r1b_independent_rederivation.py` +
+`.log` (independent re-derivation, 6/6 agreement). No honest walls
+(margin checks all OK, every witness recovered and replayed, peak RSS
+0.027GB, wall 2.0s).
+
+**Frozen prediction (universality holds at all m under root anchoring,
+70%): MISS.** The break is real under BOTH anchoring conventions —
+root-anchoring does not restore universality. It relocates the exact
+numbers (D_root pins near 11-12 vs the end-anchored D pinning at 11;
+L_root climbs to 17 by m=40 vs L_end's climb to different values) but
+the qualitative phenomenon — a non-loop chain beating the loop past
+m≈29 — survives the correction to the convention of record. This is
+the round's central finding: the m=29 anomaly is not an artifact of
+the end-anchoring bug: it is a genuine fact about the m-window
+minimax game at long m, under either convention.
+
+### W6R-R2 — Loop uniqueness under the convention of record (`w6r/r2_uniqueness_census.py`) — **HIT**
+
+Instrument note (honest wall reported): the order's natural reuse
+target, `w6f/f1_engine_ext.py`'s exhaustive (d,r) residue-space
+enumerator, scales O(3^m) regardless of chain rarity and timed out
+(>4min) at m=15 in this round's first attempt (m=14 alone took ~21s).
+PRIMARY instrument became a lighter-weight backward-DFS witness
+collector reusing `canonical_D`'s own sound pruning (collects every
+a-sequence hitting the known-optimal D_target instead of only
+returning the scalar), which scales to m=16 in well under a second —
+validated by a 3-way independence gate (this lightweight method vs
+`compute_D_and_optimal_set`'s exhaustive residue-BFS vs
+`brute_force_all_chains`'s from-scratch residue-iteration, the latter
+capped at m<=6 per its own module docstring's validated scope and a
+measured >2min wall past that) before trusting the extended range.
+
+**Independence gate: PASS, all three methods agree exactly on every
+tested cell (true-word + both mechanical families, m=4..11, brute
+force through m=6).** Production census (root-anchored, m=4..16, all
+3 word families, both mechanical at their own root phase): **39/39
+words have a UNIQUE optimal chain, and it is the all-2s loop, exactly
+matching D_root==L_root at every one of these (short) m** — fully
+consistent with R1's finding that the short-word regime (m<=~28) is
+clean under root anchoring too.
+
+**Decisive artifacts:** `w6r/r2_uniqueness_table.csv` (39 rows),
+`w6r/r2_uniqueness_census.log`. No honest walls in the production run
+(every margin check OK, no enumeration cap hit, independence gate
+passed). Peak RSS 0.117GB, wall 9.1s.
+
+**Frozen prediction (loop strictly unique everywhere, 70%): HIT.**
+39/39.
+
+### W6R-R3 — Floor-point + one-point structure, root-anchored (`w6r/r3_floor_onepoint.py`) — **MISS**
+
+Reused N2's own `min_prefix_cost_and_argmin` branch-and-bound
+(congruence-only, true minimum over admissible length-k* prefixes,
+margin-checked 40 vs 80) unmodified in logic, fed root-anchored words.
+Tested m=4..12 + {13,16,20,24,28} + 29..35 mandatory, all 3 word
+families (63 rows total).
+
+**Floor law and one-point property hold cleanly through the short/
+mid range (all m<=28 for true-word and golden-per8; m<=20 for
+sqrt2-per12) but BREAK starting at m=29 for the true word (min
+prefix cost=12 < g_loop(k*)=13, a genuine floor violation), m=30 for
+golden-per8, and even earlier — m=24 — for sqrt2-per12.** Overall
+41/63 hold, 22/63 violate — every violation independently replayed
+(0 replay failures) and margin-checked (0 margin failures). The
+violations are exactly the R1 breach re-appearing at the per-prefix
+level (same mechanism: a cheaper congruence-only prefix exists at k*
+than the loop achieves), now shown to set in EARLIER for the
+mechanical families (sqrt2-per12 breaks at m=24, matching its own
+period-boundary sensitivity noted back in W6O-O1) than for the true
+word (m=29).
+
+**Independent re-derivation** of the true-word m=29 cell (fresh
+credit function, fresh parity/predecessor code, fresh DFS) reproduces
+min=12 < L=13 exactly.
+
+**Decisive artifacts:** `w6r/r3_floor_onepoint_table.csv` (63 rows),
+`w6r/r3_floor_onepoint.log`. No honest walls (all margin checks OK,
+all replays PASS). Peak RSS 0.026GB, wall 2.4s.
+
+**Frozen prediction (floor law + one-point property hold at every m
+tested including 29..35, 55%): MISS.** The order itself flagged this
+as the most likely prediction to fail ("the shortcut may genuinely be
+small-m-only even in the right frame") — confirmed: root-anchoring
+does not extend the shortcut's scope past where W6O/N1/N2 already
+found it failing under end-anchoring; if anything the mechanical
+families' break points are EARLIER under root-anchoring (sqrt2-per12
+at m=24) than the true word's m=29.
+
+### W6R-R4 — Frame-rule reconciliation (`w6r/r4_frame_phase_check.py`) — **MISS**
+
+Data source: the SAME archived `data/runs/lock3_C{C}_N2000_residue_m1_
+lineage_cohorts_*/lock3_census_C{C}.csv` files w6h/h5 used (not
+regenerated). Lineage-death semantics read directly from
+rust/lock3_census.rs (lines ~2625-2657): a lineage's recorded lifetime
+at death equals `next_depth - birth_depth`; the CSV's own
+`max_valid1_lineage_lifetime` column is a monotone-nondecreasing
+running max, so the FIRST depth at which it reaches its final (row-(-1))
+value is exactly the death-record depth of the extremal lineage.
+Extracted (`extract_window`): birth_depth, last_alive_depth (=
+death_record_depth - 1, the "while-alive" convention giving lifetime =
+d - birth + 1 = M_edge exactly), for C=3..10.
+
+**No fixed phase relationship found.** Under either window-end
+convention tested (last_alive_depth or the raw death-record depth),
+only 2/8 archived C values (C=4, C=9) land exactly on the frame rule's
+own expected phase (52 mod 53); the other 6/8 sit at varying offsets
+(offsets from expected phase: [19, 0, 24, 31, 36, 36, 0, 48] for the
+last_alive convention) — no constant shift reconciles them. A
+secondary check (residue mod 22, the corridor's other natural modulus)
+was also tried as a bonus diagnostic and showed no structure either.
+Honest caveat (stated, not hidden): C=3..10 all sit BELOW the frame
+rule's own first 53-boundary crossing (C=21, per h5's own table,
+where run(C) first jumps from 53 to 106) — this round's C-range may
+simply be too small to see whatever alignment mechanism (if any)
+operates once the window genuinely wraps past 53; that is a scope
+note for a follow-up, not a rescue of this round's own null result.
+
+**Decisive artifacts:** `w6r/r4_frame_phase_table.csv` (8 rows),
+`w6r/r4_frame_phase_check.log`. No honest walls (all 8 archived C
+values found and read; the h5 archive itself was already cross-
+validated CSV-vs-JSON in that round). Wall <1s.
+
+**Frozen prediction (extremal windows sit at the frame-rule phase or a
+fixed offset from it, 60%): MISS.** H5's own 48/48 VALUE match
+(M_edge(C) == m_irr(C) exactly) stands completely undisturbed by this
+result — R4 only shows that the mechanism behind that value-match is
+NOT simple frame-phase-alignment of the extremal window against the
+53-grid, at least not in the C=3..10 regime tested. H5's fact remains
+correct and receipt-exact; its EXPLANATION via sec 15a's phase-
+alignment hypothesis is what this round refutes.
+
+## W6R Final Digest
+
+| Experiment | Verdict | Decisive number/table | Frozen prediction |
+|---|---|---|---|
+| **R1 (m=29 break under root anchoring, LEADS)** | **MISS — universality does NOT hold; breaks exactly at m=29, same as end-anchored, independently re-derived 6/6** | 5/17 match (m=24..28 clean, m=29..40 all miss); m=29: D_root=12 < L_root=13 | **MISS (70% predicted universality holds at all m)** |
+| R2 (loop uniqueness, m=4..16, 3 families) | **HIT — loop strictly unique everywhere tested** | 39/39 unique all-2s optimal chain; 3-way independence gate PASS | **HIT (70%)** |
+| R3 (floor/one-point, m=4..35 sampled) | **MISS — breaks at m=29 (true word), m=30 (golden), m=24 (sqrt2)** | 41/63 hold; all violations replayed, 0 failures | **MISS (55% predicted holds through 29..35)** |
+| R4 (frame-rule phase reconciliation, C=3..10) | **MISS — no fixed phase found under either window-end convention** | 2/8 exact alignment; offsets vary, no constant shift | **MISS (60%)** |
+
+**Program state after W6R:** the architect's root-anchoring hypothesis
+(DERIVATION_NOTES sec 15, "all three [universality, uniqueness,
+floor] HOLD at all m under root-anchoring — 70%") is **only 1/3
+confirmed**. Loop uniqueness (R2) transfers cleanly to the corrected
+convention. Universality (R1, the round's lead question) and the
+floor/one-point shortcut (R3) do NOT — both break at essentially the
+SAME location (m≈24-29) under root-anchoring as they did under the
+end-anchored game, independently re-derived and replayed at every
+reported cell. **The m=29 phenomenon is therefore not a W6Q-style
+convention artifact — root-anchoring was a genuine correction (R0's
+validation gate shows the two conventions are materially different
+objects, confirmed against W6Q-REALITY's own numbers exactly) but it
+does not make the anomaly disappear.** R4 additionally shows the
+corridor-side H5 frame-rule fact (M_edge=m_irr, 48/48, still standing,
+untouched) is not explained by simple extremal-window phase-alignment
+in the C=3..10 range — its mechanism remains open. Net effect: the
+proof program's "one-point lemma" shortcut (N2, closed by W6O) and the
+global universality claim (W6P/W6Q) both stay closed/suspended past
+m≈29 under the corrected convention too; the global-window congruence
+argument (DERIVATION_NOTES sec 12d) remains the necessary route, now
+confirmed necessary under BOTH anchoring conventions rather than only
+the (mistaken) end-anchored one. Uniqueness (R2) is the one piece of
+the trinity that generalizes cleanly and can be built on directly.
+Peak RSS across the whole round: ~0.12GB (R2's production run); no
+wallclock or RSS cap ever approached; zero commits made.
+
+## W6S-CENSUS — Locating the game-vs-census divergence, following the W6Q method exactly (Sonnet exec, 2026-07-05)
+
+Order: apply W6Q-REALITY's own method (backward-reconstruct + forward-
+replay a witness chain as genuine integers, then score it under the
+census's LITERAL `rust/lock3_census.rs` semantics, read directly, not
+paraphrased or reused-via-`k0_canonical_engine.py`) to W6R's m=29
+root-anchored witness, to finally locate where the game and the census
+part ways — the open question that has survived W6Q and W6R. Work
+under `shell/underlock/w6s_census/`, no commits, CPU only, peak RSS
+negligible (<50MB across all three scripts, well under the 8GB cap),
+wall time <1s per script.
+
+**STEP 1 — Replay: CONFIRMED EXACTLY, no honest walls
+(`s1_replay_witness.py`).** W6R's m=29 witness a-sequence
+(`4,3,2,1,1,4,2,2,1,6,1,1,1,2,2,2,1,2,1,2,4,1,2,1,1,2,2,1,1`, identical
+to W6P-URGENT/W6Q-REALITY's own 839 chain — confirmed byte-for-byte
+against `w6r/r1_root_break_table.csv` row m=29) was independently
+re-reconstructed backward from ρ=1 (`ρ'=(2^a·ρ-1)/3`, all 29 divisions
+exact) and forward-replayed as a real Collatz trajectory
+(839→1259→…→1, 29 odd-steps). Every one of the 29 `v2(3x+1)` values
+matches the claimed exponent exactly (e.g. step 0: x=839, 3x+1=2518,
+v2=1; step 8: x=2693, 3x+1=8080, v2=4; step 28: x=5, 3x+1=16, v2=4→1).
+This is a third independent confirmation (after W6Q's and W6R's own)
+that 839→1 in exactly 29 steps with this exact exponent sequence is
+real.
+
+**STEP 2 — Literal census scoring (`s2_census_literal_score.py`): the
+census's actual `.rs` two-sided ceiling rule, never previously
+re-implemented from the literal source (W6R used
+`k0_canonical_engine.canonical_D`, whose OWN docstring explicitly
+states "no separate fixed ceiling C; ceiling-on is exactly the
+g(k)>=0 prefix constraint, nothing else" — this claim is checked here
+against the `.rs` source directly instead of taken on faith).** Read
+`rust/lock3_census.rs` directly: `credit_at_step` (lines 1247-1249,
+identical formula to the game's `credit_true`); growth loop
+(`run_census` lines 2080-2081 / `run_census_lean` lines 2417-2418,
+`c = credit_at_step(next_depth-1)`, root `Key::new(0,0)` at depth 0,
+lines 2049/2395 — confirms W6Q/W6R's root-anchored k=0..m-1 indexing
+is correct); and the deficit transition itself (`run_census` lines
+2093-2103 / `run_census_lean` lines 2461-2472): `for d_next in
+0..=max_deficit { let a = key.deficit() + c - d_next; if a < 1 {
+continue; } }`, where `max_deficit = config.c` (the CLI `--C` capacity
+ceiling, required non-negative, line 751) — i.e. **a child state is
+materialized ONLY if `d_next` lands in `[0, config.c]` AND `a>=1`; a
+proposed `d_next` outside `[0,C]` produces NO state at all** (`Key::new`,
+lines 268-273, panics on negative deficit; `run_census_lean`'s own
+inline comments, lines ~2432-2436, explicitly name `d_next > C` a
+"breach upward" / exit event). This IS a genuine hard two-sided wall,
+confirming `canonical_D`'s docstring claim ("no upper ceiling, only
+g>=0") describes a DIFFERENT, laxer rule than the literal `.rs` code.
+
+Scoring the verified 839/m=29 chain under this literal rule (C=11 and
+C=12 both tested): **the trajectory is illegal from step i=8 onward**
+(`d_prev=1, c_k=2, a=4 → d_next=-1 < 0`) — it goes bankrupt on the
+LOWER bound, 20 steps before the window even ends, never once
+approaching the upper ceiling (max d = 1 across the whole run). This
+is the exact same qualitative result W6Q already found for its own
+839-chain-vs-census-own-d comparison (max d=1, min d=-11) — this
+round's contribution is confirming it against the LITERAL two-sided
+Rust rule (not just the lower-bound-only Python rule), and showing the
+upper-ceiling term is not even the operative one here — the lower wall
+already kills it.
+
+**STEP 3 — Reconciliation and the actual mechanism
+(`s3_reconciliation.py`): DISAGREE, and the mechanism is NOT
+"m=29-inert-below/active-at-29"; it is a permanent, uniform structural
+gap present at every m tested (20..29), which is itself the finding.**
+Per the order's Branch B, the expected shape was "name a census rule
+that is inert for m=24..28 and switches on at m=29." That shape does
+NOT fit what was found: repeating the exact same game-g-vs-
+census-literal-d comparison on the all-2s loop chain (W6R-R2's
+independently-verified unique optimal chain for m≤28) at m=20..29
+shows **`max(census-literal d)` stays at 0 and `min(census-literal d)`
+goes uniformly, monotonically negative (−9 at m=20 down to −13 at
+m=29, roughly −m/2) at EVERY m in this range** — there is no m=29
+transition in this comparison at all. The game's own `g` (backward-
+terminal, W6R's `D_root`) matches the loop's own `L_root` cleanly
+through m=28 and breaks at m=29 — but that is an internal, same-
+convention comparison (game vs game, both backward-terminal), never a
+comparison against the census's literal forward-root `d`. **The
+census-literal-vs-game mismatch was never "inert" at m=24..28; it
+simply was never the thing W6R's R1 was testing there.**
+
+**Named mechanism: three non-equivalent anchor/boundary conventions,
+not one calendar offset.**
+1. **Game's g** (DERIVATION_NOTES sec 2, `δ_k = δ_T −
+   Σ_{j≤k}(a_j−c_j)`; `k0_canonical_engine.canonical_D`'s DFS starts
+   `dfs(0, rho=1, running=0, ...)`): a **backward, TERMINAL-anchored**
+   minimax — "how much capacity must be banked in advance for an
+   m-step chain ENDING at ρ=1 to never go bankrupt walking backward to
+   that terminal." The terminal condition ρ=1 is baked into the DFS's
+   own root.
+2. **Census's own literal d** (`rust/lock3_census.rs`, `Key::new(0,0)`
+   at depth 0, forward growth loop): a **forward, ROOT-anchored**
+   recursion with NO constraint that the tree terminate at ρ=1 after
+   any particular depth — "valid1" (residue-compatible with terminal)
+   is tracked as an emergent event wherever it happens to occur in the
+   tree.
+3. **M_edge(C)** (the archived comparator, `max_valid1_lineage_lifetime`,
+   defined at `rust/lock3_census.rs` lines 2632-2637 as `next_depth −
+   birth_depth`): a **forward, BIRTH-anchored** lifetime — relative to
+   whichever depth a lineage happens to enter valid1 status, not depth
+   0 and not the terminal.
+W6Q found (1) vs (2) diverge on the 839 chain. W6R's "root-anchoring
+fix" changed WHICH credit letters convention (1) pulls into its
+window (re-indexed from k=24..52 to k=0..28) but never changed
+convention (1) into (2) or (3) — `D_root`'s own DFS still starts at
+ρ=1 and walks backward. That is why W6R's fix relocated the break's
+NUMBERS (D_root=12 vs L_root=13, instead of D_end=11 vs the
+M_edge-implied L_end=12) without resolving the contradiction: it
+corrected the calendar offset within convention (1) but never touched
+the boundary-direction mismatch between (1) and (2)/(3), which is
+uniform across every m, not something that switches on at 29.
+
+**Verdict: DISAGREE (confirmed), but NOT in the shape the order's
+Branch B anticipated.** No single named `.rs` line is "inert through
+m=28 and active at m=29" — the census's literal two-sided ceiling
+rule (step 2 finding) is real and load-bearing (it IS stricter than
+`canonical_D`'s lower-bound-only rule), but it is not what explains
+the m=29-specific break, because the game-vs-census-literal
+comparison never agreed at any m in the first place (step 3). The
+original W6P-URGENT/W6H contradiction (game's D_ceil=11-survives-29
+vs archived `M_edge(11)=28`) is therefore not resolvable by finding a
+missing translation TERM between the two conventions — they are
+different conventions from the ground up (backward/terminal vs
+forward/root vs forward/birth), and W6Q's own side-finding stands
+independently: `M_edge(11)=28` itself was never produced by a genuine
+m=28-vs-m=29 exhaustive scan at C=11 (only the `⌊53(C+1)/22⌋` formula,
+cross-checked against a residue_mod_power=1 lineage-lifetime proxy).
+**Neither side of the original contradiction is a verified apples-to-
+apples measurement of the same object; both W6Q's convention-mismatch
+finding and this round's uniform-structural-gap finding stand
+together as the located root cause: the "contradiction" was comparing
+three different formal quantities that happen to share the same
+`credit_at_step` formula, not a bug in any one of them.**
+
+**Honest walls:** none in the computational sense (every script ran in
+well under a second, all replays exact, no RSS/wall pressure) — but
+the INTERPRETIVE wall from W1/W2 (F5 status OPEN, telescoping blocked
+on W2's tractability wall) is unchanged and out of this round's scope.
+This round narrows *why* game and census disagree structurally; it
+does not newly resolve F5 or produce a corrected capacity-lemma
+statement — that remains future work (candidate next step: define
+D(m) and the census's tracked corridor as the SAME boundary-value
+problem, e.g. by requiring the census tree to be conditioned on
+reaching valid1 at exactly depth m, rather than treating valid1-birth
+as emergent — untried here, out of scope for this round's order).
+
+**Decisive artifacts:** `shell/underlock/w6s_census/s1_replay_witness.py`
+(+ `.log`, `s1_replay_trace.json`), `s2_census_literal_score.py` (+
+`.log`, `s2_census_literal_table.json`), `s3_reconciliation.py` (+
+`.log`, `s3_uniform_mismatch_table.json`). All under
+`shell/underlock/w6s_census/`; `shell/bridge/` untouched; zero commits.
+
+### LOCK4-B1.2 — Residue-legal max climb (`b1/b2_residue_legal_max_climb.py`)
+
+**Instrument:** exhaustive branch-and-bound DFS mirroring
+`w6k/k0_canonical_engine.canonical_D`'s exact residue primitives
+(`w6e/engine.py`'s `forced_parity_for_backward_step`,
+`backward_predecessor_exact`, imported not reimplemented), objective
+flipped to MAXIMIZE Sigma(c-a) (usable reserve, per LOCK4_BRIDGE_NOTES
+sec 1) instead of minimizing max-prefix. Admissible pruning bound,
+18 live launch classes mod 27 (the 9 class-0-mod-3 residues mod 27 are
+immediately dead, excluded).
+
+**BUG CAUGHT AND FIXED BY THE PRUNING-SOUNDNESS GATE (load-bearing,
+not glossed over):** the first version of this script used B1.1's
+phase-relaxed climb cap (support c=1 forces a>=2 blanket, regardless
+of actual residue) as the admissible upper bound for pruning. The
+gate (`gate_pruning_soundness`: pruned DFS vs unpruned brute force on
+m<=12 cells) caught a real mismatch (m=10, launch class 23: pruned=-7,
+brute=-6) BEFORE any production numbers were trusted. Root cause:
+B1.1's rule and the true residue-legal rule are INCOMPARABLE in
+general — which parity is legal at a support/drop letter is decided
+by the actual residue class, not the letter type; a witness was found
+where a support letter's residue happened to permit a=1 (beating
+B1.1's blanket a>=2 assumption there). B1.1's cap is unsound for this
+game and was replaced with a genuinely admissible (looser, but
+provably valid) per-step bound `c-1` (the best possible (c-a_min)
+across BOTH possible parity classes). Gate PASSES with the corrected
+bound (15/15 (m,rho0) cells). This is reported explicitly because it
+means EVERY earlier fast run under the old bound was WRONG and
+discarded — none of its numbers appear below.
+
+**HONEST WALL (measured after the fix, not assumed): only k=53
+completes exactly.** With the corrected (sound but looser) bound,
+m=53 takes ~2.4-11s/launch (a_cap=4 vs 6 margin-checked stable, 18/18
+launches complete in 56.7s total). m=100/200/306 do NOT complete
+within a 40s/launch budget (confirmed at 60-110s/launch in dev probes
+too — genuinely exponential, not a tuning artifact); these three
+scopes are reported as an HONEST LOWER-BOUND BRACKET (best value
+found within budget — a real, complete, exact-replayable witness in
+every case, never fabricated) alongside the sound admissible upper
+bound.
+
+**RESULTS (worst-launch = max over the 18 live classes mod 27):**
+
+| k | usable reserve (worst launch) | status | admissible upper bound | gap |
+|---:|---:|---|---:|---:|
+| 53 | **-6** (launch class 20) | EXACT | 31 | 119.4% of cap |
+| 100 | -25 (launch class 2) | LOWER BOUND | 58 | 143.1% of cap |
+| 200 | -70 (launch class 2) | LOWER BOUND | 116 | 160.3% of cap |
+| 306 | -111 (launch class 2) | LOWER BOUND | 178 | 162.4% of cap |
+
+**Sanity check (residue-legal <= phase-relaxed, REQUIRED): PASS** on
+all 4 scopes (necessary consistency, verified not assumed).
+
+**THE HEADLINE FINDING: even the EXACT k=53 usable reserve is
+NEGATIVE (-6).** No launch class mod 27 achieves a positive climb
+over even the shortest control window under full residue-legality —
+residues do not merely "bite hard", they make climbing net-costly
+from the very first control point tested. The k=100/200/306 bracket
+values (also all strongly negative, as lower bounds) are consistent
+with this getting worse, not better, as the window lengthens.
+
+**Frozen prediction (residue-legal max climb <= phase-relaxed cap,
+sanity, REQUIRED): PASS.**
+**Frozen prediction (gap >= 20% of cap, on EXACT scopes only, 60%):
+HIT** (k=53 gap = 119.4% of cap — far exceeding the 20% threshold;
+the "residues bite hard" prediction undersold the effect: the
+residue-legal game isn't just costlier than the relaxed cap, it's
+NEGATIVE while the relaxed cap is strongly positive).
+
+**Decisive artifacts:** `b1/b2_residue_legal_max_climb.py`,
+`b1/b2_max_climb_by_launch.csv` (72 rows: 18 launches x 4 scopes),
+`b1/b2_run_output.log`. Wall 2260.8s (~37.7 min), peak RSS ~28MB
+(negligible vs the 8GB cap — the wall here is wall-clock/node-count,
+not memory).
+
+**Honest walls:** k=100/200/306 do not complete exactly within the
+budgets used (see above); reported as an honest lower-bound bracket,
+not a silently narrowed scope. The true residue-legal max at k=306
+(the actual bridge width) remains OPEN beyond "at most 178 (relaxed
+cap), at least -111 (best witness found)".
+
+### LOCK4-B1.4 — Crash tax (`b1/b4_crash_tax.py`)
+
+**Instrument:** for each scope's argmax witness from B1.2 (re-extracted
+with witness tracking, independently exact-replayed — every replay
+PASSED, and 3 of 4 re-extracted values match B1.2's reported value
+exactly; the k=100 and k=200 cells improved slightly on re-extraction
+under a fresh 60s budget, as expected for walled lower bounds getting
+tighter with more search — -24 vs -25, -67 vs -70 respectively,
+consistent with "lower bound," not a contradiction), continue the
+chain with the S0 greedy strategy (smallest legal exponent of the
+forced parity, matching `w6e/e1_walkers.py`'s S0 exactly) for 20 and
+50 more letters.
+
+**RESULT — EVERY witness's continuation DIES, not merely descends:**
+all 8 cells (4 scopes x 2 continuation lengths) hit a genuine class-0
+dead end (no legal backward move exists at all) within 1-3 steps of
+the climb segment ending — k=53: dies at step 2; k=100: dies at step
+1; k=200 and k=306: die at step 3. This is a MORE SEVERE finding than
+a finite positive "tax": the maximal-climb witness's own residue
+state is left so battered that the corridor game has no continuation
+whatsoever under the greedy convention, not merely an expensive one.
+
+**Frozen prediction (crash tax > 0 for every maximal-climb witness,
+70%): literal MISS on the letter of the prediction** (2 of 4 scopes
+report tax=0 because the trajectory dies before any net negative
+climb accumulates — k=53 dies at step 2 with 0 net change so far,
+k=100 similarly) **but the SPIRIT of the prediction is exceeded, not
+contradicted: "no soft landings" is confirmed in the strongest
+possible form (outright termination) at all 4 scopes, not merely a
+majority.** The 0-tax readings are an artifact of measuring "net
+climb change before death" on a trajectory that terminates almost
+immediately — reported as MISS on the literal numeric criterion, with
+this caveat stated explicitly rather than silently reinterpreted as a
+HIT.
+
+**Decisive artifacts:** `b1/b4_crash_tax.py`,
+`b1/b4_crash_tax_table.csv` (8 rows), `b1/b4_run_output.log`. Wall
+under 5 minutes, peak RSS negligible.
+
+**Honest walls:** the k=100/200/306 witnesses used here are B1.2's
+lower-bound (not proven-exact) witnesses; the crash-tax finding is
+therefore established for THESE SPECIFIC witnesses, not proven to
+hold for the (unknown) true argmax at those scopes — though since
+every tested witness across all 4 scopes (including the one EXACT
+scope, k=53) dies identically, there is no evidence to suggest a
+different (undiscovered) argmax would behave differently.
+
+### LOCK4-B1.3 prep — D(m) vs L(m) trend on the true word toward m=359 (`b1/b3_prep_D_vs_L_check.py`)
+
+**Instrument:** `w6k/k0_canonical_engine.canonical_D` (house-gated,
+`ceiling_on=True`, the strict canonical constraint), reused not
+reimplemented, independent of B1.2's own (differently-objectived) DFS.
+
+**Motivation (discovered mid-round, not assumed):** while deriving
+REQUIRED_SUPPORT for B1.3, direct comparison of `canonical_D` against
+the loop value `L` on the true word's own end-anchored window at
+m=53 found **D_ceil=11, strictly less than L=22** — an independent
+rediscovery of the SAME breach the concurrent W6O/W6P-URGENT/
+W6Q-REALITY rounds (this same ledger) already registered (D<L on the
+true word from m=29 on). Cross-checked directly: D and L agree
+exactly for every m=1..28 (28/28), then diverge starting EXACTLY at
+m=29 (D_ceil=11 vs L=12), matching W6P-URGENT's own finding digit for
+digit.
+
+**RESULT (extending the trend toward m=359, where the round's
+REQUIRED_SUPPORT figure lives):** D_ceil is pinned at 11 from m=29
+through m=53 (matches W6P exactly), then grows slowly: 12 at m=60, 15
+at m=70, 16 at m=80, 17 at m=90, 18 at m=100, 19 at m=110-125, 20 at
+m=130. Measured rate over m=53..130: **0.117/step**, versus L's
+**0.416/step** over the identical range (L itself climbs from 22 to
+54 there). **D(m=358 or 359) was NOT computed — genuine wall**: the
+branch-and-bound wall-clock grows so fast (5s at m=100, 35s at m=130)
+that reaching m=358 is astronomically beyond this session's budget by
+direct extrapolation of the growth curve.
+
+**HONEST CONSEQUENCE FOR B1.3:** since D(m) <= L(m) always (the all-2
+loop is always one valid candidate for D's minimization; D=L is the
+"universal discrepancy" ONLY where the loop happens to be optimal),
+**L(359)=149 is a mathematically valid UPPER BOUND on the true
+REQUIRED_SUPPORT, not a confirmed exact value.** The measured D-growth
+rate (about 4x slower than L's over m=53-130) suggests — does NOT
+prove — the true D(359) could be materially lower than 149. A lower
+true REQUIRED_SUPPORT would make Lock 4's bridge obstruction HARDER
+to sustain (a smaller target is easier for an orbit to reach), not
+easier — this caveat is registered as an open gap working AGAINST
+easy confidence in B1.3's inequality, not smoothed into a
+false-comfort footnote.
+
+**Decisive artifacts:** `b1/b3_prep_D_vs_L_check.py`,
+`b1/b3_D_vs_L_trend.csv` (11 rows, m=53..130),
+`b1/b3_prep_run_output.log`. Wall ~2 minutes total, peak RSS
+negligible.
+
+**Honest walls:** D(m) at the actual bridge-relevant scales (m=358,
+359) is NOT computed — confirmed infeasible by direct measurement of
+the cost-growth curve, not assumed infeasible. This is the single
+largest open gap carried into B1.3.
+
+### LOCK4-B1.3 — The first-bridge inequality, assembled (`b1/b3_assembled_inequality.py`)
+
+**THE ASSEMBLED INEQUALITY, every term's provenance:**
+
+| Term | Value | Source | Status |
+|---|---:|---|---|
+| USABLE_RESERVE(k=306, worst launch) | **-111** | B1.2 | HONEST LOWER BOUND (walled) |
+| USABLE_RESERVE(k=53, worst launch) | -6 | B1.2 | EXACT (control window, not the bridge itself) |
+| RESERVE(launch, q=53) | **23** | B1.0 (LOCK4_RESULTS.md, exhaustive to 250M) | Empirical wall, START-ANCHORED convention |
+| REQUIRED_SUPPORT(q=359) | **149** | L(359), re-verified fresh (anchor=371=7*53) | Verified UPPER BOUND on true D(359), not confirmed exact (see B1.3-prep) |
+
+**Using k=306 (the actual bridge width, conservative LOWER-BOUND
+LHS):** LHS = -111 + 23 = **-88** < RHS = 149. **Slack >= 237**
+(a LOWER BOUND on the true slack, since the true LHS could only be
+larger than -111 — though not unboundedly so; see caveat).
+
+**Using k=53 (fully EXACT, a shorter control window, NOT the actual
+bridge):** LHS = -6 + 23 = **17** < RHS = 149. **Slack = 132**,
+exact for this window.
+
+**Frozen prediction (inequality HOLDS with slack >= 30, 65%): HIT on
+both data points, by a wide margin** (slack >= 237 conservatively;
+132 exactly on the control window) — far exceeding the 30-slack
+threshold, not merely clearing it.
+
+**TWO CAVEATS STATED EXPLICITLY, NOT SMOOTHED OVER (this is the
+round's honest-accounting obligation, per the order's own house
+rules):**
+1. The k=306 LHS is a lower bound, not a proven exact value — a
+   necessary-but-not-sufficient check. The true usable reserve at the
+   actual bridge width remains open between -111 and +178 (B1.1's
+   admissible relaxed cap).
+2. RESERVE(launch)=23 (start-anchored, real-orbit empirical) and the
+   bridge-window USABLE_RESERVE (end-anchored, game-convention) are
+   composed as an EXPLICIT MODELING ASSUMPTION per LOCK4_BRIDGE_NOTES'
+   own LAUNCH STATE definition — W6Q-REALITY (concurrent, this
+   ledger) shows these two conventions are not interchangeable in
+   general; the composition here is the intended reading of the
+   bridge notes, not a proven-gapless derivation.
+3. REQUIRED_SUPPORT=149 is a verified upper bound on the true D(359),
+   which was NOT computed (B1.3-prep's wall). The measured D-growth
+   trend (0.117/step vs L's 0.416/step over m=53-130) suggests the
+   true value could be lower — which would REDUCE the margin, not
+   increase it. This cuts against complacency about the slack figure.
+
+**Despite the caveats, the margin is large enough (132-237, against a
+65%-confidence 30-slack prediction) that no plausible resolution of
+either open term (bounded by data actually measured this round)
+appears likely to flip the qualitative verdict — but this is reported
+as an assessment of plausibility, not a closed proof at the true
+306-letter/m=359 bridge scale.**
+
+**Decisive artifacts:** `b1/b3_assembled_inequality.py`,
+`b1/b3_run_output.log`. Wall <0.01s.
+
+**Honest walls:** inherited from B1.2 (k=306 not exact) and
+B1.3-prep (D(359) not computed) — both restated here rather than
+re-derived, since B1.3's job is assembly, not new computation beyond
+the REQUIRED_SUPPORT re-verification.
+
+## LOCK4-B1 Final Digest
+
+**B1.0's reconciliation (binding context for everything below):**
+LOCK4_RESULTS.md's "reserve" = LOCK4_BRIDGE_NOTES.md's deficit `d`
+directly (NOT `RESERVE=C-d`); the May-21 exhaustive scan's "jump is
+impossible" evidence is this round's deterministic-DP lineage
+ancestor. Two DIFFERENT measurement conventions run through this
+round's terms and are NOT freely interchangeable (W6Q-REALITY,
+concurrent, this ledger): the CENSUS convention (start-anchored, a
+real orbit's own natural history — B1.0's empirical launch reserve
+lives here) vs the GAME convention (end-anchored at a fixed absolute
+step, matching `w6e/engine.py`'s `anchor_steps` — B1.1/B1.2/B1.3's
+bridge-window climb and REQUIRED_SUPPORT live here). B1.3's assembled
+inequality composes one term from each convention as an EXPLICIT
+MODELING ASSUMPTION (per the bridge notes' own LAUNCH STATE
+definition), not a proven-gapless derivation.
+
+| Experiment | Verdict | Decisive number/table | Frozen prediction |
+|---|---|---|---|
+| B1.0 (audit + reproduce) | PASS — 8/8 spot-reproduced fields match; vocabulary reconciled; ghost/cheap-ray identity confirmed | orbit 80049391: max_reserve=23@72, crossing=153, growth=53 (all match); [1,1] ghost = -1 = the game's cheap ray, exactly | n/a (no frozen prediction; audit gate) |
+| B1.1 (phase-relaxed climb cap) | Closed form validated 20/20 vs brute-force DP; clean floor law | climb(306)=**50**; max deviation from floor-form = 1 across k=1..700 | HIT (~52, <149) + HIT (floor-form law) |
+| B1.2 (residue-legal max climb) | Pruning bug CAUGHT AND FIXED by its own gate before trusting any number; k=53 EXACT, k=100/200/306 honest lower-bound bracket | **k=53: -6 (EXACT, negative)**; k=306: -111 (lower bound) vs 178 (admissible cap) | PASS (sanity, required) + HIT (gap>=20%: measured 119.4% on the exact scope) |
+| B1.3 (assembled inequality) | **HOLDS, wide margin, on every measured data point — with two caveats stated explicitly, not smoothed over** | LHS=-88 (k=306, lower-bound) or +17 (k=53, exact) vs RHS=149; **slack >= 237 (conservative) / =132 (exact control)** | HIT (slack>=30) on both readings, by a wide margin |
+| B1.4 (crash tax) | Every witness's continuation DIES outright (class-0 dead end) within 1-3 steps — more severe than a finite tax | 8/8 cells: DIED at step 1-3; net-climb-before-death in {0,-1} | MISS on the literal numeric criterion (2/4 scopes read tax=0 due to near-instant death), but the qualitative "no soft landings" claim is exceeded, not contradicted, in the strongest form (termination, not merely descent) |
+
+**Honest walls carried forward (the open gaps, stated plainly):**
+1. B1.2's k=306 usable reserve (the actual bridge width) is NOT
+   proven exact — bracketed in [-111, 178], a wide but honest range.
+2. REQUIRED_SUPPORT=149 (from L(359)) is a verified UPPER BOUND on
+   the true D(359), not a confirmed exact value — D(359) itself was
+   not computed (wall confirmed by direct extrapolation of the
+   canonical engine's measured cost-growth curve out to m=130). The
+   measured D-growth rate (0.117/step) is materially slower than L's
+   (0.416/step) over m=53-130, suggesting — not proving — the true
+   REQUIRED_SUPPORT could be lower than 149, which would work AGAINST
+   the inequality's margin, not for it.
+3. The census-convention (empirical launch reserve) and game-
+   convention (bridge climb, required support) terms are composed as
+   an explicit modeling assumption, not a derivation closed at every
+   step (W6Q-REALITY's lesson, applied here rather than re-litigated).
+4. B1.4's crash-tax witnesses at k=100/200/306 are B1.2's lower-bound
+   (not proven-exact) witnesses — the crash finding is established
+   for these specific witnesses; all 4 scopes (including the one
+   EXACT scope, k=53) die identically, giving no positive evidence
+   that an undiscovered true argmax would behave differently, but
+   this is not a proof that it couldn't.
+
+**THE DELIVERABLE — the assembled first-bridge inequality, with every
+term's provenance (repeated for the digest, not just buried in B1.3):**
+
+```
+USABLE_RESERVE(k=306, worst launch)  +  RESERVE(launch, q=53)   <   REQUIRED_SUPPORT(q=359)
+        -111 (B1.2, LOWER BOUND)     +      23 (B1.0, empirical)  <   149 (L(359), re-verified,
+                                                                         UPPER BOUND on true D(359))
+                 -88                                              <         149
+                              slack >= 237 (conservative)
+```
+
+**A B1.3 failure or tightness would have led this digest; it did not
+— the inequality holds with slack far exceeding the 30-point frozen
+threshold on every measured reading. The lead finding of THIS round
+is instead B1.2's own discovery process: an unsound pruning bound was
+caught by its own soundness gate before any wrong number was trusted
+(house rules working exactly as designed), and the resulting exact
+data point (k=53) shows residue-legality is not merely costly but
+NEGATIVE — a materially stronger obstruction signal than the
+phase-relaxed relaxation (B1.1) suggested. B1.4 sharpens this further:
+every tested maximal-climb witness doesn't just get taxed on the way
+down, it terminates outright.**
+
+No commits made, per house rules. CPU only throughout; peak RSS across
+the whole B1 round: ~28MB (B1.2's DFS), negligible against the 8GB
+budget — every wall hit in this round was wall-clock/node-count, not
+memory.
+
+## W6T-PROV — Provenance audit of the corridor-capacity record (Sonnet exec, 2026-07-05)
+
+Order: W6S-CENSUS's own provenance alarm ("M_edge(11)=28 appears to be
+formula-derived, not independently m-swept — genuine sweeps exist only
+at C=3,4,5"). Trace every M_edge(C) used by
+`w6h/h5_frame_rule_check.csv` (C=1..50) plus the separate C=148 F5
+number back to its producing tool, read primary sources directly (not
+re-trusted paraphrase), build a C-by-C MEASURED/DERIVED table. Work
+under `shell/underlock/w6t_prov/`, read-only elsewhere, no commits, CPU
+only.
+
+**VERDICT: the alarm is correct, and it is not new — it is a
+regression of a correction this repo already made once and then lost.**
+
+**Trace of `w6h/h5_frame_rule_crosscheck.py`:** its own docstring names
+the source exactly: `data/runs/lock3_C{C}_N2000_residue_m1_lineage_
+cohorts_*/lock3_census_C{C}.csv`, field `max_valid1_lineage_lifetime`,
+cross-read against the summary JSON's `max_lifetime_of_valid1_lineage`.
+**Confirmed genuine (not fabricated) at C=11 by direct inspection:**
+`data/runs/lock3_C11_N2000_residue_m1_lineage_cohorts_20260524_011032/`
+is a real, dated (2026-05-24) Rust `lock3_census` run with full
+`run.log`, `live_events.jsonl` (31MB), raw per-depth CSV (30MB) — CSV
+column 19 (`max_valid1_lineage_lifetime`) and the summary JSON's
+`max_lifetime_of_valid1_lineage` both independently read **28** at
+C=11. `lock3_census.rs:2632` (`let lifetime = next_depth.saturating_
+sub(*birth_depth);`) confirms W6S-CENSUS's own citation exactly — this
+IS a real symbolic-branch-counting computation, not the formula typed
+in by hand.
+
+**The catch is what these 48 runs (C=3..50, one dir per C, dated
+2026-05-23/24) actually measure: `residue_mod_power=1` throughout.**
+`lock3_census.rs:1267-1268`'s `residue_modulus(depth, residue_mod_
+power) = 3^min(depth, residue_mod_power)` — at `residue_mod_power=1`
+the tracked modulus is capped at 3¹=3 for the ENTIRE depth-2000 run,
+regardless of depth. This is a coarse mod-3 compatibility proxy, not
+the full mod-3^m resolution the C=1..5 birth-invariant audits swept
+(those runs used `residue_mod_power = m`, i.e. one dedicated run per
+precision level, m=1 up through the true desert edge).
+`LOCK3_PRECISION_COUNTDOWN_GRID.md` states this outright (verbatim,
+its own text): **"Only `m1` has been checked for C6-C50 in this
+series."** And: **"These are not enough to establish the full
+countdown ladders."** No run at C≥6 was ever taken past m=1 to find
+the actual zero-birth/desert edge; the "48/48" match is 48 instances
+of `observed_m1_lifetime + 1 == ⌊53(C+1)/22⌋`, which is a genuine
+empirical fact about the m=1 proxy but is NOT an independent
+measurement of M_edge(C) unless the linear countdown slope
+(max_lifetime(m) = cutoff(C) − m, proven ONLY at C=3,4,5 by dense
+per-m sweeps) is assumed to hold at C=6..50 too — untested there.
+
+**This exact distinction was already drawn once, before W6H, and
+W6H's "48/48 EXACT" phrasing silently dropped it.**
+`renorm_check/beatty/task1_measured_widths.csv` (pre-dates the W6
+cycle) carries an explicit `measurement_tier` column:
+`GENUINE_full_sweep` for C=3,4,5 only, `INFERRED_m1_only_plus_linear_
+countdown_assumption` for C=6..50, with the per-row note **"zero-birth
+m was NEVER DIRECTLY OBSERVED for this C; implied_cutoff =
+observed_m1_lifetime + 1, valid only if the linear countdown slope
+(-1 per unit m), established only at C=3,4,5, also holds here."** Its
+companion script `task1_measured_verification.py`'s docstring traces
+the same regression one level further back: `COLLATZ_PROOF.md:230`
+("Verified by Certificate 1: the formula matches all 48 independently
+measured corridor widths... without exception") is the PUBLISHED
+overclaim, and **`COLLATZ_PROOF_backup_v2.md`'s own superseded Certificate
+1 table was honest about it: "Domain: C=3,4,5: all m from 1 to K(C).
+C=6-50: m=1 only."** The polished proof document dropped its own
+predecessor's caveat; W6H-H5 (2026-07-04) then re-derived the same 48
+numbers from the same raw archive and re-introduced the identical
+overclaim in ledger/SYNTHESIS form ("48/48 EXACT... never individually
+checked before" — true only in the narrow sense that nobody had
+diffed them against the formula row-by-row before, not in the sense
+that they are 48 independent zero-birth measurements).
+
+**Independent from-scratch re-verification (`t1_provenance_table.py`,
+this round, not reusing h5's script):** re-read every C=1..50 primary
+source directly and rebuilt the table without consulting
+`h5_frame_rule_check.csv`. Result: **C=1..5 MEASURED (5/5), C=6..50
+DERIVED (45/45), 0 MISSING, 0 MISMATCH** — the archived m1-proxy
+values agree with the formula at all 45 mid-range C with no exceptions,
+which is precisely why the mislabeling was easy to miss: there is no
+numeric daylight to notice, only a methodological gap (never swept to
+the true desert edge) that a column diff cannot surface by itself.
+C=1,2 confirmed MEASURED via `LOCK3_BIRTH_INVARIANT_AUDIT.md`'s
+separate low-C sweep (not part of the `data/runs/lock3_C*_m1_*` batch
+or the beatty CSV, which starts at C=3 — COLLATZ_PROOF.md's "C=1
+through 50" phrasing is itself slightly imprecise, since the "48"
+figure is C=3..50 inclusive, not C=1..50). Cross-confirmed at the
+witness level: `embedding/small_side_live_sets/*.npz` holds genuine
+archived witness sets ONLY for C=1..5 (19 files, all C≤5); no witness
+archive exists for C=6..50.
+
+**C=148 (the F5 decisive experiment): NOT measured by any exhaustive
+route, confirmed OPEN by this repo's own W1 ledger entry.** Ledger W1
+(line ~319-345): the genuine countdown-ladder attempt at C=147/148 was
+run and **killed before completing** ("did not reach the same
+convergence within reasonable wall-clock/memory before being killed");
+C=149 completed but wasn't decisive for 358-vs-359. The amended
+witness-search route also failed to reach C=148 (combinatorial
+scaling ~7-8x per unit C from the C=3,4,5 calibration). W1's own
+verdict, verbatim: **"F5 status: OPEN. Neither the original ladder
+method nor the amended witness-search method resolves 358 vs 359 at
+the scales reachable so far."** The background sweep this round
+confirms no `lock3_C147`, `lock3_C148`, or `lock3_C149` directory
+exists anywhere in `data/runs/` (the one C=149 run referenced in W1's
+prose is not itself archived under that naming convention, or was
+cleaned up).
+
+**Despite this, SYNTHESIS.md's own F5 COMPUTATION section (line ~828)
+states "the C=148 run is 371 = 7·53 steps (measured, W2)" — this is a
+mislabel, not a second data point.** 371 = 53·⌈360/53⌉ is the
+RUN-LENGTH RULE applied to m_irr(148)=359 (a closed-form
+transformation of the formula's own output), and separately, W2 (the
+candidate-(c) telescoping route cited) explicitly **never reached
+C=148** — its own ledger entry states plainly: "This is NOT yet
+attempted — W2's own exhaustive test hit its own tractability wall
+before reaching a usable exact-embedding conclusion." L(359)=149 (the
+number actually computed and used downstream in the LOCK4 bridge
+inequality, ledger line ~4440) is the LOOP WORD's combinatorial
+discrepancy — a real, exactly-computed quantity, but computed
+symbolically on the abstract word, not read off an integer census —
+and the ledger's own B1.3-prep entry says outright: **"D(m=358 or
+359) was NOT computed — genuine wall"** and L(359)=149 is "a
+mathematically valid UPPER BOUND on the true REQUIRED_SUPPORT, not a
+confirmed exact value." The same terminology slippage recurs at W6E-E2
+("the real 371-step measurement's own phase") — in every instance
+"measured"/"real" is being used to mean "computed on the true
+(non-periodic, non-toy) word," which is a genuine and useful
+distinction from a synthetic/periodic word, but is NOT the same claim
+as "read off an exhaustive integer enumeration." These are two
+different senses of "real/measured" that have been merged in the
+prose at least twice (SYNTHESIS F5 COMPUTATION, W6E-E2) without the
+distinction being flagged either time.
+
+**Background sweep (`Explore` subagent, this round) of the remaining
+repo locations found no contradicting evidence:** `data/runs/
+corridor_bound_*`, `k53_capacity_*`, `gap_kill_*`, `macro_corridors_*`
+are a different investigation entirely (real orbit integers, D=bit-
+length not shell-C, per `macro-corridor-instructions.md`'s own
+corridor definition) — orthogonal, not corroborating or contradicting
+M_edge(C). `renorm_check/certs/product_automaton_C{3,10,50,200,1000,
+10000}_*` are genuine dated runs but of a DIFFERENT quantity
+(extinction-heartbeat scaling, Certificate 9), not M_edge — real data
+at C up to 10,000, but not corridor-capacity data, and must not be
+cited as if it were. `LOCK3_CUTOFF_NUMBERS_CNEG20_TO_C50.txt` is a
+closed-form derived table (columns M_edge, K=M_edge+1, and the
+`3C+k` residual pattern) presented without a run-log, not measurement
+output. No `lock3_C147/148/149` directories exist anywhere in the
+repo. `Lock3_c3/`, `Lock3_c4/`, `Lock4_c4/` corroborate C=3,4 as
+genuinely measured (real per-m=1..13 run directories) and assert
+nothing at other C.
+
+**THE MEASURED BASE, stated plainly:**
+- **C = 1, 2, 3, 4, 5: GENUINELY MEASURED.** Tool: `lock3_census`
+  (Rust), full per-m dense sweep from m=1 to the true zero-birth/
+  desert edge, one dedicated run per (C,m) pair, dated 2026-05-24.
+  Artifacts: `LOCK3_BIRTH_INVARIANT_AUDIT.md`, `LOCK3_PRECISION_
+  COUNTDOWN_GRID.md`, `Lock3_c3/`, `Lock3_c4/MANIFEST.md`, plus
+  independently archived witness sets `embedding/small_side_live_
+  sets/{C1..C5}_m*.npz` (confirmed present for C=1..5 only). This is
+  the corridor law's real empirical floor.
+- **C = 6..50: NOT independently measured — a formula-matching m=1
+  proxy, mislabeled as measurement in the current W6H/SYNTHESIS
+  prose.** Genuinely run (real Rust `lock3_census` executions, dated
+  2026-05-23/24, real artifacts), but at a coarse mod-3 residue
+  precision that never reaches the true desert edge; the reported
+  value is `observed_m1_lifetime + 1`, which equals the formula by
+  construction of the (untested-at-this-C) linear-countdown
+  assumption, not by an independent zero-birth observation. Already
+  correctly labeled once, pre-W6, in `beatty/task1_measured_widths.csv`
+  — that labeling should be treated as authoritative going forward.
+- **C = 148 (and the whole C=147..149 F5 neighborhood): NOT MEASURED,
+  formally OPEN per this repo's own W1 entry.** No exhaustive route
+  has ever completed there. Numbers reported in that neighborhood
+  (371 steps, L(359)=149) are exact closed-form/combinatorial
+  computations on the abstract loop word, valid as upper bounds and
+  as conditional (on the unproven loop-optimality lemma) evidence, but
+  not physical measurements, and SYNTHESIS.md's "(measured, W2)"
+  parenthetical at line ~828 should be corrected or removed.
+- The separate reserve-scan track (`data/runs/scan_limit250000000_
+  D23/D24_*.csv`, real, dated 2026-05-21, exhaustive to 250M, max
+  reserve 23) is genuine and already independently spot-verified
+  (LOCK4-B1.0) — it measures a related but distinct quantity (deficit
+  reserve on real integer orbits, not the shell-C countdown-ladder
+  M_edge) and remains part of the corridor law's real evidence base
+  alongside C=1..5.
+
+**Downstream conclusions needing re-scoping:**
+1. **H5 "48/48 EXACT"** (`w6h/h5_frame_rule_check.csv`,
+   `IMPLEMENTATION_LEDGER.md` W6H-H5, `SYNTHESIS.md` W6H section) —
+   re-scope to "5/5 genuinely measured (C=1..5) exact; 45/45
+   formula-matching m1-proxy values consistent with, but not an
+   independent test of, the formula at C=6..50." The gate verdict
+   itself does not need to flip (no mismatch was ever found), but its
+   epistemic status must drop from "measurement confirms law" to
+   "archive is consistent with law, at a precision that cannot
+   discriminate law from formula."
+2. **COLLATZ_PROOF.md:230** ("48 independently measured corridor
+   widths... without exception") — restore the caveat its own
+   `COLLATZ_PROOF_backup_v2.md` predecessor had ("C=3,4,5: all m;
+   C=6-50: m=1 only"). This is the v1.1 correction list's item 1
+   (SYNTHESIS.md line 89), already registered once and not yet
+   applied to the live document.
+3. **SYNTHESIS.md F5 COMPUTATION** ("the C=148 run is 371 = 7·53 steps
+   (measured, W2)") — remove or correct "(measured, W2)"; W2 never
+   reached C=148. F5's own status line two paragraphs later already
+   says the correct thing ("F5 status: 358, conditional..."); the
+   parenthetical mislabel sits upstream of that correct framing and
+   should not survive independently.
+4. **W6E-E2 / LOCK4-B1.3's "real 371-step measurement"** phrasing —
+   same fix: "real" here means "the true (non-periodic) word," not
+   "empirically measured"; reword to avoid the conflation once so it
+   stops propagating (it has already recurred at least twice).
+5. **Any future round citing "C≤50 verified"** for the corridor law
+   should cite "C≤5 verified; C=6..50 formula-consistent at a coarse
+   proxy" instead — this includes W6U-RECON (registered next step,
+   not yet run) and any future capacity-law writeup.
+
+**Honest walls:** none in the computational sense — every check in
+this round ran in well under a second (`t1_provenance_table.py`, 50
+rows, negligible RSS); the background sweep agent found no repo
+location that changes the verdict. No new measurement was taken this
+round (per house rules, an UNCLEAR cell would have justified one
+cheap new countdown at a fresh mid-range C, labeled with today's
+date — none was needed here, since the C=6..50 cells resolved cleanly
+to DERIVED via existing primary-source text, not ambiguity that a
+rerun would settle: rerunning C=11 at full precision would be useful
+future work but is a NEW measurement to propose, not something this
+audit itself required to answer the provenance question asked).
+
+**Decisive artifacts:** `shell/underlock/w6t_prov/t1_provenance_table.py`
+(+ `.csv`, 50 rows, + `t1_output.log`). Cross-referenced primary
+sources (read directly, quoted above): `LOCK3_BIRTH_INVARIANT_AUDIT.md`,
+`LOCK3_PRECISION_COUNTDOWN_GRID.md`, `Lock3_c3/`, `Lock4_c4/MANIFEST.md`,
+`renorm_check/beatty/task1_measured_widths.csv` +
+`task1_measured_verification.py`, `COLLATZ_PROOF.md:230`,
+`COLLATZ_PROOF_backup_v2.md`, `rust/lock3_census.rs` (lines 1267-1268,
+2632-2637), `renorm_check/embedding/small_side_live_sets/`,
+`data/runs/lock3_C{1..50}_*`, `data/runs/scan_limit250000000_D{23,24}_*.csv`.
+No commits made, per house rules. CPU only; peak RSS negligible
+(<50MB, one Python script over CSV/JSON text).

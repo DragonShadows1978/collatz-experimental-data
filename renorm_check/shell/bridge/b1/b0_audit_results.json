@@ -1,0 +1,73 @@
+{
+  "orbit_80049391": {
+    "recon": {
+      "max_deficit_d (== old LOCK4_RESULTS.md 'max_reserve')": 23,
+      "time_of_max_deficit (== old 'time_max')": 72,
+      "num_growth_steps (== old 'num_growth_steps')": 53,
+      "crossing_time (== old 'crossing_time', first d<0)": 153,
+      "pinned_corridor_C_for_RESERVE_reconciliation": 23,
+      "RESERVE_min_over_prefix_under_pinned_C (must be 0, by construction)": 0,
+      "RESERVE_at_time_of_max_deficit (must be 0)": 0
+    },
+    "claims": {
+      "max_reserve": [
+        23,
+        23
+      ],
+      "time_max": [
+        72,
+        72
+      ],
+      "crossing_time": [
+        153,
+        153
+      ],
+      "num_growth_steps": [
+        53,
+        53
+      ]
+    }
+  },
+  "orbit_120080895": {
+    "recon": {
+      "max_deficit_d (== old LOCK4_RESULTS.md 'max_reserve')": 23,
+      "time_of_max_deficit (== old 'time_max')": 65,
+      "num_growth_steps (== old 'num_growth_steps')": 48,
+      "crossing_time (== old 'crossing_time', first d<0)": 128,
+      "pinned_corridor_C_for_RESERVE_reconciliation": 23,
+      "RESERVE_min_over_prefix_under_pinned_C (must be 0, by construction)": 0,
+      "RESERVE_at_time_of_max_deficit (must be 0)": 0
+    },
+    "claims": {
+      "max_reserve": [
+        23,
+        23
+      ],
+      "time_max": [
+        65,
+        65
+      ],
+      "crossing_time": [
+        128,
+        128
+      ],
+      "num_growth_steps": [
+        48,
+        48
+      ]
+    }
+  },
+  "cheap_ray_identity": {
+    "word": [
+      1,
+      1
+    ],
+    "S^2(x)_affine_form": "(9x+5)/4",
+    "ghost_-B/D": "-1",
+    "ghost_equals_neg1": true,
+    "S(-1)=-1_fixed_point_check": true,
+    "unique_algebraic_fixed_point_of_S(x)=(3x+1)/2": "-1",
+    "identity_with_cheap_ray_rho=-1 (DERIVATION_NOTES 8b)": true
+  },
+  "verdict": "PASS"
+}

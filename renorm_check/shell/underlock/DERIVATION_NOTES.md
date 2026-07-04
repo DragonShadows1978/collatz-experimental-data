@@ -373,3 +373,28 @@ open; t=14 ∈ [25, 32]. Four-trit plateau witness lands ≡ 1 mod
 3^13; +6 cliff after. Shape = flats + cliffs; suspect Ostrowski
 scales. METHOD LAW: consecutive-length agreement is NOT a
 convergence certificate (a width-4 plateau broke at len 18).**
+
+## 15. Session-12: the anchoring dictionary (W6Q, 2026-07-05)
+
+**15a. THE CONVENTION IS ROOT-ANCHORED.** The census scores a
+trajectory's deficit with credits indexed from ITS OWN root
+(credit_at_step(k), k = 0 at the trajectory's start). The game's
+universal end-anchor (anchor_steps = 53) is an artifact that
+coincides with reality only where near-periodicity hides the phase
+(m ≲ 28) or where the corridor's own extremal phase-locking matches
+the frame rule (the H5 48/48 fact — M_edge's extremal windows ARE
+frame-aligned, which is why the L-functional predicted edges
+correctly at every measured C). Per-trajectory scoring and
+extremal-edge prediction use DIFFERENT anchors, and conflating them
+produced the W6P mirage.
+
+**15b. Consequence for the proof program: the one lemma must be
+posed root-anchored.** Every m ≤ 28 table survives (conventions
+coincide there); the m = 29 "break" becomes the game's first
+validation row that can SEE the anchor — permanently in the suite.
+
+**15c. The 839 chain's real lesson: a trajectory that the
+end-anchored game scores as an 11-hover is, in reality, a cliff
+dive (deficit max 1). The game overcounts hovering capability when
+the window phase is free — reality never grants free phase. Phase
+is not a parameter; it is arithmetic.**

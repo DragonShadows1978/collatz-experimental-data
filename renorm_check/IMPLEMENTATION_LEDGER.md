@@ -3224,3 +3224,620 @@ remains open and now looks genuinely non-monotone in scope. All
 witnesses across N1-N4 (2,716 + 40 + 9 + 10 witness-bearing rows)
 passed independent exact-integer replay; 0 failures. Peak RSS this
 round: 4.40GB; every honest wall stated above.
+
+## W6O — The One-Point Lemma at Scale (work order, Fable, 2026-07-04)
+
+Order: W6O_LEMMA_SCALE_ORDER.md; ledger W6O-O1..O3. Context:
+DERIVATION_NOTES §14 — N2's "prefix-alone-suffices" finding
+(min over congruence-only k*-prefixes = g_loop(k*) exactly) was
+certified on 40 sampled words, m=5..7. This round scales the
+empirical base to the domain the proof actually needs: the true
+word's own windows (m=2..53), both mechanical families one period
+past ground-truth (m=2..2q), and ALL {1,2}^m words exhaustively to
+m=12 — plus closes two of N4's tax-curve wall cells. Instrument rule
+as W6K/W6L/W6M/W6N: Path C semantics (`w6k/k0_canonical_engine.py`)
++ the W6M exact-bigint ladder only; Path B retired, not used
+anywhere. Work under `shell/underlock/w6o/`.
+
+### W6O-O1 — The lemma exhaustively over the real domain (`w6o/o1_lemma_exhaustive_domain.py`) — **BREACH, LEADS THE ROUND**
+
+**THE FROZEN PREDICTION IS FALSIFIED. The one-point lemma (N2's
+"prefix congruence alone suffices," DERIVATION_NOTES §14a) BREAKS at
+scale — 26 exact, independently-replayed breaches, all in the
+long-window regime N2 never tested.**
+
+Domain tested, exactly per the order: (i) true-word windows m=2..53
+(52 prefixes); (ii) golden-per8 m=2..16 and sqrt2-per12 m=2..24 (38
+prefixes, one full period past the 28-row ground-truth table); (iii)
+ALL {1,2}^m words, m=1..12, exhaustive (8,190 words, each played as
+its own k*-prefix — this alone subsumes N2's 40-word random sample).
+8,280 prefixes total, branch-and-bound true minimum (N2's own
+pruning argument, extended) at A_CAP=40/80 cap-margin-checked on
+every prefix, 60s per-prefix wall-clock budget (never hit).
+
+**Result: 8,254/8,280 = 99.69% hit g_loop(k*) exactly. 26 breaches,
+ALL exact-replayed independently (fresh from-scratch
+`engine.backward_predecessor_exact` application; `replay_ok=True` on
+every one) — genuine, not an instrument artifact. Zero breaches
+among all 8,190 exhaustive {1,2}^m words, m≤12 — the lemma is total
+on the short-word space.** The breach is a pure LENGTH effect, not a
+word-content effect:
+
+- **True word:** clean through m=28 (min=g_loop(k*) exactly on every
+  m=2..28). Breaks EXACTLY at m=29 (min=11 < L=12) and stays broken
+  through m=53 (min pinned at 11, while L climbs 12→22) — a sharp,
+  one-shot phase transition, not a gradual drift.
+- **sqrt2-per12:** clean through m=23 (essentially 2 periods), breaks
+  at m=24 exactly (min=13 < L=14) — the SAME period-boundary
+  mechanism the order's own scoping note ("one full period beyond
+  ground-truth, so k* can cross a period boundary") was designed to
+  catch.
+- **golden-per8:** no breach through m=16 (only 2 periods reached;
+  the order's m=2..2q scope for q=8 does not extend far enough to
+  force a golden-side breach — an honest scope note, not a
+  contradiction).
+
+**Independent reproduction (architect-grade, done in-session):** the
+m=29 true-word breach and the sqrt2-per12 m=24 breach were BOTH
+hand-traced step-by-step with a completely separate, freshly-written
+branch-and-bound implementation (not importing or sharing any code
+with the production script) — every step verified parity-legal by
+hand, final max-partial-sum = 11 (true-word m=29, vs L=12) and 13
+(sqrt2-per12 m=24, vs L=14) confirmed exactly. The breach mechanism,
+read off the traced chains: a single moderately large exponent
+(a=4..6) taken early, while running-sum slack still exists, buys a
+favorable residue class that a long run of cheap (a=1) steps then
+rides for the rest of the window — a detour that only pays off once
+the window is long enough to harvest it. Short windows (m≤12,
+exhaustively checked with zero exceptions) never have room for this;
+long windows (real-system scale, m≥24-29) do.
+
+**Frozen prediction (min = g_loop(k*) on 100%, 85%): BREACH
+CONFIRMED — MISS, and the most consequential finding of the program
+to date.** Per the order's own binding text, this leads over
+everything else: **N2's "prefix-alone-suffices" reduction — the
+proof-simplifying inversion that let the global lemma's lower bound
+rest on a one-point congruence fact with no forward invariant — does
+NOT hold at the scale the real system needs (m up to 53).** It holds
+on 100% of the short-word space (m≤12, exhaustive) and on both
+mechanical families up to roughly 2-3 periods, then fails. The
+global lemma itself (D=L, loop optimality) is NOT contradicted by
+this — g(k*) is a per-prefix quantity, and N1's floor-point law
+(g(k*) ≥ g_loop(k*) at L+3, tested only m≤7) was never tested past
+m=7 either; O1 does not re-test the WHOLE-WORD floor claim at long m,
+only the prefix-congruence-alone mechanism N2 proposed for it. What
+O1 falsifies specifically is the SIMPLIFICATION: the anchor
+inequality is NOT purely a one-point congruence fact at real-system
+scale; suffix/whole-window information re-enters exactly where L4's
+super-additive coupling said it should. The proof program's
+"one-point lemma" shortcut is closed; the global-window congruence
+argument (§12d/L4's shape) is reinstated as necessary, not optional,
+past a length threshold this round newly locates at m≈24-29.
+
+**Decisive artifacts:** `w6o/o1_lemma_scale_domain.csv` (8,280 rows),
+`w6o/o1_breaches.csv` (26 rows, all `replay_ok=True`),
+`w6o/o1_run_output.log`. No honest walls (0 wallclock caps hit, 0 RSS
+cap hit, peak RSS 0.032GB, wall 36.7s).
+
+### W6O-O2 — Support-adjacency biconditional (`w6o/o2_support_adjacency_biconditional.py`)
+
+Scope per the order: mechanical rows m≤11 both families + true-word
+windows m≤11 (widening N3's mechanical-only, m≤9 scope), band L+1,
+every position j=1..m tested (not just observed dip positions) to
+populate the full 2×2 table.
+
+**THE 2×2 TABLE (195 positions total, 20 dips):**
+
+|              | support-adjacent | NOT adjacent | row-total |
+|---|---|---|---|
+| **dip**      | 20 | 0 | 20 |
+| **NOT dip**  | 127 | 48 | 175 |
+| **col-total** | 147 | 48 | 195 |
+
+**Forward (dip ⟹ support-adjacent): 20/20 = 100%.** Every dip across
+all three word sources (golden-per8, sqrt2-per12, true-word) and the
+widened m≤11 scope is support-adjacent — N3's finding holds exactly,
+now with true-word rows included for the first time.
+
+**Reverse (support-adjacent ⟹ dip): 20/147 = 13.6%.** Confirmed
+FALSE, decisively — adjacency is necessary but nowhere near
+sufficient. Breakdown by distance: dist=0 (letter itself is a
+support letter) → 4/77 = 5.2% are dips; dist=1 (support letter
+immediately follows) → 16/70 = 22.9% are dips. The separating
+condition is NOT visible from support-adjacency alone (both
+sub-populations are overwhelmingly non-dip); no further structural
+feature isolates it in this round's data (dist=1 positions are ~4.4×
+more likely to be dips than dist=0, the only signal found).
+
+**Frozen prediction (forward 70%, reverse-fails 70%): BOTH HIT.**
+Forward: HIT at 100% (exceeds prediction). Reverse: HIT (13.6% ≪
+100%, cleanly confirms "necessary, not sufficient"). 0 replay
+failures across all 20 chains dumped.
+
+**Decisive artifacts:** `w6o/o2_position_table.csv` (195 rows),
+`w6o/o2_chain_dump.csv` (20 rows), `w6o/o2_run_output.log`. No honest
+walls; wall <0.1s.
+
+### W6O-O3 — N4 wall closures (`w6o/o3_wall_closures.py`, reusing `w6m/m3_ladder_wall_extension.py`)
+
+Two cells targeted per the order: (i) t=14 shrink [25,32] at len
+15,16, tight cap=31 (one below the best prior witness of 32 — any
+value found is both a strict improvement and cap-sound); (ii) t=10
+len 19,20 at tight cap=18 (around the len-18 value of 15). Both
+gates (G1/G2) re-run fresh in-process before production, both PASS.
+
+**t=14: CLOSED to exactly 31 (down from the open [25,32] interval).**
+len=15 and len=16 both give exact_min=31 (sound: 31≤cap), same
+witness `a_seq=(10,7,5,1,2,1,4,3,8,4,2,9,1,1,3)` (len 15) both times
+— stable across the one-step length extension, replay PASS both
+cells. This directly overturns n4c's cap=24 exhaustion in the other
+direction from what was expected: n4c proved "nothing ≤24 exists,"
+and this round's wider cap=31 finds the true value sits at the very
+TOP of the previously-open interval, barely under the old best
+witness of 32 (not down near 25).
+
+**t=10: CONFIRMED STABLE at 15 through len 19 and len 20** (same
+witness `a_seq=(10,1,3,3,1,2,1,2,6,2,1,4,5,1,1,4,3,1)`, len 18,
+replay PASS both cells) — the value that emerged when the width-4
+plateau broke at len 18 holds for two further length steps. Per the
+program's own N4 lesson ("two consecutive lengths agree" was
+refuted as a certificate once already), this is reported as
+"stable through len 20," not "converged."
+
+**Frozen prediction (t=14 settles ≥25, cliff height ≥6, 65%): HIT.**
+31 ≥ 25; the cliff from the t=13 plateau value of 19 to t=14's 31 is
+height 12 — more than double the predicted minimum height of 6.
+
+**Decisive artifacts:** `w6o/o3_wall_closures.csv` (4 rows),
+`w6o/o3_run_output.log`. No honest walls (0 wallclock/RSS caps hit
+on any of the 4 cells); peak RSS 2.269GB (well under the 8GB cap,
+higher than N4c's 0.98GB closure run because cap=31 vs cap=21/24
+grows the live-state count substantially — expected and stated, not
+a wall).
+
+## W6O Final Digest
+
+| Experiment | Verdict | Decisive number/table | Frozen prediction |
+|---|---|---|---|
+| O1 (one-point lemma at scale, 8,280 prefixes) | **BREACH — 26 exact-replayed falsifications, all at long windows (true-word m≥29, sqrt2-per12 m≥24); ZERO breaches among 8,190 exhaustive short words m≤12** | 8,254/8,280 = 99.69% hit rate; true-word min pinned at 11 for m=29..53 vs L climbing 12→22 | **MISS (85% predicted 100%) — falsified, leads the round** |
+| O2 (support-adjacency biconditional, 195 positions) | Forward 100% HIT, reverse 13.6% HIT (necessary, not sufficient); dist=1 positions ~4.4× more likely to be dips than dist=0 | 2×2 table: dip∩non-adjacent = 0/20 | **BOTH HIT (70%/70%)** |
+| O3 (N4 wall closures) | t=14 CLOSED exactly to 31 (was open [25,32]); t=10 confirmed stable at 15 through len 20 | t=14: 31/31 (len 15,16, same witness); t=10: 15/15 (len 19,20, same witness) | HIT (65%) — cliff height 12, more than double the predicted minimum |
+
+**Program state after W6O:** the round's center of gravity is O1's
+breach. N2's proof-simplifying claim — that the global lemma's
+lower-bound anchor is a ONE-POINT congruence fact needing no suffix
+or forward-window information — is FALSIFIED at real-system scale,
+even though it holds with zero exceptions on the entire short-word
+space (m≤12, 8,190/8,190) and on both mechanical families for
+roughly 2-3 periods. The break is sharp (a one-step phase transition
+at m=29 for the true word, m=24 for sqrt2-per12, both exact-replayed
+by two independent implementations) and mechanistically legible
+(an early moderate-exponent detour that only pays off once the
+window is long enough to harvest the cheap run it buys). This
+reinstates the whole-window congruence argument (§12d, L4's
+super-additive coupling) as NECESSARY for the lower-bound proof, not
+a fallback — the "one-point lemma" shortcut the proof program was
+converging on is closed. Downstream of the breach, the program's two
+smaller open questions both resolved cleanly this round: the
+support-adjacency law is now a fully-tested, correctly-asymmetric
+biconditional (necessary, not sufficient, exactly as N3's fingerprint
+suggested), and the tax curve's t=14 cliff is now an exact number
+(31, height 12 from the t=13 plateau) rather than an open interval.
+All witnesses across O1-O3 (26 breach witnesses + 20 O2 chains + 4
+O3 cells) passed independent exact-integer replay; 0 failures. Peak
+RSS this round: 2.269GB; zero honest walls hit (every cell in O2/O3
+completed inside its wall-clock and RSS budget; O1's per-prefix
+budget was never triggered).
+
+## W6P-URGENT — Does D=L survive at true-word m=29 (surgical follow-up to O1's breach)
+
+Order (verbal, urgent): does D=L survive at the true word's own m=29
+window, or does universality itself break? Work under
+`shell/underlock/w6p_urgent/`, no commits, CPU only, ~8GB RSS,
+independent implementation for any lead finding, every witness
+exact-replayed.
+
+**Scoping correction made before running anything (load-bearing,
+stated explicitly): O1's own DFS, despite its "k*-prefix" framing, is
+run with `k = len(letters_prefix)` equal to the FULL window length m
+in every one of its three domains — i.e. for every m in the 26
+breaches, k* (the loop-curve's own argmax) turns out to occupy
+either the tail of the window (k*=m, 5/8 of this round's target
+cells: true-word m=29/32/34, sqrt2 m=24) or just short of it (k*=m-1
+or m-2, 3/8: true-word m=30/31/33/35) — confirmed by direct
+recomputation of the loop curve for every cell (see
+`p1_completion_search_results.csv` column `kstar_eq_m`). Either way,
+O1 already searched the WHOLE window as one object; there is no
+separate "remaining suffix beyond the breach prefix" to complete
+within these windows, because D(m) (per DERIVATION_NOTES sec 2) is
+itself defined as the minimax over the FULL m-window, not over a
+k*-only sub-prefix with a suffix tacked on. So "search for a legal
+completion" was operationalized as: **an independent, from-scratch,
+FULL-window branch-and-bound true minimum, under the house's own
+CANONICAL constraint (`w6k/k0_canonical_engine.py`'s `ceiling_on=True`,
+i.e. g(k)>=0 at every prefix k — the "D_ceil" variant), since O1's own
+breach-producing search explicitly ran D_free (ceiling-off, no such
+constraint) and left D_ceil untested.** This is the correct
+reduction of "does a cheap prefix have a legal completion" for cells
+where k*=m (there is nothing to complete) and a strict superset check
+for cells where k*<m (the full-window D_ceil search subsumes any
+shorter-prefix completion question, since it already searches the
+entire window exactly).
+
+**Independence gates (both required to pass before trusting anything
+downstream, both PASS):**
+- Gate 0a: this round's own from-scratch `credit_true`/`backward_letters`
+  construction reproduces W6O's `e1_walkers` byte-for-byte on every
+  target m (24, 29-35, 53) and reproduces `underlock_words.credit_sqrt2_per12`
+  on m=24.
+- Gate 0b: this round's own D_ceil branch-and-bound
+  (`min_full_window_d_ceil`, independent DFS, does not import
+  `o1_lemma_exhaustive_domain.py`) agrees with `w6k/k0_canonical_engine.canonical_D(ceiling_on=True)`
+  (the K0-gated house reference) on all 12 tiny-word test cases
+  (canonical + reverse order, words 13/31/113/311/123/321).
+- Extra ground-truth cross-check (not in the original order, run
+  because a live discrepancy demanded it -- see below): the D_ceil
+  branch-and-bound was run for EVERY m=13..28 (the gap between the
+  original 12-row ground truth and this round's m=29 target) and
+  agrees exactly with both `k0.canonical_D` AND the `22/53` mirror
+  law `D_real(m)=floor((22m-1)/53)` (previously verified only on its
+  original m=2..12 agreement zone) on all 16 additional rows,
+  m=13..28, zero discrepancies. This closes the gap cleanly: D_ceil
+  true-min tracks the mirror law exactly, in lockstep with L, all the
+  way to m=28, then departs from BOTH exactly at m=29.
+
+**VERDICT, per cell (all 8 target cells: the mandatory pair + all
+6 extras run) — UNIVERSALITY BREAKS, not "D=L survives":**
+
+| Cell | L (loop) | mirror-law ⌊(22m-1)/53⌋ | D_ceil true min (this round) | k*=m? |
+|---|---|---|---|---|
+| true-word m=29 | 12 | 12 | **11** | yes |
+| true-word m=30 | 12 | 12 | **11** | no (k*=29) |
+| true-word m=31 | 12 | 12 | **11** | no (k*=29) |
+| true-word m=32 | 13 | 13 | **11** | yes |
+| true-word m=33 | 13 | 13 | **11** | no (k*=32) |
+| true-word m=34 | 14 | 14 | **11** | yes |
+| true-word m=35 | 14 | 14 | **11** | no (k*=34) |
+| sqrt2-per12 m=24 | 14 | -- | **13** | yes |
+| (sanity) true-word m=13..28 | tracks mirror | tracks mirror | **matches L/mirror exactly, 16/16** | -- |
+| (sanity) true-word m=40/45/50/53 | 16/18/20/22 | -- | **11 (pinned)** | -- |
+
+**Every cell: an EXACT, exact-replayed, D_ceil-legal (g(k)>=0 at
+every prefix — the strict canonical constraint, not the laxer
+D_free O1 used) full-length admissible chain achieves max partial sum
+strictly BELOW both the loop value L and the (extrapolated) mirror
+law, at every one of the 8 target cells.** The true-word D_ceil
+minimum is pinned at exactly 11 from m=29 through at least m=53 (spot
+checked m=40,45,50,53, all still 11) while L climbs 12→22 over the
+same range — the identical sharp, one-shot phase transition O1
+reported under D_free, now independently reproduced under the
+strictly stronger D_ceil constraint. sqrt2-per12 m=24 similarly
+breaks (13 vs L=14), matching O1 exactly.
+
+**Counterexample chain, true-word m=29, verbatim (independently
+re-derived from scratch — separate DFS implementation, separate
+replay, agrees with W6O's own witness digit-for-digit as an
+additional cross-check, not by construction):**
+
+Window (backward-consumption order, index 0 = nearest terminal,
+absolute steps [24,53) end-anchored): `22121221212212121221212212121`
+
+Exponent sequence: `a = (4,3,2,1,1,4,2,2,1,6,1,1,1,2,2,2,1,2,1,2,4,1,2,1,1,2,2,1,1)`
+
+g(k) (running partial sum, k=0..29): `0,2,3,4,3,3,5,5,6,5,10,9,8,8,8,9,9,9,9,8,9,11,11,11,10,10,10,11,10,10`
+
+max g(k) = **11**; min g(k) = 0 (never negative — D_ceil-legal
+throughout, not merely D_free-legal); terminal residue rho=839
+(exact-integer, replayed independently, matches W6O's own recorded
+839). Parity-legality re-verified at every one of the 29 steps by a
+freshly written replay function (`replay_chain` in
+`p1_completion_search.py`), independent of the generating DFS's own
+bookkeeping.
+
+**Upper-bound sanity (required by the order): re-confirmed the loop
+achieves exactly L on every cell** — the all-2s chain, replayed
+explicitly, stays at the residue fixed point (rho=1 throughout,
+2-adically the backward image of the trivial 4-2-1 cycle) and
+achieves max g(k)=L exactly, on all 8 cells (own computation, not
+assumed). So the verdict is cleanly D_ceil<L, not something muddier.
+
+**Kill mechanism (read off the exact-replayed chain, same shape O1
+already identified, now confirmed under the stronger constraint):**
+step 9 (0-indexed; the 10th backward step) takes a=6 on a support
+letter (c=1) while g is still slack (g(8)=6, six below the eventual
+loop ceiling) — a moderately expensive detour (+4 over the loop's own
+would-be cost at that step) that buys a favorable residue class the
+chain then rides via a long run of a=1 steps (positions 10,11,18,21,
+23,24,27,28 all run 1 cheaper than the loop) for the remainder of the
+window, capping the running max at 11 instead of tracking the loop's
+climb to 12. This is a genuine whole-window effect — no
+short-prefix-alone view sees it, and no shorter window has room for
+the early investment to pay off (consistent with O1's own m<=12
+exhaustive zero-breach finding and the clean m=13..28 agreement this
+round adds).
+
+**Honest walls: none.** Cap-margin checks (A_CAP=40 vs 80) agreed on
+every one of the 8 cells; no wallclock cap (300s/cell) or RSS cap
+(8GB) was ever hit. Peak RSS this round: well under 0.1GB (node
+counts topped out at ~200k for m=53); total wall time for the full
+script (both gates + 8 cells + all replays): under 2 seconds.
+
+**Conclusion: the one-point lemma's failure at m=29 (W6O-O1) is NOT
+an artifact of D_free's laxer semantics — it holds, independently
+re-derived and independently replayed, under the house's own
+strictest canonical D_ceil convention too, and it is a break in the
+actual capacity value D(m) itself (D_ceil now measurably diverges
+from the loop AND from the extrapolated mirror law at exactly the
+same m=29 boundary), not merely a break in a proof-simplification
+shortcut about how to search for it.** This raises the stakes past
+O1's own framing: O1 said the one-point *lemma* (a proof-technique
+convenience) breaks at scale but explicitly did not claim D itself
+breaks from L ("the global lemma... is NOT contradicted by this").
+This round's D_ceil result says the actual capacity value D(29) (and
+D(30..53) on the true word, D(24) on sqrt2-per12) is strictly LESS
+than the loop's L — i.e., **the loop is not optimal past m=29-53 on
+the true word (m=24 on sqrt2-per12): a cheaper full admissible chain
+exists, exact-replayed, house-canonical-legal.** This is upstream of
+and more consequential than O1's lemma-scale finding; it says the
+GLOBAL claim D=L (the program's central capacity/loop-optimality
+conjecture, DERIVATION_NOTES sec 14a's own "D=L follows... equality
+analysis... uniqueness" chain) itself needs re-examination past
+m approx 29, not just the one-point-congruence proof shortcut for it.
+This does not, by itself, say anything about the ORIGINAL
+Collatz-loop uniqueness question at the scales that matter for F5
+(m=359) without further work extending this exact check there — it
+is reported at exactly the scale tested (m=29-53 true word, m=24
+sqrt2-per12), no further extrapolation claimed.
+
+**Decisive artifacts:** `w6p_urgent/p1_completion_search.py` (script,
+independent implementation), `w6p_urgent/p1_completion_search_results.csv`
+(8 rows, one per cell), `w6p_urgent/p1_run_output.log` (full run
+transcript, every replay shown), `w6p_urgent/sanity_depth_relation.py`
+(preliminary sanity check validating the forward/backward depth
+relation against `bfs_Dm`'s own certified chains on m=5,8, run first,
+PASSED). No commits made, per house rules for this round.
+
+## W6Q-REALITY — Does the W6P-URGENT m=29 counterexample survive under the CENSUS's own convention, or only the game's? (Sonnet exec, 2026-07-04)
+
+Order (urgent, verbal): W6P-URGENT's true-word m=29 counterexample
+(`a=(4,3,2,1,1,4,2,2,1,6,1,1,1,2,2,2,1,2,1,2,4,1,2,1,1,2,2,1,1)`,
+claimed max partial sum 11 < loop L=12, terminal residue 839)
+contradicts the archived corridor measurement `M_edge(C=11)=28`
+(`shell/w6h/h5_frame_rule_check.csv`, formula `floor(53(C+1)/22)`).
+Game says capacity-11 chains survive 29 steps; corridor says only 28.
+Determine which world the counterexample actually lives in, with
+bulletproof exact-integer verification. Work under
+`shell/underlock/w6q_reality/`, no commits, CPU only, well under 8GB
+RSS (actual peak ~12MB across all scripts).
+
+**STEP 1 — Backward reconstruction + forward replay: CONFIRMED
+EXACTLY, no honest walls.** Exact-integer backward reconstruction from
+ρ=1 via ρ' = (2^a·ρ − 1)/3 at all 29 steps: every division exact, zero
+remainder failures, reproduces the ledger's own g(k) sequence
+digit-for-digit, final backward value **X = 839** (small, no lift
+needed — this is a genuine, self-contained, non-degenerate real
+Collatz start). Forward replay of the REAL Collatz odd-step map
+(3x+1, strip all 2s, record v2) from X=839 reproduces the EXACT
+expected 29-exponent sequence at every step, landing on exactly 1.
+Re-confirmed via a second, differently-coded replay (bit-isolation
+`y & -y` trick vs while-loop v2()) — identical. **This chain is a
+real, verified, 29-step Collatz trajectory: 839 → … → 1.** No
+divergence anywhere in step 1.
+
+**STEP 2/3 — Evaluated under the CENSUS's own credit/deficit
+convention (read directly from `rust/lock3_census.rs`, not
+paraphrased): BREAKS DOWN COMPLETELY — the two conventions are
+measuring different quantities, and this trajectory does not remotely
+approach deficit 11 under the census's own rule.** `run_census`
+(~line 2081) grows its tree from `Key::new(0,0)` at depth 0 and uses
+`c = credit_at_step(next_depth - 1)` — i.e. credit is indexed
+`k=0,1,2,…` **counting from the trajectory's OWN start**, with no
+external "absolute step 53" anchor anywhere in the source. The GAME's
+own convention (`w6e/engine.py`, `e1_walkers.py`,
+`p1_completion_search.py`: `backward_letters(credit_fn, m,
+anchor_steps=53)`) instead uses a **fixed, universal end-anchored
+window** — for m=29 this is credit indices k=24..52 — regardless of
+which specific integer trajectory is being played; `engine.py`'s own
+docstring justifies this purely as "the actual 53-step house
+convention used to build every ground-truth table" (a modeling
+choice for a specific automaton measurement, not a fact about this
+trajectory's own history).
+
+Applying the census's own forward recursion `d(i) = d(i−1) + c_{i−1} −
+a_{i−1}`, root-anchored at k=0 (this trajectory's natural placement —
+nothing in the source assigns it 24 steps of prior history):
+
+```
+i:    0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+d(i): 0  0  1  0  0  0  1  1  1 -1 -2 -1 -1 -1 -1 -2 -2 -2 -1  0 -5 -4 -5 -5 -7 -7 -6 -7 -8 -11
+```
+
+**census max d = 1, min d = −11** — cross-checked via a second,
+independently-coded method (closed-form telescoping credit sum vs
+step-by-step recursion): bit-for-bit identical. Compare to the GAME's
+own g(k) (ledger's original quantity): max **g = 11**, min g = 0
+(never negative — by construction, since D_ceil-legality is exactly
+what the game's own search enforces). The credit LETTERS the two
+conventions assign are nearly identical (28/29 positions match,
+because `credit_true` is close to periodic-12 over a window this
+short — only the very last position, k=52 vs k=28, differs, c=2 vs
+c=1); the divergence is entirely in **which endpoint is fixed at zero
+and which direction the running sum accumulates** — the game fixes
+the deficit at the *terminal* (chain's end) and walks backward across
+a *calendar-anchored* window; the census fixes it at the trajectory's
+own *start* and walks forward with no calendar anchor at all. Under
+the census's own rule, this specific trajectory spends most of the
+window strongly negative and never gets within 10 of the claimed
+bound of 11.
+
+**Side finding (verified directly, not the main verdict but load-
+bearing for trusting the M_edge(11)=28 comparator itself): no genuine
+direct m=28-vs-m=29 residue-automaton scan was ever run for C=11.**
+The only archived C=11 census run
+(`data/runs/lock3_C11_N2000_residue_m1_lineage_cohorts_20260524_011032/`)
+was run at `residue_mod_power=1` (memory-lean modular-compatibility-
+only mode) — its own summary JSON reports `max_lifetime_of_valid1_lineage
+= 28`, a lineage-lifetime PROXY at m=1, not an m=28-occupied/m=29-desert
+observation. `LOCK3_PRECISION_COUNTDOWN_GRID.md` says outright: "Only
+m1 has been checked for C6-C50 in this series." Only C=1..5 have
+genuine exhaustive per-m countdown grids to the desert edge
+(`LOCK3_BIRTH_INVARIANT_AUDIT.md`); C=11's `M_edge=28` is the FORMULA
+`⌊53(C+1)/22⌋` value, cross-checked only against this proxy (which
+happens to agree numerically), not against an independent from-scratch
+exhaustive scan at that specific C.
+
+**VERDICT: (b) MODEL DIVERGENCE.** The W6P-URGENT chain is a real,
+independently-triple-verified Collatz trajectory (839 → 1 in 29
+steps) — step 1 is airtight. But it does NOT sustain census-own
+deficit ≤ 11 for 29 steps; under the census's actual root-anchored
+credit convention its deficit collapses to strongly negative values
+almost immediately and never approaches the claimed ceiling. **The
+exact missing translation term is the anchor/calendar convention
+itself**: the game's `anchor_steps=53` end-anchoring assigns credit
+index k = 53−m+j to backward-position j, a convention justified only
+as matching a specific 53-step automaton measurement (`M_edge(C)` per
+`COLLATZ_PROOF.md`'s Theorem-1-style automaton, which IS genuinely
+end-anchored at a fixed 53-step heartbeat by its own formal
+definition) — but `lock3_census.rs`'s own deficit recursion, the tool
+that actually grows real backward/forward trees over arbitrary depths
+(250, 500, 1000, 2000 in the archived runs), indexes credit from
+k=0 at ITS OWN root with no such anchor. **These are two different,
+non-interchangeable measurement conventions that happen to share the
+same `credit_at_step` formula but disagree on which absolute index k
+applies to a given trajectory position** — the W6P-URGENT breach is a
+real result about the FIRST convention (the fixed-53-step automaton
+game), not evidence against the second (the census's own open-ended
+tree). No claim survives that "the corridor's exhaustive scan missed
+a real survivor" — under the census's own rule, applied honestly to
+this trajectory's own natural (start-anchored) position, there is no
+survivor to miss. This does not, by itself, prove `M_edge(C=11)=28`
+is correct in the strong sense (the side finding above shows C=11
+itself was never exhaustively m-swept, only formula-asserted) — it
+shows specifically that the W6P-URGENT chain does not constitute a
+counterexample to it.
+
+**Honest walls: none.** All four scripts ran in well under 1 second
+each; peak RSS ~12MB (vs the 8GB cap). No wallclock or RSS caps
+approached. The one open scope note: the "sqrt2-m24 breach" checked
+for per the order is `sqrt2-per12 m=24` from the same W6P-URGENT
+round — this is a fully rational, period-12 MECHANICAL toy word
+(`credit_sqrt2_per12(k) = ⌊17(k+1)/12⌋ − ⌊17k/12⌋`), not an
+irrational-rotation toy and not itself a claim about any specific
+integer trajectory; it was not re-examined here since the task at
+hand is specifically about the true-word m=29 chain's status as a
+REAL Collatz counterexample, and the sqrt2-per12 family was never
+presented as one (it is a synthetic word used for testing the game's
+combinatorics, with the same anchor-convention caveat applying to it
+if anyone later tries to read it as a real-trajectory claim).
+
+**Decisive artifacts:** `w6q_reality/q1_backward_forward_replay.py` +
+`q1_backward_trace.json` + `q1_output.log` (step 1a, backward
+reconstruction), `w6q_reality/q2_forward_replay_real_collatz.py` +
+`q2_output.log` (step 1b, forward Collatz replay, alternate bit-trick
+cross-check included in `q4`), `w6q_reality/q3_census_deficit_eval.py`
++ `q3_step_by_step_table.json` + `q3_output.log` (step 2, the
+game-vs-census comparison table), `w6q_reality/q4_independent_rederivation.py`
+(step 3, fully independent second code path for both the replay and
+the deficit recursion), `w6q_reality/q5_final_condensed_table.txt`
+(condensed human-readable summary of all of the above). No commits
+made, per house rules.
+
+## LOCK4-B1 — Bridge Economics, Measured Exactly (work order, Fable, 2026-07-04; executor: Sonnet agent)
+
+Scope: LOCK4_BRIDGE_NOTES.md's Bridge Obstruction inequality for the
+first bridge (the 306-letter q=53 -> m=359 gap). House rules as W6:
+frozen gates in the order; exact replay; independent cross-checks;
+canonical instruments (w6e/engine.py primitives, w6e/e1_walkers.py
+credit_true convention); ~8GB RSS; honest walls; CPU only; no commits.
+Work under `shell/bridge/b1/`.
+
+### LOCK4-B1.0 — Audit + reconciliation + spot-reproduction (`b1/b0_audit_reconcile.py`)
+
+**Instrument:** fresh, independent simulation of the true (odd-only)
+Collatz map (does NOT import `src/collatz_experimental_data/exact.py`
+— the point is an independent spot-check, not a re-run), tracking
+exact deficit `d_k = floor(k*alpha) - A_k` via the bit_length trick
+(no floating point in the deficit computation), and an independent
+re-derivation of the [1,1] word's affine ghost.
+
+**Vocabulary reconciliation (the round's B1.0 job):** LOCK4_RESULTS.md's
+"reserve" (from `src/collatz_experimental_data/exact.py`'s
+`simulate_orbit`/`reserve_profile`) is reported as `d_before`/`d_after`
+directly — the deficit itself, with NO fixed corridor C anywhere in its
+formula. This is IDENTICAL to LOCK4_BRIDGE_NOTES.md's deficit `d`, NOT
+to the bridge notes' `RESERVE := C - d` (headroom below a *chosen*
+ceiling). The old module's "max_reserve=23" means the orbit's deficit
+`d_k` peaked at 23 above the `floor(k*alpha)` baseline — equivalently,
+pinning the tightest corridor `C=23` that contains this orbit's whole
+prefix, `RESERVE = C - d` is exactly 0 at that peak and >= 0 throughout
+by construction (verified directly, not asserted: `RESERVE_min_over_
+prefix_under_pinned_C = 0`, `RESERVE_at_time_of_max_deficit = 0`, both
+computed, both correct). This lineage is the empirical "jump is
+impossible" evidence (May 21 exhaustive scan through 250M: max reserve
+23, never 24) upgrading into this round's deterministic bridge DPs.
+
+**Spot-reproduction (2 concrete numbers -> 8/8 fields, fresh code):**
+orbit 80049391 (max-reserve-23 orbit): max_reserve=23 @ step 72,
+crossing_time=153, num_growth_steps=53 — ALL MATCH. Second independent
+bankruptcy crossing, orbit 120080895: max_reserve=23 @ step 65,
+crossing_time=128, num_growth_steps=48 — ALL MATCH. 8/8 fields exact,
+0 mismatches.
+
+**[1,1] / ghost -1 identity with the game's cheap ray (DERIVATION_NOTES
+sec 8b):** word [1,1] gives S^2(x) = (9x+5)/4 (re-derived independently
+via the affine-word recursion B_{n+1}=3B_n+2^{A_n}), ghost = -B/D =
+-5/(9-4) = -1 EXACTLY. Cross-checked two ways: (a) direct algebra on
+the word; (b) S(-1) = (3*(-1)+1)/2 = -1, confirming -1 is the unique
+fixed point of the real map S(x)=(3x+1)/2 (the a=1-forever ray). This
+IS exactly rho=-1 in the residue game (DERIVATION_NOTES 8b's "cheap
+ray": a=1 forever, cost 1/step, the -1-loop shadow) — the May scan's
+repeated growth-segment word [1,1] is the SAME object as the game's
+cheap ray, not merely analogous. Identity confirmed: `True`.
+
+**Verdict: PASS (8/8 spot-reproduced numbers match; vocabulary
+reconciliation explicit and verified; ghost/cheap-ray identity
+confirmed both algebraically and by direct fixed-point check).**
+
+**Decisive artifacts:** `b1/b0_audit_reconcile.py`, `b1/b0_audit_results.json`,
+`b1/b0_run_output.log`. Wall <0.01s, peak RSS negligible.
+
+**Honest walls:** none.
+
+### LOCK4-B1.1 — Phase-relaxed climb cap (`b1/b1_phase_relaxed_climb.py`)
+
+**Instrument:** true-word credits via `credit_true` (exact bit_length
+convention, matching `w6e/e1_walkers.py` verbatim). Phase-relaxed rule
+(the order's own definition, letter-type only, no residue tracking):
+support (c=1) forces a>=2, drop (c=2) allows a=1. Since each step is
+independent under this rule (no coupling across steps — no residue
+state to carry), the per-step-maximizing choice a=a_min at every step
+gives the closed form `climb(k) = k - 2*supports(k)`, algebraically
+IDENTICAL to the order's suggested form `Sigma(c) - k - supports(k)`
+(shown symbolically: Sigma(c) = 2k - supports(k) by telescoping, so
+the two forms collapse to the same expression — not a coincidence,
+confirmed by direct substitution in the script docstring).
+
+**Validation:** independent per-window brute-force DP (explicit scan
+over `a` in `[a_min, a_min+a_cap]`, MAXIMIZING c-a, margin-checked
+a_cap=6 vs 20) on 20 windows k=1..700 (Fibonacci-ish spread plus
+k=306): **20/20 MATCH**, margin check OK on all 20 — closed form
+validated, not merely asserted.
+
+**RESULT:** value at k=306 = **50** (supports=128, drops=178) — inside
+10% of the frozen ~52 estimate, and strictly < 149. Floor-form law
+test: `climb(k)` vs `floor(k*(2*alpha-3))` (rate 0.169925...) over the
+full k=1..700 curve — **max |deviation| = 1** (essentially exact floor
+law, not merely "roughly linear").
+
+**Frozen prediction 1 (value at k=306 ~=52 and <149, 70%): HIT**
+(actual 50, within 10% of 52, and 50 < 149).
+**Frozen prediction 2 (floor-form law in k, 60%): HIT** (max deviation
+1 across 700 points — as clean a floor law as the program has
+measured anywhere).
+
+**Decisive artifacts:** `b1/b1_phase_relaxed_climb.py`,
+`b1/b1_phase_relaxed_curve.csv` (700 rows, k=1..700),
+`b1/b1_run_output.log`. Wall 0.36s, peak RSS negligible.
+
+**Honest walls:** none.
+

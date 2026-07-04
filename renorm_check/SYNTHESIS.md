@@ -1197,3 +1197,133 @@ Ostrowski-flavored, mechanism open.
 result is stronger than predicted), N3 MISS with a better law
 found, N4 3-of-4 clauses HIT.** Peak RSS 4.4GB; honest walls:
 t=14's [25,31] at len 15-18; t=10 below 15 at len ≥ 19.
+
+## W6O — The one-point lemma at scale (2026-07-04, Sonnet exec)
+
+Order: shell/underlock/W6O_LEMMA_SCALE_ORDER.md; ledger W6O-O1..O3.
+This round scaled N2's "prefix-alone-suffices" claim from 40 sampled
+words (m=5..7) to the real domain: true-word windows m=2..53, both
+mechanical families one period past ground-truth, and ALL {1,2}^m
+words exhaustively to m=12.
+
+**O1 — THE ONE-POINT LEMMA BREAKS AT SCALE (lead finding, frozen
+prediction falsified).** 26 exact, independently-replayed breaches
+out of 8,280 prefixes tested — ALL at long windows: true-word breaks
+sharply at m=29 (min=11 stays pinned there through m=53 while L
+climbs 12→22) and sqrt2-per12 breaks at m=24 (exactly one period
+past its ground-truth table, min=13<L=14). **Zero breaches among all
+8,190 exhaustive {1,2}^m words, m≤12** — the lemma is total on the
+short-word space and fails only once windows reach real-system
+length. Both flagship breaches (true-word m=29, sqrt2-per12 m=24)
+were independently hand-traced with a second, freshly-written
+implementation sharing no code with the production script — every
+step confirmed parity-legal, same numbers. Mechanism: an early
+moderate exponent (a=4..6) buys a favorable residue class that a
+long run of cheap a=1 steps then rides for the rest of the window —
+a detour only profitable once the window is long enough to harvest
+it. **Consequence: N2's proof-simplifying reduction (the lower-bound
+anchor as a pure one-point congruence fact, no suffix/forward
+information needed) does NOT survive to the scale the real proof
+needs.** The global lemma (D=L) itself is not contradicted — only
+the shortcut mechanism proposed for its anchor inequality. The
+whole-window congruence argument (§12d, L4's super-additive coupling)
+is reinstated as necessary past a length threshold newly located at
+m≈24-29.
+
+**O2 — support-adjacency biconditional, both halves confirmed.**
+Widened scope (m≤11, true-word rows added for the first time): 2×2
+table over 195 positions, 20 dips. Forward (dip⟹adjacent): 20/20 =
+100%. Reverse (adjacent⟹dip): 20/147 = 13.6% — adjacency necessary,
+far from sufficient, exactly as predicted. dist=1 positions (support
+letter immediately follows) are ~4.4× more likely to be dips than
+dist=0 positions — the only separating signal found; no fully
+sufficient condition identified.
+
+**O3 — N4's wall cells closed.** t=14: CLOSED exactly to 31 (was
+open [25,32]) — same witness at len 15 and len 16, cliff height 12
+from the t=13 plateau value of 19 (more than double the predicted
+minimum of 6). t=10: confirmed stable at 15 through len 19 and 20
+(same witness as len 18).
+
+**Round verdicts vs frozen: O1 MISS/BREACH (85% predicted, falsified
+— leads the round), O2 both HIT (70%/70%), O3 HIT (65%, cliff height
+12 vs predicted minimum 6).** Peak RSS 2.27GB; zero honest walls —
+every O1/O2/O3 cell completed inside its wall-clock/RSS budget. All
+26+20+4 witnesses passed independent exact-integer replay.
+
+## W6P-URGENT — UNIVERSALITY BREAKS IN THE GAME AT m=29 (2026-07-05, status: reality-check in flight)
+
+The W6O falsification sweep's breach was completed to a full chain:
+a ceiling-legal (g ≥ 0 throughout), exact-replayed, independently
+re-derived chain beats the loop on the true word at m=29 — max
+partial sum 11 vs L = 12. The m=13..28 gap was closed en route
+(agrees exactly with the mirror law on all 16 rows; the break is
+clean at 29). Game-D pins at 11 through m=53 while L climbs to 22.
+Every game-derived conclusion at m ≥ 29 — including the F5-via-L
+computation — is SUSPENDED pending the reality check below.
+Universality's certified scope is now: all short words (m ≤ 12
+exhaustive), all family/true-word rows m ≤ 28.
+
+**ARCHITECT'S CONTRADICTION FLAG (the decisive observation): the
+game verdict contradicts archived corridor reality.** Game-D = 11
+surviving to m = 53 would mean M_edge(11) ≥ 53; the archived
+exhaustive census measured M_edge(11) = 28 (formula-exact,
+w6h/h5 row C=11). Both cannot describe the same object. Either the
+counterexample translates to a real integer trajectory the census
+somehow missed (extraordinary claim, extraordinary checking), or
+THE GAME MODEL DIVERGES FROM THE CORRIDOR at depth ≈ 29 — a missing
+translation term (floor semantics, phase coupling, or deficit
+dictionary), which the G5 reality bridge (validated only at C ≤ 5)
+never probed. W6Q-REALITY is running the forward integer replay
+under the census's own definitions to decide (a) vs (b).
+
+F5 status honesty: the game-side support for 358 is withdrawn until
+the dictionary is resolved; the corridor-side evidence (formula
+receipt-exact at every measured C, 1..50 + divergence-sweep frames)
+stands on its own measurements.
+
+## W6Q-REALITY — verdict: MODEL DIVERGENCE; the corridor stands (2026-07-05)
+
+Independent re-derivation (fresh code, no reuse) confirmed both
+halves: (1) the W6P chain IS a genuine integer trajectory — 839 → 1
+in 29 odd steps, forward exponents matching the backward
+construction exactly; (2) under the census's OWN convention
+(rust/lock3_census.rs: credit_at_step(k) indexed from the
+trajectory's root, no absolute anchor), its deficit sequence is
+max = 1, min = −11 — a plummeting DESCENT, not a hover. The
+"11-hover" existed only inside the game engine's universal
+anchor_steps=53 end-anchor (w6e/engine.py, a declared house
+convention). The end-anchored scoring agrees with root-anchored on
+28/29 letters (near-periodicity) — one phase step of divergence,
+exactly enough. M_edge(11) = 28 stands UNCONTRADICTED; the archived
+corridor base survives its strongest-ever attack.
+
+**THE THIRD CONVENTION SEAM (E2: window phase; W6K: word order;
+W6Q: root-vs-end anchoring), and the law generalizes again:** the
+game's results are true statements about the END-ANCHORED GAME;
+their corridor meaning is exactly as validated by corridor data —
+ground-truth rows m ≤ 28, edges C ≤ 5, and H5's 48/48 frame-rule
+match at C = 3..50 — and NOT beyond. The near-periodicity of the
+credit word HID the anchor mismatch below m ≈ 29 (the same
+mechanism that hid the W6K order bug below letters ≥ 3): every
+validation row lived where the conventions coincide.
+
+**Status changes:**
+- W6P's "universality breaks" — RE-SCOPED: universality of the
+  end-anchored game fails at m ≥ 29; the CORRIDOR's capacity law is
+  untouched (and its formula remains receipt-exact at every C ever
+  measured, now including surviving this attack).
+- The m ≥ 29 suspension resolves into a RE-GROUNDING program
+  (→ W6R): re-pose the game with root-anchored credit words (the
+  census's convention IS the convention), re-verify the trinity —
+  universality, loop uniqueness, floor-point law — under the
+  corrected dictionary. Registered architect prediction: all three
+  HOLD at all m under root-anchoring — 70%.
+- F5: rests on its corridor receipts (48/48 ladders + the
+  divergence-point frames) — the game's testimony stays withdrawn
+  until W6R re-grounds it. LOCK4-B1's climb DPs get the same
+  dictionary scrutiny on report.
+- VALIDATION LAW, final form: a convention is only pinned when a
+  validation row exists that BREAKS under every alternative
+  convention. Root-vs-end anchoring never had one until m = 29
+  supplied it.

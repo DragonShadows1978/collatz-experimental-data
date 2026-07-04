@@ -352,3 +352,24 @@ structure.**
 envelopes (21 → 19 at len 15; convergence open). t=13: 31, t=14: 32
 (len ≤ 14). True asymptotic per-trit rate: OPEN — do not quote
 2.5/trit as final.**
+
+## 14. Session-11: THE ONE-POINT LEMMA (W6N, 2026-07-04 night)
+
+**14a. Lemma (empirical, 40/40 + N1's 2,956-chain floor + architect
+hand-check): for every word w with binding prefix k*, every
+parity-legal k*-step backward walk from ρ = 1 satisfies
+g(k*) ≥ g_loop(k*) = L(w) — from the mod-3^k* constraints ALONE.**
+Since max_k g(k) ≥ g(k*) for any chain, D ≥ L follows immediately;
+with the loop's upper bound, D = L; equality analysis at k* gives
+uniqueness. THIS is the single statement left to prove. It is
+finite per (k*, prefix-word), purely 3-adic, and the order-gap
+(ord(2, 3^k) = 2·3^{k-1}) is the natural engine.
+
+**14b. Boundary fingerprint: dips (f = 1 undercuts) are
+support-adjacent (9/9 within 1 step of a support letter).**
+
+**14c. Tax curve (converged cells): t=11,12,13 → 19; t=10 ≤ 15
+open; t=14 ∈ [25, 32]. Four-trit plateau witness lands ≡ 1 mod
+3^13; +6 cliff after. Shape = flats + cliffs; suspect Ostrowski
+scales. METHOD LAW: consecutive-length agreement is NOT a
+convergence certificate (a width-4 plateau broke at len 18).**

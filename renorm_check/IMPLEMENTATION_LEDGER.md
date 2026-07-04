@@ -3117,3 +3117,110 @@ support-adjacency (dist ≤ 1 in 9/9), not suffix credit mass.
 **Decisive artifacts:** `w6n/n3_dip_catalog.csv` (9 rows),
 `w6n/n3_chain_dump.csv` (9 rows), `w6n/n3_run_output.log`.
 Wall <0.1s.
+
+### W6N-N4 — Length convergence of the tax curve (`w6n/n4_length_convergence.py` + `n4c_tight_cap_closure.py` + `n4b_convergence_verdict.py`)
+
+**Instrument:** the W6M exact-bigint ladder, reused as a module (not
+reimplemented); its G1/G2 gates RE-RUN fresh in-process in both the
+static-cap and tight-cap runs before any production value (all PASS);
+every witness exact-replayed (n4b re-replays all 10 witness cells
+independently, including a max-t-served precision readout — 0
+failures).
+
+**Three-instrument story (honest):** (1) the static-cap run
+(cap = M3_best + 4) completed t=10,11,12 at len 17,18 cleanly but
+WALLED mid-sweep (300s/cell budget, ~4.4GB) on t=13 len≥16 and t=14
+len≥15 — the caps (35/36) were sized to M3's pre-drop values and the
+mid-run t=13 discovery made them obsolete; (2) `n4c` closed the
+walled cells with SOUND tightened caps (a found min ≤ cap is exact
+for scope; a cap can only miss, never fabricate): t=13 at cap 21 —
+len 16/17/18 all = 19 EXACT, seconds each (state counts collapsed
+7.1M → 380k); t=14 at cap 24 — len 15/16/17/18 all complete, NO
+value ≤ 24 exists; (3) `n4b` recomputes convergence from the union,
+excluding walled cells (a walled cell's value covers only pre-wall
+depths — upper bound, not the scope's min).
+
+**CORRECTED CURVE OF RECORD (t=10..14):**
+
+| t | series (len: min) | verdict |
+|---|---|---|
+| 10 | 14:16, 15:16, 16:16, 17:16, **18:15** | **STILL-OPEN at 15** — width-4 plateau BROKE at len 18 |
+| 11 | 14:21, 15:19, 16:19, 17:19, 18:19 | CONVERGED at 19 (len≤18) |
+| 12 | 14:21, 15:19, 16:19, 17:19, 18:19 | CONVERGED at 19 (len≤18) |
+| 13 | 14:31, **15:19**, 16:19, 17:19, 18:19 | CONVERGED at 19 (len≤18) — dropped 12 in one length step |
+| 14 | 14:32; len 15-18: nothing ≤ 24 exists (complete, sound) | STILL-OPEN in [25, 32]; 32 = best witness (len 11) |
+
+**THE FOUR-TRIT PLATEAU WITNESS (the round's structural surprise #2):**
+one len-15 chain `(4,3,2,5,4,3,1,3,2,2,1,4,9,5,1)`, cost 19, final
+v = 35075107 ≡ 1 mod 3^13 EXACTLY (replay-verified, not mod 3^14) —
+serves t=10, 11, 12, 13 simultaneously. L2's "plateau = one chain
+owns both trits" mechanism now spans FOUR trits. And it hard-stops at
+13: t=14 gets nothing ≤ 24 from any chain of length ≤ 18 — the
+plateau boundary is a genuine precision cliff (19 → something in
+[25,32], a jump of ≥ 6).
+
+**t=10 PLATEAU BREAK (methodological, load-bearing):** t=10 agreed at
+16 across len 14,15,16,17 — four consecutive lengths — then dropped
+to 15 at len 18 (len-18 witness, replay PASS). **"Two consecutive
+lengths agree" (the order's own stopping rule) is REFUTED as a
+certification criterion** — the in-run status line that applied it
+certified t=10 as converged and was wrong within the same run's own
+data. Convergence labels on this curve are henceforth
+"exact-for-scope at len≤N", never "converged", until a principled
+length bound exists. (The n4 script's status-scan bug — reporting
+first-agreement instead of last-two-lengths — is documented in
+n4b's docstring and corrected there; the CSV raw data was always
+right.)
+
+**Frozen prediction (t=11/12 stabilize at 19 by len 16; t=13/14 drop
+below 31/32 and stabilize by len 17-18 — 55%): MISS (3 of 4 clauses
+hit).** t=11: HIT. t=12: HIT. t=13: HIT (dropped below 31 and
+stabilized — spectacularly, to the shared 19). t=14: MISS (does NOT
+drop below 25 at any length ≤ 18; best remains 32). Conjunction
+fails on t=14's cliff — which is itself the more informative outcome:
+the prediction's implicit model (t=13/14 behave alike) is wrong; 13
+is the last trit the cheap witness family reaches.
+
+**Decisive artifacts:** `w6n/n4_length_convergence.csv` (9 rows,
+static run), `w6n/n4c_tight_cap_closure.csv` (7 rows, closure),
+`w6n/n4b_run_output.log` (corrected verdicts + all replays),
+`w6n/n4_run_output.log`, `w6n/n4c_run_output.log`.
+
+**Honest walls:** static run: t=13 d16 and t=14 d15 walled mid-sweep
+at ~305s/4.4GB (stated, excluded from convergence series); t=14
+len 15-18 in the 25..32 cost range NOT resolved (the tight cap only
+certifies "nothing ≤ 24"; resolving 25..31 needs either a longer
+wall-clock at cap 33 or a better instrument); t=10's true min below
+len-18's 15 is open (plateau just broke; len 19+ unprobed, needs
+T0 = 29+ at cap ~17 — cheap, queued for next round). Peak RSS:
+4.40GB (static run), 0.98GB (closure) — both under the 8GB cap.
+
+## W6N Final Digest
+
+| Experiment | Verdict | Decisive number/table | Frozen prediction |
+|---|---|---|---|
+| N1 (floor at L+3, exhaustive m=4..7) | Floor exceptionless at triple budget on the FULL word space | 240/240 words, 2,716 non-loop chains, 0 violations | HIT (75%) |
+| N2 (prefix congruence mechanism) | **LEAD FINDING: PREFIX-ALONE SUFFICES — cheap-at-k* prefix set is EMPTY on every word; min over congruence-only prefixes = g_loop(k*) exactly, 40/40** | n2_prefix_congruence_table.csv: min_prefix_cost == g_loop(k*) all rows; independent unpruned replay on 4 words; cap-stable to 320 | **MISS (65% predicted suffix-needed) — inverted, and the inversion simplifies the proof: one-point argument at k*, no forward invariant** |
+| N3 (dip fingerprinting, m≤9, L+1) | Dip catalog built (9 rows); M2 continuity exact (7/7 overlap); local signature = support-adjacency (dist≤1 in 9/9), NOT suffix over-credit | strict-max reading 3/9 = 33.3% | MISS (55%) |
+| N4 (length convergence, t=10..14, len≤18) | t=11/12/13 converge at 19 (13 via a 12-point one-step drop); t=14 cliffs (nothing ≤24, len≤18); t=10 breaks a width-4 plateau at len 18 (16→15) | corrected curve: [15?, 19, 19, 19, 25..32?]; four-trit plateau witness v=35075107 ≡ 1 mod 3^13 | MISS (55%) — 3/4 clauses hit, t=14 cliff kills conjunction; stopping rule itself refuted |
+
+**Program state after W6N:** (1) The floor-point law is now
+exhaustively certified at L+3 over the full {1,2}^m word space m≤7 —
+AND (the round's center) it is a PREFIX-CONGRUENCE-ONLY fact: the
+global lemma's anchor inequality g(k*) ≥ g_loop(k*) needs no suffix
+information, no forward invariant, no whole-window coupling — the
+mod-3^k* parity-forcing alone already makes cheaper-than-loop
+impossible at k*. The proof obligation at the anchor point reduces to
+a one-point statement about the m-step congruence game, exactly the
+prefix-projected keystone shape §5b/§12d wanted. (2) The boundary
+dips are support-adjacent (≤1 step from a c=1 letter, 9/9) but NOT
+explained by suffix over-credit — the boundary term's mechanism
+remains open, now with a sharper negative. (3) The tax curve's
+plateau structure is deeper than known: one chain owns FOUR trits
+(t=10..13 at cost 19), the t=14 side of that plateau is a cliff of
+≥ +6, and plateau width is NOT a convergence certificate (t=10's
+width-4 plateau broke at len 18). The asymptotic per-trit rate
+remains open and now looks genuinely non-monotone in scope. All
+witnesses across N1-N4 (2,716 + 40 + 9 + 10 witness-bearing rows)
+passed independent exact-integer replay; 0 failures. Peak RSS this
+round: 4.40GB; every honest wall stated above.

@@ -1155,3 +1155,45 @@ rate still open (M3). Next: dip-position fingerprinting, length
 convergence, floor-point law at full generality (all budgets), and
 the first mechanism check — is the floor forced by the prefix-
 projected congruence at k* alone?
+
+## W6N — floor mechanism + convergence (2026-07-04 night, Sonnet exec)
+
+Order: W6N_FLOOR_MECHANISM_ORDER.md; ledger W6N-N1..N4 + digest.
+
+**N2 — THE ONE-POINT LEMMA (lead finding, prediction inverted in
+the best direction).** On 40/40 words, the minimum max-partial-sum
+over ALL residue-feasible k*-prefixes — mod-3^k* congruence/parity
+only, no suffix feasibility — equals g_loop(k*) EXACTLY. The set of
+prefix states below the floor is EMPTY. The floor is a one-point
+congruence fact; the global induction needs NO forward invariant.
+Combined with max_k g ≥ g(k*), this reduces the ENTIRE capacity
+law's lower bound to one finite counting statement: no parity-legal
+k*-step walk from ρ=1 ends cheaper than the all-2s walk.
+Independent unpruned brute force reproduced it on spot-checked
+words; architect hand-checked one case in-session.
+
+**N1 — floor law at full generality: HIT.** 2,956 chains within
+L+3 across 240 words exhaustive: ZERO violations of
+g(k*) ≥ g_loop(k*). The anchor is exceptionless at every budget
+tested.
+
+**N3 — dip signature found (prediction missed, better one
+surfaced): 9/9 dips sit ≤ 1 step from a support letter.** The
+boundary term's fingerprint is support-adjacency, not
+suffix-credit-runs.
+
+**N4 — curve of record (converged where stated):** t=10: ≤15
+STILL-OPEN (a width-4 plateau BROKE at len 18 — "two consecutive
+lengths agree" is REFUTED as a convergence certificate, the round's
+methodological finding); t=11: 19; t=12: 19; t=13: 19 (down from
+31 in one length step); t=14: open interval [25, 32] (nothing ≤ 24
+exists at len ≤ 18, complete and sound). Star witness: a len-15
+chain (4,3,2,5,4,3,1,3,2,2,1,4,9,5,1), cost 19, landing ≡ 1 mod
+3^13 exactly — a FOUR-TRIT plateau (t=10..13) with a ≥ +6 cliff at
+t=14. The tax curve's true shape: long flats punctuated by cliffs —
+Ostrowski-flavored, mechanism open.
+
+**Round verdicts vs frozen: N1 HIT (75%), N2 inverted-MISS (the
+result is stronger than predicted), N3 MISS with a better law
+found, N4 3-of-4 clauses HIT.** Peak RSS 4.4GB; honest walls:
+t=14's [25,31] at len 15-18; t=10 below 15 at len ≥ 19.

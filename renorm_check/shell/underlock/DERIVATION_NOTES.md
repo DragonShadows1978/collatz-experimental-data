@@ -79,11 +79,57 @@ obligation P1a below.
   correction letter at 358 is inside either window; only the boundary
   constant can differ.
 
-## 4. Next concrete step
+## 4. Next concrete step (SUPERSEDED by §5 — kept for the record)
 
 Build the finite mean-payoff game for the golden 8-block: states
 (δ clipped at a working ceiling, forced parity, ρ mod 9), letters from
 the period-8 mechanical word, exact value iteration. The output must
 be: value per period = 3, and the phase profile reproducing
-⌊(3m+1)/8⌋ row-for-row. Machine-checkable; Sonnet-shaped once this
-note's game definition is frozen; the notes above are the freeze.
+⌊(3m+1)/8⌋ row-for-row.
+
+## 5. Session-2 findings (Fable, 2026-07-04)
+
+**5a. The (δ, parity, ρ mod 9) abstraction LEAKS — the game is not
+finite-state in those coordinates.** The mod-9 steering table needs
+ρ mod 27 to predict the successor's mod-9 class, mod 81 for the next,
+and so on: nothing closes at any fixed level. Worse, the lift chosen
+at backward step j sits at trit (m−j−1) and cascades down one trit
+per step, reaching mod-9 relevance only ~(m−j) steps later — lift
+choices are long-range investments, not local dice. A finite
+mean-payoff game in these coordinates would be an APPROXIMATION, and
+this program does not prove theorems from approximations. Value
+iteration on the exact game is just dense enumeration — which is what
+the measured tables already are. The derivation must be theory:
+matching upper and lower BOUNDS.
+
+**5b. The keystone identity (exact, one line of algebra).** Composing
+m forward steps: 2^{Σa}·ρ_end = 3^m·ρ_start + S with
+S = Σ_{i=0}^{m−1} 3^{m−1−i}·2^{A_i}, A_i = a_1+…+a_i (the standard
+cycle-equation composition). With the terminal anchor ρ_end = 1:
+
+**2^{Σa} ≡ S (mod 3^m).**
+
+This is the SAME identity as the cycle equation's offset arithmetic —
+the capacity law and the +1-offset cycle rigidity are one identity
+read in two directions. It is the natural engine for the LOWER bound:
+Σa (hence the depth budget, via §2's conservation) cannot be small,
+because 2^{Σa} must hit the residue class of a structured sum S whose
+terms are pinned by the exponent pattern itself. Quantifying "cannot
+be small" into Σ_{j≤k}(a_j − c_j) ≥ ⌊(pk+1)/q⌋-type partial-sum
+bounds is the remaining number theory — Baker-free, purely 3-adic,
+because the congruence is exact.
+
+**5c. Bound-pair program (replaces §4):**
+- UPPER: exhibit an explicit walker strategy achieving max partial
+  sum ≤ ⌊(pm+1)/q⌋ for the periodic word (constructive; the strategy
+  from the steering table with lift pre-commitment; verify
+  mechanically against all 28 ground-truth rows first, then prove).
+- LOWER: from 5b, show any admissible chain from ρ_end = 1 has
+  max_k Σ_{j≤k}(a_j − c_j) ≥ ⌊(pm+1)/q⌋. Candidate route: reduce
+  2^{Σa} ≡ S mod 3^m per prefix — the identity holds at every
+  intermediate precision (project mod 3^k for the last k steps), so
+  each prefix inherits its own rigidity; the partial-sum bound should
+  fall out prefix-by-prefix.
+The over/under mirror and the true-word bonus (P1b/P3′) then ride on
+which side of the congruence the word's credit sum sits — the same
+±1 that decides F5.

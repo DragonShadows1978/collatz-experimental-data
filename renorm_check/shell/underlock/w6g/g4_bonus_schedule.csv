@@ -1,0 +1,12 @@
+m,D_true,plus1_form,minus1_form,plus1_hit,minus1_hit,bonus_class
+2,0,0,0,True,True,both(coincide)
+3,1,1,1,True,True,both(coincide)
+4,1,1,1,True,True,both(coincide)
+5,2,2,2,True,True,both(coincide)
+6,2,2,2,True,True,both(coincide)
+7,2,2,2,True,True,both(coincide)
+8,3,3,3,True,True,both(coincide)
+9,3,3,3,True,True,both(coincide)
+10,4,4,4,True,True,both(coincide)
+11,4,4,4,True,True,both(coincide)
+12,4,5,4,False,True,minus1_only(established_mirror)

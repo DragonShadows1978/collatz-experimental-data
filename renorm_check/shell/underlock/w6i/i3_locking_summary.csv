@@ -1,0 +1,11 @@
+family,n_matched,n_total,n_schedule_segments,n_transfer_points,n_transfer_hits,wall_s
+sqrt2,86,299,50,49,3,0.02
+sqrt3,191,299,68,67,3,0.02
+sqrt5,30,299,27,26,0,0.01
+sqrt7,126,299,78,77,2,0.01
+phi,168,299,108,107,5,0.01
+cbrt2,126,299,62,61,3,0.02
+log2_3,73,299,66,65,2,0.02
+pi_minus_3,8,299,2,1,0,0.04
+e_minus_2,177,299,63,62,2,0.04
+liouville_ish,73,299,36,35,4,0.04

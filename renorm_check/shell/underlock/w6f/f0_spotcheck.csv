@@ -1,0 +1,17 @@
+family,m,D,a_sequence,is_all_2s
+golden,2,0,2 2,True
+golden,3,1,2 2 2,True
+golden,4,1,2 2 2 2,True
+golden,5,2,2 2 2 2 2,True
+golden,6,2,2 2 2 2 2 2,True
+golden,7,2,2 2 2 2 2 2 2,True
+golden,8,3,2 2 2 2 2 2 2 2,True
+golden,9,3,2 2 2 2 2 2 2 2 2,True
+sqrt2,2,1,2 2,True
+sqrt2,3,1,2 2 2,True
+sqrt2,4,2,2 2 2 2,True
+sqrt2,5,3,2 2 2 2 2,True
+sqrt2,6,3,2 2 2 2 2 2,True
+sqrt2,7,4,2 2 2 2 2 2 2,True
+sqrt2,8,4,2 2 2 2 2 2 2 2,True
+sqrt2,9,5,2 2 2 2 2 2 2 2 2,True

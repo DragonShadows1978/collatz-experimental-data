@@ -1,0 +1,51 @@
+family,m,delta_tax,is_loop,a_sequence,Sigma_a,Sigma_a_minus_2m,S_mod_3m,n_solutions_in_0_6m,solutions,sigma_equals_Sigma_a
+golden,2,0,True,2 2,4,0,7,2,"4,10",False
+golden,2,2,False,4 2,6,2,1,3,"0,6,12",False
+golden,3,0,True,2 2 2,6,0,10,1,6,True
+golden,3,1,False,1 4 2,7,1,20,1,7,True
+golden,3,2,False,4 2 2,8,2,13,1,8,True
+golden,4,0,True,2 2 2 2,8,0,13,1,8,True
+golden,4,2,False,4 2 2 2,10,2,52,1,10,True
+golden,5,0,True,2 2 2 2 2,10,0,52,1,10,True
+golden,5,1,False,1 4 2 2 2,11,1,104,1,11,True
+golden,5,2,False,1 2 3 4 2,12,2,208,1,12,True
+golden,5,2,False,4 2 2 2 2,12,2,208,1,12,True
+golden,6,0,True,2 2 2 2 2 2,12,0,451,1,12,True
+golden,6,2,False,4 2 2 2 2 2,14,2,346,1,14,True
+golden,7,0,True,2 2 2 2 2 2 2,14,0,1075,1,14,True
+golden,7,2,False,4 2 2 2 2 2 2,16,2,2113,1,16,True
+golden,8,0,True,2 2 2 2 2 2 2 2,16,0,6487,1,16,True
+golden,8,1,False,1 4 2 2 2 2 2 2,17,1,6413,1,17,True
+golden,8,2,False,2 1 3 1 2 3 4 2,18,2,6265,1,18,True
+golden,8,2,False,1 3 1 2 3 4 2 2,18,2,6265,1,18,True
+golden,8,2,False,2 2 1 3 1 2 3 4,18,2,6265,1,18,True
+golden,8,2,False,1 2 3 4 2 2 2 2,18,2,6265,1,18,True
+golden,8,2,False,4 2 2 2 2 2 2 2,18,2,6265,1,18,True
+sqrt2,2,0,True,2 2,4,0,7,2,"4,10",False
+sqrt2,2,1,False,1 4,5,1,5,2,"5,11",False
+sqrt2,2,2,False,4 2,6,2,1,3,"0,6,12",False
+sqrt2,3,0,True,2 2 2,6,0,10,1,6,True
+sqrt2,3,2,False,4 2 2,8,2,13,1,8,True
+sqrt2,4,0,True,2 2 2 2,8,0,13,1,8,True
+sqrt2,4,1,False,1 4 2 2,9,1,26,1,9,True
+sqrt2,4,2,False,1 2 3 4,10,2,52,1,10,True
+sqrt2,4,2,False,4 2 2 2,10,2,52,1,10,True
+sqrt2,5,0,True,2 2 2 2 2,10,0,52,1,10,True
+sqrt2,5,1,False,1 4 2 2 2,11,1,104,1,11,True
+sqrt2,5,1,False,1 1 2 3 4,11,1,104,1,11,True
+sqrt2,5,2,False,1 2 3 4 2,12,2,208,1,12,True
+sqrt2,5,2,False,4 2 2 2 2,12,2,208,1,12,True
+sqrt2,6,0,True,2 2 2 2 2 2,12,0,451,1,12,True
+sqrt2,6,1,False,2 1 1 2 3 4,13,1,173,1,13,True
+sqrt2,6,2,False,4 2 2 2 2 2,14,2,346,1,14,True
+sqrt2,7,0,True,2 2 2 2 2 2 2,14,0,1075,1,14,True
+sqrt2,7,1,False,2 1 1 2 3 4 2,15,1,2150,1,15,True
+sqrt2,7,1,False,1 4 2 2 2 2 2,15,1,2150,1,15,True
+sqrt2,7,2,False,4 2 2 2 2 2 2,16,2,2113,1,16,True
+sqrt2,7,2,False,1 3 1 2 3 4 2,16,2,2113,1,16,True
+sqrt2,7,2,False,1 2 3 4 2 2 2,16,2,2113,1,16,True
+sqrt2,7,2,False,2 1 3 1 2 3 4,16,2,2113,1,16,True
+sqrt2,8,0,True,2 2 2 2 2 2 2 2,16,0,6487,1,16,True
+sqrt2,8,2,False,2 2 1 3 1 2 3 4,18,2,6265,1,18,True
+sqrt2,8,2,False,4 2 2 2 2 2 2 2,18,2,6265,1,18,True
+sqrt2,8,2,False,2 1 3 1 2 3 4 2,18,2,6265,1,18,True

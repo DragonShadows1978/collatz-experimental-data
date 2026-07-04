@@ -1,0 +1,5 @@
+k,modulus,delta_max,a_max,n_states,n_edges,n_finite,n_unreachable,max_phi,min_phi,n_negative,phi_nonneg_holds,ray_phi_all_zero,neg_cycle_suspected,loop_equality_ok,wall_s,rss_mb
+4,81,8,24,729,4293,420,309,0,-8,366,False,False,False,False,0.01,28.5
+5,243,8,24,2187,12879,1229,958,0,-8,1067,False,False,False,False,0.04,30.1
+6,729,8,24,6561,38637,3615,2946,0,-8,3129,False,False,False,False,0.46,31.9
+7,2187,8,24,19683,115911,10667,9016,0,-8,9209,False,False,False,False,1.59,34.9

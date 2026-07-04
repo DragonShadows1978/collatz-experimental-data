@@ -1,0 +1,10 @@
+word_label,m,period_q,L,band,departure_prefix_j,f_of_j,is_dip_f1,letter_at_j,dist_to_nearest_support_at_or_after_j,correction_letter_distance,abs_forward_step,phase_mod_q,suffix_support_density_from_j
+golden-per8,5,8,2,3,4,1,True,2,1,"N/A (pure periodic word, no true-word comparison)",49,1,1
+golden-per8,8,8,3,4,7,1,True,2,1,"N/A (pure periodic word, no true-word comparison)",46,6,1
+sqrt2-per12,5,12,3,4,1,1,True,2,1,"N/A (pure periodic word, no true-word comparison)",52,4,3
+sqrt2-per12,5,12,3,4,4,1,True,1,0,"N/A (pure periodic word, no true-word comparison)",49,1,2
+sqrt2-per12,6,12,3,4,1,1,True,2,1,"N/A (pure periodic word, no true-word comparison)",52,4,3
+sqrt2-per12,7,12,4,5,2,1,True,1,0,"N/A (pure periodic word, no true-word comparison)",51,3,4
+sqrt2-per12,7,12,4,5,6,1,True,2,1,"N/A (pure periodic word, no true-word comparison)",47,11,1
+sqrt2-per12,9,12,5,6,4,1,True,1,0,"N/A (pure periodic word, no true-word comparison)",49,1,4
+sqrt2-per12,9,12,5,6,8,1,True,2,1,"N/A (pure periodic word, no true-word comparison)",45,9,1

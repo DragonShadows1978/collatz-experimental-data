@@ -1,0 +1,12 @@
+m,D,n_optimal,is_unique,loop_among_optimal
+2,0,1,True,True
+3,1,1,True,True
+4,1,1,True,True
+5,2,1,True,True
+6,2,1,True,True
+7,2,1,True,True
+8,3,1,True,True
+9,3,1,True,True
+10,4,1,True,True
+11,4,1,True,True
+12,4,1,True,True

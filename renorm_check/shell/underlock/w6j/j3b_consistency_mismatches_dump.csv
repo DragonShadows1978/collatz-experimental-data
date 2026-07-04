@@ -1,0 +1,6 @@
+family,m,a_sequence,Sigma_a,S_mod_3m,n_solutions,solutions,delta_tax
+golden,2,2 2,4,7,2,"4,10",0
+golden,2,4 2,6,1,3,"0,6,12",2
+sqrt2,2,2 2,4,7,2,"4,10",0
+sqrt2,2,1 4,5,5,2,"5,11",1
+sqrt2,2,4 2,6,1,3,"0,6,12",2

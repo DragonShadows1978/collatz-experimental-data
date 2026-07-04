@@ -1,0 +1,4 @@
+k,k_plus_1,n_checked,n_multi_valued_at_k1,n_mismatch_vs_level_k,lift_consistent
+4,5,420,0,0,True
+5,6,1229,0,0,True
+6,7,3615,0,0,True

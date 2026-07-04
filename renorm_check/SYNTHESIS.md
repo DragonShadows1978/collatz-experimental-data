@@ -664,3 +664,494 @@ boundary constants and the over/under mirror are the block-phase
 structure of the max partial sum (cycle-lemma territory). P1 = solve
 this minimax exactly for periodic words; P3 = the true-word window
 version.
+
+## W6E — bound-pair mechanical phase (2026-07-04, Sonnet exec, Fable verify)
+
+Order: shell/underlock/W6E_BOUND_PAIR_MECH_ORDER.md; results
+w6e/*.csv + ledger entries W6E-E1/E2/E3. All gates frozen pre-run;
+three of the architect's four predictions MISSED, all in the usual
+direction (structure simpler/more exact than priced).
+
+**E1 (upper bound) — the trivial strategy wins everywhere.** Both S0
+(greedy) and S1 (one-step steering) matched ground-truth D exactly on
+28/28 periodic rows AND 11/11 real-system mirror rows. Mechanism
+(verified at source + fixed-point algebra, not just observed): from
+the terminal anchor ρ=1, forced parity is even, greedy plays a=2, and
+(2²·1−1)/3 = 1 — **the greedy walker sits on the backward image of
+the 4-2-1 loop forever.** It never meets class 0 (S1's steering
+triggered 0 times), and its max partial sum is pure word arithmetic:
+max_k Σ(2 − c_j). CONSEQUENCE: the upper bound of the capacity law
+collapses to a mechanical-word discrepancy identity — no residue
+number theory on the upper side at all. What remains of P1b-upper is
+offset/anchoring bookkeeping (one page), not deep math. The §5a lift
+cascade was never the upper bound's problem; it is exclusively the
+LOWER bound's terrain (why nothing beats the loop).
+
+**E3 (prefix tightness) — CORRECTED READING (Fable, same day, after
+source-level spot-check).** The searched chains bind the candidate
+bound at every prefix — but dumping their exponents shows the search
+returned the ALL-2s LOOP CHAIN on every row tested (verified
+directly: bfs_Dm golden m=8 → a=2 at all 8 steps). So E3 as run is
+the E1 word identity measured a second time through an independent
+search path — real as engine validation (and the keystone check's 0
+violations stands), NOT a statement about the optimal SET. The
+architect's first write-up of this result overstated it; corrected
+here per house discipline. One theorem-let falls out of the
+correction: binding at every prefix forces a_j = c_j +
+(bound_j − bound_{j−1}) — a unique exponent sequence — so
+binding-everywhere ⟺ the loop chain, and ANY other optimal chain
+must dip strictly below the envelope somewhere. The open question
+this creates is exactly the next experiment: is the loop the UNIQUE
+optimum (rigidity total; lower bound = a uniqueness proof), or do
+neutral excursions exist (and then their tax structure is the local
+lemma the lower bound needs)? → W6F.
+
+**E2 (phase pinning) — the W6D-M support differential was a
+start-anchoring artifact; the conditional F5 route FLIPS.** Under the
+end-anchored window (letters 12..370, matching the real 371-step
+measurement): true = 149 supports, 22/53-periodic = 149 (was 150
+only under start-anchoring; the 127/306 word counts 149 under both).
+The counting argument that gave D(359) = 148 → edge 359 is
+WITHDRAWN; under the corrected frame the same mechanism predicts
+D_true = D_per at m=359 → **edge = 358 — the Architect's formula
+⌊53(C+1)/22⌋ exact at C=148.** The supersession chain is now:
+W6B said 358 → round-4 under-lock said 359 → round-5 support-cost
+said 359 → W6E anchoring correction says 358. Fable's registered
+prediction moves accordingly: 359 was at 70%; after E2 the honest
+position is **lean 358 (~60/40)**, still conditional on the
+support-cost mechanism lemma; the derivation (lower bound + boundary
+constant) remains the only decisive instrument. Every flip is
+recorded; the architect's formula has now survived the third
+attempted refutation of the week.
+
+**Program state after W6E:** UPPER = constructively done on the
+measured range by the trivial-loop strategy; formalize as word
+combinatorics. LOWER = keystone prefix rigidity (2^Σa ≡ S mod 3^m
+projected per-prefix), now knowing equality must hold at EVERY
+prefix. F5 = decided by the boundary constant that falls out of the
+same derivation. No further compute scheduled; this is theory work.
+
+## W6F — optimal-set census (2026-07-04, Sonnet exec, Fable verify)
+
+Order: shell/underlock/W6F_OPTIMAL_SET_ORDER.md; results w6f/*.csv +
+ledger W6F-F0..F3. Architect's three live predictions ALL MISSED,
+same direction as the whole week: the object is more rigid than
+priced.
+
+**F1 — THE LOOP IS THE UNIQUE OPTIMUM. 24/24 rows, zero exceptions.**
+Exhaustive enumeration of all optimal exponent sequences (memoized
+backward DFS over the validated engine's state space; enumerator
+independently brute-force-validated 6/6 rows before use), m = 2..13,
+both families: n_optimal = 1 everywhere, and the one chain is the
+all-2s loop. Verified by architect spot-check of f1_summary.csv.
+CONSEQUENCE: the lower bound is a STRICT UNIQUENESS statement —
+every admissible non-loop chain pays max partial sum ≥ D+1. Total
+rigidity: the capacity game has exactly one optimal play at every
+precision tested, and it is the trivial cycle. (Fable's 55% "not
+unique" — missed decisively, 0/18 rows m≥5.)
+
+**F2 — the deviation tax law.** All chains within D+2, m ≤ 8: min
+tax of any a=1-containing chain = +1 on 8/9 evaluable rows; sqrt2
+m=8 is a genuine +2 row (its only a=1-chains are a 3-step compound
+(1,3,1)+(3,4); the +1 bucket provably empty). Tax is NEVER 0 —
+uniqueness restated from the other side. The local mechanism to
+formalize: exiting ρ=1 costs a−2 ≥ +2 upfront (even-forced menu),
+and recoveries cap at net −1 short of full refund.
+
+**F3 — the ±1 constant is a SIDE effect, not an anchoring effect.**
+End-anchored D reproduces the established +1 law 12/12 in both
+families. Start-anchoring does NOT produce the −1 mirror — it is a
+≈+1 shift (D_start ≈ D_end + 1) vanishing at word-aligned m (golden:
+m = 5, 8, 13 — Fibonacci, the mechanical word closing flush at
+convergent denominators). The apparent −1-mirror matches were traced
+to boundary-residue near-coincidence (forms differ only at
+pm mod q ∈ {0, q−1}) and rejected. CONSEQUENCE for P1b: the real
+system's −1 mirror form must come from the convergent SIDE
+(22/53 over-side) — the constant is a side function, anchoring is a
+separate additive shift. (Fable's pairing prediction — missed.)
+
+**Program state after W6F:** capacity law = [loop achieves the word
+discrepancy] + [loop strictly unique]. Upper = bookkeeping. Lower =
+prove tax ≥ 1 for every excursion off ρ=1 (keystone per-prefix
+rigidity; local exit cost +2, recovery cap −1 is the shape). F5
+unchanged: lean 358, decided by the side-constant derivation + the
+true-word bonus schedule. Fable week scorecard: ~3 hits, ~12 misses,
+every miss = underpricing rigidity.
+
+## W6G — break-it round + THE F5 COMPUTATION (2026-07-04, Sonnet exec + Fable verify/compute)
+
+Order: shell/underlock/W6G_BREAK_IT_ORDER.md; results w6g/*.csv +
+ledger W6G-G1..G5. Explicit method note: conjectures were generated
+freely (cheap-generation-hard-verification); two survived, one died
+usefully, one muddled, one was scope-vacuous.
+
+**G1 — UNIVERSAL DISCREPANCY: SURVIVED EXHAUSTIVE ATTACK.** All 2,044
+words of {1,2}^m, m = 2..10: D(w) = L(w) = max_k Σ(2 − c_j) AND the
+all-2s loop is the strictly unique optimum, 2,044/2,044 (architect
+spot-checked). The game has no content beyond word discrepancy; every
+family law is classical discrepancy of its word. The ONE load-bearing
+unproven statement in the whole capacity story is now the loop-
+optimality/uniqueness lemma (exit ρ=1 costs ≥ +2, refund ≤ 1).
+
+**G2 — BREAK FOUND, and it is structural gold.** h(r) ≥ 0 REFUTED
+(80/144 anchors negative; e.g. sqrt2 m=5 r0=20: D=0 vs 3). Mechanism
+(Fable, post-data): the game has exactly TWO fixed rays — ρ≡+1
+(a=2, cost 2/step) and ρ≡−1 (a=1, cost 1/step; (2·(−1)−1)/3 = −1) —
+the backward shadows of the TWO trivial cycles of 3x+1 on ℤ: the
+positive 4-2-1 loop and the negative −1 loop. ρ=1 is the EXPENSIVE
+throne; the negative cycle is the cheap seat; positivity is what
+forces the real system onto the dear ray. The capacity law's whole
+difficulty = "the terminal is the expensive fixed ray."
+
+**G3 — side-constant guess MUDDLED** (over-side families match
+neither ±1 form cleanly; bug found/fixed mid-run, muddle confirmed
+real). Post-G1 this matters less: the ±1 constants are properties of
+mechanical-word discrepancy sums — derive by direct Ostrowski
+computation, stop guessing forms.
+
+**G4 — true word: loop strictly unique 11/11** (end-anchored, the
+real frame). Bonus-alignment framing near-vacuous at small m (true
+vs periodic words differ densely below m~50; the single-defect
+regime only exists near 359) — honest scope flag.
+
+**G5 — REALITY BRIDGE HOLDS.** Archived corridor witnesses
+(embedding/small_side_live_sets) sit at (d=0, r≡1 mod 3^m) at every
+M_edge(C), C = 1..5, absent one step past; regenerated true-word
+trajectories are the all-2s loop 4/4 (C=5 chain extraction hit an
+honest 28.7M-state wall; D cross-checked). The abstract game's
+extremal object IS the measured corridor's extremal object.
+
+### THE F5 COMPUTATION (conditional on the universality lemma)
+
+With D = L, F5 reduces to evaluating the loop-discrepancy functional
+on the exact true word (integer-exact credits via bit_length, no
+floats) in the PHYSICAL frame — the C=148 run is 371 = 7·53 steps
+(measured, W2), window ends at position 370 ≡ 52 (mod 53). Frame
+rule validated: reproduces edges 4, 7, 9, 12, 14 for C = 1..5 and
+the 11 true-word ground-truth rows exactly.
+
+**L(358) = 148 (lives at C=148); L(359) = 149 (dies). EDGE = 358.**
+Anchoring-insensitive at 359 (start frame gives 149 too).
+
+**Shadow-depth sweep:** at ALL seven catalogued divergence points
+(C = 148, 170, 192, 214, 236, 258, 275; run = 53·⌈(m_irr+1)/53⌉,
+window end ≡ 52 mod 53): the RATIONAL form wins every time —
+L(m_rat) = C exactly, L(m_irr) = C+1. **The Architect's formula
+⌊53(C+1)/22⌋ is exact at every tested divergence point.** Mechanism
+readout: the corridor's own run-length quantization (multiples of
+53) phase-locks every decisive window to the convergent grid — the
+frame carries the rationality; the Ostrowski correction never gets
+to bite at the sampled phases. Caveat (registered): the general
+run-length rule is validated at C ≤ 5 and C = 148; a mid-range C
+cross-check against archived corridor step counts is a cheap open
+follow-up.
+
+**F5 status: 358, conditional on the loop-optimality lemma — the
+single remaining unproven statement.** Fable's final position: 358
+at ~90% (from 85%-on-359 at week's start; every swing recorded).
+The Architect's registered 358 stands at every divergence point
+tested. The W1/W2 raw countdown remains the unconditional decider if
+ever run; the game route (reality-bridged at C ≤ 5 by G5) is the
+strongest conditional answer available.
+
+## W6I — proof-shape recon (2026-07-04, Sonnet exec, parallel with W6H)
+
+Order: shell/underlock/W6I_PROOF_SHAPE_ORDER.md; results w6i/*.csv;
+ledger entries staged in w6i/LEDGER_ENTRIES_W6I.md (merged to main
+ledger after W6H frees it). Purpose: pick the proof strategy for the
+loop-optimality lemma. Outcome: THREE DOORS CLOSED, ONE LEFT.
+
+**I1 — dual/potential proof: NOT VIABLE in this ansatz.** Bellman-
+Ford Φ on (δ, ρ mod 3^k) converges (no negative cycles) but the
+boundary condition Φ ≥ 0 with Φ(ray) = 0 cannot be posed: cost-0
+edges legitimately leak off-ray because low-level classes cannot
+distinguish the true 1-ray from same-class impostors — the cascade
+phenomenon (§5a) reappearing as potential leakage. CAVEAT (architect):
+this kills THIS ansatz (state potentials in raw coordinates); a
+smarter dual — e.g. certificates built from the keystone congruence
+itself — is not excluded, merely unfound.
+
+**I2 — S-adic/Ostrowski transducer: NOT VIABLE at tested scope.**
+Follower-set counts grow ~10-13× per Ostrowski horizon (WORSE than
+raw trit-space's ~2×). The sofic route is now dead in both natural
+coordinate systems.
+
+**I3 — locking rule: MUDDLED, prediction missed badly (24/550 = 4%
+vs 70% registered).** Convergent ownership of L(m) is fragmented and
+oscillating (low-q convergents recur intermittently), not a clean
+lock-until-next-denominator schedule. Liouville stress case untested
+within m ≤ 300 (its next q ≈ 1.3×10⁷ — honest scope note). Real
+modeling lesson banked: the relevant convergents are those of
+β = ceiling − α (per-family ceiling; √5/√7 words live on alphabet
+{2,3}), not of α — an earlier draft's numbers were this bug.
+
+**I4 — lift-cascade histogram: near-tautological as designed**
+(perturbing the all-2s baseline changes the next mod-3 class
+immediately; 19/20 decisive at delay 1). Honestly flagged as not
+testing §5a's long-range claim. Ungated by design.
+
+**Net proof-shape verdict: the keystone prefix-rigidity route
+(§5b/§8) is the ONLY live analytical path** — no state-potential
+dual (in raw coordinates), no sofic/S-adic transducer, no clean
+locking shortcut. The lemma is combinatorial/number-theoretic and
+must be fought on the congruence 2^Σa ≡ S (mod 3^m) directly.
+Architect predictions: I2 hit (55%), I1 partial (right pessimism,
+wrong mechanism), I3 decisively missed, I4 n/a.
+
+## W6H — lemma core (2026-07-04, Sonnet exec, Fable verify; ran parallel with W6I)
+
+Order: shell/underlock/W6H_LEMMA_CORE_ORDER.md; results w6h/*.csv +
+ledger W6H-H1..H5 (architect spot-checked H1/H3/H5 tables directly).
+
+**H1 — LEMMA SUPPORTED, far stronger than predicted.** Exhaustive
+layered DP (a wrong Dijkstra attempt on negative edges was caught
+and root-caused first): every exact-returning excursion off the
+1-ray up to length 8 costs ≥ +1 — and the true minimum is **27**
+(shape (4,3,8,3,9,8,7,1), Σa−16=27, verified). Off-ray temporary
+profit: none (running cost ≥ 0 throughout, P3 hit). ARCHITECT SCOPE
+NOTE (reconciling with W6F-F2's measured min tax +1): H1 requires
+return to ρ≡1 at HIGH precision (mod 3^{ℓ+2}); real cheap deviations
+live at the window's far end where trit-locality shrinks the
+required return precision to nearly nothing. The lemma's proof
+decomposes: INTERIOR deviations = brutally taxed (≥27 at exact
+return); BOUNDARY deviations = the ±1 window-end arithmetic. The
+return-precision cost curve is W6J's centerpiece.
+
+**H3 — UNIVERSALITY'S TRUE BOUNDARY FOUND (a real break, outside
+the physical regime).** D=L holds on {0,1,2}^m (0/3276 exceptions)
+and BREAKS heavily on any alphabet containing a letter ≥ 3
+({1,2,3}: 1788/3276; both directions D<L and D>L). The order's
+c=0-adjacency hypothesis is refuted. ARCHITECT MECHANISM READ
+(post-data, registered for W6J): letters ≥ 3 make the loop's
+increment 2−c NEGATIVE, so the corridor's CEILING (δ ≤ C — the wall
+that never binds for {1,2}) starts binding: verified by hand on
+break row "31" (loop wants g = −1, even menu [1,3] forces a=2,
+δ→1 > C=0 → D=1 > L=0). Conjecture: D=L ⟺ the loop's running sum
+never dips below 0 ⟸ alphabet ≤ 2. The real word ({1,2}, since
+α < 2) sits inside the safe region INTRINSICALLY — the trivial
+cycle's rate dominates the credit alphabet. Universality is a
+threshold phenomenon, not a triviality — and the threshold is
+exactly the loop's own exponent.
+
+**H2 — two-ray model as specified: MUDDLE** (30.2% vs 90%; missing
+exit-cost-to-target term, counterexampled). Sub-prediction CLEAN:
+D(anchor ≡ −1) = 0 on 18/18 (the negative-cycle cheap ray confirmed
+exactly). Model repair queued (W6J).
+
+**H4 — no universal two-case ±1 rule** (55/1053 keys internally
+clean; clean phases are convergent-specific). The constant resists
+closed form; post-universality it is COMPUTABLE per case (the F5
+route used exactly that), so this is a naming problem, not a
+blocking one. Two honest bug catches en route (β-fraction; phase
+drift).
+
+**H5 — FRAME RULE: 48/48 EXACT (architect recount confirmed).**
+Archived lock3_census countdown ladders at C = 3..50: M_edge(C) =
+⌊53(C+1)/22⌋ at every point, including both 53-multiple boundary
+crossings (C=21, 43). The F5 computation's last registered caveat
+(mid-range frame rule) is CLOSED. The Architect's formula is now
+receipt-exact at C = 1..50 (dense) and at all 7 catalogued
+divergence points through C=275 (W6G sweep).
+
+## W6J + architect audit — CONVENTION SEAM FOUND (2026-07-04)
+
+W6J ran clean mechanically (ledger W6J-J1..J4) but the architect's
+verification pass found a structural problem that RETRACTS part of
+W6H-H3 and quarantines part of W6J:
+
+**The seam:** H3's L functional (loop_discrepancy, ascending over
+the word as written) and the game engine's letter consumption
+(anchor_steps=m wiring) were never proven to use the same direction
+— and CANNOT be distinguished by any existing validation row,
+because every row ever validated (all-2s, all-0s, {1,2}/{0,1,2}
+words, periodic families) has loop increments 2−c ≥ 0, where
+running sums are monotone and prefix-max = suffix-max = total for
+EVERY order. Direction bugs are invisible to a validation suite
+made of order-insensitive rows. The moment letters ≥ 3 create
+negative increments — exactly the rows where all "breaks" were
+reported — the functionals diverge (verified concretely: word "13"
+has L=1 as-written, L=0 reversed; and the census's own D=0 for that
+word is inconsistent with as-written consumption, which dies at
+budget 0 on the first letter).
+
+**Status changes:**
+- W6H-H3 {0,1,2} clean result: STANDS (order-immune).
+- W6H-H3 {1,2,3}/{0,1,2,3} "universality break": RETRACTED TO
+  UNRELIABLE pending convention-pinned redo. The architect's ceiling
+  mechanism (§10b conjecture) and its hand-verification: WITHDRAWN
+  (the hand-check assumed a ceiling constraint the engine does not
+  enforce — and whether the TRUE corridor object enforces it for
+  c ≥ 3 words was never defined by any measurement; both variants
+  must be exposed).
+- W6J-J1 biconditional MISS: QUARANTINED (tested against the
+  unreliable census).
+- W6J-J2 curve [1,10,2,5,5,16,7,19,19,27]: REJECTED as reported —
+  non-monotone in t is logically impossible under nested return
+  precisions (1 mod 3^{t+1} ⟹ 1 mod 3^t); per-t implementation
+  inconsistency, redo with a nesting assertion.
+- W6J-J3: STANDS (ord(2,3^m)=2·3^{m−1} verified m=4..8; Σa pinned
+  unique in-window from m≥4; tax monotone in Σa−2m — the
+  interior-rigidity backbone is intact and is this round's real
+  positive).
+- W6J-J4: STANDS as an honest MISS (order-immune inputs).
+
+**Lesson (generalizes E2):** conventions are where this program
+bleeds. A validation suite must include rows that BREAK under every
+symmetry the implementation could silently choose — asymmetric
+words are now a mandatory validation class. → W6K (convention
+pinning + redos).
+
+## W6K — convention pinning + redos (2026-07-04, Sonnet exec, Fable verify)
+
+Order: W6K_CONVENTION_PINNING_ORDER.md; ledger W6K-K0..K3; all work
+under w6k/ with a fresh canonical engine (Path C) gated by
+hand-derived asymmetric validation rows.
+
+**K0 — the bug, pinned to the line.** Path A (e1_walkers — the
+instrument behind E1, the F5 computation, and the divergence sweep)
+is CANONICAL-CLEAN, 24/24 against hand-derived rows. Path B
+(f1_engine_ext.compute_D_and_optimal_set / engine.bfs_Dm — the
+census engine behind W6F/W6G-G1/W6H-H3/W6J) consumes letters in
+REVERSE order (ascending from window start; f1_engine_ext.py:101-106,
+254-255, inherited from engine.py:130-136, 196-199). Scope
+annotation for prior rounds: Path-B results are true statements
+about REVERSED words — exactly equivalent for order-immune classes
+({1,2}, {0,1,2}, totals) and for reversal-closed families
+(mechanical words), which is why every headline conclusion
+(G1 universality on {1,2}, F1 uniqueness, the family laws) SURVIVES
+with at most a relabeling; only the letters-≥3 rows ever diverged.
+Path C (fresh, canonical, 24/24) ran all redos.
+
+**K1 — UNIVERSALITY IS TOTAL. The H3 "break" was 100% the order
+bug.** Canonical census, 25,116 words over {1,2,3} and {0,1,2,3},
+m ≤ 7: **D_free = L on every single word. Zero breaks.** There is
+no alphabet boundary. The ceiling-ON variant breaks D=L on 39.38%
+(so the ceiling-free game is the universality object; the two
+variants coincide on the real word's {1,2} letters, so nothing
+about the real system changes). Architect predictions: (a) HIT,
+(b) HIT at 45% — the humble number paid, (c) MISS (ceiling
+biconditional dead under both variants, K3: 708 and 10,599
+counterexamples — the §10b mechanism is fully refuted, not just
+convention-tainted).
+
+**K2 — corrected return-precision cost curve (J2's redo):**
+[1, 2, 5, 5, 7, 7, 15, 19, 22, 27] for t = 1..10 — nondecreasing
+(assertion enforced), t=1 value 1 (matches F2), t=10 value 27
+(matches H1 exactly). Root cause of J2's impossible curve: per-t
+DPs merged distinct high-precision states when reducing modulus
+mid-recursion; fix = one shared high-precision DP with per-t
+readout. **The interior tax law, now trustworthy: ~2.7 exponent
+per trit of required return fidelity, with plateau structure
+(5,5 and 7,7) worth deriving.**
+
+**Program state after W6K:** the empirical theory is at its
+cleanest ever — (1) D_free(w) = max_k Σ(2−c_j) for EVERY word over
+every alphabet tested, certified conventions; (2) loop strictly
+unique on everything canonical-checked so far; (3) Σa pinned by the
+order gap (J3); (4) interior tax curve monotone 1→27. The proof
+targets are now exactly three: universal loop optimality
+(word-independent), the per-trit interior tax, the window-end
+boundary term. Instruments: canonical Path C for all future
+censuses; Path A already canonical; Path B retired for
+order-sensitive work. Validation law: every suite must include
+asymmetric rows.
+
+## W6L — canonical consolidation (2026-07-04 night, Sonnet exec, Fable verify)
+
+Order: W6L_CANONICAL_CONSOLIDATION_ORDER.md; ledger W6L-L1..L4.
+Architect independently replayed the load-bearing supersession claim
+before accepting it (see L2).
+
+**L1 — TOTAL RIGIDITY RECERTIFIED: 2,085/2,085.** Loop strictly
+unique on {1,2}^1..10 exhaustive + 28 periodic + 11 real-word rows,
+all canonical instruments, tie-detection capability itself validated.
+The Path-B annotation is closed; nothing in the headline record
+rests on the reversed-order engine anymore.
+
+**L2 — SUPERSESSION: H1's "27" and K2's curve both fall to a deeper
+instrument.** The new exact shrinking-modulus ladder DP (zero
+representative error by construction, triple-gated) refutes
+W6K-K2's curve at 6/10 points via two mechanisms: length walls
+(cheaper witnesses beyond K2's cap) and REPRESENTATIVE FABRICATION —
+K2's t=9/10 argmins fail exact-integer replay, and H1's published
+minimum chain (4,3,8,3,9,8,7,1) returns at precision 7, NOT 10
+(ARCHITECT-VERIFIED by direct exact replay: final ρ = 1224943075 ≡ 1
+mod 3^7 only; K2's "cross-check against H1" was two copies of one
+artifact). **Exact curve of record (len ≤ 14): t=1..12 →
+[1,2,3,5,7,7,11,12,12,16,21,21]**; rate ≈ 1.75-2.5/trit; plateaus
+(5,6),(8,9),(11,12), each a literally identical chain serving the
+pair. H1's claim scoped down to: exact-return-at-t=7-within-length-8
+costs 27 (still true, wrongly labeled t=10 before). Guarantee-zone
+law now enforced in the instrument (t + d ≤ T). Lesson logged: a
+cross-check must be INDEPENDENT — verifying an artifact against its
+own copy certifies nothing.
+
+**L4 — ADDITIVITY IS DEAD, and the killer is the order gap itself.**
+0/246 excursion-pair embeddings additive; every delta positive
+(+5..+67, super-additive). Mechanism PROVEN exactly: a pinned
+letter-block admits entry from exactly ONE residue class mod 3^len,
+and the unlock exponents are spaced 2·3^5 = 486 = ord(2, 3^5) —
+**the same order-gap that pins Σa globally reappears as the
+coupling constant that forbids local composition.** One object, two
+faces: rigidity when you read it globally, coupling when you try to
+cut it into blocks. CONSEQUENCE for the proof: P-II cannot assemble
+by relocatable excursions; the lower bound must be argued at the
+whole-window congruence level (which J3's pinning already supports).
+
+**L3 — J4's premise inverted; NO third structure.** 95.7% of
+two-ray-model mismatches are UNDERpredictions — real optimal chains
+cost MORE than descent+ride (the junction pays the L4 coupling; the
+W6J digest's "overprediction/cheaper" reading was the sign error,
+corrected here). Exhaustive 1- and 2-step fixed-point hunt mod
+27/81 (including negative-cycle shadows): zero exact touches,
+anti-enrichment on shadow classes. And the structural surprise:
+**83.6% of true optimal chains at generic anchors touch NO ray at
+all** — the ray-itinerary picture is anchor-1-specific, not the
+generic geometry. Two rays, heavy coupling, nothing hidden.
+
+**Program state after W6L:** empirical foundation final —
+rigidity total (L1), tax curve exact (L2), composition impossible
+(L4), no hidden structure (L3). The proof must be GLOBAL: one
+congruence argument over the whole window via the order gap, not
+excursion bookkeeping. That is precisely the shape the keystone
+route (§5b) always had; the program has now eliminated every
+alternative shape.
+
+## W6M — global-lemma empirical map (2026-07-04 night, Sonnet exec)
+
+Order: W6M_GLOBAL_LEMMA_MAP_ORDER.md; ledger W6M-M1..M3 (with the
+final digest table). All witnesses independently re-derived; a real
+int64 overflow past M_exp=24 caught in the L2e ladder and replaced
+with a fresh exact-bigint instrument (gated, 0 mismatches vs L2e on
+shared depths).
+
+**M1 — THE FLOOR-POINT LAW: 519/519, exceptionless.** Every
+non-loop chain within L+1, across 442 words (m=4..8), satisfies
+g(k*) ≥ g_loop(k*) at the loop's own binding prefix k*. Zero
+violations. **The loop's argmax prefix is a universal floor point —
+the anchor the global induction gets to stand on.** (Prediction (a)
+dissolved definitionally: sharp reading tautological, coarse 75.9%.)
+
+**M2 — the departure→floor table (38 rows, the decisive artifact):
+f(j) ≥ 1 on all cells** — the strict +1 is departure-time-
+independent. But the "leaving late is cheaper" monotone law MISSED:
+the real shape is a flat ceiling with sparse single-prefix
+undercuts (dips to f=1 at specific j, back up after). Those dip
+positions are the boundary term's empirical fingerprint — their
+correlation with word structure is the next round's target.
+
+**M3 — ladder walls: t=13 → 31, t=14 → 32 closed; BUT the curve is
+still length-capped at high t** — t=11, 12 drop 21 → 19 at length
+15 (shared witness), so the published values at t ≥ 11 are UPPER
+envelopes, converging from above; t ≤ 10 unaffected. Curve of
+record (len-capped, honest label): t=1..14 →
+[1,2,3,5,7,7,11,12,12,16,21→19?,21→19?,31,32] pending length
+convergence. Prediction (60% stability): MISS.
+
+**Program state:** the global lemma now has (i) an exceptionless
+anchor point (M1), (ii) departure-independent strictness (M2),
+(iii) a tax curve converging from above with the true asymptotic
+rate still open (M3). Next: dip-position fingerprinting, length
+convergence, floor-point law at full generality (all budgets), and
+the first mechanism check — is the floor forced by the prefix-
+projected congruence at k* alone?

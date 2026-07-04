@@ -1,0 +1,7 @@
+word,anchoring,k_lo,k_hi,window_len,supports,drops,others
+true,start,0,358,359,149,210,[]
+true,end,12,370,359,149,210,[]
+periodic_22_53,start,0,358,359,150,209,[]
+periodic_22_53,end,12,370,359,149,210,[]
+periodic_127_306,start,0,358,359,149,210,[]
+periodic_127_306,end,12,370,359,149,210,[]

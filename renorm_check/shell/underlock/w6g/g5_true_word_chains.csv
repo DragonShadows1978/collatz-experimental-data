@@ -1,0 +1,6 @@
+C,m_edge,D,is_all_2s_loop,a_sequence
+1,4,1,True,"(2, 2, 2, 2)"
+2,7,2,True,"(2, 2, 2, 2, 2, 2, 2)"
+3,9,3,True,"(2, 2, 2, 2, 2, 2, 2, 2, 2)"
+4,12,4,True,"(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2)"
+5,14,5,SKIPPED(scope_wall),SKIPPED

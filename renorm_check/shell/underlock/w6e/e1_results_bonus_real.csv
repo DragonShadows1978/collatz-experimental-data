@@ -1,0 +1,12 @@
+m,D,S0_max_partial_sum,S0_verdict,S0_died_at,S0_first_exceed_prefix,S1_max_partial_sum,S1_verdict,S1_died_at,S1_first_exceed_prefix
+2,0,0,MATCH,,,0,MATCH,,
+3,1,1,MATCH,,,1,MATCH,,
+4,1,1,MATCH,,,1,MATCH,,
+5,2,2,MATCH,,,2,MATCH,,
+6,2,2,MATCH,,,2,MATCH,,
+7,2,2,MATCH,,,2,MATCH,,
+8,3,3,MATCH,,,3,MATCH,,
+9,3,3,MATCH,,,3,MATCH,,
+10,4,4,MATCH,,,4,MATCH,,
+11,4,4,MATCH,,,4,MATCH,,
+12,4,4,MATCH,,,4,MATCH,,

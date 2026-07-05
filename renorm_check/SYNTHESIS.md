@@ -1811,3 +1811,76 @@ Architect's calibration, final entries of the night: 55% formula-
 at-C=11 (missed), then 60% saturation-real (missed) — both misses
 in the direction of the object being MORE lawful than bet. The
 week's theme, unbroken to the end.
+
+## W6Z-TAX — the corridor tax schedule τ(C), measured at every level (2026-07-04)
+
+Ledger W6Z-TAX; artifacts `shell/underlock/w6z_tax/` (self-contained
+`LEDGER_W6Z-TAX.md` there). Architect: "In corridor 1 it's a −3.x
+percent tax; what was never measured is the tax at each level." Locate
++ reproduce the corridor-1 number, then measure τ(C), C=1..15, in every
+sense the instruments support. All new work reuses validated instruments
+(sparse_instrument backward BFS for population; b2/w6e engine for climb);
+peak RSS <20 MB; `w6y_regime/` untouched. Architect predictions: (a) HIT,
+(b) MISS, (c) HIT.
+
+**The −3.x% number: LOCATED, REPRODUCED, and RE-LABELED.** The only
+−3.x% "tax per heartbeat" anywhere in the repo is the killed-survivor
+**spectral contraction 3.94% = 1 − ρ, ρ=0.960647**
+(`SPECTRAL_RADIUS_RESULTS.txt:30-31`; `COLLATZ_PROOF.md:484`;
+`GHOST_GEOMETRY_RELEASE.md:104`) — the per-heartbeat survival-mass
+multiplier of the composed 53-step operator (`rust/spectral_radius.rs`).
+Reproduced from scratch (`step1_locate_corridor1_tax.py`, independent
+Python power iteration): C=3 m=7 ρ=0.960229329 matches the archived m=7
+table value 0.960230 bit-for-bit; τ=3.98%→lock 3.94%. **HONEST
+CORRECTION (no strawman): the number is the C=3 value, NOT C=1**
+(`SPECTRAL_RADIUS_RESULTS.txt:13` labels C=3 "the narrow corridor — hard
+floor on ρ"). C=1's actual spectral tax is 97.1%, C=2 is 37.1%, C=3 is
+3.98%, collapsing to a flat ~0.046% plateau for C≥6 (the universal-ρ
+regime). "Corridor 1" ⇏ C=1 for this measure; most charitable reading =
+David meant the first/narrowest stable-floor corridor (C=3) or mis-indexed.
+
+**τ(C) schedule, three fresh directly-measured senses + the May proxy
+(`master_schedule.csv`):**
+- **spectral (1−ρ per heartbeat):** 97.1, 37.1, **3.98**, 0.29, 0.058%,
+  then flat ≈0.046% for C≥6. Transient collapse → constant plateau.
+- **population thinning (geometric per-level live-set ratio, one-heartbeat
+  frame; instrument re-run because the archives kept only counts, not the
+  (u,v) deficit detail — gate: 10/10 Tier-1 edges reproduced, 0/134
+  peak-live mismatches vs w6w JSON):** ~0.90-0.93/level for C≤10 (live set
+  dies by M_edge≤26), **jumping to 0.98→1.02 (saturation, no death) at
+  C=10→11** — the w6w-SPARSE break as a thinning ratio.
+- **climb cap per heartbeat under corridor [0,C]** (b2's exact-residue DFS
+  + the [0,C] prune; gate: width-unrestricted C=200 → −6 = B1.2 exactly):
+  **C=1..7 INFEASIBLE — no residue-legal chain from any of 18 launches
+  completes one heartbeat inside [0,C]** (climbing impossible, not merely
+  unprofitable; consistent with M_edge(C≤7)<53); **C≥8: climb cap = −6
+  EXACTLY, corridor-width-independent (flat).** The [0,C] bound never
+  improves LOCK4-B1's −6/hb; it only forbids the heartbeat below C=8.
+- **May m1-proxy reserve decay** (exact 3C−cutoff from
+  `LOCK3_LOCK4_RESERVE_DECAY_NOTE.md:29-34`): 1,3,9,15,21,27 at
+  C=6,10,20,30,40,50 — smooth monotone growth, slope +6/+10=0.60 above
+  C=10, decay/C → ~0.54 (cutoff→2.4C).
+
+**SHAPE VERDICT: (a) regime-constant-then-jump, decisively.** All three
+FRESH senses are stepped/flat-within-a-regime (spectral plateaus at C≥6;
+pop-thin jumps at C=10→11; climb-cap constant −6 above the C=8 feasibility
+threshold). Only the May proxy has shape (b) smooth growth — and it
+measures a *different* quantity (m=1 cutoff gap); its shape is NOT
+reproduced by any fresh corridor instrument.
+
+**Predictions:** (a) [55%] regime boundary visible in τ — **HIT** (three
+independent boundaries: C≈5-6 spectral plateau onset, C=10→11 pop-thin
+death→saturation, C=8 climb feasibility). (b) [50%] May decay = true τ
+right-shape-wrong-constants — **MISS** (shapes qualitatively differ:
+smooth vs stepped; constants uncorrelated). (c) [85%] climb cap strictly
+negative at every C — **HIT** (−6 wherever defined C=8..15; impossible
+below; never profitable at any width). Week's calibration theme continues:
+the one miss is where the archived proxy was assumed to share the real
+object's shape and does not.
+
+**Walls (honest):** "corridor 1" label ambiguity unresolved (number is
+C=3, exactly reproduced; C-index flagged not fudged); a first coarse-
+modulus climb DP draft gave the residue-free +31 and was caught by the
+B1.2 gate, root-caused (residue-tracking convention seam), rewritten
+exact (superseded CSV kept); spectral ρ stopped at m=7 (RSS) but matches
+the archived m=7 cell exactly. No compute wall — everything <20 MB, seconds.

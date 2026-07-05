@@ -1,0 +1,12 @@
+C,edge_m,n0,deficit_range,all_ok,source
+16,93,40953,16,True,step4_witnesses_1623
+17,108,74475,17,True,step4_witnesses_1623
+18,110,74475,18,True,step4_witnesses_1623
+19,130,869889,19,True,step4_witnesses_1623
+20,132,869889,20,True,step4_witnesses_1623
+21,139,2928673,21,True,step4_witnesses_1623
+22,157,1476423,22,True,step4_witnesses_1623 (mx_core-verified in step2c)
+23,163,5471367,23,True,step4_witnesses_1623
+24,188,7182855,24,True,step2c_independent_verify (mx_core)
+25,192,22701369,25,True,step4_c25_witness (mx_core)
+26,205,60733323,26,True,step4_c26_witness_bounded (deficit-centering DFS)

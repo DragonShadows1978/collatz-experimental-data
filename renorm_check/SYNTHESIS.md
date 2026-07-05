@@ -1884,3 +1884,105 @@ modulus climb DP draft gave the residue-free +31 and was caught by the
 B1.2 gate, root-caused (residue-tracking convention seam), rewritten
 exact (superseded CSV kept); spectral ρ stopped at m=7 (RSS) but matches
 the archived m=7 cell exactly. No compute wall — everything <20 MB, seconds.
+
+## W6Y-REGIME — the heartbeat-quantized capacity law is REFUTED at scale: the death edge DRIFTS CONTINUOUSLY through the n=2/n=3 transition, it does not sit-and-jump (2026-07-04)
+
+Ledger W6Y-REGIME; artifacts `shell/underlock/w6y_regime/`
+(self-contained `LEDGER_W6Y-REGIME.md`). Task: test the Architect's
+W6X-MULTI reframe ("a heartbeat-quantized law": `⌊53n(C+1)/22⌋` with
+53→106 fit C=11..15's n=2 edges at MAE 1.0) at scale — C=16..26,
+windows through 3+ heartbeats.
+
+**Headline: the quantized law does NOT generalize. W6X's clean MAE-1.0
+fit at C=11..15 was the CENTER of the n=2 regime, not a law.** As C
+grows, the death edge M_edge(C) (Reading B, pre-registered) drifts
+CONTINUOUSLY upward through the void between the n=2 value
+`⌊106(C+1)/22⌋` and the n=3 value `⌊159(C+1)/22⌋`, landing squarely
+BETWEEN them for C=16..23, then crossing PAST the n=3 line by C=24.
+The measured edges (C=16..26): **93, 108, 110, 130, 132, 139, 157,
+163, 188, 192, 205** (all Reading B, monotone, exact-verified, no
+walls). Residual vs law2 grows monotonically **+12→+75**; residual vs
+law3 goes **−29→+10** (crosses zero at C≈24). Best single-b fit
+`⌊(106C+b)/22⌋`: MAE **43.6** — the n=2 FORM is wrong, no constant
+saves it. Closest-n MAE: 7.25 (n=2 band C=11..18), 11.88 (n=3 band
+C=19..26) — nothing like MAE 1.0 anywhere outside the regime centers.
+
+**The decisive diagnostic — `edge/(C+1)` ratio**: a clean
+heartbeat-quantized law would PIN this at n·53/22 = n·2.409 and JUMP
+between n values. Instead it CLIMBS SMOOTHLY: 4.75→4.94 (C=11..15, near
+n=2's 4.818, MAE~1) → 5.47, 6.00, 5.79 (C=16..18, in the n=2/n=3 void)
+→ 6.29..7.59 (C=19..26, past n=3's 7.227 by C=26 and still climbing).
+A crossover, not a ladder. The quantization is exact ONLY near each
+regime's center; it breaks down in every transition zone.
+
+**Two instruments, gated first (house rules).** mx_core (W6X's own
+modular BFS) reproduced all Tier-1 + C=11..15 edges/witnesses exactly;
+a new exact-big-int incremental walker `wy_core.py` (imports mx_core's
+validated transition math unmodified, adds only a per-block O(m) walk)
+cross-checked vs mx_core at EVERY m (alive/dead + live count + peak),
+0 mismatches C=1..15. TWO honest bugs in the walker (wrong per-checkpoint
+modulus; then over-counting on exact-rho keys) were caught BY the gate
+before any new C and fixed (readout re-keyed with mx_core's terminal
+modulus 3^0=1 → dedup by (u,v); peak via exact-frontier size, verified
+equal because the peak provably precedes truncation onset). C=22 and
+C=24 headline crossover edges independently re-derived by mx_core:
+agree exactly.
+
+**The transition rule (task 3c) — VERDICT.** The Δ=25 landmark is
+confirmed exactly: at the known 1→2 transition (C=10→11), the previous
+regime's value law1(11)=⌊53·12/22⌋=28 sits 53−28=**25** below the
+window top. The rule "graduate when law2(C) > 2·53−25 = 81" fires at
+**C=17** (C=16 = boundary), which correctly marks where the n=2 fit
+STARTS failing. But the rule's PREMISE — a discrete hop between two
+EXACT regimes — is false: there is no exact regime to graduate into,
+because the edges drift rather than snap. So the threshold predicts
+regime-END onset (verified, C≈16–17); it does NOT predict a jump.
+Measured Δ = 25.
+
+**Growth curve**: peak live-set 234→…→2336 (C=11..15, W6X) →
+4413→…→2,524,517 (C=16..26), **≈×1.83/C** (range 1.81–1.95), close to
+and slightly above the ×1.7 estimate. RSS ≤1.3 GB throughout (8 GB cap
+never binding). C=26 (peak 2.52M states) completed but took 22 min
+(exact-big-int rho slows deep blocks); the binding constraint at this
+scale is WALL TIME, not memory — C=27+ needs a faster engine.
+
+**No revival**: Reading B monotone for all C=16..26; C=16..23 swept to
+m=265 (block 5) with zero revival past the edge — Reading B is a clean
+single-edge object at these C (unlike Reading A).
+
+**n0-vs-depth ladder** (all witnesses exact: backward ρ→1, true forward
+Collatz replay, deficit range = C): edge m → n0 = 93→40,953; 108→74,475;
+130→869,889; 139→2,928,673; 157→1,476,423; 163→5,471,367; 188→7,182,855;
+192→22,701,369; 205→60,733,323. Slow-descender start integers climb ~3
+orders of magnitude over the swept depth (W6X's deepest was n0=40065);
+not strictly monotone in m (search returns *any* survivor), but the
+envelope climbs steeply — deeper corridor cells recruit larger n0. The
+C=26/m=205 witness needed a 3rd engine (`witness_bounded.py`, a
+deficit-centering explicit-stack DFS, RSS ~12 MB) after mx_core's
+all-layers reconstruction hit 7 GB and mx_dfs2's naive DFS order
+exhausted a 200M-node budget; gated on 4 known cells first.
+
+**Frozen predictions**: (a) 2-heartbeat holds C=16 until 3-hb transition
+[60%] — **MISS** (breaks immediately at C=16, residual +12→+75). (b)
+transition rule with Δ≈25 [50%] — **PARTIAL/MISS** (Δ=25 confirmed and
+marks regime-END onset, but no discrete graduation exists — continuous
+crossover). (c) growth ~×1.7/C [60%] — **HIT** (~×1.83).
+
+**Cross-reference to W6Z-TAX (parallel round)**: W6Z-TAX found the
+corridor TAX schedule τ(C) is "regime-constant-then-jump" (spectral
+plateau, pop-thin jump at C=10→11, flat −6 climb cap). W6Y-REGIME finds
+the death EDGE M_edge(C) drifts CONTINUOUSLY in the transition zones.
+No contradiction: τ measures per-heartbeat contraction/thinning WITHIN a
+regime (stepped between regimes); M_edge measures WHERE the corridor
+dies, whose value interpolates smoothly across regime boundaries because
+it is set by the whole multi-heartbeat window, not one heartbeat's rate.
+The two are complementary faces of the same heartbeat structure — one
+stepped, one drifting.
+
+**Downstream**: the W6X-MULTI "heartbeat-quantized law" that revived
+F5's 358-vs-359 question is now itself refuted as an exact object. The
+capacity law's true multi-heartbeat form (if any closed form exists)
+must reproduce a SMOOTHLY-drifting edge whose `edge/(C+1)` climbs
+through the n-heartbeat ratios rather than quantizing to them — the
+`⌊53n(C+1)/22⌋` family is falsified for C≥16. F5's C=148 edge question
+now requires this true drifting form, not a quantized law.

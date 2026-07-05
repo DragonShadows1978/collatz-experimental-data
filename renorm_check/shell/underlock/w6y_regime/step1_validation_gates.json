@@ -1,0 +1,58 @@
+{
+  "tier1_pass": true,
+  "w6x_reading_b_pass": true,
+  "c11_saturation_pass": true,
+  "all_pass": true,
+  "reading_b_detail": {
+    "11": {
+      "edge": 57,
+      "alive_at_edge": true,
+      "dead_at_edge_plus_1": true,
+      "peak_live": 234,
+      "peak_expected": 234,
+      "peak_ok": true,
+      "witness_n0": 2713,
+      "witness_all_ok": true
+    },
+    "12": {
+      "edge": 63,
+      "alive_at_edge": true,
+      "dead_at_edge_plus_1": true,
+      "peak_live": 435,
+      "peak_expected": 435,
+      "peak_ok": true,
+      "witness_n0": 1071,
+      "witness_all_ok": true
+    },
+    "13": {
+      "edge": 68,
+      "alive_at_edge": true,
+      "dead_at_edge_plus_1": true,
+      "peak_live": 750,
+      "peak_expected": 750,
+      "peak_ok": true,
+      "witness_n0": 4011,
+      "witness_all_ok": true
+    },
+    "14": {
+      "edge": 71,
+      "alive_at_edge": true,
+      "dead_at_edge_plus_1": true,
+      "peak_live": 1286,
+      "peak_expected": 1286,
+      "peak_ok": true,
+      "witness_n0": 4011,
+      "witness_all_ok": true
+    },
+    "15": {
+      "edge": 79,
+      "alive_at_edge": true,
+      "dead_at_edge_plus_1": true,
+      "peak_live": 2336,
+      "peak_expected": 2336,
+      "peak_ok": true,
+      "witness_n0": 23751,
+      "witness_all_ok": true
+    }
+  }
+}

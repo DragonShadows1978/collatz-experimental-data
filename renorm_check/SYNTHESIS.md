@@ -1706,3 +1706,108 @@ The sparse live-set instrument (peak 234 states at C=11 where dense
 projected 40 GB) is the program's new workhorse; the June death-
 shell insight — the shell kills almost everything — is what made
 the arbiter possible.
+
+## W6X-MULTI — the two-heartbeat window kills C=11..15; the "saturation" was a construction artifact (2026-07-04)
+
+Ledger W6X-MULTI; artifacts shell/underlock/w6x_multi/ (self-contained
+copy: LEDGER_W6X-MULTI.md there). W6W-SPARSE's own scope fence —
+"within the one-heartbeat frame; multi-heartbeat windows unprobed" —
+is now closed.
+
+**Instrument:** mx_core.py extends sparse_instrument.py's backward
+layered BFS past m=53 with NO change to the per-layer transition math,
+only to the window construction. Both live anchor readings for m>53
+implemented per house rules: Reading A ("growing end-anchor," ==
+sparse_instrument's own "root" anchor for all m) and Reading B
+("heartbeat-periodic re-anchoring," anchor_end=53⌈m/53⌉, reduces
+EXACTLY to the gate-validated "end" anchor for m≤53). Gates: all ten
+Tier-1 edges (C=1..10) reproduced exactly; C=11 alive through m=53
+with the SAME 234-state stabilization and the SAME n0=1707 deep
+witness W6W-SPARSE found; Reading A reproduces the known root-anchor
+negative control at m=29..32 exactly. Peak RSS for the entire
+multi-heartbeat sweep: 28.9 MB (cap was 7500 MB — nowhere close).
+
+**Verdict: C=11..15 all die within m=54..106, under BOTH readings.**
+Reading B (textually favored going in, and confirmed monotone —
+alive-then-permanently-dead — for all 5 C, unlike Reading A which
+is intermittent/revives at 4 of 5 C): edges 57→58 (C=11), 63→64
+(C=12), 68→69 (C=13), 71→72 (C=14), 79→80 (C=15). Peak live-set at
+each C never exceeds the one-heartbeat saturation value already
+measured (234/435/750/1286/2336) — the corridor is squeezed to zero
+from a FIXED population across the boundary, not from a growing one.
+Death mechanism: cumulative squeeze (monotonically shrinking live set
+over ~10-15 layers), not a single trigger letter. All witnesses
+exact-verified (backward reconstruction + true Collatz replay +
+deficit range), including deep ones whose full odd-step count to 1
+matches their witness depth exactly (n0=1707→53 steps, n0=4011→68
+steps, n0=23751→79 steps) — genuine slow-descender integers that
+simply run out of runway once the window is long enough to see their
+whole trajectory.
+
+**Fit attempt (honest, not forced): the SAME closed form, generalized
+to n heartbeats via ⌊53n(C+1)/22⌋, fits Reading B's new edges at n=2**
+(⌊106(C+1)/22⌋ vs observed: residuals 0,+1,+1,−1,+2 across C=11..15,
+mean |residual|=1.0, no drift). Provisional — 5 points, one n — but
+this reframes W6W-SPARSE's "saturation, ladder concept ends at C=11"
+as likely a ONE-HEARTBEAT CONSTRUCTION ARTIFACT rather than corridor
+truth: the capacity law may hold after all, just requiring a window
+long enough (n heartbeats scaling with C) to reveal the edge that a
+single 53-step window is too short to see.
+
+**Independent re-derivation:** mx_dfs2.py, a THIRD structurally
+distinct engine (explicit-stack DFS, no memoization at all, exact
+unbounded big-int rho — differs from both the primary layered-BFS and
+w6w_sparse's own recursive-DFS-with-memo second engine), agrees at
+15/15 cross-checked cells spanning both readings and the Reading-A
+revival cells specifically. No disagreements.
+
+**Frozen predictions: 40% (death in 54..106) HIT — for all five C
+values, not just C=11; 60% (saturation continues, favored) MISSED.**
+
+**Honest process note:** a v1 of the measurement script broke its
+sweep loop at the first dead m per (C, reading) — correct for Reading
+B (confirmed monotone) but silently truncating Reading A's data past
+its first "death" and hiding real intermittent revivals (Reading A is
+NOT a clean single-edge object — it revives after its first death at
+4 of 5 tested C values, independently confirmed by mx_dfs2). Caught
+during analysis cross-checking, fixed (full range always swept now;
+cost is negligible — under 14s total), re-run; nothing in this ledger
+depends on the truncated v1 output.
+
+**Sharpest open cell now:** does ⌊53n(C+1)/22⌋ continue to fit at n=3+
+heartbeats and at larger C (this round only tested n=2, C≤15)? And
+does the near-periodicity of the credit word (exact through 6
+heartbeats, first break at step 358 — the program's own "358 vs 359"
+F5 landmark) interact with the capacity law once measurement reaches
+that range? Neither attempted this round (honest scope limit).
+
+## Architect's verdict on W6X-MULTI (Fable, 2026-07-05) — the law graduates
+
+The multi-heartbeat frame ruled: **the C=11 saturation was the
+frame's construction boundary, not corridor truth. C=11 dies at
+m=58; C=12..15 at 64/69/72/80; no revivals through 106** (Reading B,
+pre-registered; both engines + the relayer's third engine agree;
+witnesses are genuine slow-descenders — the 559/745/839/993/1707
+family plus n0=2713 and up to 40065).
+
+**The reframe that matters: the capacity law survives by SCALING
+ITS WINDOW.** The corrected candidate ⌊106(C+1)/22⌋ — the same law
+with 53 → 106 — fits all five new edges with MAE 1.0. The picture:
+C ≤ 10 lives in the one-heartbeat regime where ⌊53(C+1)/22⌋ is
+Tier-1 exact; C ≥ 11 crosses into the two-heartbeat regime where
+the same 22/53 arithmetic runs on the doubled window. Not a broken
+law — a heartbeat-quantized law. (Provisional: 5 points, 2
+heartbeats; W6Y tests the generalization at C = 16..26 and hunts
+the 3-heartbeat transition.)
+
+**Downstream inversions:** F5's 358-vs-359 question STANDS again
+(the break is not corridor-real). Lock 3's capacity bound becomes
+per-heartbeat-windowed rather than falsified. Lock 4 unaffected
+throughout. And the recorded bonus: the credit word itself is
+exactly periodic through six heartbeats with first break at step
+358 — the F5 landmark surfacing in the word, consistent with W6C.
+
+Architect's calibration, final entries of the night: 55% formula-
+at-C=11 (missed), then 60% saturation-real (missed) — both misses
+in the direction of the object being MORE lawful than bet. The
+week's theme, unbroken to the end.

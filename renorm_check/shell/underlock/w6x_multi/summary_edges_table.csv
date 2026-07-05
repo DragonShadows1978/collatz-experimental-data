@@ -1,0 +1,11 @@
+reading,C,last_alive_m_in_54_106,first_dead_m,monotone_death,n_alive_cells
+A,11,55,54,False,1
+A,12,62,58,False,8
+A,13,67,66,False,13
+A,14,69,70,True,16
+A,15,79,73,False,22
+B,11,57,58,True,4
+B,12,63,64,True,10
+B,13,68,69,True,15
+B,14,71,72,True,18
+B,15,79,80,True,26

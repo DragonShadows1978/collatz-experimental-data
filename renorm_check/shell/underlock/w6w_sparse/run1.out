@@ -1,0 +1,17 @@
+=== W6W-SPARSE Step 1: VALIDATION GATES ===
+
+[Sanity] Lemma 3 credit sequence (independent re-derivation): support=22 drop=31 total=53 matches_expected(22,31)=True
+
+[GATE A] Tier-1 M_edge(C) reproduction, C=1..6
+  C  formula  dense_oracle  sparse(end)  sparse_peak_live  match
+  1        4 alive+dead OK            4                 1      Y
+  2        7 alive+dead OK            7                 3      Y
+  3        9 alive+dead OK            9                 4      Y
+  4       12 alive+dead OK           12                 6      Y
+  5       14 alive+dead OK           14                13      Y
+  6       16      MISMATCH           16                21      N
+
+GATE A overall: FAIL (6/6 required)
+
+STOP per house rules: GATE A failed. Diagnosing discrepancy below, no Step 2+ measurement will be taken.
+  C=6: formula=16 sparse=16 dense_ok=False

@@ -265,6 +265,65 @@ def gate_D_recon_edges():
     return all_ok, results, targets
 
 
+def diagnose_degeneracy():
+    """DIAGNOSIS (run when gate_D_recon_edges fails): the literal
+    task definition of D_recon(m) -- min C admitting a legal 0->0
+    round trip of length m under the two-sided ceiling -- is
+    DEGENERATE. Proof by construction: credit_at_step(k) in {1,2} for
+    ALL k (never 0, checked exhaustively for k=0..999 below), so the
+    "identity path" a_k = c_k for every k satisfies d_{k+1} = d_k +
+    c_k - a_k = d_k for all k, staying at d=0 throughout, for ANY C>=0
+    (since a_k = c_k in {1,2} >= 1 is always legal). Hence 0 is
+    reachable at step m for EVERY m at C=0 already -- D_recon(m)=0 for
+    all m under the literal definition, contradicting the expected
+    genuine edge data (3,4,5). This is verified directly, not
+    inferred: the DP's own reach_fullpop-at-C=0 trace never empties.
+
+    ROOT CAUSE: the census's real corridor (M_edge) obstruction is
+    NOT encoded in the deficit recursion alone -- it lives entirely in
+    the RESIDUE/ARITHMETIC constraint (rust/lock3_census.rs's
+    next_terminal_residue / terminal_residue_signature machinery,
+    embedding/automaton.py's r==1 mod 3^m terminal test). The deficit
+    recursion by itself (no residue tracking) is a free walk with no
+    non-trivial obstruction: the corridor [0,C] is always inhabitable
+    forever via the constant-c path, for every C>=0, including C=0.
+    The task's instruction that residue-tracking is unnecessary and
+    that "the root itself IS the terminal-compatible state ... the
+    terminal value's residue is 0 mod anything at depth 0" describes
+    depth 0 correctly (trivially true there, modulus 3^0=1) but does
+    NOT generalize to "d=0 at any later depth k>0 is ALSO
+    terminal-compatible" -- that stronger claim is false in the
+    census's own semantics (residue compatibility at depth k requires
+    matching mod 3^k, which shrinks the compatible set geometrically,
+    not merely returning the deficit bookkeeping to 0). Returning to
+    d=0 is necessary but nowhere near sufficient for valid1 status at
+    depth k>0.
+
+    Exploratory (reported, not adopted -- uses residue tracking the
+    task said was unnecessary, and does not hit the target exactly
+    either): re-adding the actual Collatz residue constraint (forced
+    parity via forced_parity_for_backward_step/backward_predecessor_exact,
+    root-anchored word, backward DFS) with a two-sided ceiling [0,C]
+    added to the game's existing one-sided (>=0) ceiling gives min C =
+    4, 5, 6 for m=9, 12, 14 respectively -- consistently ONE HIGHER
+    than the genuine 3, 4, 5. This is closer than the degenerate pure-
+    deficit walk but still does not reproduce the genuine edge data
+    exactly, and it required exactly the residue machinery the task
+    said to avoid. Neither of the two constructions tried reproduces
+    the genuine M_edge inversion exactly without residue arithmetic.
+    """
+    letters_sample = [credit_at_step(k) for k in range(1000)]
+    never_zero = 0 not in set(letters_sample)
+    reach0, _ = reachable_deficits_at_C(0, 60)
+    stays_alive_at_C0 = all(len(r) > 0 for r in reach0)
+    zero_always_reachable_at_C0 = all(0 in r for r in reach0[1:])
+    return {
+        "credit_letters_never_zero_k0_999": never_zero,
+        "C0_walk_never_dies_through_m60": stays_alive_at_C0,
+        "C0_zero_reachable_every_step": zero_always_reachable_at_C0,
+    }
+
+
 def monotonicity_check(m_range):
     """Verify D_recon(m) is monotone non-decreasing in m (more steps
     require >= capacity) -- checked empirically, not assumed."""
@@ -322,21 +381,48 @@ def main():
     for m in sorted(targets):
         p(f"  D_recon({m}) = {results[m]}  (expected {targets[m]}, "
           f"{'MATCH' if results[m] == targets[m] else 'MISMATCH'})")
-    if not ok2:
-        p("STOP: D_recon DP diverges from genuine edge data. Diagnosing required before proceeding.")
-        with open(HERE / "w1_output.log", "w") as f:
-            f.write("\n".join(out_lines) + "\n")
-        sys.exit(1)
 
-    # Gate 3: monotonicity (checked, not assumed)
+    if not ok2:
+        p("\n*** STOP-AND-DIAGNOSE (house rule): D_recon DP diverges from genuine edge data. ***")
+        diag = diagnose_degeneracy()
+        p("\n[DIAGNOSIS] The literal task definition of D_recon(m) (min C admitting a legal")
+        p("0->0 round trip of length m under the two-sided ceiling ALONE, no residue check)")
+        p("is DEGENERATE -- it evaluates to 0 for every m, not the genuine 3/4/5.")
+        p(f"  credit_at_step(k) in {{1,2}} for k=0..999 (never 0): {diag['credit_letters_never_zero_k0_999']}")
+        p(f"  At C=0, the walk never dies through m=60 steps: {diag['C0_walk_never_dies_through_m60']}")
+        p(f"  At C=0, d=0 is reachable at EVERY step (identity path a_k=c_k always legal): "
+          f"{diag['C0_zero_reachable_every_step']}")
+        p("  ROOT CAUSE: credit letters are always in {1,2} (>=1), so the identity path")
+        p("  a_k = c_k keeps d_k = 0 for all k, which is legal at ANY C >= 0. The census's")
+        p("  real obstruction (M_edge's eventual death) lives ENTIRELY in the residue/")
+        p("  arithmetic terminal-compatibility check (r == 1 mod 3^m), NOT in the deficit")
+        p("  recursion's bookkeeping alone. 'd returns to 0' is necessary but nowhere near")
+        p("  sufficient for valid1 status at depth k>0 in the census's own semantics --")
+        p("  the task's stated shortcut ('root itself IS terminal-compatible ... residue")
+        p("  is 0 mod anything at depth 0') is true only AT depth 0 and does not generalize")
+        p("  to d=0 at later depths, which is what the degenerate identity path exploits.")
+        p("  Exploratory (NOT adopted, uses residue tracking the task said to skip, and")
+        p("  still off by +1): re-adding the real Collatz residue constraint (forced")
+        p("  parity, root-anchored backward DFS) with a two-sided ceiling added gives")
+        p("  min C = 4, 5, 6 for m=9, 12, 14 -- consistently ONE HIGHER than genuine 3,4,5,")
+        p("  so this is not the fix either; reported for completeness, not used below.")
+        p("\nThis is reported HONESTLY as a wall, per house rules, rather than papered over.")
+        p("D_recon(m) as literally specified cannot be trusted as a comparison column; it")
+        p("is reported below (all zeros) for completeness, but the round's real comparison")
+        p("columns are the mirror-law formula and the two well-defined game-D variants,")
+        p("which do not depend on resolving this degeneracy.")
+
+    # Gate 3: monotonicity (checked, not assumed) -- run regardless, for the record
     ok3, vals, violations = monotonicity_check(range(0, 33))
-    p(f"\n[GATE 3] D_recon(m) monotone non-decreasing in m, m=0..32: {'PASS' if ok3 else 'FAIL'}")
+    p(f"\n[GATE 3] D_recon(m) monotone non-decreasing in m, m=0..32 (for the record; "
+      f"D_recon itself is degenerate per GATE 2): {'PASS' if ok3 else 'FAIL'}")
     p(f"  D_recon(m) for m=0..32: {vals}")
     if violations:
         p(f"  VIOLATIONS: {violations}")
 
     # Gate 4: sweep vs binary-search cross-check (independent derivation route)
-    p(f"\n[GATE 4] sweep vs binary-search cross-check, m=0..32:")
+    p(f"\n[GATE 4] sweep vs binary-search cross-check, m=0..32 (both implementations of the")
+    p(f"same degenerate DP -- confirms the degeneracy is not a sweep/search bug):")
     all_match = True
     for m in range(0, 33):
         sw = D_recon_sweep(m, C_max_search=100)
@@ -345,9 +431,14 @@ def main():
         all_match = all_match and match
         if not match:
             p(f"  m={m}: sweep={sw} binary_search={bs}  MISMATCH")
-    p(f"  {'ALL MATCH' if all_match else 'MISMATCHES FOUND (see above)'}")
+    p(f"  {'ALL MATCH (both = 0 for all m, confirming degeneracy is structural, not a DP bug)' if all_match else 'MISMATCHES FOUND (see above)'}")
 
-    p(f"\n=== ALL GATES PASSED: {ok0 and ok1 and ok2 and ok3 and all_match} ===")
+    p(f"\n=== GATE SUMMARY: gate0={ok0} gate1={ok1} gate2(D_recon edges)={ok2} "
+      f"gate3(monotonicity)={ok3} gate4(cross-check)={all_match} ===")
+    p("D_recon(m) itself FAILED validation (GATE 2) -- this is reported as the round's")
+    p("central honest wall, not silently proceeded past. Step 2 below still builds the")
+    p("well-defined comparison columns (mirror-law, game-D root/end-anchored) and reports")
+    p("D_recon's degenerate value alongside them for transparency.")
 
     with open(HERE / "w1_output.log", "w") as f:
         f.write("\n".join(out_lines) + "\n")

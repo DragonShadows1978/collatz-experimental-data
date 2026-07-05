@@ -1545,3 +1545,164 @@ empirically OPEN — as the day-one recon said before the week's
 enthusiasm papered it over. NEW HOUSE LAW: before any result is
 promoted into the record, it gets checked against the standing
 correction list; and every claim carries its tier.
+
+## W6U-RECON interim + the architect's second spec error (2026-07-05)
+
+W6U's first D_recon column came back 0 at every m — TRIVIAL, and
+the fault is the architect's conditioning spec: "reach valid-1 at
+depth m, endpoint free" admits ordinary DESCENDING trajectories,
+which exist at every depth with no capacity. The corridor question
+is ceiling-anchored HOVERING (the death shell's own definition) and
+the spec dropped that clause. Owned; corrected residue-aware spec
+re-dispatched to the same agent (its census port + validation
+context retained).
+
+W6U's real interim contribution: THREE independent instruments
+agree the root-anchored GAME matches the mirror law through m=30,
+first breaking at m=31 (11 vs 12) — CONTRADICTING W6R's "breaks at
+29" (whose root-anchoring W6S already showed was not the census's).
+Registered without resolution: the game's internal frames disagree
+with each other; the game remains impeached as a corridor model,
+and the program's weight has shifted to Tier-1 measurement.
+
+→ W6V-MEASURE launched: genuine full-precision M_edge sweeps at
+C = 6 upward (validation gate: reproduce C=5's genuine 14 first;
+prize cell C=11, predicted 28, the zone where all game anomalies
+live). Architect frozen: formula exact at every C measured — 75%.
+
+## W6U-RECON final — the reconciled object, and the formula's first real break candidate (2026-07-05)
+
+Ledger W6U-RECON; artifacts w6u_recon/w4-w5 (w1-w3 record intact).
+The corrected, residue-aware reconciliation (census residue walk
+ported verbatim, .rs lines cited; root-pinned definition REFUTED
+three independent ways — E[a]=2 drift makes pinned-start forward
+sums go negative immediately) selected by gate: variant (ii),
+free-endpoint deficit RANGE, window END-anchored at the 53
+heartbeat — **6/6 genuine gates** (D_recon = 3/4/5 at m = 9/12/14
+AND the three negative-direction infeasibilities, via the archived
+embedding/automaton.py oracle re-run read-only).
+
+**Results:** mirror law EXACT 27/27 at m ≤ 28; **D_recon(29..32) =
+11,11,11,11 vs formula 12,12,12,13** — two structurally independent
+engines agree on all 62 cells; feasibility side is UNCONDITIONAL:
+real integer trajectories 839/559/745/993 → 1 (29/30/31/32 odd
+steps, each a one-step extension of the last, all exact-replayed)
+each fitting a width-11 end-anchored corridor. Implies
+M_edge(11) ≥ 32 against the never-actually-measured archived 28.
+
+**Dictionary closed: D_recon = the game's end-anchored ceiling-on
+D, 31/31 rows.** The game was the faithful model all along; the
+W6Q/W6S "impeachments" were about root-pinned scoring conventions,
+not corridor truth. Standing caveat (agent's own, E2-class): the
+53-anchor frame is validated at the first heartbeat; deeper
+boundaries unprobed.
+
+**Arbiter:** W6V's direct full-precision sweeps (C=6 = 16 formula-
+exact already Tier-1'd; the contested zone needs the sparse
+live-set instrument — dense enumeration cannot reach m=29). If
+Tier-1 confirms: the capacity law is exact through m=28 and then
+PLATEAUS (D pinned at 11 for m = 29..32+, the game's "4× slower
+growth" now credible to ~m=130) — the framework's precision-collapse
+rate needs re-derivation above m=28, while Lock 4's climb
+impossibility (−6 per heartbeat, measured in this same reconciled
+object) stands.
+
+## W6W-SPARSE — the sparse live-set instrument lands; the formula's first break CONFIRMED at C=11, and the ladder saturates (2026-07-04)
+
+Ledger W6W-SPARSE; artifacts shell/underlock/w6w_sparse/ (self-
+contained copy: LEDGER_W6W-SPARSE.md there). The arbiter W6U-RECON
+final called for — genuine full-precision measurement in the
+contested zone, where dense enumeration cannot go — has now run.
+
+**Instrument:** backward walk from the single terminal residue rho=1
+through the heartbeat's last m letters (end-anchored, the frame all
+six genuine gates select), live set = (rho mod 3^(m−j), deficit-range
+u, v) triples, free endpoints, exact ints only. The death shell keeps
+the live set tiny — peak 234 states at C=11 where dense needed
+13.8 GB. Gates: Tier-1 C=1..6 reproduced 6/6 (4,7,9,12,14,16; fresh
+dense cross-checks C≤5 in-process, C=6 alive@16 fresh capped
+subprocess + archived W6V death certificate for 17); C=7@m=17 alive
+confirmed (31 live states, <1 ms, vs 13.8 GB/615 s dense).
+
+**New Tier-1 rows (first genuine measurements at these C; previous
+status DERIVED per W6T-PROV):** C=7..10 measured edges 19, 21, 24,
+26 with death certificates — **formula exact 4/4** (frozen 70%: HIT).
+Peak live sets 31/50/80/133.
+
+**C=11 (frozen 55/45, closest call of the program): the 45% side
+landed.** No death at m=29 — and none anywhere in the one-heartbeat
+window: **C=11 survives through m=53** (deep witness n0=1707, range
+exactly 11, 53-step exact Collatz replay). The m=29..32 witnesses
+reconstruct to 839, 559, 745, 993 — W6U-RECON's four trajectories,
+re-derived from scratch by code sharing nothing with w6u_recon.
+Independent re-derivation (required): exact-int DFS engine agrees
+with the layered modular BFS at every probed cell (m=26..33 and all
+m≥28 up to 53, C=11..15). Anchor robustness: survival past 28 holds
+at anchors 53/106/159 (steps-invariance gate C=3,4 passes first).
+Root-anchored negative control reproduces w5's dictionary exactly
+(dead/dead/alive/dead at 29..32) — the frames separate exactly where
+W6U said.
+
+**Structural upgrade to the break story: it is not a plateau to 32 —
+it is saturation.** C=12..15 also never die within the window (peak
+live 435/750/1286/2336). M_edge(C) as "death edge within one
+heartbeat" is UNDEFINED (no death exists) for C≥11. The capacity law
+is exact precisely while its edge lands at m≤28 (C≤10) and the
+countdown-ladder concept itself ends at C=11 — consistent with the
+precision-collapse rate needing re-derivation above m=28 (W6U's
+anticipated consequence), and with W6P's game-side "D pins at 11
+through m=53," now corridor-real in the gate-validated frame.
+
+**Sharpest open cell now:** multi-heartbeat windows (m>53, residue
+constraints spanning heartbeat boundaries) — the one-heartbeat
+construction is the instrument's own boundary; whether C≥11 has a
+death edge beyond it is unprobed. Falsifier for this round's verdict:
+a validated multi-heartbeat extension killing C=11 at m≤53, or any
+end-anchored-vs-reality divergence inside C=7..10's newly measured
+range (none found: 4/4 exact).
+
+Process note, recorded honestly: a v1 gate script ran a fresh dense
+C=6/m=17 check under a cap that was reported but not enforced; the
+worker hit VmPeak 13.4 GiB and was externally killed (W6V's own
+record already showed 12.0 GB for that cell — never feasible under
+the 8 GB rule). Fixed with a VmRSS watchdog hard-abort; no
+measurement depended on the killed run. All sparse work this round:
+<15 MB RSS, <10 ms per cell.
+
+## Architect's verdict on W6W-SPARSE (Fable, 2026-07-05)
+
+The arbiter ruled, and the registered 45% side landed — harder than
+registered. Standing state of the capacity law:
+
+1. **M_edge(C) = ⌊53(C+1)/22⌋ is now Tier-1 EXACT at C = 1..10**
+   (edges 4,7,9,12,14,16 archived + 19,21,24,26 measured fresh
+   tonight by the sparse instrument, each with a death certificate).
+   The genuinely-measured base DOUBLED tonight.
+2. **First confirmed break at C = 11 — and it is SATURATION, not a
+   plateau**: no death through m = 53, the entire one-heartbeat
+   window; deep witness n0 = 1707 (53 odd steps to 1, deficit range
+   exactly 11, exact replay); the four W6U witnesses re-derived by
+   code sharing nothing with w6u_recon; two independent engines;
+   anchor robustness at 53/106/159; root-anchored negative control
+   separates exactly as W6U's dictionary said.
+3. **Scope fence, stated honestly**: "within the end-anchored
+   one-heartbeat frame" — the ONLY frame that reproduces every
+   genuinely measured cell (now ten of them). The frame's
+   construction boundary is m = 53; multi-heartbeat windows are
+   unprobed and are the sharpest open cell. Lock 3's capacity bound
+   22m ≤ 53(C+1) has a measured counter-zone at C ≥ 11 in this
+   frame; its rescue, if any, lives in cross-boundary deficit
+   coupling (→ W6X-MULTI).
+4. **Consequences**: F5 as posed (358 vs 359) DISSOLVES if the
+   break is corridor-real at scale — the C = 148 edge question
+   requires the multi-heartbeat theory. The precision-collapse rate
+   needs re-derivation above C = 10. Lock 4's climb impossibility
+   (−6 per heartbeat, same instrument family) is UNAFFECTED —
+   hovering is not climbing; no-escape stands.
+5. Architect's frozen 55% on the formula at C=11: MISSED — the
+   week's final calibration entry, consistent with its theme.
+
+The sparse live-set instrument (peak 234 states at C=11 where dense
+projected 40 GB) is the program's new workhorse; the June death-
+shell insight — the shell kills almost everything — is what made
+the arbiter possible.

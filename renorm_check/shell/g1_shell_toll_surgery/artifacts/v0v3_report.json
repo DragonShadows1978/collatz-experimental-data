@@ -1,0 +1,224 @@
+{
+  "gates": {
+    "V0": "PASS",
+    "V1": "PASS",
+    "V2": "PASS",
+    "V3": "PASS"
+  },
+  "details": {
+    "V0": {
+      "lemma3": {
+        "sequence": [
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          2,
+          2
+        ],
+        "support_count": 22,
+        "drop_count": 31,
+        "total": 53,
+        "matches_lemma3": true
+      },
+      "mechanical_P": 84,
+      "first_true_vs_2253_divergence_k": 358
+    },
+    "V1": [
+      {
+        "C": 1,
+        "M_edge": 4,
+        "expected": 4,
+        "marker": "LLLL..",
+        "match": true
+      },
+      {
+        "C": 2,
+        "M_edge": 7,
+        "expected": 7,
+        "marker": "LLLLLLL..",
+        "match": true
+      },
+      {
+        "C": 3,
+        "M_edge": 9,
+        "expected": 9,
+        "marker": "LLLLLLLLL..",
+        "match": true
+      },
+      {
+        "C": 4,
+        "M_edge": 12,
+        "expected": 12,
+        "marker": "LLLLLLLLLLLL..",
+        "match": true
+      },
+      {
+        "C": 5,
+        "M_edge": 14,
+        "expected": 14,
+        "marker": "LLLLLLLLLLLLLL..",
+        "match": true
+      }
+    ],
+    "V2": {
+      "rows": [
+        {
+          "m": 2,
+          "D_emp": 0,
+          "d_rat": 0,
+          "d_irr": 0,
+          "d_real_mirror": 0,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 3,
+          "D_emp": 1,
+          "d_rat": 1,
+          "d_irr": 1,
+          "d_real_mirror": 1,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 4,
+          "D_emp": 1,
+          "d_rat": 1,
+          "d_irr": 1,
+          "d_real_mirror": 1,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 5,
+          "D_emp": 2,
+          "d_rat": 2,
+          "d_irr": 2,
+          "d_real_mirror": 2,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 6,
+          "D_emp": 2,
+          "d_rat": 2,
+          "d_irr": 2,
+          "d_real_mirror": 2,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 7,
+          "D_emp": 2,
+          "d_rat": 2,
+          "d_irr": 2,
+          "d_real_mirror": 2,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 8,
+          "D_emp": 3,
+          "d_rat": 3,
+          "d_irr": 3,
+          "d_real_mirror": 3,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 9,
+          "D_emp": 3,
+          "d_rat": 3,
+          "d_irr": 3,
+          "d_real_mirror": 3,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 10,
+          "D_emp": 4,
+          "d_rat": 4,
+          "d_irr": 4,
+          "d_real_mirror": 4,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 11,
+          "D_emp": 4,
+          "d_rat": 4,
+          "d_irr": 4,
+          "d_real_mirror": 4,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        },
+        {
+          "m": 12,
+          "D_emp": 4,
+          "d_rat": 4,
+          "d_irr": 4,
+          "d_real_mirror": 4,
+          "match_p5": true,
+          "mirror_eq_rat": true
+        }
+      ],
+      "first_rat_irr_div_m": 359,
+      "note": "d_real_mirror floor((22m-1)/53) may differ from d_rat by O(1); gate is shell_probe P5 emp==d_rat==d_irr for m=2..12"
+    },
+    "V3": {
+      "exact_check_k": "0..400",
+      "first_f64_disagreement_k": null,
+      "method": "bit_length(3^k)-1"
+    }
+  },
+  "ok_all": true,
+  "elapsed_sec": 94.63830471038818
+}

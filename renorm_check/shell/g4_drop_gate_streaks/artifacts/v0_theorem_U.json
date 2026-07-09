@@ -1,0 +1,27 @@
+{
+  "gates": {
+    "V0-G1": "PASS",
+    "V0-G2": "PASS",
+    "V0-G3": "PASS"
+  },
+  "algebra_cases": {
+    "all_ok": true,
+    "n": 72,
+    "rows_fail": []
+  },
+  "predictions": {
+    "S0.1": {
+      "verdict": "CONFIRMED",
+      "n_ups": 1180,
+      "n_fail": 0,
+      "confidence_prior": 0.95
+    },
+    "S0.2": {
+      "verdict": "CONFIRMED",
+      "n_ups": 41209,
+      "n_fail": 0,
+      "confidence_prior": 0.9
+    }
+  },
+  "lemma": "d' = d + c - a; upcross needs c-a > slack=C-d \u2265 0; c-a \u2264 1 \u21d2 slack=0 and (c,a)=(2,1). Hence every upcrossing is at-ceiling, drop-phase, a=1."
+}

@@ -1,0 +1,2466 @@
+[
+  {
+    "source": "high_reserve",
+    "start_n": 80049391,
+    "n_upcrossings": 23,
+    "n_climb_runs": 9,
+    "max_d": 23,
+    "max_L": 11
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 120080895,
+    "n_upcrossings": 23,
+    "n_climb_runs": 12,
+    "max_d": 23,
+    "max_L": 9
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 210964383,
+    "n_upcrossings": 23,
+    "n_climb_runs": 12,
+    "max_d": 23,
+    "max_L": 12
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 219259131,
+    "n_upcrossings": 23,
+    "n_climb_runs": 11,
+    "max_d": 23,
+    "max_L": 12
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 222250543,
+    "n_upcrossings": 23,
+    "n_climb_runs": 13,
+    "max_d": 23,
+    "max_L": 12
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 246666523,
+    "n_upcrossings": 23,
+    "n_climb_runs": 11,
+    "max_d": 23,
+    "max_L": 12
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 319804831,
+    "n_upcrossings": 30,
+    "n_climb_runs": 10,
+    "max_d": 30,
+    "max_L": 20
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 77566362559,
+    "n_upcrossings": 31,
+    "n_climb_runs": 12,
+    "max_d": 31,
+    "max_L": 12
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2591,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7451,
+    "n_upcrossings": 3,
+    "n_climb_runs": 1,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4967,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3311,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 73979,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37979,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 69275,
+    "n_upcrossings": 4,
+    "n_climb_runs": 4,
+    "max_d": 4,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2375,
+    "n_upcrossings": 5,
+    "n_climb_runs": 4,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 49319,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 80615,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37583,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1583,
+    "n_upcrossings": 5,
+    "n_climb_runs": 4,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 32879,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 550907,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 133883,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 413531,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 660059,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 100763,
+    "n_upcrossings": 4,
+    "n_climb_runs": 4,
+    "max_d": 4,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 347291,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4504571,
+    "n_upcrossings": 3,
+    "n_climb_runs": 1,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2375675,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2725883,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 253691,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3433211,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3783419,
+    "n_upcrossings": 7,
+    "n_climb_runs": 4,
+    "max_d": 7,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4283387,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 818171,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12663803,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5693435,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2228219,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 14073851,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 13711355,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 10246139,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 858107,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 94526459,
+    "n_upcrossings": 3,
+    "n_climb_runs": 1,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5463035,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 58031099,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 138836987,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 33700859,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 114506747,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 299785211,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 306863099,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 764566523,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1324309499,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1331387387,
+    "n_upcrossings": 3,
+    "n_climb_runs": 3,
+    "max_d": 3,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 430136315,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4206779387,
+    "n_upcrossings": 8,
+    "n_climb_runs": 4,
+    "max_d": 8,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3810417659,
+    "n_upcrossings": 3,
+    "n_climb_runs": 3,
+    "max_d": 3,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3546176507,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 8899419131,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 93311,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 339227,
+    "n_upcrossings": 3,
+    "n_climb_runs": 1,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 226151,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 150767,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 473759,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1062335,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4608251,
+    "n_upcrossings": 7,
+    "n_climb_runs": 3,
+    "max_d": 7,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5466203,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6038171,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 447515,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2214215,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3072167,
+    "n_upcrossings": 7,
+    "n_climb_runs": 4,
+    "max_d": 7,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3644135,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7011431,
+    "n_upcrossings": 3,
+    "n_climb_runs": 3,
+    "max_d": 3,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 618191,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1476143,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2048111,
+    "n_upcrossings": 8,
+    "n_climb_runs": 4,
+    "max_d": 8,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5415407,
+    "n_upcrossings": 3,
+    "n_climb_runs": 3,
+    "max_d": 3,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6384095,
+    "n_upcrossings": 8,
+    "n_climb_runs": 4,
+    "max_d": 8,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6956063,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1365407,
+    "n_upcrossings": 9,
+    "n_climb_runs": 4,
+    "max_d": 9,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7242047,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1651391,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 43239419,
+    "n_upcrossings": 3,
+    "n_climb_runs": 1,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 38988539,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12266747,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 42227963,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 38457179,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 34206299,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7484507,
+    "n_upcrossings": 6,
+    "n_climb_runs": 3,
+    "max_d": 6,
+    "max_L": 8
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37445723,
+    "n_upcrossings": 10,
+    "n_climb_runs": 7,
+    "max_d": 10,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 35269019,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 31018139,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4296347,
+    "n_upcrossings": 7,
+    "n_climb_runs": 4,
+    "max_d": 7,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 34257563,
+    "n_upcrossings": 6,
+    "n_climb_runs": 5,
+    "max_d": 6,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 28892699,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2170907,
+    "n_upcrossings": 8,
+    "n_climb_runs": 3,
+    "max_d": 8,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 32132123,
+    "n_upcrossings": 10,
+    "n_climb_runs": 4,
+    "max_d": 10,
+    "max_L": 11
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 30021839,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3300047,
+    "n_upcrossings": 3,
+    "n_climb_runs": 3,
+    "max_d": 3,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 33261263,
+    "n_upcrossings": 4,
+    "n_climb_runs": 4,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 29490479,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 25239599,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 70181423,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 28479023,
+    "n_upcrossings": 4,
+    "n_climb_runs": 4,
+    "max_d": 4,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 26302319,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 22051439,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 66993263,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 25290863,
+    "n_upcrossings": 3,
+    "n_climb_runs": 3,
+    "max_d": 3,
+    "max_L": 3
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 19925999,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 559871,
+    "n_upcrossings": 4,
+    "n_climb_runs": 1,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 38534939,
+    "n_upcrossings": 6,
+    "n_climb_runs": 3,
+    "max_d": 6,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 39126887,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 26084591,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 30826655,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7114175,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 18179711,
+    "n_upcrossings": 7,
+    "n_climb_runs": 3,
+    "max_d": 7,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 102150395,
+    "n_upcrossings": 9,
+    "n_climb_runs": 3,
+    "max_d": 9,
+    "max_L": 10
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 288471131,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 305189531,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 208839707,
+    "n_upcrossings": 9,
+    "n_climb_runs": 3,
+    "max_d": 9,
+    "max_L": 11
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37111067,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 137616155,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 311761223,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 175595687,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 192314087,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 95964263,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 246721895,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 24740711,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 129015503,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 315336239,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9568367,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 235704815,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 63976175,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 164481263,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 86010335,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 102728735,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6378911,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 157136543,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 257641631,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 272331071,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 175981247,
+    "n_upcrossings": 6,
+    "n_climb_runs": 4,
+    "max_d": 6,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4252607,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 104757695,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 289049471,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 117320831,
+    "n_upcrossings": 7,
+    "n_climb_runs": 4,
+    "max_d": 7,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 217825919,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 576735227,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 514091771,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 42347771,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 157833467,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1094787323,
+    "n_upcrossings": 6,
+    "n_climb_runs": 3,
+    "max_d": 6,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 859459835,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 667504475,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 604861019,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 10
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 133117019,
+    "n_upcrossings": 6,
+    "n_climb_runs": 4,
+    "max_d": 6,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 248602715,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1185556571,
+    "n_upcrossings": 6,
+    "n_climb_runs": 4,
+    "max_d": 6,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 950229083,
+    "n_upcrossings": 4,
+    "n_climb_runs": 3,
+    "max_d": 4,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 298035611,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 20155391,
+    "n_upcrossings": 5,
+    "n_climb_runs": 1,
+    "max_d": 5,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 983598875,
+    "n_upcrossings": 6,
+    "n_climb_runs": 1,
+    "max_d": 6,
+    "max_L": 10
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 172003175,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 8
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 114668783,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 8
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 76445855,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 8
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 534693311,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 840191615,
+    "n_upcrossings": 6,
+    "n_climb_runs": 3,
+    "max_d": 6,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 560127743,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 857147903,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 8
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 11138347259,
+    "n_upcrossings": 5,
+    "n_climb_runs": 1,
+    "max_d": 5,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1196210267,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 8
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6177624731,
+    "n_upcrossings": 9,
+    "n_climb_runs": 3,
+    "max_d": 9,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3693814811,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 13647447323,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2868943643,
+    "n_upcrossings": 7,
+    "n_climb_runs": 3,
+    "max_d": 7,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1488027419,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6372169499,
+    "n_upcrossings": 9,
+    "n_climb_runs": 5,
+    "max_d": 9,
+    "max_L": 10
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17367701831,
+    "n_upcrossings": 7,
+    "n_climb_runs": 3,
+    "max_d": 7,
+    "max_L": 10
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7425564839,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12406979303,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9923169383,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2462543207,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9098298215,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7717381991,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12601524071,
+    "n_upcrossings": 7,
+    "n_climb_runs": 4,
+    "max_d": 7,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9911099087,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17383220783,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4950376559,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2466566639,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12420199151,
+    "n_upcrossings": 9,
+    "n_climb_runs": 4,
+    "max_d": 9,
+    "max_L": 9
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1641695471,
+    "n_upcrossings": 6,
+    "n_climb_runs": 3,
+    "max_d": 6,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 260779247,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5144921327,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12412152287,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 7
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17393566751,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 14909756831,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7449130655,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 14084885663,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12703969439,
+    "n_upcrossings": 7,
+    "n_climb_runs": 5,
+    "max_d": 7,
+    "max_L": 4
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 173852831,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2470015295,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17400464063,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9939837887,
+    "n_upcrossings": 6,
+    "n_climb_runs": 3,
+    "max_d": 6,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 16575592895,
+    "n_upcrossings": 6,
+    "n_climb_runs": 3,
+    "max_d": 6,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 15194676671,
+    "n_upcrossings": 7,
+    "n_climb_runs": 5,
+    "max_d": 7,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2664560063,
+    "n_upcrossings": 6,
+    "n_climb_runs": 4,
+    "max_d": 6,
+    "max_L": 5
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7451429759,
+    "n_upcrossings": 8,
+    "n_climb_runs": 3,
+    "max_d": 8,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17405062271,
+    "n_upcrossings": 5,
+    "n_climb_runs": 2,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6626558591,
+    "n_upcrossings": 6,
+    "n_climb_runs": 2,
+    "max_d": 6,
+    "max_L": 6
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5245642367,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "random",
+    "start_n": 8126641,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 5842253,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 7090565,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -2,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 682439,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 6826835,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 4686099,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 1937859,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 7
+  },
+  {
+    "source": "random",
+    "start_n": 3216501,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 9
+  },
+  {
+    "source": "random",
+    "start_n": 452485,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -2,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2645483,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 5
+  },
+  {
+    "source": "random",
+    "start_n": 6123635,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2857791,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 5
+  },
+  {
+    "source": "random",
+    "start_n": 1797091,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 8259949,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 4586603,
+    "n_upcrossings": 6,
+    "n_climb_runs": 4,
+    "max_d": 6,
+    "max_L": 5
+  },
+  {
+    "source": "random",
+    "start_n": 2400745,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 7209761,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 7164117,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -6,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 4565171,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 8815151,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 9192709,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -3,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 3818167,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 7145365,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 8642667,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 49695,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 4950769,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9813323,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9868021,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -3,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 6122671,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 5457291,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2775505,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 7597801,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 5766051,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2324137,
+    "n_upcrossings": 4,
+    "n_climb_runs": 2,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "random",
+    "start_n": 1198723,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 8391331,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 3699481,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 286751,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 1303405,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2617301,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -3,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 7755589,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -3,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2378001,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 7680471,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 4900955,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 2575691,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 7441631,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 6092875,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 3766881,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9410489,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 5602103,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 2213687,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 5772487,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 11
+  },
+  {
+    "source": "random",
+    "start_n": 5225017,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9933075,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 8650149,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 1777831,
+    "n_upcrossings": 9,
+    "n_climb_runs": 2,
+    "max_d": 9,
+    "max_L": 14
+  },
+  {
+    "source": "random",
+    "start_n": 601919,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 5
+  },
+  {
+    "source": "random",
+    "start_n": 1321103,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 5234579,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9303899,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 8006655,
+    "n_upcrossings": 5,
+    "n_climb_runs": 1,
+    "max_d": 5,
+    "max_L": 9
+  },
+  {
+    "source": "random",
+    "start_n": 8410901,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -5,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2152907,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2821537,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9154603,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 4572415,
+    "n_upcrossings": 4,
+    "n_climb_runs": 1,
+    "max_d": 4,
+    "max_L": 7
+  },
+  {
+    "source": "random",
+    "start_n": 195355,
+    "n_upcrossings": 3,
+    "n_climb_runs": 1,
+    "max_d": 3,
+    "max_L": 6
+  },
+  {
+    "source": "random",
+    "start_n": 5539469,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -2,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 6008713,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 1972037,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -3,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 7899033,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 943835,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 3790545,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 969097,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 4756331,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9666673,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 5445649,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -1,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 1550827,
+    "n_upcrossings": 2,
+    "n_climb_runs": 1,
+    "max_d": 2,
+    "max_L": 4
+  },
+  {
+    "source": "random",
+    "start_n": 5191177,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2939323,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 1777817,
+    "n_upcrossings": 5,
+    "n_climb_runs": 3,
+    "max_d": 5,
+    "max_L": 8
+  },
+  {
+    "source": "random",
+    "start_n": 4176179,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 8879669,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -4,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2464659,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2134039,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 5759979,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 290371,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 4346539,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 7298167,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 4103009,
+    "n_upcrossings": 3,
+    "n_climb_runs": 1,
+    "max_d": 3,
+    "max_L": 6
+  },
+  {
+    "source": "random",
+    "start_n": 408511,
+    "n_upcrossings": 3,
+    "n_climb_runs": 2,
+    "max_d": 3,
+    "max_L": 5
+  },
+  {
+    "source": "random",
+    "start_n": 8449063,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 2
+  },
+  {
+    "source": "random",
+    "start_n": 5616967,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 2528597,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -10,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 6902479,
+    "n_upcrossings": 2,
+    "n_climb_runs": 2,
+    "max_d": 2,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 305219,
+    "n_upcrossings": 1,
+    "n_climb_runs": 1,
+    "max_d": 1,
+    "max_L": 3
+  },
+  {
+    "source": "random",
+    "start_n": 8134025,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 9617607,
+    "n_upcrossings": 5,
+    "n_climb_runs": 4,
+    "max_d": 5,
+    "max_L": 6
+  },
+  {
+    "source": "random",
+    "start_n": 1400889,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": 0,
+    "max_L": 0
+  },
+  {
+    "source": "random",
+    "start_n": 2606541,
+    "n_upcrossings": 0,
+    "n_climb_runs": 0,
+    "max_d": -2,
+    "max_L": 0
+  }
+]

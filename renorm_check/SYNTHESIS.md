@@ -1986,3 +1986,803 @@ must reproduce a SMOOTHLY-drifting edge whose `edge/(C+1)` climbs
 through the n-heartbeat ratios rather than quantizing to them — the
 `⌊53n(C+1)/22⌋` family is falsified for C≥16. F5's C=148 edge question
 now requires this true drifting form, not a quantized law.
+
+## RED-TEAM VERDICT: the 9/4 edge-jump law is an ARTIFACT (2026-07-05)
+
+The claimed "big corridor-edge jumps are spaced at rate 9/4" is REFUTED
+by adversarial audit (redteam_9_4.py + REDTEAM_9_4_FINDINGS.md in
+shell/underlock/w7a_renorm/). It fails all four tests:
+- Threshold sweep: 9/4 is best-fit at 0/22 plausible H/L thresholds;
+  the honest pre-registered split gives k=11/5=2.2, not 9/4.
+- Null / look-elsewhere: ~48% of random same-density words fit SOME
+  simple rational (q<=20) this well; 54% with the same one-point-drop
+  freedom used. Indistinguishable from chance.
+- Provenance: textbook reverse-fit. Unconstrained search found k=2.2
+  first; the C=11 point (delta 31, n=1) was dropped and the refit
+  landed on 9/4. Confirmed from the session's own record. (The
+  architect (Fable-session) built this fit in poisoned context and did
+  not self-audit; David flagged it for red-team, correctly.)
+- W7C independently: 9/4 has no anchor in log2(3)'s convergent lattice
+  (3.7% off vs 1e-3..1e-10 for real convergents).
+
+STANDING PICTURE UPDATE: the corridor edge is the exact irrational-slope
+law floor((C+1)/beta) for C<=10, then a hard phase transition at C=11
+into a regime that is (a) NON-Sturmian (W7A factor complexity), (b) NOT
+a heartbeat-quantized window law (W6Y, refuted at scale), (c) NOT
+governed by 9/4 (this audit). The post-transition growth law is GENUINELY
+OPEN — no rational spacing rule has survived audit. What IS solid: the
+base convergent law (C<=10), the phase transition existing at C=11, and
+the deep edges C=11..28 as measured data. The (53/84)^6 spectral law
+(84/53 = the 6th convergent of log2(3), exponent = convergent index) is
+the one convergent-structured result still standing and unexplained.
+
+## SHADOW-ORBIT — why prime 19 is suppressed
+
+Task: SHADOW_FINDINGS.md measured p=19 hitting (3x+1) ~28.5% below its
+1/p baseline, the strongest deviation among {5,7,11,13,17,19,23}.
+ORBIT_ORDER.md's hypothesis: the 1/p baseline assumes equidistribution
+mod p; the real stationary distribution of the odd-map may have a
+"hole" at the hit-residue h_p = -3^{-1} mod p, and that hole should
+equal the measured deviation. Full receipt: IMPLEMENTATION_LEDGER.md
+§SHADOW-ORBIT. Full numbers: `shell/shadow_primes/orbit/ORBIT_FINDINGS.md`.
+
+**Is the stationary-hole the mechanism?** Yes, as a description — but
+it's closer to a restatement than an independent discovery. A hit at
+p (v_p(3x+1)≥1) occurs exactly when the pre-image x ≡ h_p (mod p), so
+"stationary mass at h_p" and "hit density" are the SAME quantity
+measured two ways, confirmed identical to float precision in this
+round's own data. The real test was cross-sample agreement: this
+round's independent sample (seed 20260705, 20,004 trajectories) vs
+SHADOW's original (seed 12345, 5,204 trajectories) correlate at
+r=0.973 with 6/7 sign match on the 7 shared primes. That's a solid
+reproducibility result — the hole is real and stable across samples —
+but it does not explain WHY the hole exists at any given depth.
+
+**Does hole-depth generalize, and is 19 special?** No, not anymore.
+Extending from SHADOW's 7 primes to 17 (up to 67), 19 drops from #1 to
+#5 by relative hole depth: 41 (+34.5%), 59 (+31.5%), 67 (+29.7%), 43
+(+29.4%), 19 (+27.7%). **19's "uniquely extreme" status in
+SHADOW_FINDINGS.md was an artifact of a small comparison set.** More
+strikingly: with 20,004 trajectories (vs SHADOW's 5,204), the
+conservative per-trajectory CI now excludes 1/p for ALL 17 primes
+tested, not just 11/13/19. The phenomenon is not "three anomalous
+primes" — it looks like a **universal, prime-specific, varying-sign
+bias against the naive 1/p model** across the primes tested so far.
+This changes the shape of the open question: not "why is 19 weird" but
+"why does 1/p fail as a baseline in general, and what sets the sign and
+magnitude per prime."
+
+**Predictive invariant for hole-depth: NONE FOUND**, and this is a
+real, checked negative, not a shrug. Every basis-independent candidate
+(ord(2 mod p), ord(3 mod p), ord(h_p), whether 2/3/h_p are primitive
+roots, QR/Jacobi symbol of h_p, gcd of orders, raw p) tops out at
+|r|=0.30 (p=0.25, n=17, not significant). One early candidate
+(discrete-log distance from h_p to 2) looked strong (r=0.71) but was
+proven to be a basis-choice artifact — its value ranges over nearly the
+full unit interval depending on which primitive root is used as
+reference, so it isn't a well-defined number at all. Concretely, 19's
+own group-theoretic fingerprint (ord(2)=ord(3)=18=p-1, both primitive
+roots) is shared by primes 5, 29, 53 — which show a small excess, a
+large excess, and a moderate excess respectively (opposite sign from
+19's suppression, and no shared magnitude) — directly falsifying "same
+order + both primitive" as a sufficient cause. **This closes off the
+group-theoretic angle as currently framed**; if a mechanism exists it
+is not visible in the standard multiplicative-order invariants of
+(p, 2, 3, h_p).
+
+**Does the residue-operator alone reproduce the hole?** Partially, and
+with an important structural finding along the way. The naive
+"build the exact transition operator on Z/(p·2^K)Z, find its stationary
+eigenvector" plan does not have a well-posed target: proven directly
+(via `np.linalg.eigvals` on the exact transient sub-matrix, p=19) that
+the operator is **exactly nilpotent** — every finite Collatz-descent
+path has finite length to its absorption at x=1, so there is no
+recurrent structure and no dominant eigenvector for any eigensolver to
+find (ARPACK's non-convergence on this matrix was the tell; the
+zero-eigenvalue proof is the actual explanation, not an artifact of
+solver tolerance). A weaker, heuristic substitute — the shape a forward
+power-iteration settles into during a mid-range plateau before
+finite-size drain — correlates at r=0.922 with the empirically measured
+hole across the 7 shared primes (6/7 sign match), suggesting the effect
+is plausibly intrinsic to the bare residue dynamics of the odd-map
+(not a large-number/magnitude effect, not a trajectory-sampling
+artifact) — but the plateau method overshoots empirical magnitude by
+roughly 2-2.5x and is not a proven fixed point, so this is supportive,
+not conclusive.
+
+**Predictive check on {41,43,47,53,59,61,67}: not a confirmed
+prediction.** 5/7 measured suppressed vs 1/p, but since no invariant
+from the search above reached significance, there was no genuine
+ex-ante rule to test — 5/7 (71%) sits inside the noise of the base
+rate already seen (11/17 = 65% of ALL 17 tested primes are suppressed).
+Reporting this as "prediction confirmed" would overstate what was
+derived; it is reported here as consistent-with-baseline, nothing more.
+
+**What this opens/closes for the shadow-prime program:** CLOSES the
+"19 is the extreme anomaly" framing (superseded by broader measurement)
+and CLOSES the standard multiplicative-order/QR invariant search as a
+source of the mechanism (checked directly, falsified). OPENS two
+threads with real signal: (1) the cross-sample r=0.973 replication
+means the per-prime hole values themselves are a solid, reusable
+measured constant worth explaining, independent of any specific
+narrative; (2) the r=0.922 operator-plateau correlation is a genuine
+clue that the mechanism lives in the bare residue dynamics rather than
+integer-size effects, and the ~2x magnitude gap between the operator
+heuristic and the empirical value is a concrete, quantitative target
+for the next round rather than a vague "look harder." Per house rules:
+**the anomaly persists without a derivable mechanism** — reported
+honestly as such, not dressed up as a law.
+
+## SHADOW-HARMONICS — No robust prime anomaly survives a corrected census; p=19 was a measurement artifact (2026-07-05)
+
+**Verdict: (C) NO ROBUST ANOMALY BEYOND SAMPLING.** Neither the
+harmonic hypothesis (A) nor "real-anomaly-but-not-harmonic" (B) is
+supported. The frozen prediction (p=19 suppression = (53/84)^9) is a
+clean **MISS**: measured deviation is 4.5% of the predicted magnitude,
+and the corrected confidence interval does not come close to bracketing
+it. Full numbers and artifact paths in
+`renorm_check/IMPLEMENTATION_LEDGER.md` (SHADOW-HARMONICS entry,
+2026-07-05).
+
+**The census, and why it required a correction before it could be
+trusted.** A first-pass census over all 93 primes from 5 to 500 (22,004
+independent trajectories, 1,057,188 odd-steps,
+`shell/shadow_primes/harmonics/census_results.json`) flagged 100% of
+tested primes as "CI-robust anomalous" vs 1/p, with the largest apparent
+anomalies (433: +312%, 479: +315%, 347: +223%, all far exceeding 19's
+established -28.5%) among the LARGEST primes tested. A 100% hit rate on
+an "anomaly" test, with the biggest deviations concentrated at the
+extremes of the range being searched, is the signature of a measurement
+artifact, not a discovery — and it was one. Direct trajectory inspection
+found that p=433's entire apparent 4x-enrichment was 90.5% attributable
+to a SINGLE shared value (m=1732) that ~41% of all 22,004 independent
+random starting trajectories happen to pass through on their way to 1.
+Systematic count: of 1,057,188 total odd-steps sampled, only 203,003
+(19.2%) are visits to DISTINCT states — Collatz odd-trajectories from
+independent starts are not independent samples of (m mod p); they
+descend through a shared, heavily-merging tree, and most "steps" in any
+naive pooled-trajectory sample are duplicate revisits of a small set of
+popular deep nodes. This is a previously-unnoticed flaw in the
+shadow-prime harness design going back to the original
+`shell/shadow_primes/harness.py` / `SHADOW_FINDINGS.md` round — invisible
+there only because the 7 hand-picked primes are common enough that their
+hit sets spread across 10,000+ distinct values, keeping the duplication
+bias small relative to real signal. It becomes dominant, and eventually
+the WHOLE signal, for rarer primes.
+
+**The corrected census (deduplicated to 203,003 distinct merge-tree
+states, each counted once) finds essentially nothing.** 2 of 93 primes
+(283, 313) sit outside their 95% block-bootstrap CI around 1/p, both at
+modest ~9% relative deviation, both in the held-out (201-500) band —
+against an expected chance false-positive count of 4.65 out of 93 at
+that confidence level. That is FEWER anomalies than pure sampling noise
+predicts, not more. Zero anomalies survive in the 44-prime fit band
+[5,200]. **p=19 itself is no longer anomalous once the measurement is
+corrected**: rate 0.051911, CI [0.050793, 0.052956], comfortably
+bracketing 1/19=0.052632. Same for p=13 (the fit-band's largest
+deviation in the earlier, contaminated pass): CI [0.076529, 0.078873]
+brackets 1/13=0.076923 cleanly. The premise this order was built to
+test — "is 19 the extreme anomaly, and is it a heartbeat harmonic" —
+dissolves at its first premise: **19 is not an anomaly at all** once
+the merge-tree duplication bug is fixed.
+
+**Harmonic-predictor test: moot, but reported for completeness.** With
+no real anomaly to explain, none of the candidate predictors (ord(2 mod
+p), ord(3 mod p), ord2==ord3, p mod 53, heartbeat-convergent
+divisibility, 2^a-3^b resonance) show a usable signal — the only
+nonzero correlations (r(|reldev|, ord2)=+0.275, r(|reldev|, p
+itself)=+0.331) are consistent with residual finite-sample scaling
+(rarer/larger-order primes naturally show slightly larger relative CI
+half-widths), not a structural relationship. The (53/84)^k magnitude
+law does not fit even the two remaining marginal held-out primes: 283
+fits k=5.340, 313 fits k=5.259 — neither integer, neither shared, no
+cluster. The single frozen falsifiable point (19→k=9) failed outright.
+
+**Spectral cross-correlation: no single dynamical constant links the
+spectral radius to a prime effect, because there is no prime effect
+left to link it to.** The spectral radius ρ=0.960647 / gap=0.039353
+(`SPECTRAL_RADIUS_RESULTS.txt`, `COLLATZ_PROOF.md`) remains a well-
+established, independently-derived algebraic certificate about the
+killed-survivor graph's non-terminal transient decay. This round found
+no evidence that it also governs shadow-prime hit-density; the
+apparent connection (the frozen 19→(53/84)^9 conjecture) was tested as
+a single specific falsifiable point and missed by roughly 22x in scale
+(measured/predicted ≈ 0.045).
+
+**Held-out predictive check.** By construction there was no fitted
+"law" from the FIT band to carry forward (zero anomalies found there),
+so the predictive check on primes 201-500 could only test the null:
+does the same ~5% background false-positive rate persist out of sample?
+Yes — 2/49 held-out primes flagged, against an expectation of 2.45.
+Consistent with pure noise both in and out of sample.
+
+**What this closes and opens for the shadow-prime program.** CLOSES
+the "p=19 is a genuine, structurally special anomaly" framing this
+entire program branch (SHADOW_FINDINGS.md §5, and this session's
+earlier SHADOW-ORBIT round, both built on it) was premised on — it was
+never a hole in the residue dynamics, it was 80%+ measurement
+duplication from the Collatz merge tree acting differently on
+different primes' hit-counting depending on incidental overlap with
+popular deep nodes. This also retroactively weakens (does not
+necessarily invalidate, but requires re-derivation before further
+reliance) the SHADOW-ORBIT round's r=0.922 operator-plateau correlation
+and the general "11/17 primes suppressed" baseline rate, since those
+were built on the same undeduplicated sampling method — flagged in the
+ledger as a "not complete until" item, not re-run here (out of this
+order's scope). OPENS one clearly-scoped new question, explicitly NOT
+answered by this round: characterizing the Collatz merge-tree's own
+structure (how concentrated is "popularity" among deep states, how
+that concentration scales with search depth) is a legitimate, separate,
+interesting object — but it is a statement about trajectory-merge
+topology, not a Sturmian-heartbeat harmonic, and should not be
+reframed as one without new evidence.
+
+## ONE-STEP DESCENT SPECIES — theorem verified computationally at scale (2026-07-05)
+
+**Verdict: CONFIRMED, exactly, at scale.** The theorem in
+`shell/descent_rule/DESCENT_RULE_SPEC.md` — odd x satisfies S(x)=1 in
+exactly one odd-step iff x=(4^k−1)/3 for integer k≥1 — was proven
+elementarily in the spec (solve 3x+1=2^j, integer solution needs j
+even) and is treated in this program as an already-established
+theorem, not a conjecture. This round's job was to verify it
+computationally at scale and build the certificate machinery; it did,
+and every mandatory gate passed with the frozen expectation exactly
+met (zero tolerance, zero exceptions found). Full process receipt:
+`IMPLEMENTATION_LEDGER.md` §"2026-07-05 - One-Step Descent Species:
+mission gates 1-4". Scripts + raw logs:
+`shell/descent_rule/gate{1,2,3,4}_*.py` and matching `*_results.txt`.
+
+**Gate 1 (direct construction, forward direction) — holds at extreme
+digit length.** Constructed x=(4^k−1)/3 for k up to **400,000**,
+giving x with **799,999 bits (~240,823 decimal digits)** — three
+orders of magnitude past the spec's own "thousands of bits" bar. Every
+one of the four required exact checks (3x+1==4^k, bitwise power-of-two,
+even exponent, real one-odd-step brute simulation landing on 1) passed
+at every k tested, no exceptions, in 22.3s wall clock with 12.64MB peak
+RSS. This is a direct, arbitrary-precision-exact demonstration that the
+forward direction of the theorem is not a small-number coincidence —
+it holds at the largest sizes tested with zero degradation.
+
+**Gate 2 (converse/exclusivity) — zero false positives, zero false
+negatives across 5,000,000 odd integers.** Brute one-step simulation
+was run as ground truth over ALL odd x in [1, 10^7) — 5,000,000 values
+— and compared against species-set membership. The two sets matched
+**exactly**: 12 species members below 10^7, 12 values with brute
+S(x)=1, **0 false positives, 0 false negatives**. This is the converse
+half of the theorem (no non-species x accidentally reaches 1 in one
+step, and no species member fails to) verified exhaustively, not
+sampled, over 5 million cases. 18 additional random huge odd x
+(~200-3000 decimal digits) all correctly showed S(x)≠1, as expected
+since none are species members — confirming the exclusivity extends
+past the exhaustive range into arbitrary size.
+
+**Gate 3 (closed-form certifier) — trajectory-free, O(digits)-scaling,
+100% exact agreement.** `is_one_step_species(x)` (in
+`shell/descent_rule/descent_common.py`) implements the two-line
+certificate from the spec's "Corollary" section — compute 3x+1, test
+power-of-two, test exponent parity — with NO loop, NO trajectory
+simulation. It was gated against the brute simulation on the full
+5,000,018-case set from gate 2 (all 5,000,000 odd x<10^7 plus the 18
+huge-x samples): **0 mismatches, 100.0000000000% agreement**. It
+correctly certified 6 true species members from 1001 to 6021 decimal
+digits (returning the exact matching k every time) and correctly
+rejected 10 non-members at 1000-3000+ digits (6 "near-species" values
+offset by a few units from a true member — the hardest adversarial
+case, since these are close enough to look suspicious but are not
+powers of two after 3x+1 — plus 4 unrelated random large odds). The
+timing table (Gate 3 Part 4, 5001 repeats per point) measured per-call
+time across 10 to 300,000 decimal digits and found the per-call/digit
+ratio stays within a roughly 5x band (0.0007 to 0.04 μs/digit) across
+four orders of magnitude of digit count — direct empirical evidence
+the certifier is O(digits)-or-better, categorically different from
+trajectory simulation (which has no such uniform per-digit bound, since
+individual orbits can run long regardless of digit count). This
+converts the spec's proof-level claim ("membership is decidable in
+closed form, any digit length") into a measured, timed, reproducible
+fact.
+
+**Two harness bugs surfaced and fixed, per the standing "failure means
+a harness bug, not a false theorem" directive — neither touched the
+mandatory gates' verdict.** (1) Python 3.11+'s int-to-str digit guard
+(default cap 4300 digits) tripped during Gate 3's digit-count
+reporting for six-digit-and-beyond-decimal x; fixed by raising
+`sys.set_int_max_str_digits` in `descent_common.py`, confirmed the cap
+only ever affected DISPLAY code, never the certifier/constructor
+arithmetic itself. (2) Gate 4's own n=1-bucket cross-check (an
+exploratory convenience check, not one of the three mandatory gates)
+briefly reported a spurious found=10/known=11 mismatch, traced to an
+off-by-one in the exploratory harness (x=1 is the n=0 base case, not
+n=1, by the brute-search's own definition) and fixed; re-run confirmed
+exact agreement (10==10). Full diagnosis of both in
+`IMPLEMENTATION_LEDGER.md`'s Bugs/issues section for this round — cited
+here only to note that the mandatory gates 1-3 never showed any
+discrepancy in any form, at any point.
+
+**Gate 4 (optional k-step tower) — n=1 closure confirmed exactly;
+n=2/n=3 congruence-class closure is a genuine, honestly-reported open
+wall.** Brute-searching clean-descent length (steps that are each
+strictly decreasing, per the spec's own mod-4 drop lemma, verified
+directly at each step) over all odd x<2,000,000 reproduced the n=1
+bucket EXACTLY against the closed form (4^k−1)/3, k=2..11 (10==10,
+zero discrepancy) — an independent, brute-force confirmation of the
+already-proven n=1 theorem via a completely different code path than
+gates 1-3. For n=2 (33 members in range) and n=3 (68 members),
+congruence-class residues were checked mod 4 through mod 256: NO single
+residue class (or small clean union) was found that captures either
+set — n=2 already shows 8 distinct residues mod 256, n=3 shows 15,
+neither collapsing the way n=1 collapses to exactly one residue class
+mod 4^k. This is reported as a real, checked negative within the
+budget spent (per the spec's own instruction not to force a result),
+not a proof of non-existence — a deeper search (higher moduli, larger
+brute range) is explicitly left open in the ledger. A secondary
+reverse-construction probe (finding the unique clean one-step
+predecessor of each n=1 species-tower-top) found a clean predecessor
+for k not≡0 (mod 3) but found none in the searched window for k≡0
+(mod 3) (k=3,6,9) — a concrete, specific, honestly-flagged asymmetry
+for a future round to explain or resolve, not swept under a summary
+"partial progress."
+
+**What this closes / what remains open for the program.** CLOSES: any
+residual question of whether the One-Step Descent Species theorem
+holds only for "small" or "textbook-sized" x — gate 1 pushed to
+240,823-decimal-digit x with zero exceptions, and gate 2's converse
+check was exhaustive (not sampled) over 5,000,000 cases with zero
+exceptions either direction. CLOSES: whether a trajectory-free,
+provably-O(digits) membership certificate exists and works at scale —
+it does, it's `is_one_step_species()`, and its scaling was measured
+directly rather than asserted. OPENS, for a future round, ONLY within
+gate 4's genuinely-exploratory scope (never claimed proven here): a
+closed congruence-class characterization of the n=2 and n=3
+clean-descent towers, and an explanation for the k≡0 (mod 3) reverse-
+construction gap. Nothing in gate 4's open status weakens or qualifies
+the gate 1-3 verdict above — the theorem's own scope (one-step-to-1
+species) is fully closed at the exactness and scale the spec asked for.
+
+## BACKWARD BASIN CERTIFICATE — layers don't close into clean congruence
+classes, but coverage density hits the frozen ~70%/~60% conjectures
+almost exactly (2026-07-05)
+
+**Verdict, gate by gate, against `shell/descent_rule/BASIN_CERTIFICATE_SPEC.md`'s
+own frozen expectations.** Full process receipt:
+`IMPLEMENTATION_LEDGER.md` §"2026-07-05 - Backward Basin Certificate:
+mission gates 0-3". Scripts + data:
+`shell/descent_rule/gate0_gate1.py` (+`gate0_gate1_results.txt`),
+`shell/descent_rule/gate2_gate3_census.py` (+`gate2_gate3_results.txt`,
+`gate2_gate3_run.log`, `gate2_density_table.csv`).
+
+**Gate 0/1 (theorem-level, exact) — the mod-3 predecessor rule holds
+with zero exceptions; the layer congruence-class question has an
+HONEST NEGATIVE answer.** Gate 0 reproduced both established facts
+(species closed form, mod-3 predecessor-parity rule) exactly, 0
+exceptions across 30 species members and 18 cross-checked t-values.
+Gate 1 is the more interesting result: LAYER 1 (48 members), LAYER 2
+(138 members), LAYER 3 (349 members) — all within census bound
+2,000,000 — were fit against congruence classes mod 4 through mod 1024.
+The populated-residue FRACTION does not converge to a small stable set;
+it GROWS layer over layer: at mod 256, LAYER1 populates 12/256 (4.69%)
+of residues, LAYER2 populates 31/256 (12.11%), LAYER3 populates 44/256
+(17.19%). Mod 4 alone never discriminates any of the three layers
+(all three populate BOTH odd residues {1,3} — zero information at that
+modulus). This means the backward basin's layers do NOT stack into the
+clean, closed, finite congruence-class towers that LAYER 0 itself
+enjoys (LAYER 0 is the exact recurrence x_{k+1}=4x_k+1, a single residue
+class mod 4^k per k) — the certificate machinery the spec hoped for
+(membership-by-congruence-test alone, no iteration) does NOT emerge
+cleanly past layer 0, at least not within the modulus range (up to
+1024) and layer depth (to 3) tested here. This is reported straight, per
+the spec's own explicit instruction not to force a clean story — it is
+a real, checked negative, not a proof that no closed form exists at
+some larger modulus or via a fundamentally different parametrization,
+but the natural "residues mod 2^n" guess does not work and the
+population fraction is trending the WRONG way (up, not down) for a
+closing pattern.
+
+**Gate 2 (coverage census) — HIT, close to the frozen ~70% conjecture,
+landing near-total.** density(N) was measured over all 5,000,000
+distinct odd x in [1,10^7), ONE forward simulation per distinct x
+(merge-safe by construction, confirmed explicitly in
+`gate2_gate3_census.py`'s own docstring and re-confirmed in the ledger).
+density(200) = **0.9999776** (4,999,888 of 5,000,000 covered). The
+curve is a clean sigmoid-into-tail-decay: density(10)=0.0052,
+density(50)=0.5001, density(100)=0.9629, density(150)=0.9991,
+density(200)=0.99998 — it does not plateau below 1 at any point tested;
+every additional N keeps shrinking the complement, with the last
+Fibonacci-spaced checkpoint window (N=89→200) alone dividing the
+complement by roughly 3,315x. This is a stronger result than the
+spec's own "~70% confidence, density(N)→1" framing suggested was even
+likely to be measurable cleanly — the frozen conjecture is a HIT, and
+the measured curve gives no sign of an asymptotic floor short of 1
+within the tested range.
+
+**Gate 3 (uncoverable-class question) — HIT, no hard floor found; the
+112-x residual complement looks like ordinary cap-boundary tail, not
+structural exclusion.** Of the 112 odd x (out of 5,000,000) still
+uncovered at N=200: x≡0(mod3) numbers (which structurally can never be
+WAYPOINTS, only starts, per the established mod-3 predecessor rule) are
+NOT disproportionately stuck — only 39 of 1,666,667 such x (0.0023%)
+remain uncovered, the same order as the other two mod-3 classes (41 and
+32 respectively out of similar-sized subclasses). The full
+residue-class breakdown (mod 2,3,4,8,9,16,32; see ledger Evidence)
+shows the same pattern everywhere: every class's none-count is small
+(single-to-double digits against subclass sizes in the hundreds of
+thousands to millions) and its max-finite-hit sits at or just under the
+N=200 cap — the signature of "these just need a slightly larger N," not
+of a hard, permanently-uncoverable residue floor. No class was found
+where none-count stays large while max-finite-hit also stays flat
+(the signature that WOULD indicate a genuine floor). Verdict: complement
+shrinks toward measure zero, consistent with the spec's ~60%-confidence
+conjecture, and no hard uncoverable class was found in this census.
+
+**Connection to the death-shell / capacity picture — related domain,
+NOT the same object; no direct import of results either way.** The
+death-shell/capacity program (`shell/underlock/DERIVATION_NOTES.md`,
+`shell/shell_probe.py`, the C=148/m=359 capacity-law work) analyzes a
+BACKWARD exponent-menu minimax game keyed on ceiling-distance δ=C−d,
+where "death" is a residue class that survives a fixed number of
+heartbeats under a hard ceiling constraint — a fundamentally different
+question (bounded-corridor reachability under an adversarial/minimax
+credit process) from this mission's question (does the FORWARD odd-map,
+unconstrained, eventually land every starting x on the layer-0 species
+within SOME finite step count). The two do share the same underlying
+mod-3 residue-parity mechanics (the "3 is forbidden" fact — odd
+multiples of 3 have no backward predecessors here, exactly as C≡0(mod3)
+states are dead-on-arrival in the shell picture) — but this mission's
+Gate 1 finding (no clean finite congruence-class closure past layer 0,
+growing residue population per layer) is actually a small piece of
+INDEPENDENT CORROBORATION for the death-shell program's own hard-won
+lesson (DERIVATION_NOTES.md §5a): that the natural small-modulus/
+fixed-window abstractions of this residue-parity system LEAK — nothing
+closes at a fixed small modulus, deeper structure needs deeper trit/
+residue context, and value-iteration-style or lookup-table-style
+"solve it locally" approaches are dead ends for this family of Collatz
+residue objects generally. Gate 2/3's converging-to-near-total coverage
+result does NOT feed back into the death-shell capacity constants (no
+C=148/m=359-style number appears here, and none should be expected —
+different object) — the connection is structural/methodological
+(both programs independently rediscovered "small congruence classes
+don't close this system"), not a shared numeric result.
+
+**What this closes / opens for the basin-tiling question.** CLOSES,
+within the tested range: whether LAYER 1-3 reduce to simple congruence
+classes (they do not, and the trend is away from closure, not toward
+it — a future round should not expect a cheap closed form here without
+new structure). OPENS, cleanly and honestly: the coverage question
+itself is answered near-affirmatively at this census scale (99.998%
+covered by N=200, no hard floor detected) — the "basin tiles the odds"
+picture is empirically supported, just not via the clean
+congruence-class ROUTE the spec's Gate 1 hoped would carry it. The 112
+residual x and the open question of whether the 0.0000224 complement
+fraction itself shrinks as the census range grows (not just as N grows)
+are the two concretely next things (see
+`IMPLEMENTATION_LEDGER.md`'s "Not complete until" for this round).
+
+## CROSS-INSTRUMENT SYNTHESIS (J1-J4) — four measures, one obstruction, no forced unification (2026-07-05)
+
+Per `shell/SYNTHESIS_FOUR_INSTRUMENTS_SPEC.md`'s four joins, tested
+against the spec's own frozen predictions. Full process receipt:
+`IMPLEMENTATION_LEDGER.md` §"2026-07-05 - Cross-Instrument Synthesis
+(J1-J4)". Scripts + raw output: `shell/synthesis_four/j1_set_compare.py`
+(+`j1_output.txt`), `j2_rho_fit.py` (+`j2_output.txt`),
+`j3_convergents.py` (+`j3_output.txt`).
+
+**J1 — death shell dead-set S(m) vs basin residual complement: DIFFERENT
+OBJECTS, no set equality, no above-chance overlap. Frozen "same object,
+~65%" MISSED.** The basin's 112 residual odd x (N=200 cap,
+`descent_rule/gate2_gate3_results.txt`) were reconstructed in full (only
+smallest/largest 20 were published; reconstruction verified identical to
+both lists exactly, `shell/synthesis_four/j1_output.txt`). First finding,
+decisive on its own: **39 of 112 (34.8%) of the basin's residual x are
+x≡0(mod 3) — structurally OUTSIDE the shell dead-set's domain entirely**,
+since `shell_probe.py`'s dead set is defined only on `r % 3 != 0`
+residues (`nz = r % 3 != 0`). A set-equality claim cannot survive over a
+third of one side's members living in a space the other side doesn't
+even define. Of the remaining 73 eligible x, the hit-rate landing inside
+S(m) (computed via `automaton.py`'s `run_heartbeat` + `dead_profile`,
+independently confirmed C-invariant: `dead_union_12==dead_union_23`
+identical at every m=2..8, corroborating P2) rises from 27.4% at m=2 to
+95.9% at m=8 — but S(m)'s OWN base rate among nz residues rises in
+lockstep, from 33.3% to 91.66% over the same range (P1: the dead set's
+own density grows with m). At m=8 the binomial z-score for "70 hits out
+of 73 against a 91.66% base rate" is z=1.31 — not significant. The
+hit-rate is explained entirely by the dead set's growing density, not by
+any link to the basin object. **Verdict: the two are related in
+mechanism (both instantiate "3 is forbidden" residue-parity) but are NOT
+the same object, NOT set-equal, NOT even measurably correlated beyond
+chance** — sharpening SYNTHESIS.md's own earlier "related domain, not
+the same object" note (search "Connection to the death-shell / capacity
+picture" above) from a qualitative analogy into an actual, adversarially
+checked negative result with numbers.
+
+**J2 — basin complement decay is NOT rho-governed; free rate wins but
+even it fails held-out prediction. Frozen "rho-governed, ~55%" MISSED.**
+Fit `descent_rule/gate2_density_table.csv`'s complement_density(N),
+N=0..200, against A·rho^(N/53) (rho=0.960647, FIXED per-step rate), A·
+b^(N/53) (b=0.063099, FIXED), and A·r^N (r free, OLS). In the fairest
+region (DEEP TAIL, N=170-200, post-saturation): rho-fixed R²=0.0223 (a
+near-total failure — rho's per-step rate 0.999243 barely decays at all
+compared to the data), b-fixed R²=0.9378, free-rate R²=0.9834 (r=0.9357).
+Free rate beats b-fixed and crushes rho-fixed at every N-range tested
+(FULL, EARLY, TAIL, DEEP TAIL — see `j2_output.txt` for all four).
+**Adversarial held-out check (the decisive test): fitting the free rate
+on N=150-175 and predicting N=180-200 gives systematic -13% to -29%
+relative error** — even the best-performing free single-rate geometric
+model does not hold out cleanly; the true decay is not pure single-rate
+exponential even in the tail. Empirical per-step ratios
+complement_density(N)/complement_density(N-1) for N=146-200 scatter
+0.85-0.97 with no visible trend toward either rho^(1/53)=0.999243 (WAY
+outside this range — categorically ruled out) or b^(1/53)=0.949203
+(closer, near the scatter's edge, but not its center ~0.93). **Verdict:
+rho does NOT govern the basin decay — it is falsified outright, not
+merely "weakly supported"; b is closer but not confirmed (the held-out
+failure means no single fixed rate, rho/b/free, is established as the
+governing law); the basin's true decay is genuinely independent of the
+spectral radius as measured here.** This required actively trying to
+break a good-looking fit before accepting it (per the mission's own
+anti-9/4 rule) — the free-rate in-sample R²=0.995 (TAIL range) looked
+strong until the held-out N=180-200 test exposed -20%-scale systematic
+error, which is exactly the failure mode the spec warned against
+accepting on a fit alone.
+
+**J3 — 53 is exactly shared (verified via exact continued fractions);
+C=11/exponent-6 relation is OPEN, one candidate found and adversarially
+REJECTED. Frozen "53 shared exact" HIT; "C=11/6 open" HIT.** Computed
+CF(log2(3)) = [1,1,1,2,2,3,1,5,2,23,2,2,1,1] (60-digit mpmath seed,
+exact-integer convergent recurrence thereafter): 84/53 is the k=6
+(0-indexed) convergent, exactly reproducing F2/SPECTRAL_RADIUS_RESULTS's
+claim. CF(2-log2(3)) = [0,2,2,2,3,1,5,2,23,2,2,1,1,55]: 22/53 is the k=5
+convergent, exactly reproducing F1's claim (and F1's stated "next:
+127/306" reproduced exactly at k=6 too). **Precise numerator/denominator
+correction to the spec's own framing**: the corridor's scaling constant
+53/22 (in `M_edge(C)=floor(53(C+1)/22)`) is NOT itself a listed
+convergent of beta=2-log2(3) — beta's own convergent at k=5 is 22/53
+(the reciprocal). 53/22 IS an exact convergent of 1/beta at k=4. So the
+"shared 53" is real and exact, but its role differs across the two
+objects: in alpha=log2(3)'s convergent list, 53 is 84/53's DENOMINATOR;
+in beta's reciprocal 1/beta's convergent list, 53 is 53/22's NUMERATOR —
+same integer, opposite role, connected via the standard reciprocal-CF
+identity (verified: CF(1/beta)'s convergents are exactly reciprocals of
+CF(beta)'s in order). The alpha/beta CF-reflection identity itself
+(beta=2-alpha ⟹ term-list transform) was verified EXACTLY: alpha's
+a1=1 forces the "merge" branch of the reflection identity
+(1-f=[0,a2+1,a3,...]), and the predicted beta-term prefix
+[0,2,2,2,3,1,5,2,23,2,2,1,1] matched the actual computed CF(beta) prefix
+on all 13 terms checked. **C=11/exponent-6**: swept M_edge(1..14);
+M_edge(11)=28, not 84 (no match); the convergent-index of 84/53 (k=6)
+does not equal C+1=12 (no match). One numeric coincidence was found —
+the cumulative sum of alpha's partial quotients through index k=6 equals
+exactly 11 — and was adversarially REJECTED: that cumulative-sum
+sequence (1,2,3,5,7,10,11,16,18,41,...) is monotonically increasing
+through small integers by construction, guaranteed to pass near some
+small target somewhere in its run, and has no independent structural
+motivation from either instrument's own math — the identical failure
+shape as the refuted 9/4 edge-jump law (see "RED-TEAM VERDICT: the 9/4
+edge-jump law is an ARTIFACT" above). **Verdict: 53 shared, exact,
+confirmed both directions; C=11/exponent-6 relation remains genuinely
+OPEN — no candidate survived adversarial checking.**
+
+**J4 — the union does NOT close the loop; the shared obstruction is
+absence of fixed-modulus residue closure, independently hit by all four
+instruments. Frozen "loop does not close, ~75%" HIT.** Precise
+conditional, given J1-J3: **IF** the death shell and basin complement
+are different objects sharing only a mechanism (J1), **AND IF** the
+basin's decay rate is empirically independent of the spectral radius
+rather than a derivable transform of it (J2), **AND IF** 53 is
+confirmed the same heartbeat constant across corridor and spectral work
+while the C=11 transition remains structurally unexplained (J3), **THEN**
+the four instruments jointly establish: (i) a computer-verified,
+exact-arithmetic proof that the transient/non-terminal subsystem
+contracts strictly (rho<1 at every tested (C,m), spectral radius
+instrument, `SPECTRAL_RADIUS_RESULTS.txt` "ρ < 1 at EVERY tested (m,C)
+combination. Zero exceptions"); (ii) an exact, finite characterization
+of which residue classes cannot survive one bounded-corridor heartbeat
+(death shell P1-P6, `shell_probe.py`); (iii) a near-total (99.998% at
+N=200, one finite census) empirical coverage result for the UNCONSTRAINED
+forward map with no discovered hard floor (basin Gate 2/3); and (iv) an
+exact rational capacity law for the bounded corridor up to a proven
+divergence point (corridor F1, C<=147, then genuinely open past C=147).
+**What is NOT established, and is the SAME gap in all four**: none of
+the four instruments' residue systems close into a small, fixed modulus
+as depth/scale grows — this is not one instrument's local weakness but
+one obstruction recurring four times under four different
+constructions: the basin's own Gate 1 (`IMPLEMENTATION_LEDGER.md`
+§"Backward Basin Certificate", populated-residue fraction mod 256 GROWS
+12/256→31/256→44/256 across LAYER1-3, "does NOT converge to a small
+stable set"); the death shell's P1 (`shell_probe.py`, dead-set mass and
+depth both GROW with m, no small fixed floor); the spectral radius's
+C=3 "hard floor" LOCK at m>=10 (`SPECTRAL_RADIUS_RESULTS.txt`) is
+itself NOT a counterexample to this — it is a fixed-C phenomenon (the
+lock value 0.960647 is specific to the narrow C=3 corridor and does not
+represent the residue system closing at any fixed modulus; at C>=10 the
+same instrument's rho instead runs to 1, i.e. NO fixed floor at the
+universal/wide-corridor setting, which is the setting relevant to an
+unbounded proof); and the corridor's own C=11 phase transition into a
+regime that is "NON-Sturmian... NOT a heartbeat-quantized window law...
+NOT governed by 9/4... GENUINELY OPEN — no rational spacing rule has
+survived audit" (SYNTHESIS.md "STANDING PICTURE UPDATE", above). **The
+one-sentence shared obstruction: no instrument's residue/congruence
+description of "which states fail to descend" closes into a fixed,
+finite modulus as depth or corridor width grows — basin Gate 1's
+residue population, the death shell's dead-set mass/depth, the
+spectral radius's wide-corridor rho→1 (only a narrow-C artifact
+achieves rho<1 as a fixed floor), and the corridor's post-C=11 growth
+law all instead keep requiring MORE residue/trit context at every
+larger scale tested, and this is proven-negative (not merely
+unfinished) in every one of the four instruments' own artifacts cited
+above.** This is a bounded-rate-and-coverage picture with wide empirical
+margins at every scale tested, not a proof — the gap is not "we haven't
+found the closure yet," it is "every attempted closure at fixed small
+modulus has been checked and found to grow, not shrink," across four
+independently-built measurement instruments that were never designed to
+agree with each other and were not forced to here.
+
+## IME REFRAME OF J2/J4 — course correction, tested honestly, NULL result (2026-07-05)
+
+**This entry supersedes the INTERPRETATION of the prior round's J2 and
+J4 only.** J1 and J3's verdicts stand unchanged (see previous section)
+and are cited, not repeated. The course correction, relayed by a peer
+session on the architect's (David's) behalf: IME
+(`/mnt/ForgeRealm/collatz-experimental-data/IME-primer.md`,
+"Incommensurate Measurement Emergence") predicts that when two
+incommensurable measurement geometries are forced to interact, the
+mismatch generates an emergent depth hierarchy with tiers set by
+structural constants of the incommensurability — in this Collatz
+program, the continued-fraction convergents of log2(3) (53, 84, 306,
+485, 665, 1054, 15601, 24727, ...), verified exactly in round-1 J3.
+Under this frame, round-1 J2's finding that the basin's raw decay rate
+(~0.93-0.94/step) differs from the spectral radius's raw rate
+(rho=0.960647/heartbeat, or b=0.063099/m-level) is reinterpreted: the
+RAW-RATE MISMATCH is not evidence against a relationship — under IME it
+is the PREDICTED SIGNATURE of incommensurability. The test therefore
+changes from "do the rates match" (round 1, correctly answered NO) to
+"do the four instruments' characteristic depths form an ordered
+hierarchy whose TIER BOUNDARIES land on the convergent ladder, or is
+the ordering arbitrary" (this round). Full process receipt:
+`IMPLEMENTATION_LEDGER.md` §"2026-07-05 - IME Reframe of J2/J4". Script
++ output: `shell/synthesis_four/j2j4_ime_reframe.py`
+(+`j2j4_ime_output.txt`).
+
+**Pre-registration (done BEFORE any ladder lookup, per the mandatory
+anti-reverse-fit discipline this program has now needed twice already —
+9/4 and prime-19).** Corridor and spectral radius are ALREADY
+heartbeat-native (53 appears directly in `M_edge(C)=floor(53(C+1)/22)`
+and in the C=3 lock's own 53-step heartbeat unit, by construction, not
+by fit) — testing them against a ladder built from the same constant
+they already contain would be circular, so the ladder test is applied
+only to the two instruments whose native units are NOT already locked
+to 53: the basin (native unit: odd-steps) and, as a secondary check,
+the death shell's own m-axis scale.
+
+**J2 reframed — basin's characteristic depth is a categorical
+non-match to the convergent ladder, adversarially confirmed by a
+null-model sweep. Reusing round-1's fit rates verbatim** (rho R²=0.022,
+b R²=0.938, free R²=0.983 in the deep tail — see prior SYNTHESIS
+section — NOT recomputed), the basin's exact e-folding depth
+(`-1/ln(rate)`) across all three fit ranges is **14.4-17.3 raw
+odd-steps** — under **1/3 of a single 53-step heartbeat**. Converted to
+heartbeat units this is 0.2714-0.3262 heartbeats. The nearest
+convergent-ladder value in every case is 1 (the trivial first
+convergent p/q=1/1), at **67.4%-72.9% relative error** — not a
+near-miss, a categorical failure to reach even the ladder's smallest
+rung, let alone the first real tier (53), which is off by roughly
+160x. **Adversarial null-model check**: sweeping every plausible basin
+rate (r=0.900 to 0.970 in steps of 0.001, 70 points spanning the full
+empirical scatter seen in round-1's per-step ratio table) against a
+10%-tolerance match to ANY ladder value gives **0 of 70 (0.0%) hits** —
+the non-match is not an artifact of an unlucky rate choice; the entire
+plausible basin-rate range misses the ladder cleanly, by construction
+of how small the basin's sub-heartbeat e-fold scale is relative to how
+large the ladder's first real tier (53) is.
+
+**Mandatory held-out prediction, constructed and FALSIFIED.**
+Registered before checking: if the basin's ~15-16-heartbeat-fraction
+depth were ladder/corridor-governed, the corridor's own
+`M_edge(C)=floor(53(C+1)/22)` at that SAME depth should identify a
+structurally distinguished corridor width C, independent of this fit.
+Solving M_edge(C)=15 gives C≈5.23 (nearest integer C=5, M_edge(5)=14
+exactly); M_edge(C)=16 gives C≈5.64 (nearest integer C=6, M_edge(6)=16
+exactly). **Neither C=5 nor C=6 is flagged anywhere in the corridor's
+own independent prior work as structurally special** — the corridor's
+actual flagged widths are C=11 (the phase transition) and C=148 (the
+F1 divergence). The held-out prediction fails outright: the basin's
+characteristic depth does not point at any corridor-flagged structural
+width.
+
+**One new candidate surfaced, flagged, and explicitly NOT elevated.**
+Checking C+1 (=12, for the corridor's flagged C=11 transition) against
+the convergent-index of 84/53 (k=6, alpha's 6th convergent, 0-indexed)
+gives an EXACT integer relation: 12 = 2×6. This is reported honestly as
+an exact match — but is flagged as almost certainly a third instance of
+the same reverse-fit shape already caught twice in this program (9/4,
+prime-19), and once more within this very round (the rejected
+cumulative-partial-quotient-sum=11 coincidence from round-1 J3): C+1=12
+is fixed purely by the corridor's own definition (the phase-transition
+width plus one) with no independent motivation tying it to "twice a
+convergent index" ahead of noticing the match, and no second,
+independently falsifiable held-out prediction was constructible from it
+(unlike the basin case above, where M_edge(C) gave a genuine
+before-the-fact check). Registered as **UNTESTED / NOT ELEVATED**, not
+confirmed — consistent with round-1 J3's "no candidate survived
+adversarial checking" verdict, which stands.
+
+**J3 carried forward, unchanged.** Round-1's J3 verdict — 53 shared
+exactly across corridor (53/22) and spectral (84/53, verified as
+alpha's exact k=6 convergent) constants, C=11/exponent-6 relation
+OPEN — already tested the "does the tier index advance by exactly 1
+between corridor and spectral" question the peer's reframe asked for:
+M_edge(11)=28≠84 (no match), convergent-index-of-84/53 (k=6) vs C+1=12
+(not equal — though see the C+1=2k candidate above, newly surfaced this
+round and explicitly not elevated). No new derivation was needed; the
+verdict carries forward unchanged: **OPEN, no relation found that
+survives adversarial checking.**
+
+**J4, the actual IME test — NULL result, reported at full volume, not
+softened.** Is a GHOST_PRECISION-shaped hierarchy (a fixed POPULATION
+FRACTION stabilizing at a fixed low resource depth — 50%@1-bit,
+77-89%@2-bit) present across the four instruments? Checked
+instrument-by-instrument: the basin has no stable single geometric rate
+at all (round-1's own held-out check already showed N=150-175's fit
+fails to predict N=180-200 by -13% to -29%) — it does not even clear
+the bar of ONE clean geometric regime, let alone a two-population
+bulk/tail split. The death shell's dead-mass GROWS with m (P1) with no
+fixed population fraction. The spectral radius's C=3-vs-C≥10 split is a
+genuine two-regime structure, but it is a fixed-corridor-vs-variable-
+corridor dichotomy, not a population-fraction split of individual
+interactions the way GHOST_PRECISION's bit-depth histogram is. The
+corridor's C≤147/C≥148 divergence (F1) is the closest analog to a
+sharp-boundary split, but again a single width threshold in one
+growing formula, not a population-fraction split. **Verdict: a
+hierarchy in the loose sense (four different, ordered, distinct
+quantities) trivially exists — but it is NOT geometric-bulk/heavy-tail
+shaped in the GHOST_PRECISION sense, and its tier boundaries do NOT
+land on the convergent ladder** (basin: categorical non-match, 0%
+null-model hit rate, held-out prediction falsified; death shell/
+spectral/corridor: already heartbeat-native by construction, excluded
+from the test as circular). **Against the architect's frozen
+prediction ("the four instruments DO form an IME hierarchy with
+convergent-ladder tiers, ~60%, genuinely open"): REFUTED for this
+specific pre-registered pairing and test.** This is reported as a full,
+loud NULL — not "inconclusive," not "needs more data" — the adversarial
+null-model sweep and the held-out corridor-width prediction were both
+constructed specifically to give IME a fair, falsifiable chance, and
+both came back negative. This does not refute IME as a general
+principle (the primer's own attention/neuroscience/tetrahedral-angle
+evidence is untouched by this result) — it refutes, specifically, the
+claim that THESE FOUR COLLATZ INSTRUMENTS' characteristic depths sit on
+log2(3)'s convergent ladder in the pre-registered pairing tested here.
+A future round could retest under a different, equally-principled
+pairing (e.g. testing the death shell's m=359 scale or the spectral
+m-axis directly against the ladder, rather than converting the basin to
+heartbeat units) — but that would be a NEW pre-registration, not a
+rescue of this one.
+
+## W7B C=31 HIGH-CAP EDGE RECEIPT (2026-07-07)
+
+The W7B sparse live-set edge series is now validated through C=31. The
+earlier C=31 result in `shell/underlock/w7b_deep/sweep_output.log` was not
+an edge: it hit the chosen 64M state cap at m=48
+(`n_exact=69,084,627`, `first_dead=None`, `genuine_death=False`) and was
+correctly excluded from `w7a_new_edges.txt`.
+
+The high-cap follow-up `shell/underlock/w7b_deep/run_c31_highcap.py`
+raised the cap to 120M states / 28GB RSS, re-ran the frozen validation gate
+(C=16=93, C=23=163, C=26=205), and completed C=31 with a genuine death:
+`M(31)=284`, `first_dead=285`, `peak_live=73,462,829`,
+`elapsed_sec=48,854.99644827843`, `wall=None`, `genuine_death=True`.
+The append-only edge file now records:
+
+```
+27 208
+28 263
+29 265
+30 282
+31 284
+```
+
+Interpretation: the C=31 chosen-cap wall was a budget wall, not a
+mathematical wall. Raising the cap resolved the cell. The current measured
+post-C=26 edge series remains monotone but jagged: C=27..31 gives
+208, 263, 265, 282, 284. The next unknown cell is C=32; nothing about C=32
+is implied without a fresh validated run and death certificate. Full process
+receipt is in `IMPLEMENTATION_LEDGER.md` section "2026-07-07 - W7B C=31
+High-Capacity Sparse Edge Receipt" and local findings are in
+`shell/underlock/w7b_deep/W7B_FINDINGS.md`.

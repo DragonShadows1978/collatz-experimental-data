@@ -1,0 +1,291 @@
+{
+  "gates": {
+    "E2-G1": "PASS",
+    "E2-G2": "PASS",
+    "n": 24
+  },
+  "predictions": {
+    "R2.1": {
+      "verdict": "REFUTED",
+      "mean_ups_over_L": 0.5072573880221697,
+      "confidence_prior": 0.5
+    },
+    "R2.2": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.6
+    },
+    "R2.3": {
+      "verdict": "CONFIRMED",
+      "max_d_extended_by_L": [
+        0,
+        1,
+        1,
+        6,
+        5,
+        3,
+        4,
+        4,
+        5,
+        7,
+        6,
+        8,
+        7,
+        8,
+        8,
+        11,
+        10,
+        10,
+        11,
+        11,
+        12,
+        12,
+        13,
+        16
+      ],
+      "was_monotone_nondecreasing": false,
+      "confidence_prior": 0.55
+    }
+  },
+  "rows": [
+    {
+      "L": 1,
+      "x": 3,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 0,
+      "ups_over_L": 0.0,
+      "max_d_prefix": 0,
+      "max_d_extended": 0,
+      "n_steps_run": 2
+    },
+    {
+      "L": 2,
+      "x": 7,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 1,
+      "ups_over_L": 0.5,
+      "max_d_prefix": 1,
+      "max_d_extended": 1,
+      "n_steps_run": 5
+    },
+    {
+      "L": 3,
+      "x": 15,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 1,
+      "ups_over_L": 0.3333333333333333,
+      "max_d_prefix": 1,
+      "max_d_extended": 1,
+      "n_steps_run": 5
+    },
+    {
+      "L": 4,
+      "x": 31,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 2,
+      "ups_over_L": 0.5,
+      "max_d_prefix": 2,
+      "max_d_extended": 6,
+      "n_steps_run": 39
+    },
+    {
+      "L": 5,
+      "x": 63,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 2,
+      "ups_over_L": 0.4,
+      "max_d_prefix": 2,
+      "max_d_extended": 5,
+      "n_steps_run": 39
+    },
+    {
+      "L": 6,
+      "x": 127,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 3,
+      "ups_over_L": 0.5,
+      "max_d_prefix": 3,
+      "max_d_extended": 3,
+      "n_steps_run": 15
+    },
+    {
+      "L": 7,
+      "x": 255,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 4,
+      "ups_over_L": 0.5714285714285714,
+      "max_d_prefix": 4,
+      "max_d_extended": 4,
+      "n_steps_run": 15
+    },
+    {
+      "L": 8,
+      "x": 511,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 4,
+      "ups_over_L": 0.5,
+      "max_d_prefix": 4,
+      "max_d_extended": 4,
+      "n_steps_run": 20
+    },
+    {
+      "L": 9,
+      "x": 1023,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 5,
+      "ups_over_L": 0.5555555555555556,
+      "max_d_prefix": 5,
+      "max_d_extended": 5,
+      "n_steps_run": 20
+    },
+    {
+      "L": 10,
+      "x": 2047,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 5,
+      "ups_over_L": 0.5,
+      "max_d_prefix": 5,
+      "max_d_extended": 7,
+      "n_steps_run": 56
+    },
+    {
+      "L": 11,
+      "x": 4095,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 6,
+      "ups_over_L": 0.5454545454545454,
+      "max_d_prefix": 6,
+      "max_d_extended": 6,
+      "n_steps_run": 56
+    },
+    {
+      "L": 12,
+      "x": 8191,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 7,
+      "ups_over_L": 0.5833333333333334,
+      "max_d_prefix": 7,
+      "max_d_extended": 8,
+      "n_steps_run": 56
+    },
+    {
+      "L": 13,
+      "x": 16383,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 7,
+      "ups_over_L": 0.5384615384615384,
+      "max_d_prefix": 7,
+      "max_d_extended": 7,
+      "n_steps_run": 56
+    },
+    {
+      "L": 14,
+      "x": 32767,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 8,
+      "ups_over_L": 0.5714285714285714,
+      "max_d_prefix": 8,
+      "max_d_extended": 8,
+      "n_steps_run": 44
+    },
+    {
+      "L": 15,
+      "x": 65535,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 8,
+      "ups_over_L": 0.5333333333333333,
+      "max_d_prefix": 8,
+      "max_d_extended": 8,
+      "n_steps_run": 44
+    },
+    {
+      "L": 16,
+      "x": 131071,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 9,
+      "ups_over_L": 0.5625,
+      "max_d_prefix": 9,
+      "max_d_extended": 11,
+      "n_steps_run": 80
+    },
+    {
+      "L": 17,
+      "x": 262143,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 9,
+      "ups_over_L": 0.5294117647058824,
+      "max_d_prefix": 9,
+      "max_d_extended": 10,
+      "n_steps_run": 80
+    },
+    {
+      "L": 18,
+      "x": 524287,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 10,
+      "ups_over_L": 0.5555555555555556,
+      "max_d_prefix": 10,
+      "max_d_extended": 10,
+      "n_steps_run": 61
+    },
+    {
+      "L": 19,
+      "x": 1048575,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 11,
+      "ups_over_L": 0.5789473684210527,
+      "max_d_prefix": 11,
+      "max_d_extended": 11,
+      "n_steps_run": 61
+    },
+    {
+      "L": 20,
+      "x": 2097151,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 11,
+      "ups_over_L": 0.55,
+      "max_d_prefix": 11,
+      "max_d_extended": 11,
+      "n_steps_run": 109
+    },
+    {
+      "L": 21,
+      "x": 4194303,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 12,
+      "ups_over_L": 0.5714285714285714,
+      "max_d_prefix": 12,
+      "max_d_extended": 12,
+      "n_steps_run": 109
+    },
+    {
+      "L": 22,
+      "x": 8388607,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 12,
+      "ups_over_L": 0.5454545454545454,
+      "max_d_prefix": 12,
+      "max_d_extended": 12,
+      "n_steps_run": 174
+    },
+    {
+      "L": 23,
+      "x": 16777215,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 13,
+      "ups_over_L": 0.5652173913043478,
+      "max_d_prefix": 13,
+      "max_d_extended": 13,
+      "n_steps_run": 174
+    },
+    {
+      "L": 24,
+      "x": 33554431,
+      "prefix_all_a1": true,
+      "n_upcrossings_prefix": 14,
+      "ups_over_L": 0.5833333333333334,
+      "max_d_prefix": 14,
+      "max_d_extended": 16,
+      "n_steps_run": 162
+    }
+  ]
+}

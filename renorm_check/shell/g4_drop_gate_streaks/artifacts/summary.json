@@ -1,0 +1,107 @@
+{
+  "elapsed_sec": 4.072350740432739,
+  "V0": {
+    "S0.1": {
+      "verdict": "CONFIRMED",
+      "n_ups": 1180,
+      "n_fail": 0,
+      "confidence_prior": 0.95
+    },
+    "S0.2": {
+      "verdict": "CONFIRMED",
+      "n_ups": 41209,
+      "n_fail": 0,
+      "confidence_prior": 0.9
+    }
+  },
+  "E1": {
+    "S1.1": {
+      "verdict": "CONFIRMED",
+      "R_max_10k": 2,
+      "R_max_block53": 2,
+      "confidence_prior": 0.6
+    },
+    "S1.2": {
+      "verdict": "CONFIRMED",
+      "R_max": 2,
+      "confidence_prior": 0.55
+    },
+    "S1.3": {
+      "verdict": "CONFIRMED",
+      "mean_drop_run": 1.4093975903614457,
+      "confidence_prior": 0.5
+    }
+  },
+  "E2": {
+    "S2.1": {
+      "verdict": "CONFIRMED",
+      "max_S": 2,
+      "R_max": 2,
+      "all_streaks_c2_a1": true,
+      "confidence_prior": 0.85
+    },
+    "S2.2": {
+      "verdict": "CONFIRMED",
+      "max_S": 2,
+      "R_block": 2,
+      "confidence_prior": 0.7
+    },
+    "S2.3": {
+      "verdict": "CONFIRMED",
+      "frac_drop_pairs_are_double_up": 0.05123440403504115,
+      "n_drop_pairs": 3767,
+      "confidence_prior": 0.55
+    }
+  },
+  "E3": {
+    "S3.1": {
+      "verdict": "CONFIRMED",
+      "frac_post_up_support": 0.7483050847457627,
+      "confidence_prior": 0.45
+    },
+    "S3.2": {
+      "verdict": "CONFIRMED",
+      "frac_second_up": 0.1635593220338983,
+      "confidence_prior": 0.55
+    },
+    "S3.3": {
+      "verdict": "CONFIRMED",
+      "n_support_then_up": 0,
+      "confidence_prior": 0.9
+    }
+  },
+  "E4": {
+    "S4.1": {
+      "verdict": "REFUTED",
+      "max_ups_53": 31,
+      "arg": {
+        "k0": 0,
+        "d0": 0,
+        "n_steps": 53,
+        "ups": 31,
+        "max_streak": 2
+      },
+      "confidence_prior": 0.5
+    },
+    "S4.2": {
+      "verdict": "REFUTED",
+      "max_ups_106": 62,
+      "arg": {
+        "k0": 0,
+        "d0": 0,
+        "n_steps": 106,
+        "ups": 62,
+        "max_streak": 2
+      },
+      "confidence_prior": 0.5
+    },
+    "S4.3": {
+      "verdict": "CONFIRMED",
+      "max_greedy_streak": 2,
+      "R_max": 2,
+      "confidence_prior": 0.8
+    }
+  },
+  "R_max_drop_run": 2,
+  "free_ups": 1180
+}

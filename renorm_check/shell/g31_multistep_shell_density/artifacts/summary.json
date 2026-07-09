@@ -1,0 +1,36 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "X": 10000
+  },
+  "predictions": {
+    "S31.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.99
+    },
+    "S31.2": {
+      "verdict": "CONFIRMED",
+      "f0": 0.0014,
+      "f2": 0.0096,
+      "confidence_prior": 0.7
+    },
+    "S31.3": {
+      "verdict": "CONFIRMED",
+      "f10": 0.1524,
+      "confidence_prior": 0.55
+    },
+    "S31.4": {
+      "verdict": "CONFIRMED",
+      "f0": 0.0014,
+      "confidence_prior": 0.85
+    }
+  },
+  "frac": {
+    "0": 0.0014,
+    "1": 0.0042,
+    "2": 0.0096,
+    "3": 0.017,
+    "5": 0.0408,
+    "10": 0.1524
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "gates": {
+    "V0": "PASS",
+    "V1": "PASS",
+    "V2": "PASS"
+  },
+  "details": {
+    "V0": {
+      "start": 80049391,
+      "n_upcrossings": 23,
+      "n_a1_upcrossings": 23,
+      "first_up": {
+        "k": 1,
+        "x": 120074087,
+        "a": 1,
+        "d": 1,
+        "C_run": 1,
+        "upcrossing": true
+      }
+    },
+    "V1": {
+      "checked_odds": "1..2000"
+    },
+    "V2": {
+      "n_starts": 20,
+      "fails": 0,
+      "sample_head": [
+        {
+          "x": 8126641,
+          "j": 3,
+          "a": 2,
+          "ok": true
+        },
+        {
+          "x": 8126641,
+          "j": 5,
+          "a": 2,
+          "ok": true
+        },
+        {
+          "x": 8126641,
+          "j": 8,
+          "a": 2,
+          "ok": true
+        },
+        {
+          "x": 8126641,
+          "j": 12,
+          "a": 2,
+          "ok": true
+        }
+      ]
+    }
+  },
+  "ok_all": true,
+  "elapsed_sec": 0.0007295608520507812
+}

@@ -1,0 +1,59 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S18.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.9
+    },
+    "S18.2": {
+      "verdict": "CONFIRMED",
+      "count": 10,
+      "pi": 78498,
+      "confidence_prior": 0.85
+    },
+    "S18.3": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.99
+    }
+  },
+  "rows": [
+    {
+      "X": 1000,
+      "count_species": 5,
+      "pi": 168,
+      "2log2X": 19.931568569324174
+    },
+    {
+      "X": 10000,
+      "count_species": 7,
+      "pi": 1229,
+      "2log2X": 26.575424759098897
+    },
+    {
+      "X": 100000,
+      "count_species": 9,
+      "pi": 9592,
+      "2log2X": 33.219280948873624
+    },
+    {
+      "X": 1000000,
+      "count_species": 10,
+      "pi": 78498,
+      "2log2X": 39.86313713864835
+    },
+    {
+      "X": 10000000,
+      "count_species": 12,
+      "pi": 664579,
+      "2log2X": 46.50699332842307
+    },
+    {
+      "X": 100000000,
+      "count_species": 14,
+      "pi": null,
+      "2log2X": 53.150849518197795
+    }
+  ]
+}

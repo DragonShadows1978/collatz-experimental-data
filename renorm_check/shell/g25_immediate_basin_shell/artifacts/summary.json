@@ -1,0 +1,52 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S25.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.85
+    },
+    "S25.2": {
+      "verdict": "CONFIRMED",
+      "frac_1e3": 0.028,
+      "frac_1e5": 0.00062,
+      "confidence_prior": 0.6
+    },
+    "S25.3": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.95
+    },
+    "S25.4": {
+      "verdict": "CONFIRMED",
+      "frac_1e3": 0.028,
+      "confidence_prior": 0.7
+    }
+  },
+  "rows": {
+    "1000": {
+      "n_shell": 14,
+      "n_odds": 500,
+      "frac_shell": 0.028,
+      "n_spine": 5,
+      "frac_spine": 0.01,
+      "shell_over_spine": 2.8
+    },
+    "10000": {
+      "n_shell": 21,
+      "n_odds": 5000,
+      "frac_shell": 0.0042,
+      "n_spine": 7,
+      "frac_spine": 0.0014,
+      "shell_over_spine": 3.0
+    },
+    "100000": {
+      "n_shell": 31,
+      "n_odds": 50000,
+      "frac_shell": 0.00062,
+      "n_spine": 9,
+      "frac_spine": 0.00018,
+      "shell_over_spine": 3.4444444444444446
+    }
+  }
+}

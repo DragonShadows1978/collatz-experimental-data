@@ -1,0 +1,21 @@
+{
+  "predictions": {
+    "R4.1": {
+      "verdict": "CONFIRMED",
+      "max_streak": 2,
+      "confidence_prior": 0.65
+    },
+    "R4.2": {
+      "verdict": "REFUTED",
+      "frac_ups_in_streak1": 0.676253081347576,
+      "n_streak1": 823,
+      "n_ups_in_streaks": 1217,
+      "confidence_prior": 0.55
+    }
+  },
+  "streak_hist": {
+    "1": 823,
+    "2": 197
+  },
+  "n_starts": 308
+}

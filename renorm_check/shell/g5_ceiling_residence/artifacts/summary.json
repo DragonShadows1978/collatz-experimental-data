@@ -1,0 +1,33 @@
+{
+  "gates": {
+    "n_sojourns": 693,
+    "n_ups": 1200,
+    "a1_rate": 1.0,
+    "G1": "PASS",
+    "G2": "PASS"
+  },
+  "predictions": {
+    "T5.1": {
+      "verdict": "REFUTED",
+      "mean_sojourn": 5.167388167388167,
+      "confidence_prior": 0.55
+    },
+    "T5.2": {
+      "verdict": "REFUTED",
+      "max_sojourn": 28,
+      "confidence_prior": 0.6
+    },
+    "T5.3": {
+      "verdict": "REFUTED",
+      "mean_ups_per_sojourn": 1.7316017316017316,
+      "confidence_prior": 0.55
+    },
+    "T5.4": {
+      "verdict": "CONFIRMED",
+      "frac_steps_at_ceiling": 0.15494786032625157,
+      "confidence_prior": 0.5
+    }
+  },
+  "n_starts": 308,
+  "elapsed": 0.06325459480285645
+}

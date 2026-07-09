@@ -1,0 +1,22 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S24.1": {
+      "verdict": "CONFIRMED",
+      "variance": 44635804302900878699596173894280596,
+      "confidence_prior": 0.99
+    },
+    "S24.2": {
+      "verdict": "CONFIRMED",
+      "species_gap_over_mean_prime_gap": 71358597.88548487,
+      "confidence_prior": 0.85
+    },
+    "S24.3": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.99
+    }
+  },
+  "taxonomy": "C_exact_geometric"
+}

@@ -1,0 +1,26 @@
+{
+  "gates": {
+    "E3-G1": "PASS",
+    "E3-G2": "PASS",
+    "n_cells": 4664
+  },
+  "predictions": {
+    "R3.1": {
+      "verdict": "REFUTED",
+      "frac_stayed_nonneg_L24": 1.0,
+      "n": 583,
+      "confidence_prior": 0.55
+    },
+    "R3.2": {
+      "verdict": "REFUTED",
+      "frac_stayed_nonneg_L24_d0": 1.0,
+      "n": 53,
+      "confidence_prior": 0.6
+    },
+    "R3.3": {
+      "verdict": "REFUTED",
+      "mean_virt_ups_L24_d0": 14.037735849056604,
+      "confidence_prior": 0.5
+    }
+  }
+}

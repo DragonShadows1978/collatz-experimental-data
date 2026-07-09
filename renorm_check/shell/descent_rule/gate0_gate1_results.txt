@@ -1,0 +1,186 @@
+==============================================================================
+GATE 0a -- layer-0 species (4^k-1)/3, k=1..30, confirm S(x)=1
+==============================================================================
+k= 1  x=         1  S(x)=1  x mod 4=1  ok=True
+k= 2  x=         5  S(x)=1  x mod 4=1  ok=True
+k= 3  x=        21  S(x)=1  x mod 4=1  ok=True
+k= 4  x=        85  S(x)=1  x mod 4=1  ok=True
+k= 5  x=       341  S(x)=1  x mod 4=1  ok=True
+k= 6  x=      1365  S(x)=1  x mod 4=1  ok=True
+k= 7  x=      5461  S(x)=1  x mod 4=1  ok=True
+k= 8  x=     21845  S(x)=1  x mod 4=1  ok=True
+k= 9  x=     87381  S(x)=1  x mod 4=1  ok=True
+k=10  x=    349525  S(x)=1  x mod 4=1  ok=True
+k=11  x=   1398101  S(x)=1  x mod 4=1  ok=True
+k=12  x=   5592405  S(x)=1  x mod 4=1  ok=True
+k=13  x=  22369621  S(x)=1  x mod 4=1  ok=True
+k=14  x=  89478485  S(x)=1  x mod 4=1  ok=True
+k=15  x= 357913941  S(x)=1  x mod 4=1  ok=True
+k=16  x=1431655765  S(x)=1  x mod 4=1  ok=True
+k=17  x=5726623061  S(x)=1  x mod 4=1  ok=True
+k=18  x=22906492245  S(x)=1  x mod 4=1  ok=True
+k=19  x=91625968981  S(x)=1  x mod 4=1  ok=True
+k=20  x=366503875925  S(x)=1  x mod 4=1  ok=True
+k=21  x=1466015503701  S(x)=1  x mod 4=1  ok=True
+k=22  x=5864062014805  S(x)=1  x mod 4=1  ok=True
+k=23  x=23456248059221  S(x)=1  x mod 4=1  ok=True
+k=24  x=93824992236885  S(x)=1  x mod 4=1  ok=True
+k=25  x=375299968947541  S(x)=1  x mod 4=1  ok=True
+k=26  x=1501199875790165  S(x)=1  x mod 4=1  ok=True
+k=27  x=6004799503160661  S(x)=1  x mod 4=1  ok=True
+k=28  x=24019198012642645  S(x)=1  x mod 4=1  ok=True
+k=29  x=96076792050570581  S(x)=1  x mod 4=1  ok=True
+k=30  x=384307168202282325  S(x)=1  x mod 4=1  ok=True
+GATE 0a RESULT: all 30 members reach 1 in one odd-step and are ===1 (mod 4): True
+
+==============================================================================
+GATE 0b -- mod-3 predecessor existence rule: x=(t*2^j-1)/3, j=1..20
+==============================================================================
+Rule under test: t===1 (mod3) -> predecessors at EVEN j only;
+                 t===2 (mod3) -> predecessors at ODD j only;
+                 t===0 (mod3) -> NO predecessors at any j.
+
+--- t === 0 (mod 3) ---
+  t=  3: predecessor j's found = []  (expect NONE)  ok=True
+  t=  9: predecessor j's found = []  (expect NONE)  ok=True
+  t= 15: predecessor j's found = []  (expect NONE)  ok=True
+  t= 21: predecessor j's found = []  (expect NONE)  ok=True
+  t= 33: predecessor j's found = []  (expect NONE)  ok=True
+  t= 51: predecessor j's found = []  (expect NONE)  ok=True
+--- t === 1 (mod 3) ---
+  t=  1: predecessor j's found = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]  (expect all EVEN, nonempty)  ok=True
+  t=  7: predecessor j's found = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]  (expect all EVEN, nonempty)  ok=True
+  t= 13: predecessor j's found = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]  (expect all EVEN, nonempty)  ok=True
+  t= 19: predecessor j's found = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]  (expect all EVEN, nonempty)  ok=True
+  t= 31: predecessor j's found = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]  (expect all EVEN, nonempty)  ok=True
+  t= 37: predecessor j's found = [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]  (expect all EVEN, nonempty)  ok=True
+--- t === 2 (mod 3) ---
+  t=  5: predecessor j's found = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]  (expect all ODD, nonempty)  ok=True
+  t= 11: predecessor j's found = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]  (expect all ODD, nonempty)  ok=True
+  t= 17: predecessor j's found = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]  (expect all ODD, nonempty)  ok=True
+  t= 23: predecessor j's found = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]  (expect all ODD, nonempty)  ok=True
+  t= 29: predecessor j's found = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]  (expect all ODD, nonempty)  ok=True
+  t= 41: predecessor j's found = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]  (expect all ODD, nonempty)  ok=True
+
+GATE 0b RESULT: mod-3 predecessor-existence rule confirmed across 18 t values, j=1..20: True
+
+GATE 0: PASS (0a and 0b both exact, zero exceptions).
+
+==============================================================================
+GATE 1 -- closed-form the layers
+==============================================================================
+LAYER 0 (first 30 members): smallest 8 = [1, 5, 21, 85, 341, 1365, 5461, 21845]
+
+LAYER 0 members mod 3 (determines which contribute to LAYER 1):
+  x=      1  x mod 3 = 1
+  x=      5  x mod 3 = 2
+  x=     21  x mod 3 = 0
+  x=     85  x mod 3 = 1
+  x=    341  x mod 3 = 2
+  x=   1365  x mod 3 = 0
+  x=   5461  x mod 3 = 1
+  x=  21845  x mod 3 = 2
+  x=  87381  x mod 3 = 0
+  x= 349525  x mod 3 = 1
+  x=1398101  x mod 3 = 2
+  x=5592405  x mod 3 = 0
+
+Enumerating LAYER 1 via backward construction from LAYER 0 members (t < 2000000 needed to keep predecessors x < 2000000 in range; using all 30 constructed layer-0 members as t-source, j up to 40):
+  backward construction: 48 members < 2000000
+
+Cross-checking via FORWARD enumeration (ground truth): every odd x < 2000000, test whether S(x) is a layer-0 (species) member:
+  forward enumeration (literal spec, S(x) in LAYER0): 48 members < 2000000
+  of which also themselves LAYER 0 members (overlap): [1, 5, 21, 85, 341, 1365, 5461, 21845, 87381, 349525, 1398101]
+  forward enumeration EXCLUDING layer-0 overlap (the 'new' members): 37 members < 2000000
+  backward-construction set == forward-enumeration(excl. overlap) set: False
+    ONLY in backward: [1, 5, 21, 85, 341, 1365, 5461, 21845, 87381, 349525, 1398101] (showing up to 20)
+    ONLY in forward:  [] (showing up to 20)
+LAYER 1 (literal spec, includes any layer0 overlap) size < 2000000: 48
+  smallest 15 members: [1, 3, 5, 13, 21, 53, 85, 113, 213, 227, 341, 453, 853, 909, 1365]
+  congruence-class fit for LAYER 1 (n=48 members):
+    mod     2: 1 distinct residues out of 2 possible (0.5000 of classes populated): [1]
+    mod     4: 2 distinct residues out of 4 possible (0.5000 of classes populated): [1, 3]
+    mod     8: 3 distinct residues out of 8 possible (0.3750 of classes populated): [1, 3, 5]
+    mod    16: 4 distinct residues out of 16 possible (0.2500 of classes populated): [1, 3, 5, 13]
+    mod    32: 6 distinct residues out of 32 possible (0.1875 of classes populated): [1, 3, 5, 13, 17, 21]
+    mod    64: 8 distinct residues out of 64 possible (0.1250 of classes populated): [1, 3, 5, 13, 21, 35, 49, 53]
+    mod   128: 10 distinct residues out of 128 possible (0.0781 of classes populated): [1, 3, 5, 13, 21, 53, 69, 85, 99, 113]
+    mod   256: 12 distinct residues out of 256 possible (0.0469 of classes populated): [1, 3, 5, 13, 21, 53, 85, 113, 141, 197, 213, 227]
+    mod   512: 14 distinct residues out of 512 possible (0.0273 of classes populated): [1, 3, 5, 13, 21, 53, 85, 113, 213, 227, 277, 341, 397, 453]
+    mod  1024: 16 distinct residues out of 1024 possible (0.0156 of classes populated): [1, 3, 5, 13, 21, 53, 85, 113, 213, 227, 341, 453, 565, 789, 853, 909]
+
+Targeted checks on LAYER 1:
+  LAYER1 mod 4 residues: [1, 3]
+  LAYER1 mod 8 residues: [1, 3, 5]
+  LAYER1 mod 3 residues: [0, 1, 2]
+
+==============================================================================
+LAYER 2 -- odd x such that S(x) in LAYER 1
+==============================================================================
+LAYER 2 forward enumeration (S(S(x)) in LAYER0), x < 2000000: 138 members
+  smallest 15: [1, 3, 5, 13, 17, 21, 35, 53, 69, 75, 85, 113, 141, 151, 213]
+LAYER 2 backward construction from (finite) LAYER1 set < 2000000, result < 2000000: 138 members
+  forward set == backward set: True  (mismatch expected ONLY if LAYER1's own truncation at 2000000 missed t-values needed to generate small LAYER2 members)
+  congruence-class fit for LAYER 2 (n=138 members):
+    mod     2: 1 distinct residues out of 2 possible (0.5000 of classes populated): [1]
+    mod     4: 2 distinct residues out of 4 possible (0.5000 of classes populated): [1, 3]
+    mod     8: 4 distinct residues out of 8 possible (0.5000 of classes populated): [1, 3, 5, 7]
+    mod    16: 7 distinct residues out of 16 possible (0.4375 of classes populated): [1, 3, 5, 7, 9, 11, 13]
+    mod    32: 11 distinct residues out of 32 possible (0.3438 of classes populated): [1, 3, 5, 11, 13, 17, 19, 21, 23, 25, 29]
+    mod    64: 16 distinct residues out of 64 possible (0.2500 of classes populated): [1, 3, 5, 11, 13, 17, 21, 23, 25, 29, 35, 37, 45, 49, 51, 53]
+    mod   128: 23 distinct residues out of 128 possible (0.1797 of classes populated): [1, 3, 5, 13, 17, 21, 23, 35, 45, 49, 51, 53, 65, 69, 75, 77, 85, 89, 93, 99] ...
+    mod   256: 31 distinct residues out of 256 possible (0.1211 of classes populated): [1, 3, 5, 13, 17, 21, 35, 45, 53, 65, 69, 75, 85, 93, 99, 101, 113, 117, 131, 141] ...
+    mod   512: 39 distinct residues out of 512 possible (0.0762 of classes populated): [1, 3, 5, 13, 17, 21, 35, 53, 69, 75, 85, 93, 113, 131, 141, 151, 181, 197, 205, 213] ...
+    mod  1024: 48 distinct residues out of 1024 possible (0.0469 of classes populated): [1, 3, 5, 13, 17, 21, 35, 53, 69, 75, 85, 113, 141, 151, 181, 213, 227, 277, 301, 341] ...
+  LAYER2 mod 4: [1, 3]
+  LAYER2 mod 8: [1, 3, 5, 7]
+  LAYER2 mod 16: [1, 3, 5, 7, 9, 11, 13]
+
+==============================================================================
+LAYER 3 -- odd x such that S(x) in LAYER 2 (i.e. S^3(x) in LAYER0)
+==============================================================================
+LAYER 3 forward enumeration (S^3(x) in LAYER0), x < 2000000: 349 members
+  smallest 15: [1, 3, 5, 11, 13, 17, 21, 23, 35, 45, 53, 69, 75, 85, 93]
+  congruence-class fit for LAYER 3 (n=349 members):
+    mod     2: 1 distinct residues out of 2 possible (0.5000 of classes populated): [1]
+    mod     4: 2 distinct residues out of 4 possible (0.5000 of classes populated): [1, 3]
+    mod     8: 4 distinct residues out of 8 possible (0.5000 of classes populated): [1, 3, 5, 7]
+    mod    16: 7 distinct residues out of 16 possible (0.4375 of classes populated): [1, 3, 5, 7, 9, 11, 13]
+    mod    32: 12 distinct residues out of 32 possible (0.3750 of classes populated): [1, 3, 5, 9, 11, 13, 17, 19, 21, 23, 25, 29]
+    mod    64: 20 distinct residues out of 64 possible (0.3125 of classes populated): [1, 3, 5, 9, 11, 13, 17, 19, 21, 23, 25, 29, 33, 35, 37, 43, 45, 49, 51, 53]
+    mod   128: 31 distinct residues out of 128 possible (0.2422 of classes populated): [1, 3, 5, 11, 13, 17, 19, 21, 23, 33, 35, 37, 43, 45, 49, 51, 53, 65, 67, 69] ...
+    mod   256: 44 distinct residues out of 256 possible (0.1719 of classes populated): [1, 3, 5, 11, 13, 17, 21, 23, 33, 35, 37, 43, 45, 53, 65, 67, 69, 75, 77, 85] ...
+    mod   512: 59 distinct residues out of 512 possible (0.1152 of classes populated): [1, 3, 5, 11, 13, 17, 21, 23, 35, 43, 45, 53, 65, 67, 69, 75, 77, 85, 87, 93] ...
+    mod  1024: 78 distinct residues out of 1024 possible (0.0762 of classes populated): [1, 3, 5, 11, 13, 17, 21, 23, 35, 45, 53, 69, 75, 85, 87, 93, 113, 131, 133, 141] ...
+  LAYER3 mod 4: [1, 3]
+  LAYER3 mod 8: [1, 3, 5, 7]
+  LAYER3 mod 16: [1, 3, 5, 7, 9, 11, 13]
+  LAYER3 mod 32: [1, 3, 5, 9, 11, 13, 17, 19, 21, 23, 25, 29]
+
+==============================================================================
+MODULUS / CLASS-COUNT GROWTH SUMMARY
+==============================================================================
+LAYER 0 (species): closed form x=(4^k-1)/3 -- a SINGLE residue class mod 4^k for a GIVEN k (x===1 mod4, but more precisely the k-th member is the unique solution mod 4^k -- it is a discrete recurrence, not a fixed-modulus class covering a whole layer at once).
+  LAYER 1: mod    4 ->    2 distinct residues (0.5000 of all classes)
+  LAYER 1: mod    8 ->    3 distinct residues (0.3750 of all classes)
+  LAYER 1: mod   16 ->    4 distinct residues (0.2500 of all classes)
+  LAYER 1: mod   32 ->    6 distinct residues (0.1875 of all classes)
+  LAYER 1: mod   64 ->    8 distinct residues (0.1250 of all classes)
+  LAYER 1: mod  128 ->   10 distinct residues (0.0781 of all classes)
+  LAYER 1: mod  256 ->   12 distinct residues (0.0469 of all classes)
+  LAYER 2: mod    4 ->    2 distinct residues (0.5000 of all classes)
+  LAYER 2: mod    8 ->    4 distinct residues (0.5000 of all classes)
+  LAYER 2: mod   16 ->    7 distinct residues (0.4375 of all classes)
+  LAYER 2: mod   32 ->   11 distinct residues (0.3438 of all classes)
+  LAYER 2: mod   64 ->   16 distinct residues (0.2500 of all classes)
+  LAYER 2: mod  128 ->   23 distinct residues (0.1797 of all classes)
+  LAYER 2: mod  256 ->   31 distinct residues (0.1211 of all classes)
+  LAYER 3: mod    4 ->    2 distinct residues (0.5000 of all classes)
+  LAYER 3: mod    8 ->    4 distinct residues (0.5000 of all classes)
+  LAYER 3: mod   16 ->    7 distinct residues (0.4375 of all classes)
+  LAYER 3: mod   32 ->   12 distinct residues (0.3750 of all classes)
+  LAYER 3: mod   64 ->   20 distinct residues (0.3125 of all classes)
+  LAYER 3: mod  128 ->   31 distinct residues (0.2422 of all classes)
+  LAYER 3: mod  256 ->   44 distinct residues (0.1719 of all classes)
+
+Gate 0/1 script complete.

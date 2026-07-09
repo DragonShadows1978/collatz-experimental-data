@@ -1,0 +1,17 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S20.1": {
+      "verdict": "CONFIRMED",
+      "n_composite_k": 42,
+      "confidence_prior": 0.99
+    },
+    "S20.2": {
+      "verdict": "CONFIRMED",
+      "n_with_factor": 42,
+      "confidence_prior": 0.9
+    }
+  }
+}

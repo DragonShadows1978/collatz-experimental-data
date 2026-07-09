@@ -1,0 +1,197 @@
+==============================================================================
+GATE 2 -- coverage census: density(N) for N=1..200 over odd x < 10000000
+==============================================================================
+
+METHODOLOGY (merge-safe): exactly ONE forward simulation per DISTINCT
+odd x in [1, 10000000). At each odd-step, test the current iterate for
+species (layer-0) membership via closed-form is_one_step_species()
+(3*cur+1 power-of-two with even exponent) -- NO trajectory simulation
+inside the membership test itself, only in walking x's OWN orbit.
+hit_step(x) = first n>=0 with S^n(x) in species (x itself counts as
+n=0). Each distinct x contributes exactly ONE hit_step value to the
+dataset; density(N) = count(hit_step(x) <= N) / total distinct x.
+Memoization (memo dict keyed on odd values seen during any walk) is
+used purely for SPEED -- if a later value's forward orbit hits a
+value already resolved by an earlier start's walk, we reuse that
+resolved hit-step-from-that-value instead of recomputing -- but the
+credit (the entry in the numerator/denominator) is always for the
+ORIGINAL starting x, added exactly once, using ITS OWN first-hit
+step (= steps-to-reach-memoized-value + memoized value's own hit
+step). This does not overcount merged nodes: it is a call-count
+speedup on top of a per-distinct-x accounting scheme, not a change
+to what is being counted.
+
+Running census (this walks 5,000,000 distinct odd starts)...
+  ... 1,000,000 distinct odd x processed, 3.29s elapsed, memo size=1,365,111, none-so-far=1
+  ... 2,000,000 distinct odd x processed, 6.90s elapsed, memo size=2,218,699, none-so-far=12
+  ... 3,000,000 distinct odd x processed, 11.68s elapsed, memo size=2,499,968, none-so-far=36
+  ... 4,000,000 distinct odd x processed, 20.63s elapsed, memo size=2,499,968, none-so-far=72
+  ... 5,000,000 distinct odd x processed, 29.65s elapsed, memo size=2,499,968, none-so-far=112
+
+Census walk complete: 5,000,000 distinct odd x in [1, 10000000)
+Wall clock: 29.648s (168,644 x/sec)
+Peak RSS: 235.86 MB
+Final memo size: 2,499,968
+Count with hit_step=None (not within 200 steps): 112
+
+==============================================================================
+DENSITY(N) TABLE
+==============================================================================
+   N   count(hit<=N)       density   complement_count  complement_density
+(max observed finite hit_step across all 5,000,000 starts: 200)
+
+   0              12   0.000002400          4,999,988         0.999997600
+   1              56   0.000011200          4,999,944         0.999988800
+   2             190   0.000038000          4,999,810         0.999962000
+   3             485   0.000097000          4,999,515         0.999903000
+   4           1,133   0.000226600          4,998,867         0.999773400
+   5           2,179   0.000435800          4,997,821         0.999564200
+   6           4,117   0.000823400          4,995,883         0.999176600
+   7           7,137   0.001427400          4,992,863         0.998572600
+   8          11,423   0.002284600          4,988,577         0.997715400
+   9          18,373   0.003674600          4,981,627         0.996325400
+  10          26,176   0.005235200          4,973,824         0.994764800
+  11          38,028   0.007605600          4,961,972         0.992394400
+  12          52,264   0.010452800          4,947,736         0.989547200
+  13          69,743   0.013948600          4,930,257         0.986051400
+  14          94,879   0.018975800          4,905,121         0.981024200
+  15         117,953   0.023590600          4,882,047         0.976409400
+  16         150,181   0.030036200          4,849,819         0.969963800
+  17         183,992   0.036798400          4,816,008         0.963201600
+  18         222,228   0.044445600          4,777,772         0.955554400
+  19         270,193   0.054038600          4,729,807         0.945961400
+  20         312,650   0.062530000          4,687,350         0.937470000
+  25         606,807   0.121361400          4,393,193         0.878638600
+  30         970,779   0.194155800          4,029,221         0.805844200
+  35       1,358,021   0.271604200          3,641,979         0.728395800
+  40       1,745,009   0.349001800          3,254,991         0.650998200
+  45       2,122,272   0.424454400          2,877,728         0.575545600
+  50       2,500,583   0.500116600          2,499,417         0.499883400
+  55       2,867,106   0.573421200          2,132,894         0.426578800
+  60       3,229,625   0.645925000          1,770,375         0.354075000
+  65       3,566,922   0.713384400          1,433,078         0.286615600
+  70       3,872,474   0.774494800          1,127,526         0.225505200
+  75       4,127,758   0.825551600            872,242         0.174448400
+  80       4,345,212   0.869042400            654,788         0.130957600
+  85       4,521,065   0.904213000            478,935         0.095787000
+  90       4,646,929   0.929385800            353,071         0.070614200
+  95       4,743,581   0.948716200            256,419         0.051283800
+ 100       4,814,335   0.962867000            185,665         0.037133000
+ 105       4,866,546   0.973309200            133,454         0.026690800
+ 110       4,906,525   0.981305000             93,475         0.018695000
+ 115       4,935,635   0.987127000             64,365         0.012873000
+ 120       4,955,575   0.991115000             44,425         0.008885000
+ 125       4,969,946   0.993989200             30,054         0.006010800
+ 130       4,979,186   0.995837200             20,814         0.004162800
+ 135       4,985,854   0.997170800             14,146         0.002829200
+ 140       4,990,054   0.998010800              9,946         0.001989200
+ 145       4,993,198   0.998639600              6,802         0.001360400
+ 150       4,995,445   0.999089000              4,555         0.000911000
+ 155       4,996,928   0.999385600              3,072         0.000614400
+ 160       4,997,888   0.999577600              2,112         0.000422400
+ 165       4,998,567   0.999713400              1,433         0.000286600
+ 170       4,999,037   0.999807400                963         0.000192600
+ 175       4,999,314   0.999862800                686         0.000137200
+ 180       4,999,495   0.999899000                505         0.000101000
+ 185       4,999,606   0.999921200                394         0.000078800
+ 190       4,999,714   0.999942800                286         0.000057200
+ 195       4,999,817   0.999963400                183         0.000036600
+ 200       4,999,888   0.999977600                112         0.000022400
+
+density(200) = 0.999977600  (complement = 112 / 5,000,000 = 0.000022400)
+Full density(N) table (N=0..200) written to gate2_density_table.csv
+
+Convergence check -- density(N) deltas over the tail:
+  N=190: new covered = 29  cum density = 0.999942800
+  N=191: new covered = 19  cum density = 0.999946600
+  N=192: new covered = 22  cum density = 0.999951000
+  N=193: new covered = 14  cum density = 0.999953800
+  N=194: new covered = 17  cum density = 0.999957200
+  N=195: new covered = 31  cum density = 0.999963400
+  N=196: new covered = 18  cum density = 0.999967000
+  N=197: new covered = 19  cum density = 0.999970800
+  N=198: new covered = 5  cum density = 0.999971800
+  N=199: new covered = 10  cum density = 0.999973800
+  N=200: new covered = 19  cum density = 0.999977600
+
+GATE 2 VERDICT: density(200) = 0.999977600. Reaches exactly 1.0: False. Frozen conjecture was density(N) -> 1 as N grows (~70% confidence).
+
+==============================================================================
+GATE 3 -- uncoverable-class question
+==============================================================================
+Odd x with hit_step=None (not within 200 steps) at census end: 112
+  smallest 20: [1723519, 2298025, 2585279, 2725659, 2929311, 3064033, 3066367, 3428767, 3447039, 3542887, 3732423, 3877919, 4063723, 4064103, 4085377, 4088489, 4393967, 4571689, 4596051, 4637979]
+  largest 20: [8842233, 8847225, 8848743, 8865705, 8888811, 8901447, 8967935, 9143379, 9144233, 9192101, 9275959, 9447699, 9533531, 9691233, 9715455, 9947513, 9953129, 9973919, 9997729, 9999913]
+
+Check: x === 0 (mod 3) -- these can never be WAYPOINTS (no predecessors)
+but CAN be starts. Does their own first step land in the basin quickly?
+  odd x===0 mod3 count: 1,666,667, none-count: 39, max finite hit_step: 200
+
+Per-residue-class max finite hit_step and None-count (mod 2,3,4,8,9,16,32):
+  --- mod 2 ---
+    x===  1 (mod  2): n=5,000,000  none_count=    112  max_finite_hit=200
+  --- mod 3 ---
+    x===  0 (mod  3): n=1,666,667  none_count=     39  max_finite_hit=200
+    x===  1 (mod  3): n=1,666,667  none_count=     41  max_finite_hit=200
+    x===  2 (mod  3): n=1,666,666  none_count=     32  max_finite_hit=200
+  --- mod 4 ---
+    x===  1 (mod  4): n=2,500,000  none_count=     32  max_finite_hit=200
+    x===  3 (mod  4): n=2,500,000  none_count=     80  max_finite_hit=200
+  --- mod 8 ---
+    x===  1 (mod  8): n=1,250,000  none_count=     30  max_finite_hit=200
+    x===  3 (mod  8): n=1,250,000  none_count=     23  max_finite_hit=200
+    x===  5 (mod  8): n=1,250,000  none_count=      2  max_finite_hit=197
+    x===  7 (mod  8): n=1,250,000  none_count=     57  max_finite_hit=200
+  --- mod 9 ---
+    x===  0 (mod  9): n=  555,556  none_count=     17  max_finite_hit=199
+    x===  1 (mod  9): n=  555,556  none_count=     18  max_finite_hit=200
+    x===  2 (mod  9): n=  555,555  none_count=     14  max_finite_hit=200
+    x===  3 (mod  9): n=  555,556  none_count=     13  max_finite_hit=200
+    x===  4 (mod  9): n=  555,555  none_count=     12  max_finite_hit=200
+    x===  5 (mod  9): n=  555,556  none_count=      9  max_finite_hit=200
+    x===  6 (mod  9): n=  555,555  none_count=      9  max_finite_hit=200
+    x===  7 (mod  9): n=  555,556  none_count=     11  max_finite_hit=200
+    x===  8 (mod  9): n=  555,555  none_count=      9  max_finite_hit=200
+  --- mod 16 ---
+    x===  1 (mod 16): n=  625,000  none_count=     10  max_finite_hit=200
+    x===  3 (mod 16): n=  625,000  none_count=      6  max_finite_hit=200
+    x===  5 (mod 16): n=  625,000  none_count=      1  max_finite_hit=197
+    x===  7 (mod 16): n=  625,000  none_count=     16  max_finite_hit=200
+    x===  9 (mod 16): n=  625,000  none_count=     20  max_finite_hit=200
+    x=== 11 (mod 16): n=  625,000  none_count=     17  max_finite_hit=200
+    x=== 13 (mod 16): n=  625,000  none_count=      1  max_finite_hit=197
+    x=== 15 (mod 16): n=  625,000  none_count=     41  max_finite_hit=200
+  --- mod 32 ---
+    x===  1 (mod 32): n=  312,500  none_count=     10  max_finite_hit=200
+    x===  3 (mod 32): n=  312,500  none_count=      2  max_finite_hit=194
+    x===  5 (mod 32): n=  312,500  none_count=      1  max_finite_hit=197
+    x===  7 (mod 32): n=  312,500  none_count=     13  max_finite_hit=200
+    x===  9 (mod 32): n=  312,500  none_count=     14  max_finite_hit=199
+    x=== 11 (mod 32): n=  312,500  none_count=      5  max_finite_hit=200
+    x=== 13 (mod 32): n=  312,500  none_count=      0  max_finite_hit=195
+    x=== 15 (mod 32): n=  312,500  none_count=     10  max_finite_hit=200
+    x=== 17 (mod 32): n=  312,500  none_count=      0  max_finite_hit=197
+    x=== 19 (mod 32): n=  312,500  none_count=      4  max_finite_hit=200
+    x=== 21 (mod 32): n=  312,500  none_count=      0  max_finite_hit=173
+    x=== 23 (mod 32): n=  312,500  none_count=      3  max_finite_hit=200
+    x=== 25 (mod 32): n=  312,500  none_count=      6  max_finite_hit=200
+    x=== 27 (mod 32): n=  312,500  none_count=     12  max_finite_hit=200
+    x=== 29 (mod 32): n=  312,500  none_count=      1  max_finite_hit=197
+    x=== 31 (mod 32): n=  312,500  none_count=     31  max_finite_hit=200
+
+Complement decay trend (complement_count at selected N, ratio to prior):
+  N=   1: complement= 4,999,944  (ratio to previous checkpoint: None)
+  N=   2: complement= 4,999,810  (ratio to previous checkpoint: 1.0000)
+  N=   3: complement= 4,999,515  (ratio to previous checkpoint: 0.9999)
+  N=   5: complement= 4,997,821  (ratio to previous checkpoint: 0.9997)
+  N=   8: complement= 4,988,577  (ratio to previous checkpoint: 0.9982)
+  N=  13: complement= 4,930,257  (ratio to previous checkpoint: 0.9883)
+  N=  21: complement= 4,630,244  (ratio to previous checkpoint: 0.9391)
+  N=  34: complement= 3,718,175  (ratio to previous checkpoint: 0.8030)
+  N=  55: complement= 2,132,894  (ratio to previous checkpoint: 0.5736)
+  N=  89: complement=   371,435  (ratio to previous checkpoint: 0.1741)
+  N= 200: complement=       112  (ratio to previous checkpoint: 0.0003)
+
+GATE 3 VERDICT:
+  Complement at N=200: 112 / 5,000,000 = 0.000022400 of census.
+  See per-residue-class table above for whether any class shows a GROWING (unbounded) max_finite_hit alongside nonzero none_count (suggesting 'just needs larger N') vs a hard floor.

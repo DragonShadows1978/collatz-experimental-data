@@ -1,0 +1,99 @@
+======================================================================
+GATE 4 (optional) -- k-step clean-descent tower
+Genuine open exploration. No frozen prediction. Budget-capped.
+======================================================================
+----------------------------------------------------------------------
+Part 1: brute search, all odd x < 2000000, clean-descent length n
+----------------------------------------------------------------------
+  n=  0 clean steps:     1 values, first 12 = [1]
+  n=  1 clean steps:    10 values, first 12 = [5, 21, 85, 341, 1365, 5461, 21845, 87381, 349525, 1398101]
+  n=  2 clean steps:    33 values, first 12 = [13, 53, 113, 213, 453, 853, 909, 1813, 3413, 3637, 7253, 7281]
+  n=  3 clean steps:    68 values, first 12 = [17, 69, 141, 277, 301, 565, 1109, 1137, 1205, 2261, 2417, 4437]
+  n=  4 clean steps:   126 values, first 12 = [45, 181, 369, 401, 725, 753, 1477, 1605, 2901, 2957, 3013, 3213]
+  n=  5 clean steps:   144 values, first 12 = [241, 965, 1069, 1933, 1969, 3861, 4017, 4277, 7733, 7877, 7885, 8561]
+  n=  6 clean steps:   181 values, first 12 = [321, 1285, 1425, 2573, 2577, 2625, 5141, 5701, 10293, 10309, 10501, 10513]
+  n=  7 clean steps:   198 values, first 12 = [1713, 6853, 6861, 7601, 13709, 13745, 14001, 14017, 27413, 27445, 27457, 30405]
+  n=  8 clean steps:   131 values, first 12 = [9137, 18689, 20269, 36549, 36557, 36593, 36609, 36653, 73101, 74673, 74757, 76177]
+  n=  9 clean steps:   110 values, first 12 = [24365, 27025, 49837, 97461, 97485, 97581, 97741, 101569, 108101, 108225, 194929, 195249]
+  n= 10 clean steps:    45 values, first 12 = [36033, 64973, 66449, 130321, 135425, 144133, 259893, 259905, 265797, 288269, 288273, 289681]
+  n= 11 clean steps:    31 values, first 12 = [173261, 173761, 177197, 192177, 361133, 386241, 693045, 693057, 693249, 695045, 695489, 708789]
+  n= 12 clean steps:    14 values, first 12 = [231681, 462029, 472525, 926725, 945153, 963021, 1024945, 1848117, 1848129, 1853453, 1853457, 1854637]
+  n= 13 clean steps:     4 values, first 12 = [630033, 1232077, 1235633, 1366593]
+  n= 14 clean steps:     1 values, first 12 = [1642769]
+Elapsed: 0.714s for x < 2000000
+----------------------------------------------------------------------
+Part 2: congruence analysis for n=2 and n=3 clean-descent towers
+----------------------------------------------------------------------
+n=1: 10 members found in brute range, values=[5, 21, 85, 341, 1365, 5461, 21845, 87381, 349525, 1398101]
+    mod    4: residues present = [1]  (count=1 distinct out of 4 possible)
+    mod    8: residues present = [5]  (count=1 distinct out of 8 possible)
+    mod   16: residues present = [5]  (count=1 distinct out of 16 possible)
+    mod   32: residues present = [5, 21]  (count=2 distinct out of 32 possible)
+    mod   64: residues present = [5, 21]  (count=2 distinct out of 64 possible)
+    mod  128: residues present = [5, 21, 85]  (count=3 distinct out of 128 possible)
+    mod  256: residues present = [5, 21, 85]  (count=3 distinct out of 256 possible)
+n=2: 33 members found in brute range, values=[13, 53, 113, 213, 453, 853, 909, 1813, 3413, 3637, 7253, 7281, 13653, 14549, 29013, 29125, 54613, 58197, 58253, 116053]...
+    mod    4: residues present = [1]  (count=1 distinct out of 4 possible)
+    mod    8: residues present = [1, 5]  (count=2 distinct out of 8 possible)
+    mod   16: residues present = [1, 5, 13]  (count=3 distinct out of 16 possible)
+    mod   32: residues present = [5, 13, 17, 21]  (count=4 distinct out of 32 possible)
+    mod   64: residues present = [5, 13, 21, 49, 53]  (count=5 distinct out of 64 possible)
+    mod  128: residues present = [13, 21, 53, 69, 85, 113]  (count=6 distinct out of 128 possible)
+    mod  256: residues present = [13, 21, 53, 85, 113, 141, 197, 213]  (count=8 distinct out of 256 possible)
+n=3: 68 members found in brute range, values=[17, 69, 141, 277, 301, 565, 1109, 1137, 1205, 2261, 2417, 4437, 4549, 4821, 4849, 9045, 9101, 9669, 17749, 18197]...
+    mod    4: residues present = [1]  (count=1 distinct out of 4 possible)
+    mod    8: residues present = [1, 5]  (count=2 distinct out of 8 possible)
+    mod   16: residues present = [1, 5, 13]  (count=3 distinct out of 16 possible)
+    mod   32: residues present = [1, 5, 13, 17, 21]  (count=5 distinct out of 32 possible)
+    mod   64: residues present = [1, 5, 13, 17, 21, 45, 49, 53]  (count=8 distinct out of 64 possible)
+    mod  128: residues present = [13, 17, 21, 45, 49, 53, 65, 69, 77, 85, 113]  (count=11 distinct out of 128 possible)
+    mod  256: residues present = [17, 21, 45, 53, 65, 69, 85, 113, 141, 177, 181, 197, 205, 213, 241]  (count=15 distinct out of 256 possible)
+n=1 cross-check vs closed form (4^k-1)/3, k>=2 (k=1/x=1 is the n=0 base case, excluded by convention): found_set == known_set: True  (found=10, known=10)
+----------------------------------------------------------------------
+Part 3: reverse construction -- one clean step before a species member
+----------------------------------------------------------------------
+  k=  1  x=(4^1-1)/3=1  ->  x'=1  (m=2, x' mod 4=1, x mod 3=1)
+  k=  2  x=(4^2-1)/3=5  ->  x'=13  (m=3, x' mod 4=1, x mod 3=2)
+  k=  3  x=(4^3-1)/3=21  ->  NO x' found for m in [2,40)
+  k=  4  x=(4^4-1)/3=85  ->  x'=113  (m=2, x' mod 4=1, x mod 3=1)
+  k=  5  x=(4^5-1)/3=341  ->  x'=909  (m=3, x' mod 4=1, x mod 3=2)
+  k=  6  x=(4^6-1)/3=1365  ->  NO x' found for m in [2,40)
+  k=  7  x=(4^7-1)/3=5461  ->  x'=7281  (m=2, x' mod 4=1, x mod 3=1)
+  k=  8  x=(4^8-1)/3=21845  ->  x'=58253  (m=3, x' mod 4=1, x mod 3=2)
+  k=  9  x=(4^9-1)/3=87381  ->  NO x' found for m in [2,40)
+  k= 10  x=(4^10-1)/3=349525  ->  x'=466033  (m=2, x' mod 4=1, x mod 3=1)
+  k= 11  x=(4^11-1)/3=1398101  ->  x'=3728269  (m=3, x' mod 4=1, x mod 3=2)
+  Looking for pattern relating m to k / x:
+    k=1: m=2  x mod 9=1  k mod 2=1
+    k=2: m=3  x mod 9=5  k mod 2=0
+    k=4: m=2  x mod 9=4  k mod 2=0
+    k=5: m=3  x mod 9=8  k mod 2=1
+    k=7: m=2  x mod 9=7  k mod 2=1
+    k=8: m=3  x mod 9=2  k mod 2=0
+    k=10: m=2  x mod 9=1  k mod 2=0
+    k=11: m=3  x mod 9=5  k mod 2=1
+======================================================================
+GATE 4 SUMMARY / HONEST WALL
+======================================================================
+Brute search range: odd x < 2,000,000
+  n=0: 1 members
+  n=1: 10 members
+  n=2: 33 members
+  n=3: 68 members
+  n=4: 126 members
+  n=5: 144 members
+  n=6: 181 members
+  n=7: 198 members
+  n=8: 131 members
+  n=9: 110 members
+  n=10: 45 members
+  n=11: 31 members
+  n=12: 14 members
+  n=13: 4 members
+  n=14: 1 members
+
+n=1: confirmed matches closed form (4^k-1)/3 exactly (see Part 2 cross-check above).
+
+n=2, n=3: no single clean congruence class (mod 4/8/16/32/64/128/256) was found that exactly captures the member set within the brute range tested -- see the 'residues present' lines above for n=2 and n=3. This is reported as an HONEST WALL: the n=1 case has a single clean arithmetic-progression-in-doubling-base-4 structure (one residue mod 4^k); n=2/n=3 did not reduce to an equally clean single-congruence rule within the effort budget for this gate. The reverse-construction angle (Part 3) shows *a* systematic relationship exists (each species-tower-top x has a well-defined one-step clean predecessor x' found by the smallest valid m), but characterizing the FULL n=2/n=3 member sets as closed congruence classes (analogous to n=1's single residue class mod 4^k) was not achieved here.
+Total gate 4 wall clock: 0.714s
+======================================================================

@@ -1,0 +1,91 @@
+{
+  "gates": {
+    "E2-G1": "PASS",
+    "E2-G2": "PASS",
+    "E2-G3": "REPORTED",
+    "n_events": 1195,
+    "n_starts": 308
+  },
+  "predictions": {
+    "P2.1": {
+      "verdict": "REFUTED",
+      "shell_after_rate_C5": 0.0,
+      "null_shell_rate_C5": 0.29933333333333334,
+      "enrichment": 0.0,
+      "n_events_C5": 107,
+      "confidence_prior": 0.5,
+      "note": "Record-setting exits have delta_after=0 by definition; near_ceil_after is near-tautological. Primary metric is F7 in_shell_after vs uniform null at same C."
+    },
+    "P2.2": {
+      "verdict": "CONFIRMED",
+      "a1_rate": 1.0,
+      "confidence_prior": 0.75
+    },
+    "P2.3": {
+      "verdict": "CONFIRMED",
+      "interior_delta_ge3_rate": 0.0,
+      "confidence_prior": 0.65
+    },
+    "P2.4": {
+      "verdict": "CONFIRMED",
+      "returned_within_200_rate": 1.0,
+      "confidence_prior": 0.7
+    }
+  },
+  "metrics": {
+    "n_events": 1195,
+    "a1_rate": 1.0,
+    "interior_rate": 0.0,
+    "near_ceil_after": 1.0,
+    "shell_after": 0.21422594142259413,
+    "shell_before": 0.15397489539748954,
+    "returned_200": 1.0,
+    "null_near_ceil": {
+      "3": 0.757,
+      "5": 0.484,
+      "8": 0.3383333333333333,
+      "12": 0.23066666666666666
+    },
+    "null_shell": {
+      "3": 0.44666666666666666,
+      "5": 0.29933333333333334,
+      "8": 0.188
+    },
+    "enrichment_near_vs_null5": 2.066115702479339,
+    "shell_by_C": {
+      "1": 258,
+      "2": 225,
+      "3": 193,
+      "4": 159,
+      "5": 107,
+      "6": 55,
+      "7": 32,
+      "8": 21,
+      "9": 16,
+      "10": 10,
+      "11": 8,
+      "12": 8,
+      "13": 8,
+      "14": 8,
+      "15": 8
+    },
+    "shell_hit_by_C": {
+      "1": 197,
+      "2": 59
+    }
+  },
+  "sources": {
+    "n_high_reserve": 8,
+    "n_breach_candidates_loaded": 250,
+    "n_breach_used": 200,
+    "n_random": 100,
+    "random_seed": 20260708
+  },
+  "m_used": 6,
+  "max_steps": 8000,
+  "elapsed_sec": 0.7867062091827393,
+  "artifacts": {
+    "events_csv": "/mnt/ForgeRealm/collatz-experimental-data/renorm_check/shell/g1_shell_toll_surgery/artifacts/e2_exit_events.csv",
+    "starts_json": "/mnt/ForgeRealm/collatz-experimental-data/renorm_check/shell/g1_shell_toll_surgery/artifacts/e2_starts.json"
+  }
+}

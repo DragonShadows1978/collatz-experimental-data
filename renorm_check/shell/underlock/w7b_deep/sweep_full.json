@@ -1,0 +1,12 @@
+[
+  {
+    "C": 31,
+    "edge": 284,
+    "first_dead": 285,
+    "peak_live": 73462829,
+    "wall": null,
+    "elapsed_sec": 48854.99644827843,
+    "blocks_done": 8,
+    "genuine_death": true
+  }
+]

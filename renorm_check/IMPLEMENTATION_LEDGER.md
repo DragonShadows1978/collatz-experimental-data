@@ -4802,3 +4802,1240 @@ sources (read directly, quoted above): `LOCK3_BIRTH_INVARIANT_AUDIT.md`,
 `data/runs/lock3_C{1..50}_*`, `data/runs/scan_limit250000000_D{23,24}_*.csv`.
 No commits made, per house rules. CPU only; peak RSS negligible
 (<50MB, one Python script over CSV/JSON text).
+
+## SHADOW-ORBIT
+
+Executor: cold agent, task = `shell/shadow_primes/orbit/ORBIT_ORDER.md`
+(mechanism for p=19's ~28.5%-below-1/p hit-density suppression, per
+`shell/shadow_primes/SHADOW_FINDINGS.md`). Work confined to
+`shell/shadow_primes/orbit/`, exact integer arithmetic, no commits.
+Full findings + verdict: `shell/shadow_primes/orbit/ORBIT_FINDINGS.md`.
+This entry is the receipt.
+
+**Scripts run (in order), each artifact-producing:**
+1. `orbit_harness.py` — 20,004 odd starts (20,000 pseudo-random in
+   [1,10^6), seed 20260705, + deep starts 27/703/6171/837799), 0
+   failures, 919,575 total odd-steps, primes {5,7,11,13,17,19,23,29,
+   31,37,41,43,47,53,59,61,67}. Histograms x mod p (pre-image residue)
+   at every step + hit counts. → `orbit_stationary.json`. Runtime 7.2s.
+2. `orbit_harness2.py` — same seed/sample, adds per-trajectory hit-rate
+   (20,004 independent units) for a non-autocorrelated CI, replicating
+   SHADOW's own conservative-CI method at ~4x its N. → `orbit_stationary2.json`.
+   Runtime 7.4s. Cross-checked: `hole` values identical to 1e-9 between
+   the two harness passes (no implementation divergence).
+3. `invariants.py` — first invariant pass, includes discrete-log-based
+   features. → `invariants.json`.
+4. Basis-independence check (inline, not a separate artifact file):
+   computed `dlogh - dlog2 mod (p-1)` under all 6 primitive roots of
+   p=19 — range [0.056, 0.944], i.e. NOT well-defined. All dlog-based
+   features in `invariants.py`/`correlate.py` discarded as artifacts.
+5. `invariants2.py` — corrected pass, basis-independent invariants only
+   (ord(2), ord(3), ord(h_p), primitivity, QR/Jacobi symbol, gcd of
+   orders, raw p). → `invariants2.json`.
+6. `correlate.py` — Task 2 cross-sample correlation (this round's hole
+   vs SHADOW_FINDINGS.md Table 1's independent-sample hit-deviation,
+   7 shared primes) + Task 3 correlations (17 primes). → `correlate.json`.
+   Result: r=0.9729 (6/7 sign match) for Task 2; max |r|=0.30 (p not
+   significant, n=17) for every Task 3 invariant.
+7. `scipy.stats.pearsonr/spearmanr` re-check (inline) on the 5 leading
+   Task-3 candidates — none below p=0.05 at n=17.
+8. Operator construction, 5 iterations, each a diagnosed dead end or
+   partial result (kept, not deleted, per "honest walls" convention):
+   - `operator.py` (unrun stub, superseded before execution — see .py
+     for the sympy/eigenvector-based design notes)
+   - `operator2.py` — naive power iteration on exact odd-residue map
+     mod M=p·2^K → converges to ~100% mass at true fixed point x=1
+     (degenerate). Artifact: `operator_p19_K14.json`.
+   - `operator3.py` — attempted QSD by absorbing direct-predecessors of
+     1. Found survival eigenvalue locked at 1.000000 — BUG, traced and
+      confirmed: spurious 3-cycle at large wraparound residues
+      (representative integers 131071/196607/294911 for p=19,K=14,
+      M=311296; basin 12/155648 states). Artifact: `qsd_p19_K14.json`.
+   - `operator4.py` — excluded spurious-cycle basin via exact backward
+     BFS (basin of true fixed point = 155636/155648 = 99.9923% of
+     states, p=19,K=14). Confirmed finite-diameter DAG (max distance to
+     absorption = 118 steps, exact BFS distance count). Power iteration
+     necessarily drains to 0 live states; shape plateaus at iterations
+     ~15-70 before finite-size collapse. Artifact: `qsd4_p19_K14.json`.
+   - `operator5.py` — attempted formal QSD via sparse ARPACK dominant
+     eigenvector. `ArpackNoConvergence` (0/1 converged, 5000 iters).
+     Root cause proven directly: `np.linalg.eigvals` on the dense
+     transient sub-matrix (p=19,K=9) gives ALL eigenvalues exactly 0.0
+     — matrix is nilpotent (finite DAG ⟹ no dominant eigenvector
+     exists; not a numerical failure, a structural fact). No artifact
+     file (negative result, captured in this ledger + ORBIT_FINDINGS.md).
+   - `operator6.py` — final: automated plateau-window extraction
+     (iterations 15 to len−10, K=16) for the 7 SHADOW-shared primes.
+     → `operator_plateau_K16.json`. Runtime 20.5s for all 7 primes.
+     Result: r=0.922 vs empirical hole, 6/7 sign match, systematic
+     ~2-2.5x magnitude overshoot.
+
+**Gate results / honest walls:**
+- Task 2 (hole vs measured deviation): PASS, r=0.973, tight cross-sample
+  replication (but noted as a tautological check — hit-density and
+  stationary mass at h_p are the same measured quantity by construction;
+  the real test was cross-sample agreement, which passed).
+- Task 3 (invariant search): WALL — no basis-independent invariant
+  reached significance (max |r|=0.30, p=0.25, n=17). 19's own profile
+  (ord2=ord3=18=p-1) is shared by 5/29/53 with opposite-sign/different-
+  magnitude holes, directly falsifying that profile as sufficient.
+- Task 4 (operator eigenvector): WALL, but instructive — the eigenvector
+  asked for does not exist for the exact finite truncation (proven
+  nilpotent). Heuristic plateau substitute gives r=0.922 (qualitative
+  support), reported as such, not oversold as the proven object.
+- Task 5 (predictive check): 5/7 of {41,43,47,53,59,61,67} measured
+  suppressed vs 1/p, but since Task 3 yielded no significant invariant,
+  there was no genuine ex-ante prediction to test — 5/7 (71%) is not
+  distinguishable from the un-derived base rate (11/17 = 65% of all 17
+  tested primes are suppressed). Reported as non-confirmatory, not
+  claimed as a successful prediction.
+
+**Decisive artifacts:** all of the above, in
+`shell/shadow_primes/orbit/`: `orbit_stationary.json`,
+`orbit_stationary2.json`, `invariants.json`, `invariants2.json`,
+`correlate.json`, `operator_p19_K14.json`, `qsd_p19_K14.json`,
+`qsd4_p19_K14.json`, `operator_plateau_K16.json`, plus all `.py`
+scripts (kept, including the 4 superseded operator attempts, per the
+"honest walls, bugs caught" convention). No commits made. CPU only;
+peak RSS well under 1GB (largest state space: p=23,K=16 → 753,664
+states, dense-array numpy operations, few seconds per run).
+
+## SHADOW-HARMONICS — Prime-anomaly census + merge-tail duplication bug (Sonnet exec, 2026-07-05)
+
+### 2026-07-05 - Full census (all primes 5-500) + harmonic-predictor test
+**Status:** complete
+**Work done:**
+- Read work order `shell/shadow_primes/harmonics/HARMONICS_ORDER.md` and
+  policy `shell/LEDGER_SYNTHESIS_POLICY.md`. Reused the established
+  shadow-prime mechanism (hit iff p | 3x+1, baseline 1/p) from
+  `shell/shadow_primes/harness.py` / `SHADOW_FINDINGS.md`.
+- Registered the FROZEN PREDICTION before any fitting, per order: p=19
+  suppression magnitude conjectured = (53/84)^9 = 0.015848.
+- Built `harmonics/census_harness.py`: sieve all primes to 500, split
+  FIT band [5,200] (44 primes) vs HELD-OUT band (201,500] (49 primes,
+  touched only by the frozen/fitted predictor, never used to fit
+  anything). Sampled 22,004 independent odd-trajectory starts (seed
+  20260705, uniform in [1, 2×10^6) plus the 4 canonical deep starts
+  27/703/6171/837799). 0 failures to converge (cap 200,000 odd-steps),
+  1,057,188 total odd-steps, runtime 8.5s. Artifact:
+  `harmonics/census_results.json` (per-trajectory hit/step records for
+  all 93 tracked primes, ~20.8MB).
+- Built `harmonics/census_analyze.py`: block-bootstrap CI (10,000
+  resamples, vectorized via a shared (n_boot × n_traj) resample-count
+  matrix @ hit-count vector, seed 42) over TRAJECTORIES as the
+  independent sampling unit — this was the correction SHADOW_FINDINGS.md
+  §Caveat already flagged (pooled-step CIs are anti-conservative by
+  100-1000x from within-trajectory autocorrelation). Also computed
+  harmonic predictors (ord(2 mod p), ord(3 mod p), ord2==ord3, p mod 53,
+  divisibility into heartbeat convergents 53/84/306/485/665/8/5/19/12/
+  65/41, p | 2^a-3^b resonance search a,b≤60), the (53/84)^k magnitude
+  fit, and Pearson cross-correlations. Artifact:
+  `harmonics/census_analysis.json`, full run log
+  `harmonics/census_analyze_output.txt`.
+- **First-pass result (later shown to be an artifact, see bug below):**
+  ALL 93 primes (100%, both fit and held-out bands) flagged
+  "CI-robust anomalous" vs 1/p, with |reldev| scaling up systematically
+  with p (Pearson r(|reldev|,p)=+0.50), and p=19 ranking only 10th by
+  z-score / not extreme by |reldev| (p=13 was largest |dev| in the fit
+  band; several held-out primes — 433, 479, 347, 293 — showed 2-4x
+  enrichment over 1/p, far larger than 19's -28.5%). This contradicted
+  the "19 is the extreme" premise baldly enough (and the 100%-flagged
+  rate was suspicious enough — real structural anomalies should not be
+  literally universal) to trigger a bug hunt before reporting it as the
+  census result.
+
+**Paths abandoned & WHY:**
+- Abandoned reporting the raw pooled-hit-count census as the anomaly
+  ranking. Diagnosis (see Bugs below) found the underlying step data
+  itself is contaminated by Collatz merge-tree duplication, which
+  inflates rare-prime hit counts by up to 4x via a handful of shared
+  deep states — not a residue-density effect. Any ranking built
+  directly on `census_results.json`'s pooled/per-trajectory hit counts
+  (including the bootstrap CI approach, which correctly handles
+  trajectory-level autocorrelation but does NOT correct for cross-
+  trajectory state-sharing) is invalid for this purpose. Superseded by
+  the deduplicated-state census (below).
+- Abandoned the naive "reldev ranking" and "z-vs-bootstrap-CI-exclusion"
+  as anomaly criteria even before finding the duplication bug, once it
+  became clear |reldev| and z both scale mechanically with p (rarer
+  events → larger relative sampling swings AND larger z given fixed
+  absolute precision) — neither is comparable across primes of very
+  different magnitude without a shared reference. Cross-checked against
+  an analytic null (Binomial(steps_i, 1/p) per trajectory) and a 500-
+  replicate simulated null to confirm the scaling was a real sampling-
+  math effect, not a code bug in the CI computation itself — see next
+  bug entry for where the REAL bug was.
+
+**Bugs/issues:**
+- **BUG (major, changes the census's central conclusion): Collatz
+  merge-tree duplication inflates rare-prime hit density.** Caught by:
+  the 100%-anomalous rate looked wrong on its face (a real anomaly
+  should be a minority), so before writing up "433 shows 4x enrichment"
+  as a finding, walked 30 of its hit trajectories directly
+  (`harmonics/dedup_census.py`-adjacent ad hoc check, not saved as a
+  separate script — reproduced inline in this session) and found ALL
+  10 checked trajectories hit p=433 at the exact same value m=1732.
+  Systematic check across all 22,004 trajectories: **90.5% of p=433's
+  total hit count (10,068 hits) comes from that single shared m-value**;
+  same pattern for p=479 (90.3% from m=958). Root cause: Collatz odd-
+  trajectories from independent random starts are NOT independent
+  samples of (m mod p) — they descend through a shared, heavily-
+  branching merge tree toward 1, and most starts pass through the SAME
+  small set of deep states (~41% of all 22,004 trajectories pass
+  through the single value m=1732). Quantified directly: of 1,057,188
+  total odd-steps across all trajectories, only **203,003 (19.2%) are
+  DISTINCT x-values** — over 80% of "steps" in both this census AND
+  the earlier-established `shell/shadow_primes/results.json` sample are
+  duplicate revisits of shared merge-tree nodes, not independent trials.
+  This is a pre-existing, unnoticed flaw in the ORIGINAL shadow_primes
+  harness design (`harness.py`/`SHADOW_FINDINGS.md`), not new to this
+  round — it was simply invisible there because the 7 hand-picked
+  primes (5,7,11,13,17,19,23) are common enough that their hit sets
+  are spread over 10,000+ distinct m-values each (17-40% concentration
+  in top-5 values) and the duplication bias is small relative to their
+  real per-step signal; it becomes dominant for rare, large primes
+  where a single popular merge-node can be 90%+ of the total count.
+  **Fix:** built `harmonics/dedup_census.py` — walks all 22,004
+  trajectories, collects the SET of distinct x-values ever visited
+  (deterministic map means each x has one canonical successor m=3x+1,
+  so this is well-defined regardless of which trajectories reach it),
+  and computes all hit densities over this deduplicated 203,003-edge
+  set, each state counted EXACTLY ONCE. Block-bootstrap CI (5,000
+  resamples) over 200 chain-depth-decile blocks (proxy for residual
+  chain-position dependence within the deduplicated edge set).
+  Artifact: `harmonics/dedup_census_results.json`, log
+  `harmonics/dedup_census_output.txt`.
+- Cross-check performed to confirm the dedup fix, not just the bug:
+  block-bootstrap CI on the deduplicated set matches a naive iid-Wilson
+  CI on the same edge count almost exactly (e.g. p=19: block-boot
+  [0.05079,0.05296] vs naive-Wilson [0.05095,0.05288]) — confirms that
+  once duplication is removed, residual chain-autocorrelation among
+  distinct states is negligible, i.e. the fix addresses the dominant
+  bias directly rather than trading it for a different one.
+- Verified via independent split-half stability BEFORE finding the dedup
+  fix (to rule out "it's just noise from a few lucky trajectories"):
+  p=433, 479, 347, 293, 181, 251 all reproduce their (contaminated)
+  enrichment ratio to 3 significant figures across two independent
+  11,002-trajectory halves — ruling out a fluke/coding-typo explanation
+  and confirming the effect was real but mis-attributed (real
+  duplication artifact, not real residue-density signal, not random
+  noise either).
+
+**Course corrections:**
+- Original plan was to report the pooled/bootstrap census directly as
+  the anomaly ranking (as literally specified in HARMONICS_ORDER.md
+  task 1). Course-corrected mid-round: computed AND cite the flawed
+  first-pass numbers in this ledger (for the record — see "First-pass
+  result" above) but do NOT use them for the final verdict; report only
+  the deduplicated numbers as the census. This is a deviation from a
+  literal reading of the task list (which didn't anticipate the
+  duplication issue) in favor of the standing "adversarial-honest, do
+  not reverse-fit" directive and the "9/4 was a reverse-fit artifact,
+  don't repeat that failure mode" warning already on record for this
+  session — an anomaly ranking built on contaminated hit-counts would
+  have been exactly that failure mode one level down (declaring merge-
+  tree popularity a "harmonic" without checking the measurement itself).
+
+**Evidence:**
+- `harmonics/census_harness.py`, `harmonics/census_analyze.py`,
+  `harmonics/dedup_census.py` (all three kept, including the
+  superseded first-pass analyzer, per "honest walls" convention).
+- `harmonics/census_results.json` (22,004 traj, 1,057,188 steps, 93
+  primes tracked, ~20.8MB).
+- `harmonics/census_analysis.json` + `harmonics/census_analyze_output.txt`
+  — the CONTAMINATED first-pass numbers (kept for the record / bug
+  documentation, NOT the reported result).
+- `harmonics/dedup_census_results.json` + `harmonics/dedup_census_output.txt`
+  — the CORRECTED result (203,003 distinct states, 93 primes): 2/93
+  primes anomalous at 95% CI (p=283: reldev=-0.0855; p=313:
+  reldev=-0.0888), both in the held-out band, both marginal, vs an
+  expected chance false-positive count of 4.65 (93 × 0.05) — i.e.
+  FEWER flagged than pure chance predicts. Zero anomalies in the 44-
+  prime FIT band. p=19 corrected: rate=0.051911, CI=[0.050793,
+  0.052956], 1/19=0.052632 (inside CI, NOT anomalous). p=13 corrected:
+  rate=0.077698, CI=[0.076529,0.078873], 1/13=0.076923 (inside CI, NOT
+  anomalous).
+- Frozen-prediction test on corrected data: p=19 measured |dev| =
+  0.000721 vs predicted (53/84)^9 = 0.015848 — ratio 0.045 (measured is
+  4.5% of predicted magnitude). Corrected dev-CI = [-0.001838,
+  +0.000325], does not bracket ±(53/84)^9. **MISS, not close.**
+- Harmonic-predictor Pearson correlations (44-prime fit band,
+  |reldev| as target): r(ord2)=+0.275, r(ord3)=+0.108,
+  r(dist-to-0-mod-53)=+0.045, r(p itself)=+0.331 (residual sample-size
+  confound, not signal). None load-bearing; none survive as a usable
+  predictor given zero real anomalies to predict.
+- (53/84)^k fit for the 2 remaining held-out anomalies: p=283 → k=5.340,
+  p=313 → k=5.259 — neither near-integer, neither near the frozen k=9,
+  no shared value between them (would need k to cluster for a "law").
+
+**Not complete until:**
+- The corrected (dedup) census used only 5,000 bootstrap resamples over
+  200 coarse depth-decile blocks (vs 10,000 resamples/trajectory-level
+  in the first pass) — adequate for this verdict (CIs already matched
+  the naive-iid cross-check closely) but a higher-resolution re-run
+  (finer depth blocks, more resamples) would tighten the p=283/p=313
+  boundary calls if a future round wants to chase those two specific
+  primes further. Not done here — the multiple-testing math (2/93 vs
+  4.65 expected) already makes further chasing low-priority.
+- The dedup fix was NOT back-ported to re-audit the ORIGINAL
+  `shell/shadow_primes/results.json` / `SHADOW_FINDINGS.md` numbers
+  (only referenced here as "same underlying flaw, smaller effect for
+  those 7 primes"). If SHADOW_FINDINGS.md's specific per-prime numbers
+  get reused again as an "established" baseline elsewhere, they should
+  be re-derived on a deduplicated sample first.
+- Did not attempt to characterize the shared merge-tree/duplication
+  structure itself (e.g. what fraction of the tree is a single
+  "trunk", how deep the typical merge point is) — out of scope for
+  this order, flagged here as a distinct, separate research object
+  (the merge-tree shape is itself interesting and NOT the same
+  question as the harmonic-prime search this order asked for).
+
+**Next required update:** none required by this order (verdict below is
+final for HARMONICS_ORDER.md's scope). If a future round wants to
+re-open the p=283/p=313 boundary cases or formally characterize the
+merge-tree duplication structure, that is new work, not a continuation
+of this entry.
+
+### 2026-07-05 - One-Step Descent Species: mission gates 1-4
+**Status:** complete (gates 1-3 mandatory, all PASS exactly; gate 4
+optional/exploratory, partial result + honest wall, as specified)
+
+**Work done:**
+- Read `shell/descent_rule/DESCENT_RULE_SPEC.md` in full (theorem,
+  elementary proof, 4-gate mission brief) and this policy file before
+  writing any code, per standing directive.
+- Built `shell/descent_rule/descent_common.py`: shared helpers
+  `species_member(k)` (constructs x=(4^k-1)/3 via exact integer
+  arithmetic, asserts exact divisibility by 3), `one_odd_step(x)` (brute
+  ground-truth one odd-step S(x) via a divide-out-factors-of-2 while
+  loop on `3*x+1`), `is_power_of_two(n)` (bitwise `n & (n-1) == 0`),
+  `is_one_step_species(x)` (the closed-form certifier: `n=3x+1`, power-
+  of-two test, `j=n.bit_length()-1`, `j` even => `(True, j//2)` else
+  `(False, None)` -- no loop, no trajectory), and a trivial `Timer`
+  context manager. Raised `sys.set_int_max_str_digits(2_000_000)` at
+  module import (Python 3.11+ guards `str(int)` above 4300 digits;
+  this mission legitimately builds integers with hundreds of thousands
+  of digits and needs `str()`/`len(str())` purely for DISPLAY of digit
+  counts -- no arithmetic in the mission ever routes through `str()`).
+- Gate 1 (`shell/descent_rule/gate1_construction.py`): for k at
+  milestone values 1..100,000 then doubling from 100,000, constructed
+  x=(4^k-1)/3 and checked all four required conditions per k: exact
+  `3*x+1 == 4**k`, bitwise power-of-two test, even exponent, and a REAL
+  one-odd-step brute simulation (`one_odd_step`, not the closed-form
+  shortcut) landing on 1. Pushed until per-k wall time exceeded a 5s
+  budget.
+- Gate 2 (`shell/descent_rule/gate2_exclusivity.py`): built the species
+  set below 10^7 (12 members, k=1..12), then iterated ALL 5,000,000 odd
+  x in [1,10^7) with a brute one-odd-step computation and compared
+  membership in the species set vs brute `S(x)==1`, counting false
+  positives/negatives. Then generated 18 random huge odd x (seed
+  20260705, sizes ~200 to ~3000 decimal digits, 6 target sizes x3
+  repeats) and confirmed brute `S(x)!=1` for all of them, cross-checked
+  against the closed-form test inline as a sanity extra (not required
+  by spec, added for free since the closed-form test is cheap).
+- Gate 3 (`shell/descent_rule/gate3_certifier.py`), four parts:
+  (1) re-ran the full 5,000,000-x sweep plus the same 18-huge-x set
+  (same seed, re-derived not re-read) comparing `is_one_step_species`
+  against brute `one_odd_step`, counting mismatches; (2) certified 6
+  true species members at k=1662..10000 (1001 to 6021 decimal digits);
+  (3) rejected 10 non-members at 1000+ digits (6 "near-species" values
+  offset by +-2,+-4,+-100 from a true member, 4 random large odds),
+  cross-checked each against brute one-step too; (4) timed
+  `is_one_step_species` over 6 digit-length points (10, 100, 1000,
+  10000, 100000, 300000 target decimal digits), 5001 repeats each,
+  reporting per-call time and per-call-time/digit-count ratio.
+- Gate 4 (`shell/descent_rule/gate4_tower.py`), optional/exploratory,
+  budgeted to a small fraction of total effort: brute-searched all odd
+  x < 2,000,000, walking the REAL odd-step trajectory from each x and
+  classifying it by clean-descent length n (n = count of strictly-
+  decreasing/"clean" steps per the spec's mod-4 drop lemma, verified
+  directly at each step rather than trusted blindly, before the chain
+  either reaches 1 or breaks on a non-clean step); grouped results by n
+  (n=0..14 all populated in-range); checked congruence-class structure
+  of the n=1, n=2, n=3 buckets modulo 4/8/16/32/64/128/256; cross-
+  checked the n=1 bucket against the known closed form (4^k-1)/3, k>=2
+  (k=1/x=1 itself is the n=0 base case by this gate's own convention,
+  see Bugs below); attempted a reverse-construction angle -- for each
+  n=1-species-tower-top x=(4^k-1)/3 (k=1..11), searched for the unique
+  clean one-step predecessor x'=(x*2^m-1)/3 with smallest m>=2 making
+  it an odd integer ===1 mod 4, verified forward via brute simulation
+  that S(x')==x exactly.
+
+**Paths abandoned & WHY:**
+- Did not attempt a sieve/vectorized (e.g. numpy) implementation of
+  gate 2's 5,000,000-x sweep. A pure-Python loop with native big-int
+  arithmetic completed the full sweep in 2.479s (gate 2) / 4.263s
+  (gate 3's re-run) -- well within the "at most a few minutes" budget
+  the task set, so the added complexity and risk of a vectorization
+  bug (numpy has no arbitrary-precision int type, so any numpy path
+  would need int64 and silently truncate for x near the top of the
+  10^7 range's `3x+1` intermediate -- not actually a risk at this size,
+  but a needless one) was not worth taking for no measured benefit.
+- Did not pursue gate 4's congruence-class search past mod 256, and did
+  not extend the brute range past x<2,000,000. This is the explicit
+  20%-effort cap on gate 4 from the mission brief; see "Not complete
+  until" below for what a deeper pass would need.
+- In gate 4 Part 3 (reverse construction), for k=3,6,9 (i.e. k===0 mod
+  3) no valid m in the searched range [2,40) produced an integer x'
+  ===1 mod 4 with S(x')=x. Did not widen the m-search range or chase
+  why multiples of 3 fail differently -- flagged as an observation, not
+  chased further, to stay inside the gate-4 time budget. This looks
+  like real structure (not a bug: the search space m in [2,40) is wide
+  and the found cases all resolve at m=2 or m=3, so a genuine miss at
+  higher m is implausible but not proven impossible) rather than a
+  harness defect, and is reported honestly as unresolved.
+
+**Bugs/issues:**
+- **BUG (harness, gate 3): Python 3.11+ int-to-str digit limit.**
+  Gate 3 part 2/4 call `len(str(x))` to report decimal digit counts for
+  x with 1000-300,000+ digits; Python's default
+  `sys.set_int_max_str_digits` cap is 4300 and raised
+  `ValueError: Exceeds the limit (4300 digits) for integer string
+  conversion` the first time a test integer exceeded it (during gate 3
+  part 2 at k=10000-ish testing). Caught immediately by the traceback
+  on first run (not a silent failure). Fix: raised the cap to 2,000,000
+  in `descent_common.py` at import time, with a comment noting this
+  affects DISPLAY/reporting only -- confirmed by inspection that no
+  certifier/constructor logic anywhere in this mission's 4 gate scripts
+  routes size/membership decisions through `str()`, only `bit_length()`
+  and native int arithmetic (`*`, `+`, `//`, `%`, `&`). Gate 1 avoided
+  this bug by construction (it estimates decimal digits from
+  `bit_length()*0.30103` rather than calling `str()`), which is why it
+  did not surface there first.
+- **BUG (harness, gate 4 cross-check, cosmetic): off-by-one in n=1
+  known-set comparison.** First run of gate 4 reported
+  "n=1 cross-check vs closed form ... found_set == known_set: False
+  (found=10, known=11)" -- looked like a real disagreement with the
+  proven theorem, which per the standing directive means "stop and
+  diagnose the harness," not doubt the math. Diagnosis: x=1=(4^1-1)/3
+  is definitionally ALREADY at 1, so `clean_descent_length(1)` correctly
+  classifies it as n=0 (zero odd-steps taken), not n=1 -- but the
+  cross-check's comparison-set builder started at k=1 (including x=1)
+  while the brute search's n=1 bucket only ever contains k=2..11
+  (species-tower-tops that take exactly one real step to reach 1).
+  Fixed by starting the comparison set at k=2 to match the bucket
+  convention; re-ran, confirmed found_set == known_set: True
+  (found=10, known=10) exactly. This was a bucket-definition
+  bookkeeping bug in the gate-4 exploratory cross-check code, NOT a
+  disagreement with the theorem (gates 1-3, which are the mandatory,
+  frozen-expectation gates, never showed this discrepancy in any form).
+
+**Course corrections:**
+- None at the mission-structure level -- all 4 gates were run as
+  specified, in order, with the two bugs above caught and fixed inline
+  (via the harness's own checks/tracebacks) before proceeding, per the
+  spec's explicit "a failure means a bug in the harness, stop and
+  diagnose" instruction. Gate 4's scope was kept deliberately narrow
+  (brute range x<2,000,000, congruence check only to mod 256, m-search
+  only to 40) from the start, matching the mission brief's 20%-effort
+  cap for this optional gate, rather than a correction made mid-run.
+
+**Evidence:**
+- Gate 1: `shell/descent_rule/gate1_construction.py`,
+  results `shell/descent_rule/gate1_results.txt`. Largest k verified:
+  **400,000**. Largest x.bit_length() verified: **799,999** bits
+  (~240,823 decimal digits). All 4 per-k checks PASS at every milestone
+  k (1,2,5,10,50,100,500,1000,1500,2000,5000,10000,20000,50000,100000)
+  and at the pushed doublings (200000, 400000). Total gate wall clock:
+  22.3001s. Peak RSS (RUSAGE_SELF.ru_maxrss): 12.64 MB. Per-k time at
+  k=400,000: 15.947377s (exceeded the 5s push-budget, which is why the
+  push stopped there).
+- Gate 2: `shell/descent_rule/gate2_exclusivity.py`, results
+  `shell/descent_rule/gate2_results.txt`. Species members below 10^7:
+  **12** (k=1..12, values 1,5,21,85,341,1365,5461,21845,87381,349525,
+  1398101,5592405). Odd x tested: **5,000,000** (all odd x in
+  [1,10,000,000)). Brute S(x)=1 count: **12**. Species-set-membership
+  count: **12**. **False positives: 0. False negatives: 0.** Exact set
+  match: True. Sweep wall clock: 2.479s (2,016,577 x/sec). 18 random
+  huge odd x (seed 20260705, bit_lengths 665 to 9966, i.e. ~200 to
+  ~3000 decimal digits): all 18 confirmed brute S(x)!=1 (and, as a free
+  extra check, all 18 also independently confirmed non-species by the
+  closed-form test).
+- Gate 3: `shell/descent_rule/gate3_certifier.py`, results
+  `shell/descent_rule/gate3_results.txt`. Part 1: 5,000,000 odd x<10^7
+  re-tested, **0 mismatches** between `is_one_step_species` and brute
+  `one_odd_step`; plus the same 18 huge-x samples, **0 mismatches**.
+  **Total: 0 mismatches across 5,000,018 tests. Agreement rate:
+  100.0000000000%.** Part 2: 6 true species members certified correctly
+  at k=1662 (1001 digits) through k=10000 (6021 digits) -- all returned
+  `(True, k)` with the exact matching k. Part 3: 10 non-members (6
+  "near-species" at 3399/3322 bits, 4 random at 1000-3000 target
+  digits) all correctly rejected `(False, None)`, cross-checked against
+  brute one-step (`S(x)!=1` for all 10). Part 4 timing table (5001
+  repeats/point): 10 digits -> 0.397us/call (0.0397us/digit); 100
+  digits -> 0.479us (0.00479us/digit); 1000 digits -> 0.969us
+  (0.000969us/digit); 10,000 digits -> 8.172us (0.000817us/digit);
+  100,000 digits -> 168.938us (0.001689us/digit); 300,000 digits ->
+  213.106us (0.000710us/digit). The per-call/digit ratio stays within
+  roughly a 5x band (0.0007 to 0.04 us/digit) across 4 orders of
+  magnitude of digit count, and does NOT grow super-linearly -- direct
+  empirical confirmation of O(digits)-or-better scaling, not
+  trajectory-simulation behavior (which would show unbounded,
+  digit-independent step counts for some inputs).
+- Gate 4: `shell/descent_rule/gate4_tower.py`, results
+  `shell/descent_rule/gate4_results.txt`. Brute range: odd x <
+  2,000,000. Clean-descent-length population: n=0:1, n=1:10, n=2:33,
+  n=3:68, n=4:126, n=5:144, n=6:181, n=7:198, n=8:131, n=9:110, n=10:45,
+  n=11:31, n=12:14, n=13:4, n=14:1 members. n=1 bucket cross-checked
+  EXACTLY against closed form (4^k-1)/3, k=2..11: found_set==known_set
+  True (10==10), after the off-by-one fix above. n=2 (33 members) and
+  n=3 (68 members) congruence-class residues checked mod
+  4/8/16/32/64/128/256: NO single residue class (or clean small union)
+  found at any modulus tested -- e.g. n=2 mod 256 already shows 8
+  distinct residues out of 256, n=3 mod 256 shows 15 distinct residues,
+  neither collapsing to one class the way n=1 collapses to exactly one
+  residue mod 4^k. Reverse-construction (Part 3): for n=1-species-tops
+  k=1,2,4,5,7,8,10,11 a unique clean one-step predecessor x' was found
+  at m=2 (k===1,4,7,10 mod... pattern: k not≡0 mod 3, k even relative
+  offset) or m=3, each verified by exact forward simulation
+  (S(x')==x confirmed); for k=3,6,9 (k≡0 mod 3) NO valid predecessor
+  was found for m in [2,40).
+
+**Not complete until:**
+- Gates 1-3 are the mandatory, frozen-expectation gates and all PASSED
+  EXACTLY (0 false positives, 0 false negatives, 100.0000000000%
+  certifier agreement) -- these are DONE per the spec's own success
+  criterion.
+- Gate 4 is explicitly optional/exploratory per the spec ("no frozen
+  prediction... report the wall honestly"). What remains open, if a
+  future round wants to push further: (a) extend the n=2/n=3
+  congruence search to higher moduli (512, 1024...) and a larger brute
+  range to see if the residue set is merely "not yet converged" vs
+  genuinely non-single-class; (b) chase why k≡0 mod 3 species-tops have
+  no clean one-step predecessor in gate 4 part 3's search window --
+  widen the m range past 40 and/or prove no m exists via a closed-form
+  argument on 3 | (x*2^m - 1) combined with the ===1 mod 4 constraint;
+  (c) attempt an n=2/n=3 analogue of the reverse-recurrence
+  x_{k+1}=4x_k+1 that generates the FULL n=1 species, rather than only
+  characterizing single tower-tops.
+- Gate 1 was pushed to k=400,000 (x at 799,999 bits) using a fixed 5s
+  per-k push-budget and a 5,000,000 hard k-cap; neither budget nor cap
+  was reached (the 5s budget triggered the stop, well under the
+  5,000,000 cap) -- a future round with a larger time budget could push
+  further, this was not a hard ceiling of the method, just this run's
+  time allocation.
+
+**Next required update:** none required by DESCENT_RULE_SPEC.md's
+mandatory scope (gates 1-3 all passed exactly, matching the frozen
+expectation). If a future round wants to chase gate 4's open threads
+(n=2/n=3 congruence closure, the k≡0 mod 3 predecessor gap, or a
+generalized k-step reverse recurrence), that is new work building on
+this entry, not a continuation of an unfinished gate.
+
+### 2026-07-05 - Backward Basin Certificate: mission gates 0-3 (BASIN_CERTIFICATE_SPEC.md)
+**Status:** complete
+**Work done:**
+- Gate 0a: reconstructed the layer-0 species (4^k-1)/3, k=1..30, via
+  `descent_common.species_member` (already on disk from the prerequisite
+  DESCENT_RULE mission), confirmed S(x)=1 in one odd-step AND x≡1(mod4)
+  for all 30 members. Script: `shell/descent_rule/gate0_gate1.py`.
+- Gate 0b: reproduced the mod-3 predecessor-existence rule by DIRECT
+  construction — for 6 odd t values in each of the 3 residue classes mod
+  3 (18 t total), computed x=(t*2^j-1)/3 for j=1..20, tested integrality
+  and oddness explicitly at every j, and cross-checked every found
+  predecessor x by re-applying the forward odd-map and confirming
+  S(x)==t exactly. Result: t≡0(mod3) -> 0 predecessors found across the
+  full j=1..20 range for all 6 t's tested; t≡1(mod3) -> predecessors at
+  EVEN j only (j=2,4,...,20, all 10 present for all 6 t's); t≡2(mod3) ->
+  predecessors at ODD j only (j=1,3,...,19, all 10 present for all 6
+  t's). Zero exceptions.
+- Gate 1: derived LAYER 1/2/3 by TWO independently cross-checked
+  methods — (a) backward construction x=(t*2^j-1)/3 over the prior
+  layer's t-members and admissible j (by t mod 3), and (b) forward
+  ground-truth enumeration (every odd x < BOUND, test whether S^n(x)
+  lands in the species via the closed-form `is_one_step_species`
+  applied to the n-th iterate). LAYER 1 backward-vs-forward sets matched
+  after accounting for the literal-spec definition including any
+  layer-0/layer-1 overlap (11 of LAYER 0's own 30 constructed members,
+  those with S(x) also landing back in species after one more step,
+  fall inside LAYER1's literal membership too — the spec's "LAYER n =
+  odd x with S(x) in LAYER(n-1)" does not exclude x already in
+  LAYER(n-1) itself). LAYER 2's backward-from-(truncated)-LAYER1 set
+  matched its forward-ground-truth set EXACTLY (138==138) once LAYER 1
+  was taken as literal-spec (with overlap). Congruence-class fit
+  (residues mod 4,8,16,...,1024) computed for LAYER 1, 2, 3 via
+  `fit_report()`/`residues_mod()`.
+- Gate 2: coverage census over all 5,000,000 distinct odd x in
+  [1,10^7), one forward-simulation per distinct x, cap MAX_STEPS=200,
+  membership tested at every odd-step via the closed-form
+  `is_power_of_two(3*cur+1)` + even-exponent test (no separate
+  trajectory-simulation call inside the test itself). density(N)
+  computed for N=0..200 (full table, 201 rows) via a difference-array
+  cumulative count, written to
+  `shell/descent_rule/gate2_density_table.csv`.
+- Gate 3: characterized the complement (112 odd x out of 5,000,000
+  with hit_step=None at N=200) — checked x≡0(mod3) specifically (can
+  never be waypoints, only starts) and a residue-class breakdown mod
+  2,3,4,8,9,16,32 for none_count and max_finite_hit per class.
+- Script: `shell/descent_rule/gate2_gate3_census.py`. Two full runs:
+  first run (`gate2_gate3_run.log` v1, superseded) surfaced the memo
+  cap-bypass bug below and was killed mid-way through the (slow,
+  unoptimized) residue breakdown before writing final results; second
+  run (current `gate2_gate3_run.log`, `gate2_gate3_results.txt`,
+  `gate2_density_table.csv`) is the one cited throughout this entry —
+  it re-ran the FULL census from scratch (not resumed) after both the
+  correctness fix and the residue-breakdown speed fix, so nothing in
+  the cited numbers passed through the buggy code path.
+
+**Paths abandoned & WHY:**
+- Considered generating LAYER n purely by backward construction alone
+  (spec's own suggested method) without a forward ground-truth
+  cross-check. Abandoned as the SOLE method: backward construction from
+  a necessarily-TRUNCATED prior-layer member list can miss small
+  members of the next layer that would only be generated by t-values
+  outside the truncation window (observed directly for LAYER 2 when
+  cross-checking against a LAYER 1 truncated at t<2*10^6 — matched
+  exactly in this run, but the risk is structural, not incidental, so
+  the forward pass was kept as the primary ground truth throughout,
+  backward construction as the cross-check/cheap-generation tool, not
+  the reverse).
+- Did NOT attempt to force LAYER 1/2/3 into a "clean" finite union of
+  congruence classes once the residue-count-vs-modulus data (see
+  Evidence) showed no convergence — per the spec's explicit instruction
+  ("don't force a clean story that isn't there"), reported the actual
+  observed growth instead (see Evidence / SYNTHESIS.md for the verdict).
+- Did not extend Gate 1's census bound past 2,000,000 or push to LAYER
+  4+: LAYER 3 already has 349 members inside that bound (vs LAYER 0's
+  30, LAYER 1's 48, LAYER 2's 138) and shows no sign of the residue-set
+  count leveling off (see Evidence); a LAYER 4 pass would need a
+  materially larger bound to be informative and was judged out of scope
+  given Gate 1's own honest-negative verdict was already clear by
+  LAYER 3.
+
+**Bugs/issues:**
+- **BUG (harness, gate 2/3, correctness-critical, CAUGHT AND FIXED
+  before any cited numbers were produced).** The memoization shortcut in
+  `resolve_hit_step()` originally did `return steps + memo_val, path`
+  whenever the walk hit an already-memoized value, with NO check that
+  `steps + memo_val` stayed within `max_steps`. Since `memo_val` is the
+  exact (unbounded) remaining-steps-to-species from that value's OWN
+  orbit — independent of any particular caller's cap — a later start
+  whose walk passed through an already-memoized value could get a
+  combined total EXCEEDING the nominal 60-step cap used in the smoke
+  test. Caught by direct inspection during a small-scale (odd x<200,000,
+  MAX_STEPS=60) smoke test BEFORE the full 10,000,000-range run: the
+  reported "max observed finite hit_step" was 137, impossible under a
+  60-step cap. Traced by hand-tracing x=703 (memo-based walk returned
+  hit_step=61) against a fresh, no-memo, no-cap direct simulation
+  (confirmed x=703's TRUE first species-hit is at step 61, landing on
+  species member 5) — the memo path was silently ignoring the cap
+  entirely. Fixed by adding an explicit `if memo_val is None or steps +
+  memo_val > max_steps: return None, path` guard before accepting the
+  memo shortcut. Re-ran the same smoke test: max observed finite
+  hit_step correctly capped at exactly 60, and a fresh no-memo
+  resolution of x=703 under the 60-step cap correctly returned None.
+  This bug, if uncaught, would have INFLATED density(N) at every N by
+  crediting some x with a hit_step it could not have reached within the
+  stated cap — exactly the kind of harness bug the mission brief warns
+  "failure means a bug" about, except this is Gate 2/3 (genuine
+  measurement, not a frozen theorem) so the fix was to the accounting
+  machinery, not a reason to doubt any conjecture.
+- **Performance issue (not a correctness bug), gate 3 residue-class
+  report.** The first version of the per-residue-class breakdown
+  (mod 2,3,4,8,9,16,32) re-scanned the FULL 5,000,000-entry hit_steps
+  list once per (modulus, residue) pair — 2+3+4+8+9+16+32 = 74 full
+  linear passes total. This made the reporting step the dominant cost
+  of the whole script (the actual census walk itself took only ~30s;
+  the naive residue breakdown was still running several minutes later
+  and was killed deliberately, see Work done above). Fixed by bucketing
+  ALL residues for a given modulus in a SINGLE pass (accumulate
+  count/none_count/max_finite per residue simultaneously), cutting 74
+  passes to 7. This is a wall-clock-only fix — the per-distinct-x
+  accounting (every x counted in exactly one bucket per modulus, using
+  its own already-resolved hit_step) is unchanged; verified by
+  comparing bucket totals (sum of per-residue counts = 5,000,000 = the
+  full census) after the fix.
+
+**Course corrections:**
+- Killed the first full-scale run mid-execution once it became clear
+  the (still-correct, post-bugfix) residue-breakdown loop would take
+  many more minutes than warranted for a reporting-only step; rewrote
+  that section for O(1)-passes-per-modulus instead of O(residues), then
+  re-ran the ENTIRE script from scratch (not resumed) so every number
+  in this entry comes from one clean, fully-reproducible run.
+- Registered the literal-spec ambiguity around whether LAYER n
+  "excludes" members already in LAYER(n-1) — the spec's own wording
+  ("LAYER n = odd x such that S(x) in LAYER(n-1)") does not exclude
+  overlap, so Gate 1 reports BOTH the literal-spec set (with overlap)
+  and the overlap-excluded "new members only" set, and used the literal
+  set as the one cross-checked against backward construction and
+  carried forward into the congruence-fit tables (see Evidence).
+
+**Evidence:**
+- Gate 0: `shell/descent_rule/gate0_gate1.py`, full output
+  `shell/descent_rule/gate0_gate1_results.txt`. Gate 0a: 30/30 species
+  members confirmed S(x)=1 and x≡1(mod4). Gate 0b: 18 t-values (6 per
+  residue class mod 3), j=1..20 tested exhaustively per t —
+  t≡0(mod3): 0 predecessors found in 6/6 cases; t≡1(mod3): predecessors
+  at all 10 even j's (2..20) in 6/6 cases; t≡2(mod3): predecessors at
+  all 10 odd j's (1..19) in 6/6 cases. Every found predecessor
+  cross-checked S(x)==t exactly, 0 mismatches.
+- Gate 1 layer sizes within census bound 2,000,000: LAYER 0 (species,
+  first 30 constructed members, smallest 8: 1,5,21,85,341,1365,5461,
+  21845) — LAYER 1: 48 members (smallest 15: 1,3,5,13,21,53,85,113,213,
+  227,341,453,853,909,1365) — LAYER 2: 138 members (smallest 15: 1,3,5,
+  13,17,21,35,53,69,75,85,113,141,151,213), backward-construction count
+  EQUALS forward-enumeration count exactly (138==138) — LAYER 3: 349
+  members (smallest 15: 1,3,5,11,13,17,21,23,35,45,53,69,75,85,93).
+  Congruence-class residue counts (distinct populated residues out of m
+  possible), mod 256: LAYER1=12/256 (4.69%), LAYER2=31/256 (12.11%),
+  LAYER3=44/256 (17.19%) — growing both in absolute count and as a
+  FRACTION of the modulus at each successive layer, i.e. NOT converging
+  to a small fixed-size class list. LAYER1 mod4={1,3} (no
+  discrimination at mod4 — covers both odd residues), LAYER2 mod4={1,3},
+  LAYER3 mod4={1,3} (same, mod4 alone never discriminates any of the
+  three layers checked). Full residue tables at every modulus tested
+  (4,8,16,32,64,128,256,512,1024) in
+  `shell/descent_rule/gate0_gate1_results.txt`.
+- Gate 2: `shell/descent_rule/gate2_gate3_census.py`, full log
+  `shell/descent_rule/gate2_gate3_run.log`, results
+  `shell/descent_rule/gate2_gate3_results.txt`, density table
+  `shell/descent_rule/gate2_density_table.csv` (201 rows, N=0..200).
+  Census: 5,000,000 distinct odd x in [1,10,000,000), ONE forward
+  simulation per x (merge-safe by construction — see METHODOLOGY
+  docstring in the script). Wall clock: 30.009s (166,614 x/sec), peak
+  RSS 235.62 MB, final memo size 2,499,968. density(0)=0.0000024
+  (12/5,000,000, the literal species members themselves), density(10)=
+  0.0052352, density(50)=0.5001166, density(100)=0.9628670,
+  density(150)=0.9990890, density(200)=**0.9999776**
+  (4,999,888/5,000,000 covered). Complement at N=200: exactly 112
+  distinct odd x. Complement decay ratios at widening checkpoints
+  (Fibonacci-spaced N=1,2,3,5,8,13,21,34,55,89,200): 1.0000, 0.9999,
+  0.9997, 0.9982, 0.9883, 0.9391, 0.8030, 0.5736, 0.1741, 0.0003 —
+  monotonically shrinking, with the steepest collapse in the tail
+  (N=89->200 alone divides the complement by ~3,315x).
+- Gate 3: same artifacts as gate 2. Complement (112 x) smallest 20:
+  1723519, 2298025, 2585279, ..., 4637979; largest 20: 8842233, ...,
+  9999913 — spread across the full census range, not concentrated at
+  either end. x≡0(mod3) count 1,666,667 of the census, none-count only
+  39 (0.0023% of that subclass) at N=200, max finite hit_step 200 (a
+  cap artifact, not a floor). Per-residue-class table (mod
+  2,3,4,8,9,16,32): every single residue class shows none_count in the
+  single digits to double digits (out of subclass sizes from 165,000 to
+  2,500,000) and max_finite_hit clustering at or just under 200 (the
+  cap) — NO class shows none_count staying flat/large while max_finite
+  also stays flat (which would indicate a hard floor); every class's
+  none_count is small and its max_finite is near the cap boundary,
+  consistent with "these just need a slightly larger N," not with
+  structural exclusion.
+
+**Not complete until:**
+- Gates 0/1 are exact/theorem-level per the spec and both PASSED
+  (0 exceptions in gate 0; gate 1's cross-checks matched exactly where
+  checked). Gate 1's "closed form" question has an HONEST NEGATIVE
+  answer within the scope tested (LAYER 1/2/3 do not collapse to a
+  small fixed congruence-class list; the populated-residue fraction
+  GROWS layer to layer) — this is reported as the actual finding, not
+  chased further into LAYER 4+ (see Paths abandoned).
+- Gate 2/3 are genuine measurement, not theorems: density(200)=0.9999776
+  is exact for the 5,000,000-x census AT CAP N=200. It is NOT a proof
+  that density->1 as N->infinity, nor a proof the 112 remaining x would
+  resolve at some finite larger N (though the per-residue evidence
+  argues strongly against a hard floor). A future round wanting a
+  stronger claim would need: (a) push MAX_STEPS well past 200 on just
+  the 112 residual x (cheap — 112 individual trajectories) to see if
+  they resolve; (b) a LARGER census bound (10^8, 10^9) to test whether
+  the 0.0000224 complement fraction itself keeps shrinking as the
+  census range grows, not just as N grows within a fixed range.
+- This entry's own verdict comparison against the frozen ~70%/~60%
+  conjectures, and the connection (or lack thereof) to the death-shell/
+  capacity picture, is in `SYNTHESIS.md` (see next section), not
+  duplicated here.
+
+**Next required update:** none required by BASIN_CERTIFICATE_SPEC.md's
+mandatory gates (0-3 all executed, gate 0/1 exact, gate 2/3 measured
+honestly against the frozen expectations). If a future round chases the
+open items above (residual-112 individual resolution, larger census
+bound, LAYER 4+ congruence growth), that is new work building on this
+entry.
+
+### 2026-07-05 - Cross-Instrument Synthesis (J1-J4): basin, shell, spectral, corridor
+
+**Status:** complete
+
+**Work done:**
+- Read `renorm_check/shell/SYNTHESIS_FOUR_INSTRUMENTS_SPEC.md` and
+  `renorm_check/shell/LEDGER_SYNTHESIS_POLICY.md` in full before starting,
+  per mandatory instruction.
+- Created `renorm_check/shell/synthesis_four/` and three scripts:
+  `j1_set_compare.py`, `j2_rho_fit.py`, `j3_convergents.py`, each writing
+  its own `j{1,2,3}_output.txt` alongside stdout.
+- **J1**: reconstructed the FULL 112-element basin residual complement
+  (gate2_gate3_results.txt only published smallest/largest 20, not the
+  full 112) by re-implementing gate2_gate3_census.py's exact per-x rule
+  (`descent_common.is_power_of_two` closed-form species test + one-odd-
+  step map), UNMEMOIZED (no cross-x memo — a correctness simplification,
+  not a rule change, since the memo is documented in the census script as
+  a pure speed optimization). Verified the unmemoized reproduction against
+  a partial published checkpoint (see Bugs/issues) before trusting it at
+  full scale (10,000,000). Then computed the death shell's dead set S(m)
+  for m=2..8 at two corridor widths (C=12, C=23) via direct reuse of
+  `shell_probe.py`'s `dead_profile()` and `embedding/automaton.py`'s
+  `run_heartbeat`, and tested every one of the 112 residual x for (a)
+  domain membership (x mod 3 != 0, the shell's domain restriction) and
+  (b) landing in S(m) at m=2..8.
+- **J2**: fit `gate2_density_table.csv`'s complement_density(N), N=0..200,
+  against three forms — (a) A·rho^(N/53) with rho=0.960647 FIXED
+  (per-step rate rho^(1/53) held fixed, only amplitude A free), (b)
+  A·b^(N/53) with b=0.063099 FIXED similarly, (c) A·r^N with r free via
+  ordinary log-linear least squares — over four N-ranges (FULL 0-200,
+  EARLY 0-20, TAIL 150-200, DEEP TAIL 170-200), reported R^2 and RSS on
+  log-complement for each. Also tabulated empirical per-step ratios
+  complement_density(N)/complement_density(N-1) for N=146..200 against
+  the two fixed-rate predictions, and ran a held-out adversarial check
+  (fit free rate on N=150-175, predict N=180-200, report relative error).
+- **J3**: computed continued fractions of log2(3) and 2-log2(3) to 60
+  mpmath digits, listed convergents p_k/q_k for k=0..13 for both, located
+  the exact index of 84/53 (alpha's convergents) and 22/53 (beta's
+  convergents), verified the reciprocal relationship (53/22 is a
+  convergent of 1/beta, not of beta itself — beta's own convergent is
+  22/53), and verified the exact CF-reflection identity connecting
+  alpha's and beta's term lists (beta=2-alpha implies terms
+  [0,1,a1-1,a2,a3,...] when alpha=[1,a1,a2,...] with a1>=2; alpha's a1=1
+  here so the a1==1 merge branch was used instead — see Evidence). Then
+  swept M_edge(C) for C=1..14 and tested exact-match candidates linking
+  C=11 (corridor phase-transition width) to the spectral exponent 6 or
+  convergent-index 6 (M_edge(11)==84? convergent-index==C+1? 11==2*6-1?
+  cumulative partial-quotient sums near index 6? 11 appearing anywhere
+  as a p_k/q_k in either convergent list?).
+- **J4**: synthesized the J1-J3 verdicts into the precise conditional
+  statement (see SYNTHESIS.md entry) naming the one shared obstruction
+  (no fixed-modulus residue-system closure) across all four instruments,
+  with the specific artifact/passage from each instrument that
+  instantiates it.
+
+**Paths abandoned & WHY:**
+- Considered reusing `gate2_gate3_census.py`'s memoized `resolve_hit_step`
+  verbatim (import it directly) to save runtime on J1's reconstruction.
+  Abandoned: the memo dict is a persistent, order-dependent global keyed
+  by first-seen value, and importing/reusing it as a library function
+  inside a fresh script risks subtly different behavior if imported
+  functions were called in a different x-order or with the module-level
+  dict pre-populated by prior module import side effects elsewhere in the
+  synthesis run. Reimplemented an UNMEMOIZED per-x walker instead (slower:
+  ~2m40s vs the original's 30s) using only `descent_common.is_power_of_two`
+  (already-shared, gate-0-audited primitive) so correctness rests on the
+  smallest possible reused surface, then cross-checked it against a
+  published intermediate checkpoint before trusting the full run (see
+  Bugs/issues). This trades performance for an independent, from-scratch
+  verification path — appropriate for an audit whose entire point is
+  cross-checking, not for a production census.
+- Considered treating "sum of partial quotients of alpha's CF up to the
+  84/53 term equals 11" (matches C=11 exactly) as a candidate positive
+  J3 finding. Abandoned after adversarial check: the cumulative-sum
+  sequence (1,2,3,5,7,10,11,16,18,41,43,45,46,47) is monotonically
+  increasing through small integers by construction and was GUARANTEED
+  to pass near any small target somewhere in its run; there is no
+  independent motivation (from either instrument's own math) for "sum of
+  partial quotients up to a specific convergent index" as a meaningful
+  quantity, and the match is a single untested ad hoc statistic with no
+  null-model comparison — structurally the same failure mode as the
+  refuted 9/4 edge-jump law (see SYNTHESIS.md "RED-TEAM VERDICT: the 9/4
+  edge-jump law is an ARTIFACT"). Reported as OPEN/no-relation-found in
+  J3, per the spec's explicit instruction not to repeat that failure
+  mode.
+- Did not attempt to extend J1's residue comparison to m>8 (3^8=6561):
+  S(8) already has 4,009 dead residues out of 4,374 nz residues mod 3^8
+  (91.66% base rate) — pushing m higher only inflates the base rate
+  further (the shell's own P1 result: dead set density grows with m),
+  which would make ANY finite integer set's hit-rate approach 100% by
+  m's growth alone, not by any genuine link to the basin object. Testing
+  further m would not sharpen the J1 verdict, only reproduce the
+  already-quantified base-rate-driven ceiling.
+
+**Bugs/issues:**
+- First J1 correctness check FAILED: an early version's `hit_step_of`
+  reused a `memo` dict across the reconstruction call in a way that
+  produced a plain count of 1 residual x under census bound 2,000,000,
+  contradicting the published log line `... 2,000,000 distinct odd x
+  processed ... none-so-far=12`. Root cause: mismatched units — the
+  census log's checkpoint counts DISTINCT ODD x PROCESSED (the k-th odd
+  number is 2k-1), not literal x-value bound. Fixed by testing at
+  census bound 4,000,000 (= 2*2,000,000-1, the correct x-value bound for
+  "2,000,000 distinct odd x processed") — reproduced none-so-far=12
+  exactly, THEN ran the full bound-10,000,000 reconstruction. This
+  checkpoint cross-check is why the full run was trusted before use;
+  without it the 112-list could have silently been wrong at full scale.
+- No other bugs; each script's output was sanity-checked against a
+  published number before being treated as verdict evidence (J1 against
+  the smallest-20/largest-20 list; J3's CF convergents against F1's
+  published "22/53 convergent of 2-log2(3), next 127/306" claim — both
+  matched exactly, see Evidence).
+
+**Course corrections:**
+- Original plan for J1 was to test containment against a single
+  corridor width C. Changed to testing TWO widths (C=12, C=23) and
+  explicitly confirming `dead_union_12 == dead_union_23` as sets before
+  using either, per P2's own universality claim — this was a stronger,
+  more adversarial check than the minimum the spec required, added
+  because the whole J1 question turns on the dead set being a
+  well-defined single object independent of C.
+- Original plan for J2's form (b) used b's per-m spectral-precision-level
+  rate directly as a per-odd-step rate. Corrected in the write-up (not
+  the fit mechanics) to explicitly flag the unit assumption: b is
+  measured as a per-increment-of-m (precision level) decay in the
+  spectral data, and treating b^(1/53) as a per-ODD-STEP basin rate
+  requires assuming m-increments and heartbeats are the same unit, which
+  is the SAME assumption already implicit in using rho this way, so both
+  (a) and (b) carry an identical unit caveat, stated explicitly rather
+  than silently assumed.
+
+**Evidence:**
+- `renorm_check/shell/synthesis_four/j1_set_compare.py`,
+  `j1_output.txt` (51 lines). Full reconstructed 112-x complement
+  verified IDENTICAL to published smallest-20/largest-20
+  (`descent_rule/gate2_gate3_results.txt` lines 123-124): exact match,
+  `matches published smallest-20/largest-20 exactly: True`. Domain
+  split: 39/112 (34.8%) have x%3==0 (OUTSIDE the shell's domain, which
+  is defined only on r%3!=0, per `shell_probe.py`'s `nz = r % 3 != 0`);
+  73/112 (65.2%) are eligible for comparison. Of those 73: hit rate in
+  S(m) rises from 20/73 (27.4%, m=2) to 70/73 (95.9%, m=8), while S(m)'s
+  OWN base rate among nz residues mod 3^m rises from 33.3% (m=2) to
+  91.66% (m=8) over the same range — i.e. the observed hit rate tracks
+  the base rate, not a fixed excess. Binomial z-score at m=8: expected
+  hits under the null (each of 73 x independently landing in S(8) at
+  its 91.66% base rate) = 66.9, observed = 70, sd = 2.36, z = 1.31 — NOT
+  significant (|z|<2). `dead_union_12 == dead_union_23` confirmed
+  identical (True) at every m=2..8 tested, confirming P2's
+  C-independence claim independently.
+- `renorm_check/shell/synthesis_four/j2_rho_fit.py`,
+  `j2_output.txt` (100 lines). DEEP TAIL (N=170-200, the fairest
+  region): (a) rho-fixed R²=0.0223, RSS=10.89; (b) b-fixed R²=0.9378,
+  RSS=0.693; (c) free rate R²=0.9834, RSS=0.185, r=0.9357. Free rate
+  beats b-fixed by R² margin +0.046 and beats rho-fixed by +0.961; RSS
+  ~3.7x lower than b-fixed and ~59x lower than rho-fixed. rho-fixed is
+  a categorical failure at every N-range tested (R²<0.36 everywhere,
+  R²=0.022-0.026 in FULL/TAIL/DEEP-TAIL). Held-out adversarial check
+  (fit N=150-175, predict N=180-200): systematic -13% to -29% relative
+  error, i.e. even the BEST-performing free-rate fit under-predicts the
+  deep tail once honestly held out — the decay is NOT clean single-rate
+  geometric even in the "fair" tail region. Empirical per-step ratios
+  N=146..200 scatter 0.85-0.97 (mean ~0.93, high step-to-step noise from
+  small integer counts, e.g. complement_count=112 at N=200) — neither
+  rho^(1/53)=0.999243 nor b^(1/53)=0.949203 sits inside that empirical
+  scatter's central tendency; b^(1/53) is the closer of the two (0.9492
+  vs observed range's rough center ~0.93) but still outside most
+  individual-step ratios.
+- `renorm_check/shell/synthesis_four/j3_convergents.py`,
+  `j3_output.txt` (verified against F1's published claim). CF(log2(3))
+  = [1,1,1,2,2,3,1,5,2,23,2,2,1,1]; 84/53 at k=6 exactly. CF(2-log2(3))
+  = [0,2,2,2,3,1,5,2,23,2,2,1,1,55]; 22/53 at k=5 exactly (F1's "next:
+  127/306" also reproduced exactly at k=6). 53/22 is NOT itself a listed
+  convergent of beta=2-log2(3) (only its reciprocal 22/53 is); 53/22
+  IS an exact convergent of 1/beta at k=4. Reflection identity
+  beta=[0,1,a1-1,a2,...]-vs-merge-branch verified: alpha's a1=1 forces
+  the merge branch (1-f=[0,a2+1,a3,...]), predicted prefix
+  [0,2,2,2,3,1,5,2,23,2,2,1,1] matches the actual computed beta CF
+  prefix EXACTLY (13/13 terms). C=11/exponent-6: M_edge(11)=28!=84;
+  convergent-index-of-84/53 (k=6) != C+1=12; the one numeric coincidence
+  found (cumulative partial-quotient sum through k=6 equals 11 exactly)
+  was adversarially rejected as an artifact of a monotonically-increasing
+  small-integer sequence with no independent structural motivation (see
+  Paths abandoned) — 11 does not appear as any p_k or q_k in either
+  convergent list at all.
+
+**Not complete until:**
+- J1's verdict (different objects, no set equality, no above-chance
+  overlap) is exact and adversarially checked (two corridor widths,
+  binomial null test) within the SCOPE tested (m=2..8, one census bound
+  of 10,000,000, N-cap 200). It is not a proof that no relation could
+  ever be found between the two objects at larger m or under a different
+  residue parametrization — only that the straightforward, most-favorable
+  comparison attempted here shows none.
+- J2's verdict (basin decay is NOT cleanly rho-governed; free rate wins
+  but even the free rate fails held-out prediction) rests on ONE
+  complement_density curve (one census, one N-cap). A future round
+  wanting a stronger claim would need a second, independent basin census
+  at a different bound to check if the "true" per-step rate is stable
+  across census scales, and/or a piecewise (not single-rate) fit to the
+  tail, since the held-out failure suggests even the tail is not pure
+  single-rate geometric decay.
+- J3's CF work is exact and fully verified (finite integer arithmetic,
+  no floats in the load-bearing convergent computation — mpmath was used
+  only to seed the initial high-precision alpha/beta values before
+  handing off to exact-integer CF/convergent recurrences). The C=11/
+  exponent-6 question is honestly OPEN: no candidate tested here
+  produced a non-coincidental match. A future round could try other
+  candidates (e.g. relating C=11 to the corridor's OWN internal
+  structure rather than to alpha/beta's convergent lattice at all) but
+  none is registered here as promising.
+- J4's synthesis statement (SYNTHESIS.md) is a synthesis of already-
+  measured/proven facts from the four instruments' own prior work plus
+  this round's J1-J3 checks; it does not itself run new proofs.
+
+**Next required update:** none required by
+SYNTHESIS_FOUR_INSTRUMENTS_SPEC.md's four joins (J1-J4 all addressed
+with frozen-prediction comparisons stated in SYNTHESIS.md). A future
+round extending J2 (piecewise/second-census fit) or J3 (alternative
+C=11 candidates) would build on this entry.
+
+### 2026-07-05 - IME Reframe of J2/J4 (course correction relayed by peer session, per architect/IME-primer.md)
+
+**Status:** complete
+
+**Work done:**
+- Read `/mnt/ForgeRealm/collatz-experimental-data/IME-primer.md` in full
+  before doing anything else, per the peer session's relayed instruction.
+- This round does NOT redo J1 or J3 (both stand as-is per the peer
+  message: J1 was already a clean set-comparison, not an agreement test;
+  J3's C=11/exponent-6 check already covers the "consecutive tier"
+  framing — see Course corrections below for the explicit carry-forward
+  statement).
+- Built `renorm_check/shell/synthesis_four/j2j4_ime_reframe.py`
+  (+`j2j4_ime_output.txt`) to re-interpret round-1's J2 raw fit numbers
+  (rho R²=0.022, b R²=0.938, free R²=0.983, held-out -13%..-29% error —
+  NOT recomputed, reused verbatim from `j2_output.txt`) under IME's
+  actual claim: incommensurable measurement geometries forced to
+  interact produce an EMERGENT DEPTH HIERARCHY with tiers set by the
+  convergent ladder of log2(3) (53, 84, 306, 485, 665, 1054, 15601,
+  24727, ...), not "do the raw rates match."
+- Pre-registered (BEFORE any ladder lookup, written into the script's
+  own docstring as STEP 0) which instrument-depth maps to which role:
+  corridor and spectral are already heartbeat-native (53 built in by
+  construction, verified exactly in round-1 J3) so they are NOT tested
+  against the ladder they are themselves built from (that would be
+  circular); the ladder test is applied to the BASIN's e-folding depth
+  (converted from its native odd-step unit to heartbeats) and the death
+  shell's own m-axis scale, the two instruments whose native units are
+  not already locked to 53.
+- Computed basin characteristic (1/e-folding) depth via exact
+  `-1/ln(rate)` from round-1's three already-fit rates (DEEP_TAIL,
+  TAIL, FULL free-rate fits), converted to heartbeat units (divide by
+  53), and located the nearest convergent-ladder value for each.
+- Ran an adversarial null-model sweep: r=0.900 to 0.970 in steps of
+  0.001 (70 points spanning the full empirically-plausible basin-rate
+  range seen across all N-range fits and the per-step ratio scatter),
+  checking what fraction land within 10% of ANY ladder value by pure
+  construction (not because of any Collatz-specific structure).
+- Constructed a genuine held-out prediction per the peer's mandatory
+  discipline: IF the basin's heartbeat-depth (~15 heartbeats) were
+  ladder-governed, solved M_edge(C)=15..16 for C and checked whether
+  that C is independently flagged as structurally special anywhere in
+  the corridor's OWN prior measurement work (it solves to C~5-6; the
+  corridor's own flagged special widths are C=11 and C=148 — a genuine,
+  falsifiable, checkable-before-the-fact prediction that FAILED).
+- Assessed whether the four instruments' own native structure actually
+  matches GHOST_PRECISION's specific shape (a fixed POPULATION FRACTION
+  stabilizing at a fixed low resource level — 50%@1bit, 77-89%@2bit) as
+  opposed to merely "some two-regime or growing/decaying structure
+  exists somewhere," checked instrument by instrument.
+
+**Paths abandoned & WHY:**
+- Considered testing the basin's RAW odd-step e-fold depth (14.4-17.3)
+  directly against the ladder without heartbeat conversion. Abandoned:
+  the ladder is defined in heartbeat/precision-level units by
+  construction (convergents of log2(3), the SAME irrational the 53-step
+  heartbeat itself is built from) — comparing a raw odd-step count
+  against it with no unit conversion would be comparing incommensurable
+  units on their face, which is a worse methodological error than the
+  conversion's own caveats. Heartbeat conversion was used, with the
+  resulting tiny value (~0.28-0.33 heartbeats) reported honestly rather
+  than discarded once it manifestly failed to land near any tier.
+- Considered testing the spectral m-axis (b's e-fold depth in
+  precision-level units, ~0.36 m-levels) and the death shell's m=359
+  scale against the SAME heartbeat ladder used for the basin. Abandoned
+  per the pre-registration rule stated in Work done: both spectral and
+  corridor are already heartbeat-native BY CONSTRUCTION (53 appears
+  directly in their own defining formulas, not as a fitted parameter),
+  so testing them against a ladder built from the same constant they
+  already contain would not be a test of anything — it would recover
+  the already-known, already-verified J3 fact (53 shared exactly) under
+  a new name, not a new IME-specific finding.
+- Considered accepting the basin's nearest-ladder-value match (heartbeat
+  depth ~0.28-0.33, nearest ladder value 1, i.e. the FIRST trivial
+  convergent p/q=1/1) as a "match" since it's the smallest available
+  ladder entry. Abandoned: the relative error is 67-73% even against
+  the loosest, most trivial ladder rung available — this is not a
+  near-miss worth registering as suggestive, it is a categorical
+  non-match, and reporting it as anything softer would repeat exactly
+  the failure mode this program has now caught three times (9/4,
+  prime-19, and this).
+
+**Bugs/issues:**
+- Caught and fixed a self-authored framing error before finalizing
+  output: an early draft of the script's inline commentary described
+  "12 (0-indexed convergent denom)" as being outside "our HEARTBEAT-
+  relevant subset," a confusing and unnecessary aside given the actual
+  arithmetic (basin depth in raw odd-steps, ~14-17, converted correctly
+  to ~0.28-0.33 heartbeats by dividing by 53) was already correct and
+  did not need defending — the number itself, not the framing, is the
+  finding. Rewrote the surrounding prose to state the honest scale
+  comparison directly (basin's 1/e-fold happens within under 1/3 of a
+  SINGLE heartbeat, nowhere near the ladder's smallest nontrivial tier
+  of 53) instead of relitigating which ladder entries "count." No
+  arithmetic was wrong; only the explanatory text was confusing and was
+  corrected before this entry was finalized.
+
+**Course corrections:**
+- The peer message asked explicitly whether the existing C=11/
+  exponent-6 check (round-1 J3) "already covers" the reframed
+  "consecutive tier index" question. It does: round-1 J3 tested
+  M_edge(11) against 84 (no match), the convergent-index of 84/53 (k=6)
+  against C+1=12 (no match), and one coincidental cumulative-partial-
+  quotient-sum match (=11 at k=6) that was adversarially rejected as a
+  guaranteed pass-through artifact. "Does the tier INDEX advance by
+  exactly 1 between corridor-C=11 and spectral-exponent-6" is precisely
+  the C+1-vs-convergent-index-k check already run (12 vs 6, not equal,
+  not off-by-one either — 12 is exactly double 6, which was not flagged
+  as a candidate in round 1 and is checked now: see Evidence). No new
+  script was needed; the verdict (OPEN, no relation found) is carried
+  forward unchanged, per the peer's own instruction not to re-derive.
+- The peer's message treated "raw-rate disagreement is the IME-
+  predicted signature, not a fit failure" as the operative correction.
+  This round's course correction is to make explicit, in both this
+  ledger entry and the SYNTHESIS entry, that round-1's J2 NUMBERS are
+  unchanged and reused verbatim — only the INTERPRETATION frame changed
+  — and that the reframed test (characteristic-depth-hierarchy vs
+  convergent ladder, with mandatory pre-registration and held-out
+  prediction) is a genuinely NEW and independently falsifiable test,
+  not a repackaging of the same negative result under looser standards.
+  It returned a NULL result under the new frame too — this is reported
+  as a null of the IME-specific claim, not as a re-confirmation of the
+  original (already-superseded) "rho does not govern basin" framing.
+
+**Evidence:**
+- `renorm_check/shell/synthesis_four/j2j4_ime_reframe.py`,
+  `j2j4_ime_output.txt`. Basin characteristic (1/e-fold) depths (exact
+  `-1/ln(rate)` from round-1's already-fit rates, reused verbatim):
+  DEEP_TAIL (r=0.935710) = 15.049 odd-steps = 0.2839 heartbeats;
+  TAIL (r=0.932844) = 14.385 odd-steps = 0.2714 heartbeats;
+  FULL (r=0.943803) = 17.290 odd-steps = 0.3262 heartbeats. Nearest
+  ladder value in all three cases: 1 (the trivial first convergent),
+  at 67.4%-72.9% relative error — a categorical non-match, not a
+  near-miss. Adversarial null-model sweep (r=0.900..0.970, step 0.001,
+  70 points): 0 of 70 (0.0%) land within 10% of ANY ladder value —
+  confirms the non-match is not an artifact of an unlucky choice of
+  rate; the entire plausible basin-rate range misses the ladder
+  cleanly. Held-out prediction: M_edge(C)=15 heartbeats solves to
+  C≈5.23 (nearest integer C=5, M_edge(5)=14 exactly, the closest
+  achievable integer-C value); M_edge(C)=16 solves to C≈5.64 (nearest
+  integer C=6, M_edge(6)=16 exactly) — neither C=5 nor C=6 is flagged
+  anywhere in the corridor's own prior measurement work as structurally
+  distinguished (the corridor's own flagged widths are C=11, the
+  phase-transition point, per "STANDING PICTURE UPDATE," and C=148, the
+  F1 divergence point) — the held-out prediction FAILS cleanly.
+  C+1-vs-convergent-index doubling check (new candidate, registered and
+  tested in this round): C+1=12 is exactly 2x the convergent index k=6
+  of 84/53 — this candidate was tested and IS an exact integer relation
+  (12=2*6), but is flagged as almost certainly a second reverse-fit-
+  shaped coincidence for the same reason the cumulative-partial-quotient
+  match was rejected in round 1: C+1=12 for C=11 is fixed by the
+  corridor's own definition regardless of any convergent structure
+  (12 is just "the phase-transition width plus one"), and needing a
+  factor of exactly 2 between two independently-arbitrary small
+  integers (12 and 6) is exactly the kind of small-number coincidence
+  the null-model discipline in this same round demonstrates is cheap —
+  no independent held-out test was constructed for it (unlike the
+  basin case above) because no second, structurally-motivated prediction
+  falls out of "C+1 = 2*convergent-index" the way "M_edge(C) at the
+  basin's own depth predicts a specific C" did; reported as UNTESTED/
+  NOT ELEVATED rather than confirmed, consistent with the "no candidate
+  survived adversarial checking" carry-forward verdict from round 1.
+  Bulk/tail shape check (instrument-by-instrument, see script output):
+  none of the four instruments' native structure reproduces
+  GHOST_PRECISION's specific population-fraction-at-fixed-depth shape;
+  each has a DIFFERENT kind of two-regime or growing structure (basin:
+  no stable single rate at all, not even one bulk/tail split; shell:
+  monotonically growing dead-mass, no fixed fraction; spectral:
+  fixed-C-vs-variable-C dichotomy, not a population split; corridor:
+  single width-threshold divergence, not a population-fraction split).
+
+**Not complete until:**
+- This round's NULL verdict (no convergent-ladder alignment, no
+  GHOST_PRECISION-shaped hierarchy) is exact and adversarially checked
+  within the SCOPE tested: three basin fit-range rates, the ladder
+  entries reproduced from round-1 J3, one held-out corridor-width
+  prediction, and a instrument-by-instrument bulk/tail shape comparison.
+  It is not a proof that NO characteristic-depth hierarchy could ever be
+  constructed from these four instruments under some OTHER unit
+  convention or pairing — only that the pre-registered, most natural
+  pairing attempted here (and the one the peer message's own framing
+  pointed at) shows none.
+- The untested C+1=2*k candidate (Evidence, above) is flagged but not
+  resolved either way — a future round wanting to close it would need
+  to construct an independent held-out prediction from it (the way the
+  basin case was tested against corridor structure) before it could be
+  elevated above "untested coincidence."
+- This entry's own verdict comparison against the architect's frozen
+  "~60%, genuinely open" IME-hierarchy prediction is stated in
+  SYNTHESIS.md (see next section), not duplicated here.
+
+**Next required update:** none required by the peer session's relayed
+reframe request (J2/J4 re-interpreted under IME, new adversarial checks
+run, NULL verdict reported against the architect's frozen prediction in
+SYNTHESIS.md). A future round could pursue the flagged-but-unresolved
+C+1=2k candidate, or test IME against a fifth, differently-constructed
+Collatz instrument not yet built.
+
+### 2026-07-07 - W7B C=31 High-Capacity Sparse Edge Receipt
+
+**Status:** complete
+
+**Work done:**
+- Audited the W7B high-capacity sparse sweep artifacts after the detached
+  C=31 follow-up finished.
+- Confirmed the main C=27..31 sweep correctly treated the first C=31 result
+  as a chosen-cap wall, not an edge: `state_cap=64,000,000` exceeded at
+  m=48 with `n_exact=69,084,627`, `first_dead=None`,
+  `genuine_death=False`.
+- Confirmed `run_c31_highcap.py` re-ran the frozen validation gate
+  (C=16=93, C=23=163, C=26=205) and then completed C=31 under raised caps:
+  `state_cap=120,000,000`, `rss_cap_mb=28,000`.
+- Created the missing local findings file required by the W7B order:
+  `renorm_check/shell/underlock/w7b_deep/W7B_FINDINGS.md`.
+- Updated the stale `RESUME_STATE.md` block from "C=31 high-cap in progress"
+  to "complete"; no C=31 process is running anymore.
+
+**Paths abandoned & WHY:**
+- The 64M-cap C=31 result is abandoned as an edge candidate because it ended
+  on a resource cap with no observed death. It remains valid as a wall
+  receipt and as the reason the high-cap follow-up was launched.
+- No attempt was made to infer C=32 from the C=31 high-cap run. W7B gates
+  require each new C to carry its own validation/run receipt and death
+  certificate.
+
+**Bugs/issues:**
+- The high-cap driver had an earlier monotonicity-seed bug recorded in
+  `RESUME_STATE.md`: `prev_edge` was hardcoded to 205 instead of seeded from
+  M(30)=282. The follow-up run fixed that before trusting C=31.
+- `RESUME_STATE.md` had become stale after the detached process finished:
+  it still said blocks 3..8 were in progress. This ledger update corrected
+  that file and wrote the result into the permanent ledger.
+
+**Course corrections:**
+- C=31 changed status from "wall at chosen 64M cap, edge unknown" to
+  "validated genuine-death edge" after the 120M-state high-cap follow-up.
+- The proper next unresolved cell is now C=32, not C=31.
+
+**Evidence:**
+- `renorm_check/shell/underlock/w7b_deep/sweep_output.log`: validated
+  C=27=208, C=28=263, C=29=265, C=30=282, then stopped honestly at the
+  C=31 64M wall (`state cap 64000000 exceeded at m=48`,
+  `n_exact=69084627`, `first_dead=None`, `genuine_death=False`).
+- `renorm_check/shell/underlock/w7b_deep/run_c31_highcap.log`: frozen gate
+  passed (C=16=93, C=23=163, C=26=205); C=31 completed with
+  `M(31)=284`, `first_dead=285`, `peak_live=73,462,829`,
+  `wall=None`, `genuine_death=True`, `elapsed_sec=48,854.99644827843`.
+- `renorm_check/shell/underlock/w7b_deep/sweep_full.json` and
+  `sweep_partial.json`: both contain the final C=31 high-cap receipt:
+  `{"C":31,"edge":284,"first_dead":285,"peak_live":73462829,
+  "wall":null,"elapsed_sec":48854.99644827843,"blocks_done":8,
+  "genuine_death":true}`.
+- `renorm_check/shell/underlock/w7a_renorm/w7a_new_edges.txt` now records
+  genuine-death edges only:
+  C=27 208, C=28 263, C=29 265, C=30 282, C=31 284.
+- Representation receipt from `RESUME_STATE.md`: lean frontier storage
+  reduced the profiled bytes/state from about 554 to about 313 and reduced
+  the full C=26 sweep peak RSS from about 1315.4 MB to about 725.4 MB.
+  C=31 high-cap peaked at about 16,773 MB RSS with 73,462,829 live states.
+
+**Not complete until:**
+- C=31 itself is complete and ledgered.
+- The W7B sweep beyond C=31 is not complete. C=32 requires a fresh run with
+  the same frozen validation gate, monotonicity gate, wall-vs-edge
+  distinction, and a new death certificate.
+
+**Next required update:** after any C=32+ run completes, append only
+genuine-death edges to `w7a_new_edges.txt`, update `W7B_FINDINGS.md`,
+and add a new ledger/synthesis entry. If the next run hits a cap, record it
+as a wall, not an edge.

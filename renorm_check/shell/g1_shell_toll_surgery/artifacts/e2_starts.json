@@ -1,0 +1,2158 @@
+[
+  {
+    "source": "high_reserve",
+    "start_n": 80049391,
+    "n_upcrossings": 23,
+    "hit_1": true,
+    "steps_run": 211
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 120080895,
+    "n_upcrossings": 23,
+    "hit_1": true,
+    "steps_run": 159
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 210964383,
+    "n_upcrossings": 23,
+    "hit_1": true,
+    "steps_run": 173
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 219259131,
+    "n_upcrossings": 23,
+    "hit_1": true,
+    "steps_run": 190
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 222250543,
+    "n_upcrossings": 23,
+    "hit_1": true,
+    "steps_run": 178
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 246666523,
+    "n_upcrossings": 23,
+    "hit_1": true,
+    "steps_run": 188
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 319804831,
+    "n_upcrossings": 30,
+    "hit_1": true,
+    "steps_run": 218
+  },
+  {
+    "source": "high_reserve",
+    "start_n": 77566362559,
+    "n_upcrossings": 31,
+    "hit_1": true,
+    "steps_run": 278
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2591,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 16
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7451,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4967,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 59
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3311,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 73979,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37979,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 25
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 69275,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 46
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2375,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 59
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 49319,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 67
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 80615,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 64
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37583,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1583,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 32879,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 68
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 550907,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 61
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 133883,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 49
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 413531,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 84
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 660059,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 28
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 100763,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 48
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 347291,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 81
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4504571,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 90
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2375675,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 59
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2725883,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 81
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 253691,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 44
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3433211,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 65
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3783419,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 75
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4283387,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 39
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 818171,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12663803,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 50
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5693435,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 93
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2228219,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 61
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 14073851,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 31
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 13711355,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 10246139,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 858107,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 41
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 94526459,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 57
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5463035,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 93
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 58031099,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 70
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 138836987,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 85
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 33700859,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 73
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 114506747,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 299785211,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 107
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 306863099,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 136
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 764566523,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 74
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1324309499,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 81
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1331387387,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 71
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 430136315,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 86
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4206779387,
+    "n_upcrossings": 8,
+    "hit_1": true,
+    "steps_run": 145
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3810417659,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 82
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3546176507,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 82
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 8899419131,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 138
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 93311,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 50
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 339227,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 93
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 226151,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 94
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 150767,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 95
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 473759,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 70
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1062335,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 85
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4608251,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 78
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5466203,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 81
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6038171,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 62
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 447515,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 29
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2214215,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 46
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3072167,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 79
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3644135,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 82
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7011431,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 618191,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 88
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1476143,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 47
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2048111,
+    "n_upcrossings": 8,
+    "hit_1": true,
+    "steps_run": 80
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5415407,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 93
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6384095,
+    "n_upcrossings": 8,
+    "hit_1": true,
+    "steps_run": 81
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6956063,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 70
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1365407,
+    "n_upcrossings": 9,
+    "hit_1": true,
+    "steps_run": 81
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7242047,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1651391,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 48
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 43239419,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 45
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 38988539,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12266747,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 50
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 42227963,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 100
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 38457179,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 30
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 34206299,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 22
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7484507,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 63
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37445723,
+    "n_upcrossings": 10,
+    "hit_1": true,
+    "steps_run": 114
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 35269019,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 49
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 31018139,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 63
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4296347,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 49
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 34257563,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 92
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 28892699,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 99
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2170907,
+    "n_upcrossings": 8,
+    "hit_1": true,
+    "steps_run": 78
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 32132123,
+    "n_upcrossings": 10,
+    "hit_1": true,
+    "steps_run": 80
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 30021839,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 53
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3300047,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 84
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 33261263,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 53
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 29490479,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 111
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 25239599,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 103
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 70181423,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 90
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 28479023,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 94
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 26302319,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 113
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 22051439,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 35
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 66993263,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 32
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 25290863,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 72
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 19925999,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 47
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 559871,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 37
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 38534939,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 39126887,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 59
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 26084591,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 30826655,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 53
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7114175,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 70
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 18179711,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 75
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 102150395,
+    "n_upcrossings": 9,
+    "hit_1": true,
+    "steps_run": 207
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 288471131,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 90
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 305189531,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 59
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 208839707,
+    "n_upcrossings": 9,
+    "hit_1": true,
+    "steps_run": 125
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 37111067,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 54
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 137616155,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 97
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 311761223,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 68
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 175595687,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 76
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 192314087,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 91
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 95964263,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 57
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 246721895,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 104
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 24740711,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 55
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 129015503,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 97
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 315336239,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 76
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9568367,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 235704815,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 75
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 63976175,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 164481263,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 105
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 86010335,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 98
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 102728735,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 101
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6378911,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 84
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 157136543,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 76
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 257641631,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 145
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 272331071,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 68
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 175981247,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 57
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4252607,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 85
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 104757695,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 77
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 289049471,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 90
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 117320831,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 217825919,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 89
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 576735227,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 208
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 514091771,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 145
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 42347771,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 69
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 157833467,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 112
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1094787323,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 150
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 859459835,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 96
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 667504475,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 117
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 604861019,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 119
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 133117019,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 126
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 248602715,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1185556571,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 107
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 950229083,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 99
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 298035611,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 90
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 20155391,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 52
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 983598875,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 152
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 172003175,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 76
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 114668783,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 77
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 76445855,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 78
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 534693311,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 80
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 840191615,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 125
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 560127743,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 126
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 857147903,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 11138347259,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 69
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1196210267,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 95
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6177624731,
+    "n_upcrossings": 9,
+    "hit_1": true,
+    "steps_run": 103
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 3693814811,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 99
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 13647447323,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 79
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2868943643,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 110
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1488027419,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 98
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6372169499,
+    "n_upcrossings": 9,
+    "hit_1": true,
+    "steps_run": 105
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17367701831,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 102
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7425564839,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 70
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12406979303,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 91
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9923169383,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 68
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2462543207,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 100
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9098298215,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 80
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7717381991,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 87
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12601524071,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 67
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9911099087,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 124
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17383220783,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 85
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 4950376559,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 71
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2466566639,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 112
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12420199151,
+    "n_upcrossings": 9,
+    "hit_1": true,
+    "steps_run": 120
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 1641695471,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 101
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 260779247,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 109
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5144921327,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 88
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12412152287,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 139
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17393566751,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 73
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 14909756831,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 82
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7449130655,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 53
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 14084885663,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 53
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 12703969439,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 149
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 173852831,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 110
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2470015295,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 71
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17400464063,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 97
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 9939837887,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 16575592895,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 87
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 15194676671,
+    "n_upcrossings": 7,
+    "hit_1": true,
+    "steps_run": 169
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 2664560063,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 61
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 7451429759,
+    "n_upcrossings": 8,
+    "hit_1": true,
+    "steps_run": 70
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 17405062271,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 138
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 6626558591,
+    "n_upcrossings": 6,
+    "hit_1": true,
+    "steps_run": 84
+  },
+  {
+    "source": "breach_candidate",
+    "start_n": 5245642367,
+    "n_upcrossings": 5,
+    "hit_1": true,
+    "steps_run": 153
+  },
+  {
+    "source": "random",
+    "start_n": 628315,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 64
+  },
+  {
+    "source": "random",
+    "start_n": 9015129,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 61
+  },
+  {
+    "source": "random",
+    "start_n": 550765,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 25
+  },
+  {
+    "source": "random",
+    "start_n": 7171133,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 29
+  },
+  {
+    "source": "random",
+    "start_n": 990239,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 56
+  },
+  {
+    "source": "random",
+    "start_n": 6194749,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 67
+  },
+  {
+    "source": "random",
+    "start_n": 9843517,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 4455901,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 49
+  },
+  {
+    "source": "random",
+    "start_n": 402725,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 96
+  },
+  {
+    "source": "random",
+    "start_n": 3494051,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 65
+  },
+  {
+    "source": "random",
+    "start_n": 4087207,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 80
+  },
+  {
+    "source": "random",
+    "start_n": 8637775,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 68
+  },
+  {
+    "source": "random",
+    "start_n": 9761127,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 100
+  },
+  {
+    "source": "random",
+    "start_n": 7151589,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "random",
+    "start_n": 3351409,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 36
+  },
+  {
+    "source": "random",
+    "start_n": 7448321,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 46
+  },
+  {
+    "source": "random",
+    "start_n": 9759391,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 71
+  },
+  {
+    "source": "random",
+    "start_n": 8298499,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 97
+  },
+  {
+    "source": "random",
+    "start_n": 2464215,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 5483227,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 33
+  },
+  {
+    "source": "random",
+    "start_n": 1182847,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 30
+  },
+  {
+    "source": "random",
+    "start_n": 2045719,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 80
+  },
+  {
+    "source": "random",
+    "start_n": 3354071,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 43
+  },
+  {
+    "source": "random",
+    "start_n": 6544537,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 67
+  },
+  {
+    "source": "random",
+    "start_n": 7932115,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "random",
+    "start_n": 8297627,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 63
+  },
+  {
+    "source": "random",
+    "start_n": 1656067,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 48
+  },
+  {
+    "source": "random",
+    "start_n": 9225571,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 78
+  },
+  {
+    "source": "random",
+    "start_n": 4256413,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 51
+  },
+  {
+    "source": "random",
+    "start_n": 5326687,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 23
+  },
+  {
+    "source": "random",
+    "start_n": 8841769,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 49
+  },
+  {
+    "source": "random",
+    "start_n": 7124769,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 29
+  },
+  {
+    "source": "random",
+    "start_n": 559661,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 15
+  },
+  {
+    "source": "random",
+    "start_n": 9947719,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 47
+  },
+  {
+    "source": "random",
+    "start_n": 4561921,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 22
+  },
+  {
+    "source": "random",
+    "start_n": 3100647,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 72
+  },
+  {
+    "source": "random",
+    "start_n": 7594757,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "random",
+    "start_n": 6849697,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 72
+  },
+  {
+    "source": "random",
+    "start_n": 1897789,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "random",
+    "start_n": 2005157,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 99
+  },
+  {
+    "source": "random",
+    "start_n": 4584637,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 1188887,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 20
+  },
+  {
+    "source": "random",
+    "start_n": 3739067,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "random",
+    "start_n": 5028835,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 35
+  },
+  {
+    "source": "random",
+    "start_n": 5533071,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 57
+  },
+  {
+    "source": "random",
+    "start_n": 2855385,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 50
+  },
+  {
+    "source": "random",
+    "start_n": 9865995,
+    "n_upcrossings": 4,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 9832939,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 9329003,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 49
+  },
+  {
+    "source": "random",
+    "start_n": 7793027,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 60
+  },
+  {
+    "source": "random",
+    "start_n": 958269,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 39
+  },
+  {
+    "source": "random",
+    "start_n": 9871691,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 47
+  },
+  {
+    "source": "random",
+    "start_n": 7930119,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 94
+  },
+  {
+    "source": "random",
+    "start_n": 231395,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 22
+  },
+  {
+    "source": "random",
+    "start_n": 4168651,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 34
+  },
+  {
+    "source": "random",
+    "start_n": 7050089,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 41
+  },
+  {
+    "source": "random",
+    "start_n": 7430695,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 46
+  },
+  {
+    "source": "random",
+    "start_n": 815041,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 48
+  },
+  {
+    "source": "random",
+    "start_n": 8319945,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 22
+  },
+  {
+    "source": "random",
+    "start_n": 5936249,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 67
+  },
+  {
+    "source": "random",
+    "start_n": 4222077,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 41
+  },
+  {
+    "source": "random",
+    "start_n": 4929159,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 1921029,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 19
+  },
+  {
+    "source": "random",
+    "start_n": 3689423,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 24
+  },
+  {
+    "source": "random",
+    "start_n": 4770369,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 54
+  },
+  {
+    "source": "random",
+    "start_n": 2331417,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 42
+  },
+  {
+    "source": "random",
+    "start_n": 2406003,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "random",
+    "start_n": 9129027,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 22
+  },
+  {
+    "source": "random",
+    "start_n": 9245869,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 5320595,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 23
+  },
+  {
+    "source": "random",
+    "start_n": 4605195,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 66
+  },
+  {
+    "source": "random",
+    "start_n": 4958815,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 76
+  },
+  {
+    "source": "random",
+    "start_n": 4509061,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 54
+  },
+  {
+    "source": "random",
+    "start_n": 7998621,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 36
+  },
+  {
+    "source": "random",
+    "start_n": 7673111,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 34
+  },
+  {
+    "source": "random",
+    "start_n": 8309737,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 109
+  },
+  {
+    "source": "random",
+    "start_n": 8327387,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 68
+  },
+  {
+    "source": "random",
+    "start_n": 5136439,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 76
+  },
+  {
+    "source": "random",
+    "start_n": 5157091,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 30
+  },
+  {
+    "source": "random",
+    "start_n": 7843267,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 51
+  },
+  {
+    "source": "random",
+    "start_n": 8913487,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 37
+  },
+  {
+    "source": "random",
+    "start_n": 8053333,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 63
+  },
+  {
+    "source": "random",
+    "start_n": 5989107,
+    "n_upcrossings": 3,
+    "hit_1": true,
+    "steps_run": 35
+  },
+  {
+    "source": "random",
+    "start_n": 8107747,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 24
+  },
+  {
+    "source": "random",
+    "start_n": 9452763,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 42
+  },
+  {
+    "source": "random",
+    "start_n": 7909463,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 58
+  },
+  {
+    "source": "random",
+    "start_n": 3174597,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 19
+  },
+  {
+    "source": "random",
+    "start_n": 5799905,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 38
+  },
+  {
+    "source": "random",
+    "start_n": 3836249,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 39
+  },
+  {
+    "source": "random",
+    "start_n": 8736837,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 68
+  },
+  {
+    "source": "random",
+    "start_n": 762131,
+    "n_upcrossings": 2,
+    "hit_1": true,
+    "steps_run": 62
+  },
+  {
+    "source": "random",
+    "start_n": 9931443,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 59
+  },
+  {
+    "source": "random",
+    "start_n": 1887277,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 34
+  },
+  {
+    "source": "random",
+    "start_n": 475141,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 41
+  },
+  {
+    "source": "random",
+    "start_n": 8453309,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 51
+  },
+  {
+    "source": "random",
+    "start_n": 1575243,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 31
+  },
+  {
+    "source": "random",
+    "start_n": 9965241,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 44
+  },
+  {
+    "source": "random",
+    "start_n": 4590543,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 83
+  },
+  {
+    "source": "random",
+    "start_n": 2843737,
+    "n_upcrossings": 0,
+    "hit_1": true,
+    "steps_run": 69
+  },
+  {
+    "source": "random",
+    "start_n": 9762921,
+    "n_upcrossings": 1,
+    "hit_1": true,
+    "steps_run": 71
+  }
+]

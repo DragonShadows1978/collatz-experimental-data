@@ -1,0 +1,49 @@
+==============================================================================
+J1 -- death shell dead-set S(m) vs basin residual-complement set
+==============================================================================
+
+Reference (gate2_gate3_results.txt lines 123-124):
+  smallest 20 of 112: [1723519, 2298025, 2585279, 2725659, 2929311, 3064033, 3066367, 3428767, 3447039, 3542887, 3732423, 3877919, 4063723, 4064103, 4085377, 4088489, 4393967, 4571689, 4596051, 4637979]
+  largest  20 of 112: [8842233, 8847225, 8848743, 8865705, 8888811, 8901447, 8967935, 9143379, 9144233, 9192101, 9275959, 9447699, 9533531, 9691233, 9715455, 9947513, 9953129, 9973919, 9997729, 9999913]
+
+Reconstructing full 112-element residual set by re-running the IDENTICAL merge-safe forward rule (descent_common.is_one_step_species + odd_step) over all distinct odd x in [1, 10,000,000), max_n=200 ...
+  reconstructed residual count: 112 (expect 112)
+  matches published smallest-20/largest-20 exactly: True
+
+--- Step (a): domain compatibility (r mod 3) ---
+Shell dead set S(m) is defined ONLY on r % 3 != 0 (shell_probe.py dead_profile: `nz = r % 3 != 0`). Check how many of the 112 basin residual x satisfy x % 3 != 0:
+  x % 3 == 0: 39 of 112
+  x % 3 != 0: 73 of 112
+  x%3==0 examples: [2725659, 2929311, 3447039, 3732423, 4064103, 4596051, 4637979, 5418297, 5447169, 5573991]
+
+--- Step (b): shell dead-set S(m), m=2..8, C=12 and C=23 (P2 proves C-independence when keyed by ceiling-distance; checking two C values as an adversarial cross-check) ---
+  m=2: |S(m)| via C=12:      2  via C=23:      2  identical-as-sets: True  modulus=3^2=9
+  m=3: |S(m)| via C=12:     11  via C=23:     11  identical-as-sets: True  modulus=3^3=27
+  m=4: |S(m)| via C=12:     38  via C=23:     38  identical-as-sets: True  modulus=3^4=81
+  m=5: |S(m)| via C=12:    132  via C=23:    132  identical-as-sets: True  modulus=3^5=243
+  m=6: |S(m)| via C=12:    416  via C=23:    416  identical-as-sets: True  modulus=3^6=729
+  m=7: |S(m)| via C=12:   1293  via C=23:   1293  identical-as-sets: True  modulus=3^7=2187
+  m=8: |S(m)| via C=12:   4009  via C=23:   4009  identical-as-sets: True  modulus=3^8=6561
+
+--- Step (c): for each residual x with x%3!=0, is (x mod 3^m) IN the shell dead set S(m) (C=23 slot), for m=2..8? ---
+If the basin complement and shell dead set were literally the SAME OBJECT, we would expect x mod 3^m to land in S(m) at some m for EVERY residual x (or at minimum, a marked excess over the S(m) base rate, not a coin-flip rate).
+  m=2: basin-x hitting S(m): 20 / 73  (S(m) base rate among nz residues: 0.333333)
+  m=3: basin-x hitting S(m): 46 / 73  (S(m) base rate among nz residues: 0.611111)
+  m=4: basin-x hitting S(m): 55 / 73  (S(m) base rate among nz residues: 0.703704)
+  m=5: basin-x hitting S(m): 62 / 73  (S(m) base rate among nz residues: 0.814815)
+  m=6: basin-x hitting S(m): 65 / 73  (S(m) base rate among nz residues: 0.855967)
+  m=7: basin-x hitting S(m): 68 / 73  (S(m) base rate among nz residues: 0.886831)
+  m=8: basin-x hitting S(m): 70 / 73  (S(m) base rate among nz residues: 0.916552)
+
+  Basin-residual x (r%3!=0) landing in S(m) for AT LEAST ONE m in 2..8: 70 / 73
+
+--- Step (d): adversarial containment test ---
+If shell-dead-set case: EVERY basin residual x with x%3!=0 must land in S(m) for ALL m up to the depth where 3^m > x (finite containment would require it at the SPECIFIC m matching corridor scale of the actual unconstrained forward walk -- but the forward walk has NO corridor C at all, so there is no principled m to test at except 'any m small enough to compute'). Reporting the strongest-possible case for equality: hits at m=2..8 out of the 73 nz residual x.
+  fraction of basin-residual (nz) x landing in ANY tested S(m) slot: 0.9589
+
+  Comparison to CHANCE: base rate of S(m) among nz residues mod 3^m (computed above) already exceeds 0 and grows with m (shell's own P1: dead set GROWS with m) -- so above-chance hits at large m are expected for ANY finite integer set purely from S(m)'s growing density, not from a genuine link to the basin object specifically.
+
+--- VERDICT INPUTS (see SYNTHESIS.md entry for final call) ---
+  mod3==0 basin-residual count (OUTSIDE shell's domain entirely): 39 / 112 = 0.3482
+  mod3!=0 basin-residual count (only ones even eligible to compare): 73 / 112
+  Of those eligible, hitting S(m) at m=2..8: 70 (0.9589)

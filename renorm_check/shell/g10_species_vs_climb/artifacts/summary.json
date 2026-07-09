@@ -1,0 +1,82 @@
+{
+  "gates": {
+    "n_starts": 308,
+    "G1": "PASS"
+  },
+  "predictions": {
+    "U10.1": {
+      "verdict": "CONFIRMED",
+      "hit_rate": 1.0,
+      "n": 308,
+      "confidence_prior": 0.85
+    },
+    "U10.2": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.7
+    },
+    "U10.3": {
+      "verdict": "CONFIRMED",
+      "mean_ratio": 8.289055633473586,
+      "n_deep": 10,
+      "confidence_prior": 0.5
+    },
+    "U10.4": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.95
+    }
+  },
+  "sample_deep": [
+    {
+      "hit": true,
+      "steps_to_species": 210,
+      "n_ups": 23,
+      "max_d": 23,
+      "species_x": 5,
+      "hit_1": false,
+      "src": "hr",
+      "start": 80049391
+    },
+    {
+      "hit": true,
+      "steps_to_species": 158,
+      "n_ups": 23,
+      "max_d": 23,
+      "species_x": 5,
+      "hit_1": false,
+      "src": "hr",
+      "start": 120080895
+    },
+    {
+      "hit": true,
+      "steps_to_species": 172,
+      "n_ups": 23,
+      "max_d": 23,
+      "species_x": 5,
+      "hit_1": false,
+      "src": "hr",
+      "start": 210964383
+    },
+    {
+      "hit": true,
+      "steps_to_species": 189,
+      "n_ups": 23,
+      "max_d": 23,
+      "species_x": 5,
+      "hit_1": false,
+      "src": "hr",
+      "start": 219259131
+    },
+    {
+      "hit": true,
+      "steps_to_species": 177,
+      "n_ups": 23,
+      "max_d": 23,
+      "species_x": 5,
+      "hit_1": false,
+      "src": "hr",
+      "start": 222250543
+    }
+  ],
+  "max_ups": 31,
+  "max_steps_to_sp": 277
+}

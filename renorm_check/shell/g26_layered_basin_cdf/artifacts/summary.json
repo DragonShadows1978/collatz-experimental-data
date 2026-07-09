@@ -1,0 +1,40 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "X": 10000,
+    "n_odds": 5000
+  },
+  "predictions": {
+    "S26.1": {
+      "verdict": "CONFIRMED",
+      "f0": 0.0014,
+      "f1": 0.0042,
+      "confidence_prior": 0.9
+    },
+    "S26.2": {
+      "verdict": "REFUTED",
+      "f5": 0.0408,
+      "confidence_prior": 0.55
+    },
+    "S26.3": {
+      "verdict": "CONFIRMED",
+      "f50": 0.8448,
+      "confidence_prior": 0.6
+    },
+    "S26.4": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.99
+    }
+  },
+  "frac": {
+    "0": 0.0014,
+    "1": 0.0042,
+    "5": 0.0408,
+    "10": 0.1524,
+    "20": 0.4054,
+    "50": 0.8448,
+    "100": 1.0
+  },
+  "median_steps_hit": 26,
+  "n_hit": 5000
+}

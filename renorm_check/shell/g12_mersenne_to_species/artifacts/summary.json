@@ -1,0 +1,71 @@
+{
+  "gates": {
+    "n": 40,
+    "G1": "PASS"
+  },
+  "predictions": {
+    "U12.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.85
+    },
+    "U12.2": {
+      "verdict": "CONFIRMED",
+      "n_ge_L": 40,
+      "n_rows": 40,
+      "min_steps_minus_L": 0,
+      "confidence_prior": 0.7
+    },
+    "U12.3": {
+      "verdict": "CONFIRMED",
+      "spearman_proxy": 0.8115384615384615,
+      "confidence_prior": 0.5
+    },
+    "U12.4": {
+      "verdict": "CONFIRMED",
+      "max_steps": 190,
+      "confidence_prior": 0.45
+    }
+  },
+  "sample": [
+    {
+      "L": 1,
+      "steps": 1,
+      "ups": 0
+    },
+    {
+      "L": 6,
+      "steps": 14,
+      "ups": 3
+    },
+    {
+      "L": 11,
+      "steps": 55,
+      "ups": 6
+    },
+    {
+      "L": 16,
+      "steps": 79,
+      "ups": 11
+    },
+    {
+      "L": 21,
+      "steps": 108,
+      "ups": 12
+    },
+    {
+      "L": 26,
+      "steps": 137,
+      "ups": 15
+    },
+    {
+      "L": 31,
+      "steps": 161,
+      "ups": 18
+    },
+    {
+      "L": 36,
+      "steps": 190,
+      "ups": 21
+    }
+  ]
+}

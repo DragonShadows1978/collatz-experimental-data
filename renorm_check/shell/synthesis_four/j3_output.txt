@@ -1,0 +1,101 @@
+==============================================================================
+J3 -- shared-53 verification (convergents of log2(3) and 2-log2(3))
+==============================================================================
+
+log2(3) computed via mpmath at 60 digits: 1.58496250072115618145373894394781650876
+
+Continued fraction of alpha=log2(3): [1, 1, 1, 2, 2, 3, 1, 5, 2, 23, 2, 2, 1, 1]
+Convergents p_k/q_k of log2(3) (k = 0-indexed term count):
+  k= 0: 1/1  = 1.0000000000   (target log2(3)=1.5849625007)
+  k= 1: 2/1  = 2.0000000000   (target log2(3)=1.5849625007)
+  k= 2: 3/2  = 1.5000000000   (target log2(3)=1.5849625007)
+  k= 3: 8/5  = 1.6000000000   (target log2(3)=1.5849625007)
+  k= 4: 19/12  = 1.5833333333   (target log2(3)=1.5849625007)
+  k= 5: 65/41  = 1.5853658537   (target log2(3)=1.5849625007)
+  k= 6: 84/53  = 1.5849056604   (target log2(3)=1.5849625007)
+  k= 7: 485/306  = 1.5849673203   (target log2(3)=1.5849625007)
+  k= 8: 1054/665  = 1.5849624060   (target log2(3)=1.5849625007)
+  k= 9: 24727/15601  = 1.5849625024   (target log2(3)=1.5849625007)
+  k=10: 50508/31867  = 1.5849625004   (target log2(3)=1.5849625007)
+  k=11: 125743/79335  = 1.5849625008   (target log2(3)=1.5849625007)
+  k=12: 176251/111202  = 1.5849625007   (target log2(3)=1.5849625007)
+  k=13: 301994/190537  = 1.5849625007   (target log2(3)=1.5849625007)
+
+84/53 found at continued-fraction index k=6 (0-indexed term list; 'the 6th convergent' in 1-indexed/'6th partial-quotient' language corresponds to k=6).
+
+beta = 2 - log2(3) = 0.4150374992788438185462610560521834912402
+Continued fraction of beta=2-log2(3): [0, 2, 2, 2, 3, 1, 5, 2, 23, 2, 2, 1, 1, 55]
+Convergents p_k/q_k of 2-log2(3):
+  k= 0: 0/1  = 0.0000000000   (target beta=0.4150374993)
+  k= 1: 1/2  = 0.5000000000   (target beta=0.4150374993)
+  k= 2: 2/5  = 0.4000000000   (target beta=0.4150374993)
+  k= 3: 5/12  = 0.4166666667   (target beta=0.4150374993)
+  k= 4: 17/41  = 0.4146341463   (target beta=0.4150374993)
+  k= 5: 22/53  = 0.4150943396   (target beta=0.4150374993)
+  k= 6: 127/306  = 0.4150326797   (target beta=0.4150374993)
+  k= 7: 276/665  = 0.4150375940   (target beta=0.4150374993)
+  k= 8: 6475/15601  = 0.4150374976   (target beta=0.4150374993)
+  k= 9: 13226/31867  = 0.4150374996   (target beta=0.4150374993)
+  k=10: 32927/79335  = 0.4150374992   (target beta=0.4150374993)
+  k=11: 46153/111202  = 0.4150374993   (target beta=0.4150374993)
+  k=12: 79080/190537  = 0.4150374993   (target beta=0.4150374993)
+  k=13: 4395553/10590737  = 0.4150374993   (target beta=0.4150374993)
+
+22/53 found in beta's convergents at k=5
+53/22 found in beta's convergents at k=None
+(F1 in SYNTHESIS.md states '22/53 is an exact continued-fraction convergent of 2-log2(3)' -- i.e. beta's convergent IS 22/53 [p=22,q=53], not 53/22. The corridor formula M_edge(C)=floor(53(C+1)/22) uses the RECIPROCAL 53/22 as its scaling constant -- 53/22 = 1/(22/53) -- so '53/22' in the corridor formula is the reciprocal of the beta-convergent 22/53, not itself directly a listed convergent of beta or alpha.
+
+Reciprocal check: is 53/22 a convergent of 1/beta = 1/(2-log2(3))?
+Continued fraction of 1/beta: [2, 2, 2, 3, 1, 5, 2, 23, 2, 2, 1, 1, 55, 1]
+  k= 0: 2/1 = 2.0000000000
+  k= 1: 5/2 = 2.5000000000
+  k= 2: 12/5 = 2.4000000000
+  k= 3: 41/17 = 2.4117647059
+  k= 4: 53/22 = 2.4090909091
+  k= 5: 306/127 = 2.4094488189
+  k= 6: 665/276 = 2.4094202899
+  k= 7: 15601/6475 = 2.4094208494
+  k= 8: 31867/13226 = 2.4094208377
+  k= 9: 79335/32927 = 2.4094208400
+  k=10: 111202/46153 = 2.4094208394
+  k=11: 190537/79080 = 2.4094208397
+  k=12: 10590737/4395553 = 2.4094208397
+  k=13: 10781274/4474633 = 2.4094208397
+53/22 found in (1/beta)'s convergents at k=4 (convergents of 1/x are exactly the reciprocals-in-order of convergents of x when x<1, up to the leading integer-part term shift -- this is the standard CF identity for reciprocals).
+
+--- Exact CF-transform identity: beta = 2 - alpha ---
+alpha's CF: [1, 1, 1, 2, 2, 3, 1, 5, 2, 23, 2, 2, 1, 1]
+beta=2-alpha's CF: [0, 2, 2, 2, 3, 1, 5, 2, 23, 2, 2, 1, 1, 55]
+Since alpha = [1; a1, a2, a3, ...] (a0=1 because 1<log2(3)<2), write alpha = 1 + f where f = alpha-1 = [0; a1, a2, a3, ...] in (0,1). Then beta = 2-alpha = 1-f. The EXACT continued-fraction identity for 1-f when f=[0;a1,a2,...] with a1>=2 is: 1-f = [0; 1, a1-1, a2, a3, ...] (standard CF reflection identity). If a1==1 the identity instead merges the leading terms: 1-f = [0; a2+1, a3, a4, ...]. Testing against computed terms:
+  alpha's a1 = 1
+  predicted beta CF (via reflection identity): [0, 2, 2, 2, 3, 1, 5, 2, 23, 2, 2, 1, 1]
+  actual computed beta CF:                     [0, 2, 2, 2, 3, 1, 5, 2, 23, 2, 2, 1, 1, 55]
+  identity holds (prefix match): True
+
+--- C=11 phase transition vs spectral exponent 6 ---
+  M_edge( 1) =   4
+  M_edge( 2) =   7
+  M_edge( 3) =   9
+  M_edge( 4) =  12
+  M_edge( 5) =  14
+  M_edge( 6) =  16
+  M_edge( 7) =  19
+  M_edge( 8) =  21
+  M_edge( 9) =  24
+  M_edge(10) =  26
+  M_edge(11) =  28
+  M_edge(12) =  31
+  M_edge(13) =  33
+  M_edge(14) =  36
+
+  M_edge(11) = 28
+  6th convergent index (0-indexed k=6) denominator = 53, numerator = 84
+  Candidate checks:
+    M_edge(11) == 84? False
+    C+1=12 vs convergent index 6: equal? False
+    11 == 2*6-1=11? True
+    a_terms_alpha[0:idx+1] (partial quotients up to the 84/53 term): [1, 1, 1, 2, 2, 3, 1]
+    sum of partial quotients up to k=6: 11
+    11 appearing as numerator or denominator in alpha/beta convergent lists: []
+
+  VERDICT INPUT: no exact/structural relation between C=11 and the spectral exponent 6 (or convergent-index 6) found among these direct candidates -- see list above. Reporting as OPEN per spec instruction unless one of the above candidates matched (it did not, modulo what's printed).

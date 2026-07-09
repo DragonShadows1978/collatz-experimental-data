@@ -1,0 +1,29 @@
+{
+  "gates": {
+    "E1-G1": "PASS",
+    "E1-G2": "PASS",
+    "n_upcrossings": 1217,
+    "a1_rate": 1.0
+  },
+  "predictions": {
+    "R1.1": {
+      "verdict": "CONFIRMED",
+      "frac_c2": 1.0,
+      "confidence_prior": 0.7
+    },
+    "R1.2": {
+      "verdict": "CONFIRMED",
+      "frac_c1": 0.0,
+      "confidence_prior": 0.7
+    },
+    "R1.3": {
+      "verdict": "CONFIRMED",
+      "frac_ceil_c1": 0.0,
+      "n_ceiling_ups": 1217,
+      "confidence_prior": 0.55
+    }
+  },
+  "frac_c2": 1.0,
+  "frac_c1": 0.0,
+  "elapsed_sec": 0.052010536193847656
+}

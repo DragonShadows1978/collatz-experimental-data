@@ -1,0 +1,28 @@
+{
+  "predictions": {
+    "S2.1": {
+      "verdict": "CONFIRMED",
+      "max_S": 2,
+      "R_max": 2,
+      "all_streaks_c2_a1": true,
+      "confidence_prior": 0.85
+    },
+    "S2.2": {
+      "verdict": "CONFIRMED",
+      "max_S": 2,
+      "R_block": 2,
+      "confidence_prior": 0.7
+    },
+    "S2.3": {
+      "verdict": "CONFIRMED",
+      "frac_drop_pairs_are_double_up": 0.05123440403504115,
+      "n_drop_pairs": 3767,
+      "confidence_prior": 0.55
+    }
+  },
+  "streak_hist": {
+    "1": 794,
+    "2": 193
+  },
+  "n_streaks": 987
+}

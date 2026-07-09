@@ -1,0 +1,58 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S17.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.9
+    },
+    "S17.2": {
+      "verdict": "CONFIRMED",
+      "frac_exactly_one": 1.0,
+      "confidence_prior": 0.7
+    },
+    "S17.3": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.95
+    }
+  },
+  "buckets_sample": {
+    "1": {
+      "count": 1,
+      "ks": [
+        2
+      ]
+    },
+    "2": {
+      "count": 1,
+      "ks": [
+        3
+      ]
+    },
+    "3": {
+      "count": 1,
+      "ks": [
+        4
+      ]
+    },
+    "5": {
+      "count": 1,
+      "ks": [
+        6
+      ]
+    },
+    "10": {
+      "count": 1,
+      "ks": [
+        11
+      ]
+    },
+    "20": {
+      "count": 1,
+      "ks": [
+        21
+      ]
+    }
+  }
+}

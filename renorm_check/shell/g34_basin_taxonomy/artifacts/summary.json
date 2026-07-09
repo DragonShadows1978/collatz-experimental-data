@@ -1,0 +1,28 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "X": 10000
+  },
+  "predictions": {
+    "S34.1": {
+      "verdict": "CONFIRMED",
+      "frac_spine": 0.0014,
+      "confidence_prior": 0.95
+    },
+    "S34.2": {
+      "verdict": "CONFIRMED",
+      "frac_shell": 0.0042,
+      "confidence_prior": 0.7
+    },
+    "S34.3": {
+      "verdict": "CONFIRMED",
+      "f100": 1.0,
+      "confidence_prior": 0.75
+    }
+  },
+  "taxonomy": "spine_thin_shell_moderate_bulk_full",
+  "frac_spine": 0.0014,
+  "frac_shell": 0.0042,
+  "f50": 0.8448,
+  "f100": 1.0
+}

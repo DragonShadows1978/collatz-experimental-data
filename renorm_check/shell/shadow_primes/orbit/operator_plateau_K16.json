@@ -1,0 +1,72 @@
+{
+  "5": {
+    "h_p": 3,
+    "plateau_mean_hole": -0.02025753134292167,
+    "plateau_std": 0.02187001548007887,
+    "n_iters_used": 116,
+    "window": [
+      15,
+      106
+    ]
+  },
+  "7": {
+    "h_p": 2,
+    "plateau_mean_hole": 0.008934796243213541,
+    "plateau_std": 0.008496497969325717,
+    "n_iters_used": 100,
+    "window": [
+      15,
+      90
+    ]
+  },
+  "11": {
+    "h_p": 7,
+    "plateau_mean_hole": 0.035408346282383076,
+    "plateau_std": 0.020339477245040188,
+    "n_iters_used": 109,
+    "window": [
+      15,
+      99
+    ]
+  },
+  "13": {
+    "h_p": 4,
+    "plateau_mean_hole": -0.02307890293615774,
+    "plateau_std": 0.006560791534082446,
+    "n_iters_used": 109,
+    "window": [
+      15,
+      99
+    ]
+  },
+  "17": {
+    "h_p": 11,
+    "plateau_mean_hole": -0.008801372698761904,
+    "plateau_std": 0.004355951917600873,
+    "n_iters_used": 109,
+    "window": [
+      15,
+      99
+    ]
+  },
+  "19": {
+    "h_p": 6,
+    "plateau_mean_hole": 0.031103039020372873,
+    "plateau_std": 0.00973202351720157,
+    "n_iters_used": 112,
+    "window": [
+      15,
+      102
+    ]
+  },
+  "23": {
+    "h_p": 15,
+    "plateau_mean_hole": -0.001429143435184213,
+    "plateau_std": 0.009367252323091156,
+    "n_iters_used": 111,
+    "window": [
+      15,
+      101
+    ]
+  }
+}

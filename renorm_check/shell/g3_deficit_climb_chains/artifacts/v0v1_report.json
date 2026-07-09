@@ -1,0 +1,15 @@
+{
+  "gates": {
+    "V0": "PASS",
+    "V1": "PASS"
+  },
+  "ok_all": true,
+  "V0": {
+    "support": 22,
+    "drop": 31
+  },
+  "V1": {
+    "n_steps": 211,
+    "dual_mismatches": 0
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S15.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.99
+    },
+    "S15.2": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.9
+    },
+    "S15.3": {
+      "verdict": "CONFIRMED",
+      "gap_ln_at_10": 82148.92357835268,
+      "confidence_prior": 0.85
+    },
+    "S15.4": {
+      "verdict": "CONFIRMED",
+      "count_le_1e12": 20,
+      "kmax": 20,
+      "confidence_prior": 0.95
+    }
+  },
+  "sample_k": [
+    {
+      "k": 1,
+      "x": 1,
+      "gap": 4,
+      "gap_over_ln_x": Infinity,
+      "bits": 1
+    },
+    {
+      "k": 2,
+      "x": 5,
+      "gap": 16,
+      "gap_over_ln_x": 9.94135895295379,
+      "bits": 3
+    },
+    {
+      "k": 5,
+      "x": 341,
+      "gap": 1024,
+      "gap_over_ln_x": 175.58652870470357,
+      "bits": 9
+    },
+    {
+      "k": 10,
+      "x": 349525,
+      "gap": 1048576,
+      "gap_over_ln_x": 82148.92357835268,
+      "bits": 19
+    },
+    {
+      "k": 20,
+      "x": 366503875925,
+      "gap": 1099511627776,
+      "gap_over_ln_x": 41292683179.65379,
+      "bits": 39
+    },
+    {
+      "k": 50,
+      "x": 422550200076076467165567735125,
+      "gap": 1267650600228229401496703205376,
+      "gap_over_ln_x": 1.8582863767567892e+28,
+      "bits": 99
+    }
+  ]
+}

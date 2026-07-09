@@ -1,0 +1,71 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S22.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.9
+    },
+    "S22.2": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.5
+    }
+  },
+  "rows": [
+    {
+      "k": 2,
+      "x": 5,
+      "species_gap": 16,
+      "max_prime_gap": 2
+    },
+    {
+      "k": 3,
+      "x": 21,
+      "species_gap": 64,
+      "max_prime_gap": 4
+    },
+    {
+      "k": 4,
+      "x": 85,
+      "species_gap": 256,
+      "max_prime_gap": 6
+    },
+    {
+      "k": 5,
+      "x": 341,
+      "species_gap": 1024,
+      "max_prime_gap": 14
+    },
+    {
+      "k": 6,
+      "x": 1365,
+      "species_gap": 4096,
+      "max_prime_gap": 34
+    },
+    {
+      "k": 7,
+      "x": 5461,
+      "species_gap": 16384,
+      "max_prime_gap": 34
+    },
+    {
+      "k": 8,
+      "x": 21845,
+      "species_gap": 65536,
+      "max_prime_gap": 52
+    },
+    {
+      "k": 9,
+      "x": 87381,
+      "species_gap": 262144,
+      "max_prime_gap": 72
+    },
+    {
+      "k": 10,
+      "x": 349525,
+      "species_gap": 1048576,
+      "max_prime_gap": 86
+    }
+  ]
+}

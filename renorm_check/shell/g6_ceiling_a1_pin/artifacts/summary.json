@@ -1,0 +1,40 @@
+{
+  "gates": {
+    "n_ceil_drop": 1960,
+    "G1": "PASS"
+  },
+  "predictions": {
+    "T6.1": {
+      "verdict": "CONFIRMED",
+      "p_a1": 0.6122448979591837,
+      "n": 1960,
+      "confidence_prior": 0.55
+    },
+    "T6.2": {
+      "verdict": "CONFIRMED",
+      "p_a1": 0.6122448979591837,
+      "confidence_prior": 0.55
+    },
+    "T6.3": {
+      "verdict": "CONFIRMED",
+      "ups": 1200,
+      "thm_U_ok": 1200,
+      "confidence_prior": 0.95
+    },
+    "T6.4": {
+      "verdict": "CONFIRMED",
+      "miss_rate": 0.3877551020408163,
+      "confidence_prior": 0.55
+    }
+  },
+  "a_hist": {
+    "1": 1200,
+    "2": 552,
+    "3": 136,
+    "4": 38,
+    "5": 17,
+    "6": 9,
+    "7": 3,
+    "8": 5
+  }
+}

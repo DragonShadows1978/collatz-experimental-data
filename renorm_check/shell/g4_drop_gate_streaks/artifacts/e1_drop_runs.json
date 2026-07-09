@@ -1,0 +1,29 @@
+{
+  "predictions": {
+    "S1.1": {
+      "verdict": "CONFIRMED",
+      "R_max_10k": 2,
+      "R_max_block53": 2,
+      "confidence_prior": 0.6
+    },
+    "S1.2": {
+      "verdict": "CONFIRMED",
+      "R_max": 2,
+      "confidence_prior": 0.55
+    },
+    "S1.3": {
+      "verdict": "CONFIRMED",
+      "mean_drop_run": 1.4093975903614457,
+      "confidence_prior": 0.5
+    }
+  },
+  "drop_run_hist": {
+    "1": 2451,
+    "2": 1699
+  },
+  "block_run_hist": {
+    "1": 13,
+    "2": 9
+  },
+  "R_max": 2
+}

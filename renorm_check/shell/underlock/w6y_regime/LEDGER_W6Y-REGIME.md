@@ -293,3 +293,125 @@ zero disagreements.
 
 No git commits, per house rules. CPU only. Peak RSS this round:
 ~1.3 GB (C=26 block 1), well under the 8 GB / 7500 MB cap.
+
+---
+
+# W7B-DEEP APPEND — high-capacity extension, C=27 upward
+
+Directive: W7B_ORDER.md (`../w7b_deep/`). Extend the validated edge
+measurement above C=26, on the 64 GB machine, as far as memory allows.
+Two frozen gates: (1) reproduce C=16=93, C=23=163, C=26=205 exactly
+before trusting any new cell; (2) a cell is a real edge ONLY if the
+corridor is observed to DIE (real integer first_dead) AND M(C) > M(C-1) —
+a state/RSS-cap termination is a WALL, not an edge, and is never written
+to the edges file.
+
+## Leaner representation (the enabling change)
+
+The C=26 "honest walls" note above flagged that C=27+ needs a faster/
+leaner instrument. Root cause found: wy_core.py's frontier was a `dict`
+keyed by (rho,u,v) whose VALUE was a full parent tuple + branch int
+`((rho,u,v),a)` — a redundant second copy of the key plus an `a`, which
+NO caller of walk_block_exact/find_edge_for_C ever reads (witness
+extraction is a separate pass in witness_bounded.py). Replaced with a
+bare `set` of (rho,u,v) in `../w7b_deep/wy_core_lean.py` (transition
+math byte-for-byte identical; only the survivor container changed).
+
+- **bytes/state: 554 → 313** (direct RSS-delta measurement at a C=22
+  shallow checkpoint, peak_live=186128: 103.1 MB → 58.3 MB). ~1.77x.
+- Confirmed at full scale: **C=26 peak RSS 1315 MB → 725 MB (1.81x)**;
+  wall-clock also improved (block times roughly halved, less alloc/GC).
+- VALIDATION GATE re-passed EXACTLY on the lean engine: C=16=93,
+  C=23=163, C=26=205 — identical peak_live and records, not just edges.
+
+## New genuine edges (each a real death; monotone; appended to
+`../w7a_renorm/w7a_new_edges.txt`)
+
+| C | M(C) | first_dead | peak_live | wall | elapsed | edge/(C+1) | ΔM |
+|---|---|---|---|---|---|---|---|
+| 27 | 208 | 209 | 4,790,754  | None | 2,297.6 s  | 7.43 | +3  |
+| 28 | 263 | 264 | 9,489,130  | None | 4,632.5 s  | 9.07 | +55 |
+| 29 | 265 | 266 | 18,595,538 | None | 13,768.7 s | 8.83 | +2  |
+| 30 | 282 | 283 | 36,804,069 | None | 24,504.6 s | 9.10 | +17 |
+
+- **Monotonicity: HELD at every cell** (208>205, 263>208, 265>263,
+  282>265). No revival, no non-monotone step.
+- **Peak-live growth ×1.90/C average** across C=26→30 (4.79M/2.52M=1.90,
+  9.49M/4.79M=1.98, 18.60M/9.49M=1.96, 36.80M/18.60M=1.98) — slightly
+  above the C=16..26 ×1.83 trend and still accelerating.
+- **Binding constraint is now state COUNT and WALL TIME, not RSS**: even
+  at C=30 (36.8M states) peak RSS was only 8.4 GB of the 32 GB cap used.
+  Per-block wall-clock grew to ~3,300 s each (8 blocks/cell) as rho
+  reached 100+ bits — big-int arithmetic cost, not memory, dominates.
+- The big ΔM jumps (+55 at C=28, +17 at C=30) alternating with tiny ones
+  (+3, +2) continue the "smooth drift, no clean quantized ladder"
+  picture; edge/(C+1) is now oscillating ~7.4–9.1, still climbing past
+  n=3's 7.227 with no pinning.
+
+## Capacity ceiling
+
+Caps used this run: rss_cap_mb = 32,000 (deliberately below the order's
+suggested 48,000 — only ~42 GB was actually free at start, other jobs
+resident), state_cap = 64,000,000. Projection from the ×1.90/C growth:
+C=31 peak ≈ 65–73M states, which EXCEEDS the 64M state_cap — so C=31 is
+the expected first genuine wall (state-count, not RSS; RSS would still
+have room). [C=31 outcome — edge or WALL — recorded below once the cell
+completes; do not infer it from this projection.]
+
+## Artifacts (under `../w7b_deep/`)
+
+- `wy_core_lean.py` — the lean instrument (set-based frontier).
+- `sweep_c27_up.py` — driver: inline frozen-gate re-check, then C=27↑
+  with the monotonicity + wall-vs-edge gates enforced in code.
+- `sweep_output.log` — full block-by-block log incl. the gate re-run.
+- `sweep_partial.json` — structured per-cell certificates (append-safe).
+- `RESUME_STATE.md` — live resume notes (process is detached; survives
+  session end).
+
+No git commits, per house rules. CPU only.
+
+### C=31 outcome — FIRST GENUINE CAPACITY WALL (not an edge)
+
+**WALL at C=31: state cap 64,000,000 exceeded at m=48
+(n_exact=69,084,627).** Reported by the instrument, wall != None,
+first_dead = None, genuine_death = False. Per the frozen gate this is a
+WALL, not an edge — it is NOT written to w7a_new_edges.txt, and the sweep
+stopped here (blocks_done=1, elapsed 2,061 s to the wall). The projection
+(C=31 peak ≈ 65–73M > 64M cap) landed: the frontier crossed the state cap
+at m=48 with 69,084,627 live states — a SHALLOW layer (m=48 of a 53-layer
+first block), exactly the "peak precedes truncation" regime, so this is a
+genuine peak-live count, not a deep-tail artifact.
+
+Nature of the wall: this is the **state_cap I chose (64M), not a hardware
+limit**. RSS at the wall was only 15,872 MB of the 32,000 MB cap — memory
+had ~16 GB of headroom left. So C=31 is reachable in principle by raising
+state_cap (e.g. to ~150M) and rss_cap toward ~28,000; the 69M-state peak
+would fit in ~20–22 GB at the measured ~300 bytes/state. Cost estimate:
+one C=31 cell ≈ 8 blocks × ~4,000–5,000 s ≈ 9–11 h of wall time (per-block
+cost is now rho-bit-length-bound, growing faster than state count). That
+is the next-round engineering lever; not run here to keep the wall
+honest and the result reproducible under the caps as stated.
+
+**Summary of the W7B-DEEP run:** genuine death-certified edges extended
+from C=26 to **C=30** (M = 208, 263, 265, 282 for C=27..30), monotonicity
+held at every cell, gate reproduced exactly on the lean engine; first
+state_cap wall at **C=31** under the 64M cap (state count 69,084,627 at
+m=48). Instrument memory footprint nearly halved (554 → 313 bytes/state)
+— the enabling change that made C=27..30 tractable where the old
+dict-based representation had flagged C=27 as its own engineering wall.
+
+### C=31 high-capacity follow-up (state_cap 120M, rss_cap 28,000 MB)
+
+Because the C=31 wall above was the 64M state_cap I *chose* (not hardware
+— RSS had ~16 GB of headroom), a follow-up run (`run_c31_highcap.py`,
+same frozen gate re-passed exactly) raised state_cap to 120,000,000 and
+rss_cap to 28,000 MB to try to capture C=31 as a genuine edge. Also fixed
+a latent driver bug: `prev_edge` was hardcoded to M(26)=205; now seeds
+from M(c_start−1) so the C=31 monotonicity baseline is correctly M(30)=282.
+**Block 1 cleared the old wall**: peak_this_block = 69,084,627 states now
+fits under the 120M cap, RSS 16,082 MB of the 28,000 cap (comfortable),
+elapsed 2,538 s. Corridor still alive past m=53; blocks 2..8 in progress.
+[C=31 final edge/wall — recorded below once the cell completes; if it dies
+with a real first_dead and M(31) > 282 it becomes a genuine edge appended
+to w7a_new_edges.txt; if it exceeds 120M states or 28 GB RSS first, that
+is the new honest wall.]

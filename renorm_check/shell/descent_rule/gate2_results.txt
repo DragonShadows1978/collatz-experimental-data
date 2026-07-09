@@ -1,0 +1,45 @@
+======================================================================
+GATE 2 -- Converse / exclusivity gate
+======================================================================
+Species members below 10,000,000: 12
+  k -> x: {1: 1, 2: 5, 3: 21, 4: 85, 5: 341, 6: 1365, 7: 5461, 8: 21845, 9: 87381, 10: 349525, 11: 1398101, 12: 5592405}
+Total odd x tested (x = 1,3,5,...,9999999): 5,000,000
+Number of x with S(x) == 1 (brute): 12
+Number of x matching species-set membership: 12
+False positives (species-membership but S(x)!=1): 0  values=[]
+False negatives (S(x)==1 but not species-membership): 0  values=[]
+Elapsed wall clock for full sweep: 2.479s (2,016,577 x/sec)
+EXACT SET MATCH (0 FP, 0 FN): True
+----------------------------------------------------------------------
+Random HUGE odd x test (hundreds to thousands of digits)
+----------------------------------------------------------------------
+  sample  0: x.bit_length()=  665  S(x)!=1: True  closed_form_species=False  t=0.000003s
+  sample  1: x.bit_length()= 1661  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample  2: x.bit_length()= 3322  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample  3: x.bit_length()= 4983  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample  4: x.bit_length()= 6644  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample  5: x.bit_length()= 9966  S(x)!=1: True  closed_form_species=False  t=0.000005s
+  sample  6: x.bit_length()=  665  S(x)!=1: True  closed_form_species=False  t=0.000001s
+  sample  7: x.bit_length()= 1661  S(x)!=1: True  closed_form_species=False  t=0.000001s
+  sample  8: x.bit_length()= 3322  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample  9: x.bit_length()= 4983  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample 10: x.bit_length()= 6644  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample 11: x.bit_length()= 9966  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample 12: x.bit_length()=  665  S(x)!=1: True  closed_form_species=False  t=0.000001s
+  sample 13: x.bit_length()= 1661  S(x)!=1: True  closed_form_species=False  t=0.000001s
+  sample 14: x.bit_length()= 3322  S(x)!=1: True  closed_form_species=False  t=0.000001s
+  sample 15: x.bit_length()= 4983  S(x)!=1: True  closed_form_species=False  t=0.000002s
+  sample 16: x.bit_length()= 6644  S(x)!=1: True  closed_form_species=False  t=0.000001s
+  sample 17: x.bit_length()= 9966  S(x)!=1: True  closed_form_species=False  t=0.000004s
+All 18 random huge x have S(x) != 1: True
+======================================================================
+GATE 2 SUMMARY
+======================================================================
+Odd x tested < 10,000,000: 5,000,000
+Species members found (brute S(x)==1): 12
+False positives: 0
+False negatives: 0
+Exact match: True
+Huge random x sampled: 18, all S(x)!=1: True
+Sweep wall clock: 2.479s
+======================================================================

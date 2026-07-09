@@ -1,0 +1,29 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S19.1": {
+      "verdict": "CONFIRMED",
+      "rel_at_50": 3.0,
+      "confidence_prior": 0.9
+    },
+    "S19.2": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.9
+    },
+    "S19.3": {
+      "verdict": "CONFIRMED",
+      "min_rel_float": 3.0,
+      "confidence_prior": 0.99
+    }
+  },
+  "rel_sample": {
+    "1": 4.0,
+    "2": 3.2,
+    "5": 3.002932551319648,
+    "10": 3.0000028610256777,
+    "20": 3.0000000000027285,
+    "50": 3.0
+  }
+}

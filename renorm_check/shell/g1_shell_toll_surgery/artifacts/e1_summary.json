@@ -1,0 +1,267 @@
+{
+  "first_true_vs_2253_divergence_k": 358,
+  "mechanical_P": 84,
+  "n_rows": 394,
+  "predictions": {
+    "P1.1": {
+      "verdict": "INCONCLUSIVE",
+      "reason": "Letter divergence at k=358 confirmed, but D at steps=371 m=[2, 3, 4, 5, 6, 7, 8] shows no true/period/hybrid differences. Support-cost\u2192D coupling not visible at these m; not a refutation of W6D-M at m~359 scale.",
+      "rows": [
+        {
+          "m": 2,
+          "D_true": 0,
+          "D_period": 0,
+          "D_fwd_357": 0,
+          "D_fwd_358": 0,
+          "D_fwd_359": 0,
+          "D_rev_357": 0,
+          "D_rev_359": 0,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 3,
+          "D_true": 1,
+          "D_period": 1,
+          "D_fwd_357": 1,
+          "D_fwd_358": 1,
+          "D_fwd_359": 1,
+          "D_rev_357": 1,
+          "D_rev_359": 1,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 4,
+          "D_true": 1,
+          "D_period": 1,
+          "D_fwd_357": 1,
+          "D_fwd_358": 1,
+          "D_fwd_359": 1,
+          "D_rev_357": 1,
+          "D_rev_359": 1,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 5,
+          "D_true": 2,
+          "D_period": 2,
+          "D_fwd_357": 2,
+          "D_fwd_358": 2,
+          "D_fwd_359": 2,
+          "D_rev_357": 2,
+          "D_rev_359": 2,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 6,
+          "D_true": 2,
+          "D_period": 2,
+          "D_fwd_357": 2,
+          "D_fwd_358": 2,
+          "D_fwd_359": 2,
+          "D_rev_357": 2,
+          "D_rev_359": 2,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 7,
+          "D_true": 2,
+          "D_period": 2,
+          "D_fwd_357": 2,
+          "D_fwd_358": 2,
+          "D_fwd_359": 2,
+          "D_rev_357": 2,
+          "D_rev_359": 2,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 8,
+          "D_true": 3,
+          "D_period": 3,
+          "D_fwd_357": 3,
+          "D_fwd_358": 3,
+          "D_fwd_359": 3,
+          "D_rev_357": 3,
+          "D_rev_359": 3,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        }
+      ],
+      "confidence_prior": 0.55
+    },
+    "P1.2": {
+      "verdict": "CONFIRMED",
+      "d_by_m": {
+        "2": [
+          0
+        ],
+        "3": [
+          1
+        ],
+        "4": [
+          1
+        ],
+        "5": [
+          2
+        ],
+        "6": [
+          2
+        ],
+        "7": [
+          2
+        ],
+        "8": [
+          3
+        ],
+        "9": [
+          3
+        ],
+        "10": [
+          4
+        ],
+        "11": [
+          4
+        ],
+        "12": [
+          4
+        ]
+      },
+      "confidence_prior": 0.85
+    },
+    "P1.3": {
+      "verdict": "CONFIRMED",
+      "first_divergence_letter_k": 358,
+      "confidence_prior": 0.8
+    },
+    "P1.4": {
+      "verdict": "NOT_A_MEASUREMENT",
+      "note": "Conditional F5 route only; F5 remains OPEN",
+      "confidence_prior": 0.45
+    },
+    "P1.5": {
+      "verdict": "INCONCLUSIVE",
+      "reason": "No D variation to exhibit asymmetry",
+      "rows": [
+        {
+          "m": 2,
+          "D_true": 0,
+          "D_period": 0,
+          "D_fwd_357": 0,
+          "D_fwd_358": 0,
+          "D_fwd_359": 0,
+          "D_rev_357": 0,
+          "D_rev_359": 0,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 3,
+          "D_true": 1,
+          "D_period": 1,
+          "D_fwd_357": 1,
+          "D_fwd_358": 1,
+          "D_fwd_359": 1,
+          "D_rev_357": 1,
+          "D_rev_359": 1,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 4,
+          "D_true": 1,
+          "D_period": 1,
+          "D_fwd_357": 1,
+          "D_fwd_358": 1,
+          "D_fwd_359": 1,
+          "D_rev_357": 1,
+          "D_rev_359": 1,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 5,
+          "D_true": 2,
+          "D_period": 2,
+          "D_fwd_357": 2,
+          "D_fwd_358": 2,
+          "D_fwd_359": 2,
+          "D_rev_357": 2,
+          "D_rev_359": 2,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 6,
+          "D_true": 2,
+          "D_period": 2,
+          "D_fwd_357": 2,
+          "D_fwd_358": 2,
+          "D_fwd_359": 2,
+          "D_rev_357": 2,
+          "D_rev_359": 2,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 7,
+          "D_true": 2,
+          "D_period": 2,
+          "D_fwd_357": 2,
+          "D_fwd_358": 2,
+          "D_fwd_359": 2,
+          "D_rev_357": 2,
+          "D_rev_359": 2,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        },
+        {
+          "m": 8,
+          "D_true": 3,
+          "D_period": 3,
+          "D_fwd_357": 3,
+          "D_fwd_358": 3,
+          "D_fwd_359": 3,
+          "D_rev_357": 3,
+          "D_rev_359": 3,
+          "true_vs_period": false,
+          "fwd_357_vs_359": false,
+          "fwd_vs_rev_359": false
+        }
+      ],
+      "confidence_prior": 0.7
+    },
+    "E1-G1": "PASS",
+    "E1-G2": "PASS",
+    "E1-G3": "PASS_VACUOUS",
+    "letter_identity_0_53": true,
+    "letter_identity_0_358": true,
+    "heartbeat_spot_ok": true
+  },
+  "method_notes": [
+    {
+      "heartbeat_spot_all_match_pure": true
+    }
+  ],
+  "elapsed_sec": 25.940274477005005,
+  "artifacts": {
+    "csv": "/mnt/ForgeRealm/collatz-experimental-data/renorm_check/shell/g1_shell_toll_surgery/artifacts/e1_hybrid_D.csv"
+  }
+}

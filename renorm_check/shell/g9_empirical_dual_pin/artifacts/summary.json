@@ -1,0 +1,46 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "multiset_size": 1960,
+    "g6_hist": {
+      "1": 1200,
+      "2": 552,
+      "3": 136,
+      "4": 38,
+      "5": 17,
+      "6": 9,
+      "7": 3,
+      "8": 5
+    }
+  },
+  "predictions": {
+    "T9.1": {
+      "verdict": "CONFIRMED",
+      "max_ups_53": 2,
+      "arg": {
+        "k0": 0,
+        "d0": 0,
+        "ups": 2,
+        "max_streak": 1
+      },
+      "confidence_prior": 0.55
+    },
+    "T9.2": {
+      "verdict": "CONFIRMED",
+      "max_emp": 2,
+      "greedy_ref": 31,
+      "confidence_prior": 0.75
+    },
+    "T9.3": {
+      "verdict": "CONFIRMED",
+      "max_streak": 1,
+      "confidence_prior": 0.8
+    },
+    "T9.4": {
+      "verdict": "CONFIRMED",
+      "mean_ups_d0": 2.0,
+      "confidence_prior": 0.5
+    }
+  },
+  "greedy_ups_53_k0_0": 31
+}

@@ -1,0 +1,83 @@
+======================================================================
+GATE 3 -- Closed-form certifier
+======================================================================
+----------------------------------------------------------------------
+Part 1: agreement with brute simulation, all odd x < 10^7
+----------------------------------------------------------------------
+Tested 5,000,000 odd x < 10,000,000
+Mismatches (brute vs certifier): 0  []
+Elapsed: 4.263s
+Huge random x set (same seed as gate 2, seed=20260705):
+  sample  0: bit_length=  665  brute_S=1:False  cert:False,None  agree=True
+  sample  1: bit_length= 1661  brute_S=1:False  cert:False,None  agree=True
+  sample  2: bit_length= 3322  brute_S=1:False  cert:False,None  agree=True
+  sample  3: bit_length= 4983  brute_S=1:False  cert:False,None  agree=True
+  sample  4: bit_length= 6644  brute_S=1:False  cert:False,None  agree=True
+  sample  5: bit_length= 9966  brute_S=1:False  cert:False,None  agree=True
+  sample  6: bit_length=  665  brute_S=1:False  cert:False,None  agree=True
+  sample  7: bit_length= 1661  brute_S=1:False  cert:False,None  agree=True
+  sample  8: bit_length= 3322  brute_S=1:False  cert:False,None  agree=True
+  sample  9: bit_length= 4983  brute_S=1:False  cert:False,None  agree=True
+  sample 10: bit_length= 6644  brute_S=1:False  cert:False,None  agree=True
+  sample 11: bit_length= 9966  brute_S=1:False  cert:False,None  agree=True
+  sample 12: bit_length=  665  brute_S=1:False  cert:False,None  agree=True
+  sample 13: bit_length= 1661  brute_S=1:False  cert:False,None  agree=True
+  sample 14: bit_length= 3322  brute_S=1:False  cert:False,None  agree=True
+  sample 15: bit_length= 4983  brute_S=1:False  cert:False,None  agree=True
+  sample 16: bit_length= 6644  brute_S=1:False  cert:False,None  agree=True
+  sample 17: bit_length= 9966  brute_S=1:False  cert:False,None  agree=True
+Huge-x mismatches: 0
+TOTAL mismatches across all 5,000,018 tests: 0
+Agreement rate: 100.0000000000%
+----------------------------------------------------------------------
+Part 2: certify true species members at 1000+ digits
+----------------------------------------------------------------------
+  k=  1662  x.bit_length()=  3323  decimal_digits=  1001  certifier=(True,1662)  correct=True  t=0.000003s
+  k=  1700  x.bit_length()=  3399  decimal_digits=  1024  certifier=(True,1700)  correct=True  t=0.000003s
+  k=  2000  x.bit_length()=  3999  decimal_digits=  1204  certifier=(True,2000)  correct=True  t=0.000002s
+  k=  3000  x.bit_length()=  5999  decimal_digits=  1806  certifier=(True,3000)  correct=True  t=0.000002s
+  k=  5000  x.bit_length()=  9999  decimal_digits=  3010  certifier=(True,5000)  correct=True  t=0.000003s
+  k= 10000  x.bit_length()= 19999  decimal_digits=  6021  certifier=(True,10000)  correct=True  t=0.000011s
+All 6 thousand+-digit species members correctly certified: True
+----------------------------------------------------------------------
+Part 3: reject ~1000+ digit NON-members
+----------------------------------------------------------------------
+  near-species+2          bit_length=  3399  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000002s
+  near-species+-2         bit_length=  3399  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000002s
+  near-species+4          bit_length=  3399  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000001s
+  near-species+-4         bit_length=  3399  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000001s
+  near-species+100        bit_length=  3399  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000001s
+  near-species+-100       bit_length=  3399  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000001s
+  random-1000digits       bit_length=  3322  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000001s
+  random-1500digits       bit_length=  4983  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000002s
+  random-2000digits       bit_length=  6644  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000002s
+  random-3000digits       bit_length=  9966  certifier=(False,None)  brute_S_eq_1=False  correctly_rejected=True  t=0.000003s
+All 10 non-members correctly rejected: True
+----------------------------------------------------------------------
+Part 4: timing vs digit length (demonstrates O(digits) scaling,
+        NOT trajectory-simulation-like behavior)
+----------------------------------------------------------------------
+  target_digits=     10  actual_digits=     10  bits=     33  repeats=5001  total_t=0.001985s  per_call=0.397us  result=(True,17)
+  target_digits=    100  actual_digits=    100  bits=    331  repeats=5001  total_t=0.002394s  per_call=0.479us  result=(True,166)
+  target_digits=   1000  actual_digits=   1000  bits=   3321  repeats=5001  total_t=0.004847s  per_call=0.969us  result=(True,1661)
+  target_digits=  10000  actual_digits=  10000  bits=  33219  repeats=5001  total_t=0.040870s  per_call=8.172us  result=(True,16610)
+  target_digits= 100000  actual_digits= 100000  bits= 332191  repeats=5001  total_t=0.844859s  per_call=168.938us  result=(True,166096)
+  target_digits= 300000  actual_digits= 300000  bits= 996577  repeats=5001  total_t=1.065741s  per_call=213.106us  result=(True,498289)
+
+Scaling check (per_call_time / digits, should stay roughly flat
+or grow much slower than digit count for O(digits)-ish scaling):
+  digits=     10  per_call=     0.397us  per_call/digit=0.039695us/digit
+  digits=    100  per_call=     0.479us  per_call/digit=0.004787us/digit
+  digits=   1000  per_call=     0.969us  per_call/digit=0.000969us/digit
+  digits=  10000  per_call=     8.172us  per_call/digit=0.000817us/digit
+  digits= 100000  per_call=   168.938us  per_call/digit=0.001689us/digit
+  digits= 300000  per_call=   213.106us  per_call/digit=0.000710us/digit
+======================================================================
+GATE 3 SUMMARY
+======================================================================
+Part 1 (agreement with brute sim, all odd x<10^7 + huge x): True  (agreement_rate=100.0000000000%)
+Part 2 (certify 1000+ digit species members): True
+Part 3 (reject 1000+ digit non-members): True
+Part 4 (timing table): see rows above, 6 digit-length points measured
+GATE 3 OVERALL: PASS
+======================================================================

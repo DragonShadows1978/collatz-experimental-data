@@ -1,0 +1,78 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "W": 1000
+  },
+  "predictions": {
+    "S28.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.8
+    },
+    "S28.2": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.75
+    },
+    "S28.3": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.9
+    }
+  },
+  "rows": [
+    {
+      "k": 8,
+      "x": 21845,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    },
+    {
+      "k": 9,
+      "x": 87381,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    },
+    {
+      "k": 10,
+      "x": 349525,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    },
+    {
+      "k": 11,
+      "x": 1398101,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    },
+    {
+      "k": 12,
+      "x": 5592405,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    },
+    {
+      "k": 13,
+      "x": 22369621,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    },
+    {
+      "k": 14,
+      "x": 89478485,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    },
+    {
+      "k": 15,
+      "x": 357913941,
+      "cnt_species": 1,
+      "n_odds_window": 1001,
+      "frac": 0.000999000999000999
+    }
+  ]
+}

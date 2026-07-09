@@ -1,0 +1,28 @@
+{
+  "gates": {
+    "n_with_up": 251,
+    "G1": "PASS"
+  },
+  "predictions": {
+    "U11.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.95
+    },
+    "U11.2": {
+      "verdict": "REFUTED",
+      "mean_ratio": 0.7675815851739636,
+      "n": 108,
+      "confidence_prior": 0.55
+    },
+    "U11.3": {
+      "verdict": "REFUTED",
+      "median_post": 62,
+      "confidence_prior": 0.5
+    },
+    "U11.4": {
+      "verdict": "CONFIRMED",
+      "frac_post_le_100": 0.9163346613545816,
+      "confidence_prior": 0.55
+    }
+  }
+}

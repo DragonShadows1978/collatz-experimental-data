@@ -1,0 +1,27 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "n": 308
+  },
+  "predictions": {
+    "S33.1": {
+      "verdict": "CONFIRMED",
+      "rho": 0.4892245514584112,
+      "confidence_prior": 0.7
+    },
+    "S33.2": {
+      "verdict": "CONFIRMED",
+      "rho": 0.4892245514584112,
+      "confidence_prior": 0.55
+    },
+    "S33.3": {
+      "verdict": "CONFIRMED",
+      "mean_low": 61.088235294117645,
+      "mean_high": 102.98039215686275,
+      "confidence_prior": 0.55
+    }
+  },
+  "rho": 0.4892245514584112,
+  "mean_low_bits_steps": 61.088235294117645,
+  "mean_high_bits_steps": 102.98039215686275
+}

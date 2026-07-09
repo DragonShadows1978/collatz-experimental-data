@@ -1,0 +1,29 @@
+{
+  "gates": {
+    "G1": "PASS",
+    "n_free_hit": 308
+  },
+  "predictions": {
+    "S27.1": {
+      "verdict": "CONFIRMED",
+      "med_odds": 26,
+      "confidence_prior": 0.7
+    },
+    "S27.2": {
+      "verdict": "CONFIRMED",
+      "med_free": 70,
+      "confidence_prior": 0.65
+    },
+    "S27.3": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.55
+    },
+    "S27.4": {
+      "verdict": "CONFIRMED",
+      "free_hit_rate": 1.0,
+      "confidence_prior": 0.9
+    }
+  },
+  "med_odds": 26,
+  "med_free": 70
+}

@@ -1,0 +1,41 @@
+{
+  "gates": {
+    "G1": "PASS"
+  },
+  "predictions": {
+    "S32.1": {
+      "verdict": "CONFIRMED",
+      "confidence_prior": 0.75
+    },
+    "S32.2": {
+      "verdict": "REFUTED",
+      "ratio": 3.2986167615947926,
+      "confidence_prior": 0.6
+    },
+    "S32.3": {
+      "verdict": "CONFIRMED",
+      "f": 0.602,
+      "confidence_prior": 0.55
+    }
+  },
+  "rows": {
+    "1000": {
+      "f_basin_le20": 0.602,
+      "prime_dens": 0.168,
+      "pi": 168,
+      "basin_over_prime": 3.583333333333333
+    },
+    "10000": {
+      "f_basin_le20": 0.4054,
+      "prime_dens": 0.1229,
+      "pi": 1229,
+      "basin_over_prime": 3.2986167615947926
+    },
+    "100000": {
+      "f_basin_le20": 0.3064,
+      "prime_dens": 0.09592,
+      "pi": 9592,
+      "basin_over_prime": 3.1943286071726438
+    }
+  }
+}

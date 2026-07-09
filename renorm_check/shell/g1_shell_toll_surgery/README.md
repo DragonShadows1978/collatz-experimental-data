@@ -1,16 +1,13 @@
 # G1 — Shell Toll + Letter Surgery
 
-Feet-wet track on branch `grok/g1-shell-toll-surgery`.
+On branch `grok/g1-shell-toll-surgery`. **COMPLETE.**
 
 | File | Role |
-|---|---|
-| [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) | **Immutable plan** — experiments, gates, frozen predictions |
-| [`IMPLEMENTATION_LEDGER.md`](IMPLEMENTATION_LEDGER.md) | **Receipts** — what ran, artifacts, outcomes, next steps |
-| [`SYNTHESIS.md`](SYNTHESIS.md) | **Narrative** — meaning of the results |
-| `scripts/` | Implementation |
-| `artifacts/` | CSV / JSON / logs from runs |
+|------|------|
+| [`IMPLEMENTATION_PLAN.md`](IMPLEMENTATION_PLAN.md) | Immutable plan (frozen) |
+| [`IMPLEMENTATION_LEDGER.md`](IMPLEMENTATION_LEDGER.md) | Receipts for this plan only |
+| [`../GROK_SYNTHESIS.md`](../GROK_SYNTHESIS.md) | **Branch narrative** (all tracks) |
+| `scripts/` / `artifacts/` | Code + outputs |
 
-Do not edit the plan after the freeze commit. Record reality in the
-ledger; interpret in the synthesis.
-
-Parent discipline: `../LEDGER_SYNTHESIS_POLICY.md`.
+House rule for this branch: **one synthesis**, **new plan + new ledger**
+per implementation. Do not create a per-track synthesis.

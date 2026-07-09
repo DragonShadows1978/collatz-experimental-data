@@ -1,0 +1,20 @@
+{
+  "predictions": {
+    "S3.1": {
+      "verdict": "CONFIRMED",
+      "frac_post_up_support": 0.7483050847457627,
+      "confidence_prior": 0.45
+    },
+    "S3.2": {
+      "verdict": "CONFIRMED",
+      "frac_second_up": 0.1635593220338983,
+      "confidence_prior": 0.55
+    },
+    "S3.3": {
+      "verdict": "CONFIRMED",
+      "n_support_then_up": 0,
+      "confidence_prior": 0.9
+    }
+  },
+  "n_post_up": 1180
+}

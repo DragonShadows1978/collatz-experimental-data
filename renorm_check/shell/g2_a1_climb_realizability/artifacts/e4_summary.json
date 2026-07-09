@@ -1,0 +1,11 @@
+{
+  "prediction_Q4.1": {
+    "verdict": "CONFIRMED",
+    "rule": "U <= M+1 for starts with max_d >= 0",
+    "n_starts": 308,
+    "n_scoped": 284,
+    "n_violations": 0,
+    "violations_head": [],
+    "confidence_prior": 0.55
+  }
+}

@@ -1,0 +1,297 @@
+Loaded 22004 trajectories, 1057188 steps, 44 fit primes, 49 held-out primes
+
+=== CENSUS: block-bootstrap (10000 resamples, trajectory-level, shared draws) ===
+Built shared bootstrap count matrix: (10000, 22004), 0.88 GB
+p=  5  rate=0.20427  CI=[0.20357,0.20498]  1/p=0.20000  dev=+0.00427  reldev=+0.0214  ANOMALOUS
+p=  7  rate=0.13982  CI=[0.13931,0.14032]  1/p=0.14286  dev=-0.00304  reldev=-0.0213  ANOMALOUS
+p= 11  rate=0.08245  CI=[0.08202,0.08287]  1/p=0.09091  dev=-0.00846  reldev=-0.0931  ANOMALOUS
+p= 13  rate=0.09117  CI=[0.09076,0.09158]  1/p=0.07692  dev=+0.01424  reldev=+0.1852  ANOMALOUS
+p= 17  rate=0.06277  CI=[0.06244,0.06311]  1/p=0.05882  dev=+0.00395  reldev=+0.0671  ANOMALOUS
+p= 19  rate=0.03902  CI=[0.03857,0.03948]  1/p=0.05263  dev=-0.01361  reldev=-0.2587  ANOMALOUS
+p= 23  rate=0.04033  CI=[0.04002,0.04063]  1/p=0.04348  dev=-0.00315  reldev=-0.0725  ANOMALOUS
+p= 29  rate=0.03928  CI=[0.03898,0.03959]  1/p=0.03448  dev=+0.00480  reldev=+0.1392  ANOMALOUS
+p= 31  rate=0.02885  CI=[0.02858,0.02912]  1/p=0.03226  dev=-0.00340  reldev=-0.1055  ANOMALOUS
+p= 37  rate=0.02105  CI=[0.02074,0.02135]  1/p=0.02703  dev=-0.00598  reldev=-0.2213  ANOMALOUS
+p= 41  rate=0.01649  CI=[0.01623,0.01675]  1/p=0.02439  dev=-0.00790  reldev=-0.3238  ANOMALOUS
+p= 43  rate=0.01679  CI=[0.01656,0.01703]  1/p=0.02326  dev=-0.00646  reldev=-0.2778  ANOMALOUS
+p= 47  rate=0.01793  CI=[0.01770,0.01815]  1/p=0.02128  dev=-0.00335  reldev=-0.1574  ANOMALOUS
+p= 53  rate=0.02105  CI=[0.02084,0.02125]  1/p=0.01887  dev=+0.00218  reldev=+0.1155  ANOMALOUS
+p= 59  rate=0.01151  CI=[0.01131,0.01171]  1/p=0.01695  dev=-0.00544  reldev=-0.3210  ANOMALOUS
+p= 61  rate=0.01926  CI=[0.01907,0.01945]  1/p=0.01639  dev=+0.00287  reldev=+0.1748  ANOMALOUS
+p= 67  rate=0.01070  CI=[0.01051,0.01089]  1/p=0.01493  dev=-0.00422  reldev=-0.2830  ANOMALOUS
+p= 71  rate=0.01226  CI=[0.01207,0.01244]  1/p=0.01408  dev=-0.00183  reldev=-0.1299  ANOMALOUS
+p= 73  rate=0.00948  CI=[0.00930,0.00966]  1/p=0.01370  dev=-0.00422  reldev=-0.3080  ANOMALOUS
+p= 79  rate=0.01482  CI=[0.01464,0.01500]  1/p=0.01266  dev=+0.00216  reldev=+0.1710  ANOMALOUS
+p= 83  rate=0.01662  CI=[0.01642,0.01681]  1/p=0.01205  dev=+0.00457  reldev=+0.3794  ANOMALOUS
+p= 89  rate=0.01518  CI=[0.01500,0.01536]  1/p=0.01124  dev=+0.00395  reldev=+0.3513  ANOMALOUS
+p= 97  rate=0.00809  CI=[0.00792,0.00825]  1/p=0.01031  dev=-0.00222  reldev=-0.2157  ANOMALOUS
+p=101  rate=0.00860  CI=[0.00843,0.00877]  1/p=0.00990  dev=-0.00131  reldev=-0.1319  ANOMALOUS
+p=103  rate=0.01234  CI=[0.01216,0.01251]  1/p=0.00971  dev=+0.00263  reldev=+0.2710  ANOMALOUS
+p=107  rate=0.00963  CI=[0.00948,0.00978]  1/p=0.00935  dev=+0.00029  reldev=+0.0305  ANOMALOUS
+p=109  rate=0.00679  CI=[0.00664,0.00694]  1/p=0.00917  dev=-0.00239  reldev=-0.2600  ANOMALOUS
+p=113  rate=0.00544  CI=[0.00531,0.00558]  1/p=0.00885  dev=-0.00340  reldev=-0.3848  ANOMALOUS
+p=127  rate=0.00569  CI=[0.00554,0.00583]  1/p=0.00787  dev=-0.00219  reldev=-0.2779  ANOMALOUS
+p=131  rate=0.00568  CI=[0.00554,0.00582]  1/p=0.00763  dev=-0.00195  reldev=-0.2560  ANOMALOUS
+p=137  rate=0.01004  CI=[0.00989,0.01019]  1/p=0.00730  dev=+0.00274  reldev=+0.3757  ANOMALOUS
+p=139  rate=0.00440  CI=[0.00428,0.00453]  1/p=0.00719  dev=-0.00279  reldev=-0.3881  ANOMALOUS
+p=149  rate=0.00505  CI=[0.00492,0.00519]  1/p=0.00671  dev=-0.00166  reldev=-0.2472  ANOMALOUS
+p=151  rate=0.00420  CI=[0.00408,0.00432]  1/p=0.00662  dev=-0.00243  reldev=-0.3663  ANOMALOUS
+p=157  rate=0.00529  CI=[0.00514,0.00544]  1/p=0.00637  dev=-0.00108  reldev=-0.1695  ANOMALOUS
+p=163  rate=0.00360  CI=[0.00349,0.00371]  1/p=0.00613  dev=-0.00253  reldev=-0.4132  ANOMALOUS
+p=167  rate=0.01033  CI=[0.01019,0.01048]  1/p=0.00599  dev=+0.00435  reldev=+0.7256  ANOMALOUS
+p=173  rate=0.00544  CI=[0.00531,0.00558]  1/p=0.00578  dev=-0.00034  reldev=-0.0584  ANOMALOUS
+p=179  rate=0.00367  CI=[0.00355,0.00379]  1/p=0.00559  dev=-0.00192  reldev=-0.3430  ANOMALOUS
+p=181  rate=0.01188  CI=[0.01173,0.01202]  1/p=0.00552  dev=+0.00635  reldev=+1.1497  ANOMALOUS
+p=191  rate=0.00378  CI=[0.00366,0.00389]  1/p=0.00524  dev=-0.00146  reldev=-0.2786  ANOMALOUS
+p=193  rate=0.00281  CI=[0.00271,0.00291]  1/p=0.00518  dev=-0.00237  reldev=-0.4578  ANOMALOUS
+p=197  rate=0.00457  CI=[0.00445,0.00470]  1/p=0.00508  dev=-0.00050  reldev=-0.0994  ANOMALOUS
+p=199  rate=0.00306  CI=[0.00296,0.00317]  1/p=0.00503  dev=-0.00196  reldev=-0.3905  ANOMALOUS
+p=211  rate=0.00333  CI=[0.00321,0.00344]  1/p=0.00474  dev=-0.00141  reldev=-0.2977  ANOMALOUS
+p=223  rate=0.00225  CI=[0.00216,0.00234]  1/p=0.00448  dev=-0.00224  reldev=-0.4992  ANOMALOUS
+p=227  rate=0.00324  CI=[0.00313,0.00336]  1/p=0.00441  dev=-0.00116  reldev=-0.2637  ANOMALOUS
+p=229  rate=0.00287  CI=[0.00277,0.00297]  1/p=0.00437  dev=-0.00150  reldev=-0.3434  ANOMALOUS
+p=233  rate=0.00869  CI=[0.00856,0.00882]  1/p=0.00429  dev=+0.00440  reldev=+1.0246  ANOMALOUS
+p=239  rate=0.00246  CI=[0.00236,0.00256]  1/p=0.00418  dev=-0.00172  reldev=-0.4118  ANOMALOUS
+p=241  rate=0.00246  CI=[0.00237,0.00256]  1/p=0.00415  dev=-0.00169  reldev=-0.4062  ANOMALOUS
+p=251  rate=0.00958  CI=[0.00945,0.00971]  1/p=0.00398  dev=+0.00559  reldev=+1.4039  ANOMALOUS
+p=257  rate=0.00234  CI=[0.00225,0.00243]  1/p=0.00389  dev=-0.00155  reldev=-0.3978  ANOMALOUS
+p=263  rate=0.00853  CI=[0.00840,0.00866]  1/p=0.00380  dev=+0.00473  reldev=+1.2437  ANOMALOUS
+p=269  rate=0.00336  CI=[0.00325,0.00347]  1/p=0.00372  dev=-0.00036  reldev=-0.0965  ANOMALOUS
+p=271  rate=0.00248  CI=[0.00238,0.00257]  1/p=0.00369  dev=-0.00121  reldev=-0.3289  ANOMALOUS
+p=277  rate=0.00175  CI=[0.00167,0.00183]  1/p=0.00361  dev=-0.00186  reldev=-0.5145  ANOMALOUS
+p=281  rate=0.00221  CI=[0.00212,0.00230]  1/p=0.00356  dev=-0.00135  reldev=-0.3780  ANOMALOUS
+p=283  rate=0.00876  CI=[0.00863,0.00888]  1/p=0.00353  dev=+0.00522  reldev=+1.4780  ANOMALOUS
+p=293  rate=0.00988  CI=[0.00974,0.01001]  1/p=0.00341  dev=+0.00646  reldev=+1.8937  ANOMALOUS
+p=307  rate=0.00196  CI=[0.00188,0.00205]  1/p=0.00326  dev=-0.00130  reldev=-0.3977  ANOMALOUS
+p=311  rate=0.00180  CI=[0.00172,0.00188]  1/p=0.00322  dev=-0.00142  reldev=-0.4405  ANOMALOUS
+p=313  rate=0.00208  CI=[0.00200,0.00217]  1/p=0.00319  dev=-0.00111  reldev=-0.3475  ANOMALOUS
+p=317  rate=0.00247  CI=[0.00237,0.00256]  1/p=0.00315  dev=-0.00069  reldev=-0.2186  ANOMALOUS
+p=331  rate=0.00171  CI=[0.00163,0.00179]  1/p=0.00302  dev=-0.00131  reldev=-0.4336  ANOMALOUS
+p=337  rate=0.00223  CI=[0.00214,0.00232]  1/p=0.00297  dev=-0.00074  reldev=-0.2480  ANOMALOUS
+p=347  rate=0.00930  CI=[0.00918,0.00943]  1/p=0.00288  dev=+0.00642  reldev=+2.2278  ANOMALOUS
+p=349  rate=0.00142  CI=[0.00135,0.00149]  1/p=0.00287  dev=-0.00144  reldev=-0.5038  ANOMALOUS
+p=353  rate=0.00188  CI=[0.00180,0.00197]  1/p=0.00283  dev=-0.00095  reldev=-0.3349  ANOMALOUS
+p=359  rate=0.00220  CI=[0.00211,0.00229]  1/p=0.00279  dev=-0.00059  reldev=-0.2112  ANOMALOUS
+p=367  rate=0.00140  CI=[0.00133,0.00147]  1/p=0.00272  dev=-0.00132  reldev=-0.4862  ANOMALOUS
+p=373  rate=0.00173  CI=[0.00165,0.00182]  1/p=0.00268  dev=-0.00095  reldev=-0.3533  ANOMALOUS
+p=379  rate=0.00164  CI=[0.00157,0.00172]  1/p=0.00264  dev=-0.00100  reldev=-0.3776  ANOMALOUS
+p=383  rate=0.00145  CI=[0.00137,0.00152]  1/p=0.00261  dev=-0.00116  reldev=-0.4453  ANOMALOUS
+p=389  rate=0.00173  CI=[0.00166,0.00181]  1/p=0.00257  dev=-0.00084  reldev=-0.3259  ANOMALOUS
+p=397  rate=0.00155  CI=[0.00148,0.00163]  1/p=0.00252  dev=-0.00097  reldev=-0.3841  ANOMALOUS
+p=401  rate=0.00116  CI=[0.00110,0.00123]  1/p=0.00249  dev=-0.00133  reldev=-0.5346  ANOMALOUS
+p=409  rate=0.00194  CI=[0.00186,0.00203]  1/p=0.00244  dev=-0.00050  reldev=-0.2046  ANOMALOUS
+p=419  rate=0.00130  CI=[0.00124,0.00137]  1/p=0.00239  dev=-0.00108  reldev=-0.4535  ANOMALOUS
+p=421  rate=0.00160  CI=[0.00153,0.00167]  1/p=0.00238  dev=-0.00078  reldev=-0.3270  ANOMALOUS
+p=431  rate=0.00203  CI=[0.00194,0.00212]  1/p=0.00232  dev=-0.00029  reldev=-0.1259  ANOMALOUS
+p=433  rate=0.00952  CI=[0.00939,0.00965]  1/p=0.00231  dev=+0.00721  reldev=+3.1236  ANOMALOUS
+p=439  rate=0.00125  CI=[0.00118,0.00132]  1/p=0.00228  dev=-0.00103  reldev=-0.4506  ANOMALOUS
+p=443  rate=0.00138  CI=[0.00131,0.00145]  1/p=0.00226  dev=-0.00088  reldev=-0.3878  ANOMALOUS
+p=449  rate=0.00187  CI=[0.00179,0.00195]  1/p=0.00223  dev=-0.00036  reldev=-0.1599  ANOMALOUS
+p=457  rate=0.00117  CI=[0.00111,0.00124]  1/p=0.00219  dev=-0.00101  reldev=-0.4635  ANOMALOUS
+p=461  rate=0.00171  CI=[0.00164,0.00179]  1/p=0.00217  dev=-0.00046  reldev=-0.2099  ANOMALOUS
+p=463  rate=0.00147  CI=[0.00140,0.00154]  1/p=0.00216  dev=-0.00069  reldev=-0.3177  ANOMALOUS
+p=467  rate=0.00105  CI=[0.00099,0.00111]  1/p=0.00214  dev=-0.00109  reldev=-0.5106  ANOMALOUS
+p=479  rate=0.00866  CI=[0.00853,0.00878]  1/p=0.00209  dev=+0.00657  reldev=+3.1462  ANOMALOUS
+p=487  rate=0.00114  CI=[0.00107,0.00120]  1/p=0.00205  dev=-0.00092  reldev=-0.4472  ANOMALOUS
+p=491  rate=0.00113  CI=[0.00106,0.00119]  1/p=0.00204  dev=-0.00091  reldev=-0.4469  ANOMALOUS
+p=499  rate=0.00154  CI=[0.00146,0.00161]  1/p=0.00200  dev=-0.00047  reldev=-0.2335  ANOMALOUS
+
+FIT-set anomalous primes (CI excludes 1/p): 44 / 44
+Ranked by |deviation|:
+  p= 13  dev=+0.01424  reldev=+0.1852 <-- ANOMALOUS
+  p= 19  dev=-0.01361  reldev=-0.2587 <-- ANOMALOUS
+  p= 11  dev=-0.00846  reldev=-0.0931 <-- ANOMALOUS
+  p= 41  dev=-0.00790  reldev=-0.3238 <-- ANOMALOUS
+  p= 43  dev=-0.00646  reldev=-0.2778 <-- ANOMALOUS
+  p=181  dev=+0.00635  reldev=+1.1497 <-- ANOMALOUS
+  p= 37  dev=-0.00598  reldev=-0.2213 <-- ANOMALOUS
+  p= 59  dev=-0.00544  reldev=-0.3210 <-- ANOMALOUS
+  p= 29  dev=+0.00480  reldev=+0.1392 <-- ANOMALOUS
+  p= 83  dev=+0.00457  reldev=+0.3794 <-- ANOMALOUS
+  p=167  dev=+0.00435  reldev=+0.7256 <-- ANOMALOUS
+  p=  5  dev=+0.00427  reldev=+0.0214 <-- ANOMALOUS
+  p= 67  dev=-0.00422  reldev=-0.2830 <-- ANOMALOUS
+  p= 73  dev=-0.00422  reldev=-0.3080 <-- ANOMALOUS
+  p= 89  dev=+0.00395  reldev=+0.3513 <-- ANOMALOUS
+  p= 17  dev=+0.00395  reldev=+0.0671 <-- ANOMALOUS
+  p=113  dev=-0.00340  reldev=-0.3848 <-- ANOMALOUS
+  p= 31  dev=-0.00340  reldev=-0.1055 <-- ANOMALOUS
+  p= 47  dev=-0.00335  reldev=-0.1574 <-- ANOMALOUS
+  p= 23  dev=-0.00315  reldev=-0.0725 <-- ANOMALOUS
+  p=  7  dev=-0.00304  reldev=-0.0213 <-- ANOMALOUS
+  p= 61  dev=+0.00287  reldev=+0.1748 <-- ANOMALOUS
+  p=139  dev=-0.00279  reldev=-0.3881 <-- ANOMALOUS
+  p=137  dev=+0.00274  reldev=+0.3757 <-- ANOMALOUS
+  p=103  dev=+0.00263  reldev=+0.2710 <-- ANOMALOUS
+  p=163  dev=-0.00253  reldev=-0.4132 <-- ANOMALOUS
+  p=151  dev=-0.00243  reldev=-0.3663 <-- ANOMALOUS
+  p=109  dev=-0.00239  reldev=-0.2600 <-- ANOMALOUS
+  p=193  dev=-0.00237  reldev=-0.4578 <-- ANOMALOUS
+  p= 97  dev=-0.00222  reldev=-0.2157 <-- ANOMALOUS
+  p=127  dev=-0.00219  reldev=-0.2779 <-- ANOMALOUS
+  p= 53  dev=+0.00218  reldev=+0.1155 <-- ANOMALOUS
+  p= 79  dev=+0.00216  reldev=+0.1710 <-- ANOMALOUS
+  p=199  dev=-0.00196  reldev=-0.3905 <-- ANOMALOUS
+  p=131  dev=-0.00195  reldev=-0.2560 <-- ANOMALOUS
+  p=179  dev=-0.00192  reldev=-0.3430 <-- ANOMALOUS
+  p= 71  dev=-0.00183  reldev=-0.1299 <-- ANOMALOUS
+  p=149  dev=-0.00166  reldev=-0.2472 <-- ANOMALOUS
+  p=191  dev=-0.00146  reldev=-0.2786 <-- ANOMALOUS
+  p=101  dev=-0.00131  reldev=-0.1319 <-- ANOMALOUS
+  p=157  dev=-0.00108  reldev=-0.1695 <-- ANOMALOUS
+  p=197  dev=-0.00050  reldev=-0.0994 <-- ANOMALOUS
+  p=173  dev=-0.00034  reldev=-0.0584 <-- ANOMALOUS
+  p=107  dev=+0.00029  reldev=+0.0305 <-- ANOMALOUS
+
+Is p=19 the |deviation|-extreme prime in the fit set? False
+Actual extreme: p=13, dev=+0.01424
+
+=== HARMONIC PREDICTOR TESTS (fit set) ===
+
+Anomalous fit primes: [13, 19, 11, 41, 43, 181, 37, 59, 29, 83, 167, 5, 67, 73, 89, 17, 113, 31, 47, 23, 7, 61, 139, 137, 103, 163, 151, 109, 193, 97, 127, 53, 79, 199, 131, 179, 71, 149, 191, 101, 157, 197, 173, 107]
+Non-anomalous fit primes (0): []
+
+-- ord(2 mod p) --
+  anomalous:     [12, 18, 10, 20, 14, 180, 36, 58, 28, 82, 83, 4, 66, 9, 11, 8, 28, 5, 23, 11, 3, 60, 138, 68, 51, 162, 15, 36, 96, 48, 7, 52, 39, 99, 130, 178, 35, 148, 95, 100, 52, 196, 172, 106]
+  non-anomalous (sample): [] ...
+
+-- ord(3 mod p) --
+  anomalous:     [3, 18, 5, 8, 42, 45, 18, 29, 28, 41, 83, 4, 22, 12, 88, 16, 112, 30, 23, 11, 6, 10, 138, 136, 34, 162, 50, 27, 16, 48, 126, 52, 78, 198, 65, 89, 35, 148, 95, 100, 78, 196, 172, 53]
+
+-- ord2==ord3 --
+  anomalous: 16/44 have ord2==ord3
+  non-anomalous: 0/0 have ord2==ord3
+
+-- p mod 53 --
+  anomalous:     [13, 19, 11, 41, 43, 22, 37, 6, 29, 30, 8, 5, 14, 20, 36, 17, 7, 31, 47, 23, 7, 8, 33, 31, 50, 4, 45, 3, 34, 44, 21, 0, 26, 40, 25, 20, 18, 43, 32, 48, 51, 38, 14, 1]
+  non-anomalous (sample): [] ...
+
+-- divides a heartbeat convergent num/den (53,84,306,485,665,8,5,19,12,65,41) --
+  anomalous: 9/44 divide a convergent term
+  non-anomalous: 0/0 divide a convergent term
+  (of the fit-band primes, which ones divide a convergent term at all: [5, 7, 13, 17, 19, 31, 41, 53, 97])
+
+-- p | 2^a-3^b, min(a+b) over search a,b<=60 --
+  anomalous:     [(13, 5), (19, 6), (11, 6), (41, 11), (43, 14), (181, 21), (37, 9), (59, 9), (29, 6), (83, 10), (167, 11), (5, 4), (67, 14), (73, 7), (89, 14), (17, 9), (113, 13), (31, 10), (47, 8), (23, 5), (7, 3), (61, 7), (139, 18), (137, 11), (103, 9), (163, 24), (151, 13), (109, 19), (193, 13), (97, 12), (127, 20), (53, 18), (79, 5), (199, 16), (131, 16), (179, 11), (71, 12), (149, 20), (191, 20), (101, 10), (157, 28), (197, 14), (173, 20), (107, 36)]
+  non-anomalous (sample): []
+  full fit-set sorted by min_resonance_sum (smallest=closest to heartbeat): [(7, 3), (5, 4), (13, 5), (23, 5), (79, 5), (11, 6), (19, 6), (29, 6), (61, 7), (73, 7), (47, 8), (17, 9), (37, 9), (59, 9), (103, 9), (31, 10), (83, 10), (101, 10), (41, 11), (137, 11)]
+
+=== (53/84)^k MAGNITUDE LAW ===
+(53/84) = 0.630952, (53/84)^6 = 0.063093 (matches fitted b=0.063099)
+   p   |reldev|     best_k   (53/84)^k_pred   k_int?
+  13    0.18518     3.6620         0.158484    False
+  19    0.25866     2.9363         0.251183     True
+  11    0.09310     5.1551         0.099996    False
+  41    0.32383     2.4483         0.398101    False
+  43    0.27783     2.7810         0.251183    False
+ 181    1.14970        nan              nan    False
+  37    0.22128     3.2752         0.251183    False
+  59    0.32103     2.4672         0.398101    False
+  29    0.13919     4.2818         0.158484    False
+  83    0.37942     2.1043         0.398101     True
+ 167    0.72562     0.6964         0.630952    False
+   5    0.02136     8.3523         0.025117    False
+  67    0.28303     2.7408         0.251183    False
+  73    0.30797     2.5574         0.251183    False
+  89    0.35126     2.2718         0.398101    False
+  17    0.06709     5.8664         0.063093     True
+ 113    0.38476     2.0740         0.398101     True
+  31    0.10550     4.8837         0.099996     True
+  47    0.15740     4.0150         0.158484     True
+  23    0.07251     5.6980         0.063093    False
+   7    0.02127     8.3607         0.025117    False
+  61    0.17478     3.7875         0.158484    False
+ 139    0.38809     2.0553         0.398101     True
+ 137    0.37572     2.1257         0.398101     True
+ 103    0.27095     2.8355         0.251183    False
+ 163    0.41318     1.9193         0.398101     True
+ 151    0.36626     2.1810         0.398101    False
+ 109    0.26002     2.9249         0.251183     True
+ 193    0.45780     1.6966         0.398101    False
+  97    0.21570     3.3307         0.251183    False
+ 127    0.27790     2.7805         0.251183    False
+  53    0.11551     4.6868         0.099996    False
+  79    0.17096     3.8354         0.158484    False
+ 199    0.39049     2.0419         0.398101     True
+ 131    0.25602     2.9586         0.251183     True
+ 179    0.34305     2.3232         0.398101    False
+  71    0.12988     4.4321         0.158484    False
+ 149    0.24724     3.0344         0.251183     True
+ 191    0.27859     2.7751         0.251183    False
+ 101    0.13186     4.3994         0.158484    False
+ 157    0.16955     3.8535         0.158484     True
+ 197    0.09940     5.0129         0.099996     True
+ 173    0.05841     6.1676         0.063093    False
+ 107    0.03054     7.5756         0.025117    False
+
+FROZEN PREDICTION TEST: p=19 |dev| (absolute, this census) = 0.013614 vs (53/84)^9 = 0.015848
+  CI on absolute dev: point=0.03902, 1/19=0.05263, CI=[0.03857,0.03948]
+  dev CI = [-0.014065, -0.013156]; does it bracket ±(53/84)^9=0.015848? False
+  reldev = -0.25866, |reldev| = 0.25866 -> k_fit = 2.9363
+
+=== SPECTRAL CROSS-CORRELATION ===
+Pearson r(|reldev|, ord2)        = +0.3573
+Pearson r(|reldev|, ord3)        = +0.1505
+Pearson r(|reldev|, dist-to-0 mod53) = +0.1912
+Pearson r(|reldev|, min_resonance_sum) = +0.1953
+Pearson r(|reldev|, p itself)    = +0.5033  (null-model control: does deviation just shrink with 1/p scale?)
+
+Fitted k values across anomalous primes: [(13, 3.662), (19, 2.936), (11, 5.155), (41, 2.448), (43, 2.781), (181, nan), (37, 3.275), (59, 2.467), (29, 4.282), (83, 2.104), (167, 0.696), (5, 8.352), (67, 2.741), (73, 2.557), (89, 2.272), (17, 5.866), (113, 2.074), (31, 4.884), (47, 4.015), (23, 5.698), (7, 8.361), (61, 3.788), (139, 2.055), (137, 2.126), (103, 2.835), (163, 1.919), (151, 2.181), (109, 2.925), (193, 1.697), (97, 3.331), (127, 2.781), (53, 4.687), (79, 3.835), (199, 2.042), (131, 2.959), (179, 2.323), (71, 4.432), (149, 3.034), (191, 2.775), (101, 4.399), (157, 3.853), (197, 5.013), (173, 6.168), (107, 7.576)]
+mean(k)=3.613, std(k)=1.720 -> SCATTERED (no single global k)
+
+=== HELD-OUT PREDICTIVE CHECK (p in 201..500) ===
+Held-out anomalous count: 49 / 49
+Held-out anomalous primes: [433, 479, 293, 347, 251, 283, 263, 233, 223, 277, 239, 241, 257, 229, 349, 311, 211, 281, 401, 367, 331, 307, 271, 383, 227, 313, 467, 419, 439, 457, 379, 397, 353, 373, 487, 491, 443, 389, 421, 337, 317, 463, 359, 409, 499, 461, 269, 449, 431]
+
+   p anomalous?        dev   ord2   ord3  pmod53  minres
+ 211       True   -0.00141    210    210      52      10
+ 223       True   -0.00224     37    222      11      17
+ 227       True   -0.00116    226    113      15       9
+ 229       True   -0.00150     76     57      17      11
+ 233       True   +0.00440     29    232      21      21
+ 239       True   -0.00172    119    119      27       7
+ 241       True   -0.00169     24    120      29       6
+ 251       True   +0.00559     50    125      39      16
+ 257       True   -0.00155     16    256      45      27
+ 263       True   +0.00473    131    131      51      17
+ 269       True   -0.00036    268    268       4      14
+ 271       True   -0.00121    135     30       6      37
+ 277       True   -0.00186     92     69      12      13
+ 281       True   -0.00135     70    280      16      15
+ 283       True   +0.00522     94    282      18      22
+ 293       True   +0.00646    292    292      28      24
+ 307       True   -0.00130    102     34      42      14
+ 311       True   -0.00142    155    155      46      31
+ 313       True   -0.00111    156     39      48      15
+ 317       True   -0.00069    316    316      52      24
+ 331       True   -0.00131     30    330      13      22
+ 337       True   -0.00074     21    168      19      24
+ 347       True   +0.00642    346    173      29      26
+ 349       True   -0.00144    348    174      31      27
+ 353       True   -0.00095     88    352      35      33
+ 359       True   -0.00059    179    179      41      15
+ 367       True   -0.00132    183    122      49      44
+ 373       True   -0.00095    372    186       2      25
+ 379       True   -0.00100    378    378       8      36
+ 383       True   -0.00116    191    191      12      29
+ 389       True   -0.00084    388    388      18      40
+ 397       True   -0.00097     44    198      26      19
+ 401       True   -0.00133    200    400      30      27
+ 409       True   -0.00050    204    204      38      12
+ 419       True   -0.00108    418    209      48      31
+ 421       True   -0.00078    420    105      50      30
+ 431       True   -0.00029     43     43       7      11
+ 433       True   +0.00721     72     27       9      29
+ 439       True   -0.00103     73    146      15      19
+ 443       True   -0.00088    442    221      19      23
+ 449       True   -0.00036    224    448      25      34
+ 457       True   -0.00101     76    228      33      14
+ 461       True   -0.00046    460    460      37      40
+ 463       True   -0.00069    231    462      39      28
+ 467       True   -0.00109    466    233      43      31
+ 479       True   +0.00657    239    239       2      21
+ 487       True   -0.00092    243    486      10      55
+ 491       True   -0.00091    490     49      14      33
+ 499       True   -0.00047    166    166      22      12
+
+Wrote census_analysis.json
